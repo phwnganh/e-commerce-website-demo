@@ -7,7 +7,7 @@ const HeaderSection = () => {
       <div className="bg-black">
         <AdvertisementBanner />
       </div>
-      <div className="max-w-[1190px] mx-auto">
+      <div className="max-w-[1190px] mx-auto mt-10">
         <MainNavigation />
       </div>
     </header>

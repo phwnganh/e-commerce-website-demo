@@ -6,7 +6,7 @@ const AdvertisementBanner = () => {
         <p className="text-sm font-normal">
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
         </p>
-        <p className="text-sm font-semibold">ShopNow</p>
+        <p className="text-sm font-semibold underline">ShopNow</p>
       </div>
       <div className="flex gap-2 items-center">
         <p className="text-sm">English</p>
