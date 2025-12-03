@@ -1,10 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-// import './index.css'
-import MainPage from './components/MainPage.tsx'
+import HomePage from './components/HomePage/HomePage'
+import './index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MainPage/>
+    <HomePage/>
   </StrictMode>,
 )

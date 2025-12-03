@@ -69,3 +69,7 @@ button:focus-visible {
 
 @import "tailwindcss";
 
+:root {
+  font-family: Poppins;
+}
+
