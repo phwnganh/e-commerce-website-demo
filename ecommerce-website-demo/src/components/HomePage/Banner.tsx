@@ -1,9 +1,11 @@
-import React from 'react';
+import CategoriesNavigation from './CategoriesNavigation';
+import HeroBanner from './HeroBanner';
 
 const Banner = () => {
       return (
-            <section>
-                  banner section
+            <section className='max-w-[1170px] mx-auto flex flex-row gap-11'>
+                  <CategoriesNavigation/>
+                  <HeroBanner/>
             </section>
       );
 };
