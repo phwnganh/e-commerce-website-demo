@@ -1,5 +1,7 @@
 import LeftArrow from "../../assets/icons-arrow-left.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
+import HeartIcon from "../../assets/heart-icon.svg";
+import EyeIcon from "../../assets/Eye-icon.svg";
 import { useEffect, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import StarRating from "../ui/StarRating";
@@ -41,24 +43,35 @@ const TodaysProductsList = () => {
           </div>
         </div>
         <div className="flex flex-row gap-2">
-          <div className="bg-[#F5F5F5] rounded-[50%] w-11.5 h-11.5">
+          <button className="bg-[#F5F5F5] rounded-[50%] w-12 h-12 flex justify-center items-center">
             <img src={LeftArrow} alt="left-arrow" />
-          </div>
-          <div className="bg-[#F5F5F5] rounded-[50%] w-11.5 h-11.5">
+          </button>
+          <button className="bg-[#F5F5F5] rounded-[50%] w-12 h-12 flex justify-center items-center">
             <img src={RightArrow} alt="right-arrow" />
-          </div>
+          </button>
         </div>
       </div>
       {/* <div className="overflow-x-auto"> */}
       <div className="flex flex-row gap-7.5 mt-10">
         {todaysProducts.map((product, index) => (
           <div className="flex flex-col gap-4" key={index}>
-            <div className="bg-[#F5F5F5] rounded-sm w-[270px]">
+            <div className="bg-[#F5F5F5] rounded-sm w-[270px] relative">
+              <div className="bg-[#DB4444] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
+                {Math.round(product.discountPercentage)}%
+              </div>
               <img
                 src={product.images[0]}
                 alt="product-imgs"
                 className="w-full"
               />
+              <div className="flex flex-col gap-2 absolute top-3 right-3 ">
+                <button className="bg-white flex items-center justify-center rounded-[50%] w-8 h-8 p-2.5">
+                  <img src={HeartIcon} alt="heart-icon" />
+                </button>
+                <button className="bg-white flex items-center justify-center rounded-[50%] w-8 h-8 p-2.5">
+                  <img src={EyeIcon} alt="eye-icon" />
+                </button>
+              </div>
             </div>
             <div className="flex flex-col gap-2">
               <p className="font-medium">{product.title}</p>
@@ -76,6 +89,12 @@ const TodaysProductsList = () => {
         ))}
       </div>
       {/* </div> */}
+      <div className="mt-15 flex justify-center">
+        <button className="bg-[#DB4444] font-medium text-[#FAFAFA] py-4 px-12 rounded-sm">
+          View All Products
+        </button>
+      </div>
+      <hr className="mt-15 opacity-30"></hr>
     </section>
   );
 };
