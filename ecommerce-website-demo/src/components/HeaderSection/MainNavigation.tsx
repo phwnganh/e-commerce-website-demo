@@ -10,12 +10,15 @@ const MainNavigation = () => {
       </div>
 
       <div className="flex gap-6 items-center">
-        <div className=" bg-[#F5F5F5] py-1.75 flex gap-8.5 pl-5 pr-3 rounded-sm items-center">
+        <div className=" bg-[#F5F5F5] py-1.75 flex gap-8.5 pl-5 pr-3 rounded-sm">
+          <div className="min-w-[153px]">
           <input
             type="text"
             placeholder="What are you looking for?"
-            className="text-xs"
+            className="text-xs w-full"
           />
+          </div>
+
           <svg
             width="24"
             height="24"
@@ -23,6 +26,7 @@ const MainNavigation = () => {
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
+            className="shrink-0"
           >
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.35-4.35" />
