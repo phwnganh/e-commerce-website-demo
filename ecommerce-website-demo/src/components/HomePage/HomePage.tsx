@@ -1,11 +1,11 @@
 import FooterSection from '../FooterSection/FooterSection';
-import HeaderSection from '../HeaderSection/HeaderSection';
+import PostLoginHeaderSection from '../HeaderSection/PostLoginHeaderSection';
 import Banner from './Banner';
 
 const HomePage = () => {
       return (
             <div>
-                  <HeaderSection/>
+                  <PostLoginHeaderSection/>
                   <hr />
                   <Banner/>
                   <FooterSection/>

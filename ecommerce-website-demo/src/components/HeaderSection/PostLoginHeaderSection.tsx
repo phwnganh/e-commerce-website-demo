@@ -1,9 +1,9 @@
 import AdvertisementBanner from "./AdvertisementBanner";
 import MainNavigation from "./MainNavigation";
 
-const HeaderSection = () => {
+const PostLoginHeaderSection = () => {
   return (
-    <header className="">
+    <header>
       <div className="bg-black">
         <AdvertisementBanner />
       </div>
@@ -14,4 +14,4 @@ const HeaderSection = () => {
   );
 };
 
-export default HeaderSection;
+export default PostLoginHeaderSection;
