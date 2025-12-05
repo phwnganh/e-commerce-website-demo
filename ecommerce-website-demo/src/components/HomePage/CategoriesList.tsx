@@ -47,6 +47,7 @@ const CategoriesList = () => {
           </div>
         ))}
       </div>
+      <hr className="mt-15 opacity-30"></hr>
     </section>
   );
 };

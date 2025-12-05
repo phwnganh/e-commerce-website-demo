@@ -79,24 +79,24 @@ const FooterSection = () => {
             </div>
           </div>
           <div className="flex flex-row gap-6">
-            <div className="w-6 h-6">
+            <div className="w-6 h-6 flex justify-center items-center">
               <img
                 src={facebook}
                 alt="facebook-icon"
                 className="w-auto h-auto"
               />
             </div>
-            <div className="w-6 h-6">
+            <div className="w-6 h-6 flex justify-center items-center">
               <img src={twitter} alt="twitter-icon" className="w-auto h-auto" />
             </div>
-            <div className="w-6 h-6">
+            <div className="w-6 h-6 flex justify-center items-center">
               <img
                 src={instagram}
                 alt="instagram-icon"
                 className="w-auto h-auto"
               />
             </div>
-            <div className="w-6 h-6">
+            <div className="w-6 h-6 flex justify-center items-center">
               <img
                 src={linkedln}
                 alt="linkedln-icon"
