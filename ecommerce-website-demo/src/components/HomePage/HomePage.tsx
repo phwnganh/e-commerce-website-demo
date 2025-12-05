@@ -13,7 +13,7 @@ const HomePage = () => {
       return (
             <div>
                   <PostLoginHeaderSection/>
-                  <hr />
+                  <hr className='mt-4'/>
                   <Banner/>
                   <TodaysProductsList/>
                   <CategoriesList/>

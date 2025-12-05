@@ -4,9 +4,10 @@ import HomePage from './components/HomePage/HomePage'
 import './index.css'
 import SignupPage from './components/PreLoginPage/SignupPage'
 import LoginPage from './components/PreLoginPage/LoginPage'
+import WishlistPage from './components/WishlistPage/WishlistPage'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <HomePage/>
+    <WishlistPage/>
   </StrictMode>,
 )
