@@ -3,6 +3,7 @@ import PostLoginHeaderSection from '../HeaderSection/PostLoginHeaderSection';
 import Banner from './Banner';
 import BestSellerProductsList from './BestSellerProductsList';
 import CategoriesList from './CategoriesList';
+import KeyFeatures from './KeyFeatures';
 import LimitedOfferBanner from './LimitedOfferBanner';
 import ProductsExplorationList from './ProductsExplorationList';
 import TodaysProductsList from './TodaysProductsList';
@@ -18,6 +19,7 @@ const HomePage = () => {
                   <BestSellerProductsList/>
                   <LimitedOfferBanner/>
                   <ProductsExplorationList/>
+                  <KeyFeatures/>
                   <FooterSection/>
             </div>
       );
