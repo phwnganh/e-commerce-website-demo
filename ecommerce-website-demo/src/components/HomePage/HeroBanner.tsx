@@ -20,7 +20,7 @@ const HeroBanner = () => {
             </div>
           </div>
         </div>
-        <div className="w-124">
+        <div className="w-124 mt-4">
           <img src={Hero} alt="hero-banner" className="" />
         </div>
       </div>

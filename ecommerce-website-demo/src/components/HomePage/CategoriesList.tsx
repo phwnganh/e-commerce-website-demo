@@ -1,18 +1,38 @@
 import LeftArrow from "../../assets/icons-arrow-left.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import Cosmetics from "../../assets/cosmetics.png";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Categorys } from "../../types/CategoryType";
 const CategoriesList = () => {
   const [categories, setCategories] = useState<Categorys[]>([]);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  const itemsToShow = 6;
+  const itemWidth = 198;
   useEffect(() => {
     fetch("https://dummyjson.com/products/categories")
       .then((res) => res.json())
       .then((res) => setCategories(res));
   }, []);
 
-  const displayedCategories = categories.slice(0, 6);
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -itemWidth * itemsToShow, // Cuộn sang trái nhiều item cùng lúc
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: itemWidth * itemsToShow,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section className="mt-20 max-w-[1170px] mx-auto">
       <div className="flex flex-row items-end justify-between">
@@ -25,17 +45,27 @@ const CategoriesList = () => {
         </div>
 
         <div className="flex flex-row gap-2">
-          <button className="bg-[#F5F5F5] rounded-[50%] w-12 h-12 flex justify-center items-center">
+          <button
+            onClick={scrollLeft}
+            className="bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors"
+          >
             <img src={LeftArrow} alt="left-arrow" />
           </button>
-          <button className="bg-[#F5F5F5] rounded-[50%] w-12 h-12 flex justify-center items-center">
+          <button
+            onClick={scrollRight}
+            className="bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors"
+          >
             <img src={RightArrow} alt="right-arrow" />
           </button>
         </div>
       </div>
 
-      <div className="mt-15 flex flex-row gap-7 overflow-x-scroll">
-        {displayedCategories.map((category, index) => (
+      <div
+        ref={scrollContainerRef}
+        className="mt-15 flex flex-row gap-7 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
+        style={{ scrollBehavior: "smooth" }}
+      >
+        {categories.map((category, index) => (
           <div
             className="flex flex-col gap-4 border-2 justify-center items-center rounded-sm border-[#0000004D] w-[170px] py-6 px-14"
             key={index}

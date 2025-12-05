@@ -1,9 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { HOMEPAGE, LOGIN, SIGNUP } from "../../constants/route.constants";
+import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
 import HeartIcon from "../../assets/heart-icon.svg";
 import CartIcon from "../../assets/Cart1.svg";
 import UserIcon from "../../assets/user.svg";
-import MallbagIcon from "../../assets/icon-mallbag.svg";
 import CancelIcon from "../../assets/icon-cancel.svg";
 import ReviewsIcon from "../../assets/Icon-Reviews.svg";
 import LogoutIcon from "../../assets/Icon-logout.svg";
@@ -123,10 +122,10 @@ const MainNavigation = () => {
             />
             {isDropdownOpen && (
               <div className="absolute top-9 right-0">
-                <div className="border-2 flex flex-col gap-3">
+                <div className="flex flex-col gap-3 bg-[#0000000A] backdrop-blur-[150px] rounded-sm p-3.5 text-[#FAFAFA]">
                   <div className="flex flex-row gap-4 w-56">
                     <div className="w-6 h-6 flex justify-center items-center">
-                      <img src={UserIcon} alt="user-icon" />
+                      <img src={UserIcon} alt="user-icon" className="brightness-0 invert" />
                     </div>
                     <p className="text-sm">Manage My Account</p>
                   </div>
