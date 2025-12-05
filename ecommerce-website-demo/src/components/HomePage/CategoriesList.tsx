@@ -1,5 +1,6 @@
 import LeftArrow from "../../assets/icons-arrow-left.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
+import Cosmetics from "../../assets/cosmetics.png";
 import { useEffect, useState } from "react";
 import type { Categorys } from "../../types/CategoryType";
 const CategoriesList = () => {
@@ -35,10 +36,14 @@ const CategoriesList = () => {
 
       <div className="mt-15 flex flex-row gap-7 overflow-x-scroll">
         {displayedCategories.map((category, index) => (
-          <div className="flex flex-col gap-4 border-2" key={index}>
-            <div className="rounded-sm border-[#0000004D] w-[170px] flex justify-center">
-              <p>{category.name}</p>
+          <div
+            className="flex flex-col gap-4 border-2 justify-center items-center rounded-sm border-[#0000004D] w-[170px] py-6 px-14"
+            key={index}
+          >
+            <div className="w-14 h-14">
+              <img src={Cosmetics} alt="" />
             </div>
+            <p className="text-center">{category.name}</p>
           </div>
         ))}
       </div>
