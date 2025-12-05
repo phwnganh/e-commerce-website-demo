@@ -57,10 +57,10 @@ const ProductsExplorationList = () => {
                   className="w-full"
                 />
                 <div className="flex flex-col gap-2 absolute top-3 right-3 ">
-                  <button className="bg-white flex items-center justify-center rounded-[50%] w-8 h-8 p-2.5">
+                  <button className="bg-white flex justify-center rounded-[50%] w-8 h-8 p-2.5">
                     <img src={HeartIcon} alt="heart-icon" />
                   </button>
-                  <button className="bg-white flex items-center justify-center rounded-[50%] w-8 h-8 p-2.5">
+                  <button className="bg-white flex justify-center rounded-[50%] w-8 h-8 p-2.5">
                     <img src={EyeIcon} alt="eye-icon" />
                   </button>
                 </div>

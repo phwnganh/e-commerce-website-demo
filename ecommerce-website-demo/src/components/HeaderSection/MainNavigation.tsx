@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { HOMEPAGE, LOGIN, SIGNUP } from "../../constants/route.constants";
-
+import HeartIcon from '../../assets/heart-icon.svg'
+import CartIcon from '../../assets/Cart1.svg'
 const MainNavigation = () => {
   return (
     <section className="flex flex-row justify-between items-center py-[7px]">
@@ -51,7 +52,7 @@ const MainNavigation = () => {
         </div>
 
         <div className="flex gap-4">
-          <svg
+          {/* <svg
             width="32"
             height="32"
             viewBox="0 0 24 24"
@@ -62,9 +63,12 @@ const MainNavigation = () => {
             strokeLinejoin="round"
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-          </svg>
+          </svg> */}
+          <button className="w-8 h-8 flex justify-center">
+            <img src={HeartIcon} alt="heart-icon" />
+          </button>
 
-          <svg
+          {/* <svg
             width="32"
             height="32"
             viewBox="0 0 24 24"
@@ -77,7 +81,10 @@ const MainNavigation = () => {
             <circle cx="9" cy="21" r="1" />
             <circle cx="20" cy="21" r="1" />
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-          </svg>
+          </svg> */}
+          <button className="w-8 h-8 flex justify-center">
+            <img src={CartIcon} alt="cart-icon" />
+          </button>
         </div>
       </div>
     </section>
