@@ -1,13 +1,29 @@
+import { NavLink } from "react-router-dom";
+import { HOMEPAGE, LOGIN, SIGNUP } from "../../constants/route.constants";
 
 const PreLoginNavigation = () => {
   return (
     <section className="flex flex-row justify-between items-center py-[7px]">
       <h3 className="font-bold text-2xl">Exclusive</h3>
       <div className="flex gap-12 items-center">
-        <div className="border-b-2">Home</div>
+        <NavLink
+          className={({ isActive }) =>
+            `${isActive ? "border-b-2" : "hover:border-b-2"}`
+          }
+          to={HOMEPAGE}
+        >
+          Home
+        </NavLink>
         <div>Contact</div>
         <div>About</div>
-        <div>Sign Up</div>
+        <NavLink
+          to={LOGIN}
+          className={({ isActive }) =>
+            `${isActive ? "border-b-2" : "hover:border-b-2"}`
+          }
+        >
+          Login
+        </NavLink>
       </div>
 
       <div className=" bg-[#F5F5F5] py-1.75 flex gap-8.5 pl-5 pr-3 rounded-sm">
