@@ -53,7 +53,7 @@ const TodaysProductsList = () => {
       </div>
       {/* <div className="overflow-x-auto"> */}
       <div className="flex flex-row gap-7.5 mt-10">
-        {todaysProducts.map((product, index) => (
+        {todaysProducts.map((product) => (
           <div className="flex flex-col gap-4" key={product.id}>
             <div className="bg-[#F5F5F5] rounded-sm w-[270px] relative">
               <div className="bg-[#DB4444] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">

@@ -3,6 +3,7 @@ import PostLoginHeaderSection from '../HeaderSection/PostLoginHeaderSection';
 import Banner from './Banner';
 import BestSellerProductsList from './BestSellerProductsList';
 import CategoriesList from './CategoriesList';
+import ProductsExplorationList from './ProductsExplorationList';
 import TodaysProductsList from './TodaysProductsList';
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
                   <TodaysProductsList/>
                   <CategoriesList/>
                   <BestSellerProductsList/>
+                  <ProductsExplorationList/>
                   <FooterSection/>
             </div>
       );

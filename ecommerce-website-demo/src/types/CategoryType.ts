@@ -1,4 +1,4 @@
 export type Categorys = {
-      slug: string
-      name: string
-}
+  slug: string;
+  name: string;
+};
