@@ -9,19 +9,19 @@ const LimitedOfferBanner = () => {
             Enhance Your Music Experience
           </h1>
           <div className="flex flex-row gap-6">
-            <div className="rounded-[50%] bg-white w-[62px] h-[62px] flex flex-col justify-center items-center">
+            <div className="rounded-full bg-white w-[62px] h-[62px] flex flex-col justify-center items-center">
               <p className="font-semibold">23</p>
               <p className="text-xs">Hours</p>
             </div>
-            <div className="rounded-[50%] bg-white w-[62px] h-[62px] flex flex-col justify-center items-center">
+            <div className="rounded-full bg-white w-[62px] h-[62px] flex flex-col justify-center items-center">
               <p className="font-semibold">05</p>
               <p className="text-xs">Days</p>
             </div>
-            <div className="rounded-[50%] bg-white w-[62px] h-[62px] flex flex-col justify-center items-center">
+            <div className="rounded-full bg-white w-[62px] h-[62px] flex flex-col justify-center items-center">
               <p className="font-semibold">59</p>
               <p className="text-xs">Minutes</p>
             </div>
-            <div className="rounded-[50%] bg-white w-[62px] h-[62px] flex flex-col justify-center items-center">
+            <div className="rounded-full bg-white w-[62px] h-[62px] flex flex-col justify-center items-center">
               <p className="font-semibold">35</p>
               <p className="text-xs">Seconds</p>
             </div>

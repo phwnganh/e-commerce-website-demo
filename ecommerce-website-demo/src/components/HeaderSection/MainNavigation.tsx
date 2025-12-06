@@ -8,9 +8,12 @@ import ReviewsIcon from "../../assets/Icon-Reviews.svg";
 import LogoutIcon from "../../assets/Icon-logout.svg";
 import { useEffect, useState } from "react";
 import type { User } from "../../types/AuthType";
+import type { Products } from "../../types/ProductTypes";
 const MainNavigation = () => {
   const [user, setUser] = useState<User | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [wishlists, setWishlists] = useState<Products[]>([]);
+
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -19,6 +22,13 @@ const MainNavigation = () => {
       } catch (error) {
         console.log(error);
       }
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedWishlist = localStorage.getItem("wishlist");
+    if (savedWishlist) {
+      setWishlists(JSON.parse(savedWishlist));
     }
   }, []);
 
@@ -88,8 +98,11 @@ const MainNavigation = () => {
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg> */}
-          <button className="w-8 h-8 flex justify-center rounded-full">
-            <img src={HeartIcon} alt="heart-icon" />
+          <button className="w-8 h-8 flex justify-center items-center rounded-full relative">
+            <img src={HeartIcon} alt="heart-icon" className="w-5 h-5" />
+            <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] justify-center items-center text-xs">
+              {wishlists.length}
+            </div>
           </button>
 
           {/* <svg
@@ -107,7 +120,7 @@ const MainNavigation = () => {
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
           </svg> */}
           <button className="w-8 h-8 flex justify-center">
-            <img src={CartIcon} alt="cart-icon" />
+            <img src={CartIcon} alt="cart-icon"  />
           </button>
           <button
             onClick={handleUserClick}
@@ -125,7 +138,11 @@ const MainNavigation = () => {
                 <div className="flex flex-col gap-3 bg-[#0000000A] backdrop-blur-[150px] rounded-sm p-3.5 text-[#FAFAFA]">
                   <div className="flex flex-row gap-4 w-56">
                     <div className="w-6 h-6 flex justify-center items-center">
-                      <img src={UserIcon} alt="user-icon" className="brightness-0 invert" />
+                      <img
+                        src={UserIcon}
+                        alt="user-icon"
+                        className="brightness-0 invert"
+                      />
                     </div>
                     <p className="text-sm">Manage My Account</p>
                   </div>

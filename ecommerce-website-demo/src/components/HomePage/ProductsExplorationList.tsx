@@ -9,6 +9,7 @@ const ProductsExplorationList = () => {
   const [exploratedProducts, setExploratedProducts] = useState<Products[]>([]);
   const ITEMS_PER_VIEW = 8;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [wishlists, setWishlists] = useState<Products[]>([]);
 
   const totalGroups = Math.ceil(exploratedProducts.length / ITEMS_PER_VIEW);
 
@@ -30,6 +31,26 @@ const ProductsExplorationList = () => {
       .then((res) => res.json())
       .then((res) => setExploratedProducts(res.products));
   }, []);
+
+  useEffect(() => {
+    const savedWishlist = localStorage.getItem("wishlist")
+    if(savedWishlist){
+      setWishlists(JSON.parse(savedWishlist))
+    }
+  }, [])
+
+  const handleAddToWishlist = (product: Products) => {
+    const exists = wishlists.some((item) => item.id === product.id);
+    let updated;
+
+    if (exists) {
+      updated = wishlists.filter((item) => item.id !== product.id);
+    } else {
+      updated = [...wishlists, product];
+    }
+    setWishlists(updated);
+    localStorage.setItem("wishlist", JSON.stringify(updated));
+  };
   return (
     <section className="mt-17 max-w-[1170px] mx-auto">
       <div className="flex flex-row items-end justify-between">
@@ -90,10 +111,17 @@ const ProductsExplorationList = () => {
                   className="w-full"
                 />
                 <div className="flex flex-col gap-2 absolute top-3 right-3 ">
-                  <button className="bg-white flex justify-center rounded-[50%] w-8 h-8 p-2.5">
-                    <img src={HeartIcon} alt="heart-icon" />
+                  <button
+                    onClick={() => handleAddToWishlist(product)}
+                    className={`${
+                      wishlists.some((item) => item.id === product.id)
+                        ? "bg-[#DB4444] hover:bg-[#b42424]"
+                        : "bg-white hover:bg-gray-200"
+                    }  flex justify-center rounded-full w-8 h-8 p-2.5  `}
+                  >
+                    <img src={HeartIcon} alt="heart-icon" className={wishlists.some(item => item.id === product.id) ? "brightness-1 invert" : ""}/>
                   </button>
-                  <button className="bg-white flex justify-center rounded-[50%] w-8 h-8 p-2.5">
+                  <button className="bg-white flex justify-center rounded-full w-8 h-8 p-2.5 hover:bg-gray-200">
                     <img src={EyeIcon} alt="eye-icon" />
                   </button>
                 </div>
