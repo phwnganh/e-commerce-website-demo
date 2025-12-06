@@ -6,12 +6,14 @@ import Circle from "../../assets/circle.svg";
 import { useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import StarRating from "../ui/StarRating";
+import { useNavigate } from "react-router-dom";
+import { HOMEPAGE } from "../../constants/route.constants";
 const TodaysProductsList = () => {
   const [todaysProducts, setTodaysProducts] = useState<Products[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [wishlists, setWishlists] = useState<Products[]>([]);
-  const [isAddedToCartHovered, setIsAddedToCartHovered] = useState(false);
+  const navigate = useNavigate();
   const ITEMS_PER_VIEW = 4;
 
   useEffect(() => {
@@ -159,11 +161,14 @@ const TodaysProductsList = () => {
                         }
                       />
                     </button>
-                    <button className="bg-white flex justify-center rounded-full w-8 h-8 p-2.5 hover:bg-gray-200">
+                    <button
+                      className="bg-white flex justify-center rounded-full w-8 h-8 p-2.5 hover:bg-gray-200"
+                      onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
+                    >
                       <img src={EyeIcon} alt="eye-icon" />
                     </button>
                   </div>
-                  <button className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 hidden group-hover:block">
+                  <button className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block">
                     Add to Cart
                   </button>
                 </div>

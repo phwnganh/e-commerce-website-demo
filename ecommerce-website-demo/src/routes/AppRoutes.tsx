@@ -6,6 +6,7 @@ import {
   SIGNUP,
   WISHLIST,
 } from "../constants/route.constants";
+import ProductDetailPage from "../components/ProductDetailPage/ProductDetailPage";
 
 const LoginPage = lazy(() => import("../components/PreLoginPage/LoginPage"));
 const SignupPage = lazy(() => import("../components/PreLoginPage/SignupPage"));
@@ -20,6 +21,7 @@ const AppRoutes = () => {
       <Route path={SIGNUP} element={<SignupPage />} />
       <Route path={WISHLIST} element={<WishlistPage />} />
       <Route path={HOMEPAGE} element={<HomePage />} />
+      <Route path={`${HOMEPAGE}/:productId`} element={<ProductDetailPage/>}/>
       <Route index element={<HomePage />} />
     </Routes>
   );

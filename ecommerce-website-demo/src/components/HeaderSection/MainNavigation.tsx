@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
-import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
+import { NavLink, useNavigate } from "react-router-dom";
+import { HOMEPAGE, LOGIN, WISHLIST } from "../../constants/route.constants";
 import HeartIcon from "../../assets/heart-icon.svg";
 import CartIcon from "../../assets/Cart1.svg";
 import UserIcon from "../../assets/user.svg";
@@ -13,7 +13,7 @@ const MainNavigation = () => {
   const [user, setUser] = useState<User | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [wishlists, setWishlists] = useState<Products[]>([]);
-
+  const navigate = useNavigate()
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -98,7 +98,7 @@ const MainNavigation = () => {
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg> */}
-          <button className="w-8 h-8 flex justify-center items-center rounded-full relative">
+          <button onClick={() => navigate(WISHLIST)} className="w-8 h-8 flex justify-center items-center rounded-full relative">
             <img src={HeartIcon} alt="heart-icon" className="w-5 h-5" />
             <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] justify-center items-center text-xs">
               {wishlists.length}

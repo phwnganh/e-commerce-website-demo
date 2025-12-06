@@ -46,7 +46,7 @@ const WishlistSection = () => {
                 </button>
               </div>
 
-              <button className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 hidden group-hover:block">
+              <button className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block">
                 Add to Cart
               </button>
             </div>

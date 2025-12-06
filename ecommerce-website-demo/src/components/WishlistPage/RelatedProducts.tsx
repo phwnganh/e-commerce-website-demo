@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import StarRating from "../ui/StarRating";
+import { useNavigate } from "react-router-dom";
+import { HOMEPAGE } from "../../constants/route.constants";
 
 const RelatedProducts = () => {
   const [todaysProducts, setTodaysProducts] = useState<Products[]>([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
@@ -36,13 +38,13 @@ const RelatedProducts = () => {
                 className="w-full"
               />
               <div className="flex flex-col gap-2 absolute top-3 right-3 ">
-                <button className="bg-white flex items-center justify-center rounded-full w-8 h-8 p-2.5 hover:bg-gray-200">
+                <button
+                  onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
+                  className="bg-white flex items-center justify-center rounded-full w-8 h-8 p-2.5 hover:bg-gray-200"
+                >
                   <img src={EyeIcon} alt="eye-icon" />
                 </button>
               </div>
-              <button className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 hidden group-hover:block">
-                Add to Cart
-              </button>
             </div>
             <div className="flex flex-col gap-2">
               <p className="font-medium">{product.title}</p>
