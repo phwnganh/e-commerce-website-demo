@@ -2,13 +2,7 @@ import { useEffect, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import TrashIcon from "../../assets/icon-delete.svg";
 const WishlistSection = () => {
-  const [todaysProducts, setTodaysProducts] = useState<Products[]>([]);
   const [wishlists, setWishlists] = useState<Products[]>([]);
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((res) => setTodaysProducts(res.products));
-  }, []);
 
   useEffect(() => {
     const savedWishlist = localStorage.getItem("wishlist");
@@ -46,7 +40,7 @@ const WishlistSection = () => {
               <div className="flex flex-col gap-2 absolute top-3 right-3 ">
                 <button
                   onClick={() => handleRemoveWishlist(product)}
-                  className="bg-white flex items-center justify-center rounded-[50%] w-8 h-8 p-2.5"
+                  className="bg-white flex items-center justify-center rounded-full w-8 h-8 p-2.5 hover:bg-gray-200"
                 >
                   <img src={TrashIcon} alt="trash-icon" />
                 </button>

@@ -11,6 +11,7 @@ const TodaysProductsList = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [wishlists, setWishlists] = useState<Products[]>([]);
+  const [isAddedToCartHovered, setIsAddedToCartHovered] = useState(false);
   const ITEMS_PER_VIEW = 4;
 
   useEffect(() => {
@@ -130,7 +131,7 @@ const TodaysProductsList = () => {
           {todaysProducts.map((product) => (
             <div className="shrink-0 w-1/4" key={product.id}>
               <div className="flex flex-col gap-4">
-                <div className="bg-[#F5F5F5] rounded-sm w-[270px] relative">
+                <div className="bg-[#F5F5F5] rounded-sm w-[270px] relative group">
                   <div className="bg-[#DB4444] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
                     {Math.round(product.discountPercentage)}%
                   </div>
@@ -141,19 +142,30 @@ const TodaysProductsList = () => {
                   />
                   <div className="flex flex-col gap-2 absolute top-3 right-3 ">
                     <button
-                    onClick={() => handleAddToWishlist(product)}
-                    className={`${
-                      wishlists.some((item) => item.id === product.id)
-                        ? "bg-[#DB4444] hover:bg-[#b42424]"
-                        : "bg-white hover:bg-gray-200"
-                    }  flex justify-center rounded-full w-8 h-8 p-2.5  `}
-                  >
-                    <img src={HeartIcon} alt="heart-icon" className={wishlists.some(item => item.id === product.id) ? "brightness-1 invert" : ""}/>
-                  </button>
-                    <button className="bg-white flex justify-center rounded-[50%] w-8 h-8 p-2.5 hover:bg-gray-200">
+                      onClick={() => handleAddToWishlist(product)}
+                      className={`${
+                        wishlists.some((item) => item.id === product.id)
+                          ? "bg-[#DB4444] hover:bg-[#b42424]"
+                          : "bg-white hover:bg-gray-200"
+                      }  flex justify-center rounded-full w-8 h-8 p-2.5  `}
+                    >
+                      <img
+                        src={HeartIcon}
+                        alt="heart-icon"
+                        className={
+                          wishlists.some((item) => item.id === product.id)
+                            ? "brightness-1 invert"
+                            : ""
+                        }
+                      />
+                    </button>
+                    <button className="bg-white flex justify-center rounded-full w-8 h-8 p-2.5 hover:bg-gray-200">
                       <img src={EyeIcon} alt="eye-icon" />
                     </button>
                   </div>
+                  <button className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 hidden group-hover:block">
+                    Add to Cart
+                  </button>
                 </div>
                 <div className="flex flex-col gap-2">
                   <p className="font-medium">{product.title}</p>

@@ -50,7 +50,7 @@ const BestSellerProductsList = () => {
       <div className="grid grid-cols-4 gap-7 mt-15">
         {bestSellerProducts.slice(0, 4).map((product) => (
           <div className="flex flex-col gap-4" key={product.id}>
-            <div className="bg-[#F5F5F5] rounded-sm w-[270px] relative">
+            <div className="bg-[#F5F5F5] rounded-sm w-[270px] relative group">
               <img
                 src={product.images[0]}
                 alt="product-imgs"
@@ -75,10 +75,14 @@ const BestSellerProductsList = () => {
                     }
                   />
                 </button>
-                <button className="bg-white flex justify-center rounded-[50%] w-8 h-8 p-2.5 hover:bg-gray-200">
+                <button className="bg-white flex justify-center rounded-full w-8 h-8 p-2.5 hover:bg-gray-200">
                   <img src={EyeIcon} alt="eye-icon" />
                 </button>
               </div>
+
+              <button className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 hidden group-hover:block">
+                Add to Cart
+              </button>
             </div>
             <div className="flex flex-col gap-2">
               <p className="font-medium">{product.title}</p>
