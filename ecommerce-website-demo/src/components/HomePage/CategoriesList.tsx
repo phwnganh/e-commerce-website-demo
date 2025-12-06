@@ -66,15 +66,15 @@ const CategoriesList = () => {
         style={{ scrollBehavior: "smooth" }}
       >
         {categories.map((category, index) => (
-          <div
-            className="flex flex-col gap-4 border-2 justify-center items-center rounded-sm border-[#0000004D] w-[170px] py-6 px-14"
+          <button
+            className="flex flex-col gap-4 border-2 justify-center items-center rounded-sm border-[#0000004D] w-[170px] py-6 px-14 hover:bg-[#DB4444] hover:border-[#DB4444] group"
             key={index}
           >
             <div className="w-14 h-14">
-              <img src={Cosmetics} alt="" />
+              <img src={Cosmetics} alt="" className="group-hover:invert group-hover:brightness-0 group-hover:filter" />
             </div>
-            <p className="text-center">{category.name}</p>
-          </div>
+            <p className="text-center group-hover:text-[#FAFAFA]">{category.name}</p>
+          </button>
         ))}
       </div>
       <hr className="mt-15 opacity-30"></hr>

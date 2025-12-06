@@ -28,7 +28,7 @@ const WishlistSection = () => {
       <div className="mt-15 grid grid-cols-4 gap-7">
         {wishlists.slice(0, 4).map((product) => (
           <div className="flex flex-col gap-4" key={product.id}>
-            <div className="bg-[#F5F5F5] rounded-sm w-[270px] relative">
+            <div className="bg-[#F5F5F5] rounded-sm w-[270px] relative group">
               <div className="bg-[#DB4444] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
                 {Math.round(product.discountPercentage)}%
               </div>
@@ -45,6 +45,10 @@ const WishlistSection = () => {
                   <img src={TrashIcon} alt="trash-icon" />
                 </button>
               </div>
+
+              <button className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 hidden group-hover:block">
+                Add to Cart
+              </button>
             </div>
             <div className="flex flex-col gap-2">
               <p className="font-medium">{product.title}</p>
