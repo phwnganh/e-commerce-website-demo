@@ -8,7 +8,7 @@ import {
 import HeartIcon from "../../assets/heart-icon.svg";
 import CartIcon from "../../assets/Cart1.svg";
 import UserIcon from "../../assets/user.svg";
-import WhiteUserIcon from '../../assets/white-user-icon.svg'
+import WhiteUserIcon from "../../assets/white-user-icon.svg";
 import CancelIcon from "../../assets/icon-cancel.svg";
 import ReviewsIcon from "../../assets/Icon-Reviews.svg";
 import LogoutIcon from "../../assets/Icon-logout.svg";
@@ -178,19 +178,33 @@ const MainNavigation = () => {
                   </div>
                   <div className="flex flex-row gap-4 group hover:bg-gray-300">
                     <div className="w-6 h-6 flex justify-center items-center">
-                      <img src={CancelIcon} alt="cancel-icon" className="group-hover:brightness-1" />
+                      <img
+                        src={CancelIcon}
+                        alt="cancel-icon"
+                        className="group-hover:brightness-1"
+                      />
                     </div>
-                    <p className="text-sm group-hover:text-black">My Cancellations</p>
+                    <p className="text-sm group-hover:text-black">
+                      My Cancellations
+                    </p>
                   </div>
                   <div className="flex flex-row gap-4 hover:bg-gray-300 group">
                     <div className="w-6 h-6 flex justify-center items-center">
-                      <img src={ReviewsIcon} alt="review-icon" className="group-hover:brightness-1"/>
+                      <img
+                        src={ReviewsIcon}
+                        alt="review-icon"
+                        className="group-hover:brightness-1"
+                      />
                     </div>
                     <p className="text-sm group-hover:text-black">My Reviews</p>
                   </div>
                   <div className="flex flex-row gap-4 hover:bg-gray-300 group">
                     <div className="w-6 h-6 flex justify-center items-center">
-                      <img src={LogoutIcon} alt="logout-icon" className="group-hover:brightness-1"/>
+                      <img
+                        src={LogoutIcon}
+                        alt="logout-icon"
+                        className="group-hover:brightness-1"
+                      />
                     </div>
                     <p className="text-sm group-hover:text-black">Logout</p>
                   </div>
