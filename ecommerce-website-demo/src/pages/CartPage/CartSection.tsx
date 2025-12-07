@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Carts } from "../../types/ProductTypes";
 import DropUpIcon from "../../assets/drop-up-icon.svg";
 import DropDownIcon from "../../assets/drop-down-icon.svg";
+import XIcon from "../../assets/x-icon.svg";
 const CartSection = () => {
   const [cart, setCart] = useState<Carts>();
   useEffect(() => {
@@ -10,6 +11,69 @@ const CartSection = () => {
       setCart(JSON.parse(savedCarts));
     }
   }, []);
+
+  const handleIncreaseQuantity = (productId: string) => {
+    if (!cart) return;
+    const updatedProducts = cart.products.map((item) =>
+      item.id === productId
+        ? {
+            ...item,
+            quantity: item.quantity + 1,
+            total: item.price * (item.quantity + 1),
+          }
+        : item
+    );
+
+    const updatedCart = {
+      ...cart,
+      products: updatedProducts,
+      total: updatedProducts.reduce((sum, p) => sum + p.total, 0),
+    };
+
+    setCart(updatedCart);
+  };
+
+  const handleDecreaseQuantity = (productId: string) => {
+    if (!cart) return;
+    const updatedProducts = cart.products.map((item) => {
+      if (item.id === productId) {
+        const newQuantity = Math.max(1, item.quantity - 1);
+        return {
+          ...item,
+          quantity: newQuantity,
+          total: newQuantity * item.price,
+        };
+      }
+      return item;
+    });
+
+    const updatedCart = {
+      ...cart,
+      products: updatedProducts,
+      total: updatedProducts.reduce((sum, p) => sum + p.total, 0),
+    };
+
+    setCart(updatedCart);
+  };
+
+  const handleUpdateCart = () => {
+    if (!cart) return;
+    localStorage.setItem("carts", JSON.stringify(cart));
+  };
+
+  const handleRemoveItemFromCart = (productId: string) => {
+    if (!cart) return;
+    const updatedProduct = cart.products.filter(
+      (item) => item.id !== productId
+    );
+    const updatedCart = {
+      ...cart,
+      products: updatedProduct,
+      total: updatedProduct.reduce((sum, p) => sum + p.total, 0),
+    };
+    setCart(updatedCart);
+  };
+
   return (
     <section className="max-w-[1170px] mx-auto mt-20 mb-35">
       <div className="flex flex-row gap-3 items-center">
@@ -34,15 +98,21 @@ const CartSection = () => {
             {cart?.products.map((item) => (
               <div
                 key={item.id}
-                className="grid grid-cols-4 py-6 items-center rounded-sm shadow-[0px_1px_13px_0px_#0000000D]
-"
+                className="grid grid-cols-4 py-6 items-center rounded-sm shadow-[0px_1px_13px_0px_#0000000D]"
               >
                 <div className="flex flex-row items-center gap-5">
-                  <img
-                    src={item.thumbnail}
-                    alt={item.title}
-                    className="w-13.5 h-13.5"
-                  />
+                  <div className="w-13.5 h-13.5 flex justify-center relative group">
+                    <img src={item.thumbnail} alt={item.title} />
+                    <div className="hidden group-hover:block">
+                      <button
+                        onClick={() => handleRemoveItemFromCart(item.id)}
+                        className="absolute top-0 -left-1.75 w-4.5 h-4.5 rounded-full bg-[#DB4444] flex justify-center items-center"
+                      >
+                        <img src={XIcon} alt="x-icon" />
+                      </button>
+                    </div>
+                  </div>
+
                   <p className="">{item.title}</p>
                 </div>
                 <p>${item.price}</p>
@@ -50,10 +120,16 @@ const CartSection = () => {
                   <div className="flex gap-4 items-center justify-center py-1.5 px-3">
                     <p>{item.quantity}</p>
                     <div className="flex flex-col">
-                      <button className="w-4 h-4 flex justify-center">
+                      <button
+                        className="w-4 h-4 flex justify-center"
+                        onClick={() => handleIncreaseQuantity(item.id)}
+                      >
                         <img src={DropUpIcon} alt="drop-up-icon" />
                       </button>
-                      <button className="w-4 h-4 flex justify-center">
+                      <button
+                        className="w-4 h-4 flex justify-center"
+                        onClick={() => handleDecreaseQuantity(item.id)}
+                      >
                         <img src={DropDownIcon} alt="drop-down-icon" />
                       </button>
                     </div>
@@ -68,7 +144,10 @@ const CartSection = () => {
           <button className="flex justify-center items-center rounded-sm border py-4 px-12 font-medium border-[#00000080]">
             Return To Shop
           </button>
-          <button className="flex justify-center items-center rounded-sm border py-4 px-12 font-medium border-[#00000080]">
+          <button
+            className="flex justify-center items-center rounded-sm border py-4 px-12 font-medium border-[#00000080] hover:bg-gray-200"
+            onClick={handleUpdateCart}
+          >
             Update Cart
           </button>
         </div>
