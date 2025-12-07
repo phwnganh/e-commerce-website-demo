@@ -3,6 +3,8 @@ import type { Carts } from "../../types/ProductTypes";
 import DropUpIcon from "../../assets/drop-up-icon.svg";
 import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
+import { NavLink } from "react-router-dom";
+import { CART, HOMEPAGE } from "../../constants/route.constants";
 const CartSection = () => {
   const [cart, setCart] = useState<Carts>();
   useEffect(() => {
@@ -77,9 +79,9 @@ const CartSection = () => {
   return (
     <section className="max-w-[1170px] mx-auto mt-20 mb-35">
       <div className="flex flex-row gap-3 items-center">
-        <p className="opacity-50 text-sm">Home</p>
+        <NavLink to={HOMEPAGE} className="opacity-50 text-sm">Home</NavLink>
         <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
-        <p className="opacity-50 text-sm">Cart</p>
+        <NavLink to={CART} className={({isActive}) => `${isActive ? "text-sm" : "opacity-50 text-sm"}`}>Cart</NavLink>
       </div>
 
       <div className="mt-20">
