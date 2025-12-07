@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import LeftArrow from "../../assets/icons-arrow-left.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import type { Products } from "../../types/ProductTypes";
@@ -8,7 +8,26 @@ const ProductsExplorationList = () => {
   const [exploratedProducts, setExploratedProducts] = useState<Products[]>([]);
   const ITEMS_PER_VIEW = 8;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [wishlists, setWishlists] = useState<Products[]>([]);
+  useEffect(() => {
+    const savedWishlist = localStorage.getItem("wishlist");
+    if (savedWishlist) {
+      setWishlists(JSON.parse(savedWishlist));
+    }
+  }, []);
 
+  const handleAddToWishlist = (product: Products) => {
+    const exists = wishlists.some((item) => item.id === product.id);
+    let updated;
+
+    if (exists) {
+      updated = wishlists.filter((item) => item.id !== product.id);
+    } else {
+      updated = [...wishlists, product];
+    }
+    setWishlists(updated);
+    localStorage.setItem("wishlist", JSON.stringify(updated));
+  };
   const totalGroups = Math.ceil(exploratedProducts.length / ITEMS_PER_VIEW);
 
   const goToNext = () => {
@@ -69,7 +88,13 @@ const ProductsExplorationList = () => {
 
       <div className="grid grid-cols-4 gap-7 mt-15">
         {currentProducts.map((product) => (
-          <HomeProductItem product={product} />
+          <React.Fragment key={product.id}>
+            <HomeProductItem
+              product={product}
+              wishlists={wishlists}
+              onAddToWishlist={handleAddToWishlist}
+            />
+          </React.Fragment>
         ))}
       </div>
 

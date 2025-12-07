@@ -13,6 +13,55 @@ const RelatedProducts = () => {
     discountTotal: 0,
     products: [],
   });
+
+  useEffect(() => {
+    const savedCarts = localStorage.getItem("carts");
+    if (savedCarts) {
+      setCartsSaved(JSON.parse(savedCarts));
+    }
+  }, []);
+
+  const handleAddToCart = (product: Products) => {
+    const saved = localStorage.getItem("carts");
+    let currentCarts: Carts = saved
+      ? JSON.parse(saved)
+      : { id: "1", total: 0, products: [] };
+
+    const existingItem = currentCarts.products.find(
+      (item) => item.id === product.id
+    );
+
+    let updatedProducts;
+    if (existingItem) {
+      updatedProducts = currentCarts.products.map((item) =>
+        item.id === product.id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+              total: item.price * (item.quantity + 1),
+            }
+          : item
+      );
+    } else {
+      const newItem: CartItems = {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        quantity: 1,
+        total: product.price,
+        thumbnail: product.thumbnail,
+      };
+      updatedProducts = [...currentCarts.products, newItem];
+    }
+
+    const updatedCart = {
+      ...currentCarts,
+      products: updatedProducts,
+      total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
+    };
+    setCartsSaved(updatedCart);
+    localStorage.setItem("carts", JSON.stringify(updatedCart));
+  };
   const navigate = useNavigate();
   useEffect(() => {
     fetch("https://dummyjson.com/products")
@@ -20,28 +69,6 @@ const RelatedProducts = () => {
       .then((res) => setTodaysProducts(res.products));
   }, []);
 
-  const handleAddToCart = (product: Products) => {
-    let updated = { ...cartsSaved };
-
-    const exists = cartsSaved.products.find((item) => item.id === product.id);
-    if (exists) {
-      exists.quantity += 1;
-      exists.total = exists.quantity * exists.price;
-    } else {
-      const newItem: CartItems = {
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        quantity: 1,
-        total: product.price * 0.5,
-        thumbnail: product.thumbnail,
-      };
-      updated.products.push(newItem);
-    }
-    updated.total = updated.products.reduce((sum, item) => sum + item.total, 0);
-    setCartsSaved(updated);
-    localStorage.setItem("carts", JSON.stringify(updated));
-  };
   return (
     <section className="max-w-[1170px] mx-auto mt-15 mb-35">
       <div className="flex flex-row justify-between items-center">
@@ -74,7 +101,10 @@ const RelatedProducts = () => {
                   <img src={EyeIcon} alt="eye-icon" />
                 </button>
               </div>
-              <button onClick={() => handleAddToCart(product)} className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block">
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block"
+              >
                 Add to Cart
               </button>
             </div>

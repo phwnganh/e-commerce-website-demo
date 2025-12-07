@@ -5,10 +5,17 @@ import HeartIcon from "../../assets/heart-icon.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
-const HomeProductItem = ({ product }: { product: Products }) => {
+const HomeProductItem = ({
+  product,
+  wishlists,
+  onAddToWishlist,
+}: {
+  product: Products;
+  wishlists: Products[];
+  onAddToWishlist: (product: Products) => void;
+}) => {
   const navigate = useNavigate();
 
-  const [wishlists, setWishlists] = useState<Products[]>([]);
   const [cartsSaved, setCartsSaved] = useState<Carts>({
     id: "1",
     total: 0,
@@ -17,31 +24,11 @@ const HomeProductItem = ({ product }: { product: Products }) => {
   });
 
   useEffect(() => {
-    const savedWishlist = localStorage.getItem("wishlist");
-    if (savedWishlist) {
-      setWishlists(JSON.parse(savedWishlist));
-    }
-  }, []);
-
-  useEffect(() => {
     const savedCarts = localStorage.getItem("carts");
     if (savedCarts) {
       setCartsSaved(JSON.parse(savedCarts));
     }
   }, []);
-
-  const handleAddToWishlist = (product: Products) => {
-    const exists = wishlists.some((item) => item.id === product.id);
-    let updated;
-
-    if (exists) {
-      updated = wishlists.filter((item) => item.id !== product.id);
-    } else {
-      updated = [...wishlists, product];
-    }
-    setWishlists(updated);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
-  };
 
   const handleAddToCart = (product: Products) => {
     const saved = localStorage.getItem("carts");
@@ -91,7 +78,7 @@ const HomeProductItem = ({ product }: { product: Products }) => {
     return createdDate >= octoberFirstThisYear;
   })();
   return (
-    <div className="flex flex-col gap-4" key={product.id}>
+    <div className="flex flex-col gap-4">
       <div className="bg-[#F5F5F5] rounded-sm w-[270px] relative group">
         {isNew && (
           <div className="bg-[#00FF66] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
@@ -102,7 +89,7 @@ const HomeProductItem = ({ product }: { product: Products }) => {
         <img src={product.images[0]} alt="product-imgs" className="w-full" />
         <div className="flex flex-col gap-2 absolute top-3 right-3 ">
           <button
-            onClick={() => handleAddToWishlist(product)}
+            onClick={() => onAddToWishlist(product)}
             className={`${
               wishlists.some((item) => item.id === product.id)
                 ? "bg-[#DB4444] hover:bg-[#b42424]"

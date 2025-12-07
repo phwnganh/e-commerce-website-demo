@@ -1,7 +1,7 @@
 import LeftArrow from "../../assets/icons-arrow-left.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import Circle from "../../assets/circle.svg";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 const TodaysProductsList = () => {
@@ -9,13 +9,31 @@ const TodaysProductsList = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const ITEMS_PER_VIEW = 4;
+  const [wishlists, setWishlists] = useState<Products[]>([]);
+  useEffect(() => {
+    const savedWishlist = localStorage.getItem("wishlist");
+    if (savedWishlist) {
+      setWishlists(JSON.parse(savedWishlist));
+    }
+  }, []);
 
+  const handleAddToWishlist = (product: Products) => {
+    const exists = wishlists.some((item) => item.id === product.id);
+    let updated;
+
+    if (exists) {
+      updated = wishlists.filter((item) => item.id !== product.id);
+    } else {
+      updated = [...wishlists, product];
+    }
+    setWishlists(updated);
+    localStorage.setItem("wishlist", JSON.stringify(updated));
+  };
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((res) => setTodaysProducts(res.products));
   }, []);
-
 
   // Tính toán tổng số nhóm có thể hiển thị
   const totalGroups = Math.ceil(todaysProducts.length / ITEMS_PER_VIEW);
@@ -106,7 +124,9 @@ const TodaysProductsList = () => {
           style={{ transform: `translateX(${translateX}%)` }}
         >
           {todaysProducts.map((product) => (
-            <HomeProductItem product={product} />
+            <React.Fragment key={product.id}>
+              <HomeProductItem product={product} wishlists={wishlists} onAddToWishlist={handleAddToWishlist}/>
+            </React.Fragment>
           ))}
         </div>
       </div>

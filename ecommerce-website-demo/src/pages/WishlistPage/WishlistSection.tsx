@@ -1,9 +1,64 @@
 import { useEffect, useState } from "react";
-import type { Products } from "../../types/ProductTypes";
+import type { CartItems, Carts, Products } from "../../types/ProductTypes";
 import TrashIcon from "../../assets/icon-delete.svg";
 const WishlistSection = () => {
   const [wishlists, setWishlists] = useState<Products[]>([]);
 
+  const [cartsSaved, setCartsSaved] = useState<Carts>({
+    id: "1",
+    total: 0,
+    discountTotal: 0,
+    products: [],
+  });
+
+  useEffect(() => {
+    const savedCarts = localStorage.getItem("carts");
+    if (savedCarts) {
+      setCartsSaved(JSON.parse(savedCarts));
+    }
+  }, []);
+
+  const handleAddToCart = (product: Products) => {
+    const saved = localStorage.getItem("carts");
+    let currentCarts: Carts = saved
+      ? JSON.parse(saved)
+      : { id: "1", total: 0, products: [] };
+
+    const existingItem = currentCarts.products.find(
+      (item) => item.id === product.id
+    );
+
+    let updatedProducts;
+    if (existingItem) {
+      updatedProducts = currentCarts.products.map((item) =>
+        item.id === product.id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+              total: item.price * (item.quantity + 1),
+            }
+          : item
+      );
+    } else {
+      const newItem: CartItems = {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        quantity: 1,
+        total: product.price,
+        thumbnail: product.thumbnail,
+      };
+      updatedProducts = [...currentCarts.products, newItem];
+    }
+
+    const updatedCart = {
+      ...currentCarts,
+      products: updatedProducts,
+      total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
+    };
+    setCartsSaved(updatedCart);
+    localStorage.setItem("carts", JSON.stringify(updatedCart));
+  };
   useEffect(() => {
     const savedWishlist = localStorage.getItem("wishlist");
     if (savedWishlist) {
@@ -46,7 +101,10 @@ const WishlistSection = () => {
                 </button>
               </div>
 
-              <button className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block">
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block"
+              >
                 Add to Cart
               </button>
             </div>
