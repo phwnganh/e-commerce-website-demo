@@ -7,15 +7,15 @@ import {
   SIGNUP,
   WISHLIST,
 } from "../constants/route.constants";
-import ProductDetailPage from "../components/ProductDetailPage/ProductDetailPage";
+import ProductDetailPage from "../pages/ProductDetailPage/ProductDetailPage";
 
-const LoginPage = lazy(() => import("../components/PreLoginPage/LoginPage"));
-const SignupPage = lazy(() => import("../components/PreLoginPage/SignupPage"));
-const HomePage = lazy(() => import("../components/HomePage/HomePage"));
+const LoginPage = lazy(() => import("../pages/PreLoginPage/LoginPage"));
+const SignupPage = lazy(() => import("../pages/PreLoginPage/SignupPage"));
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const WishlistPage = lazy(
-  () => import("../components/WishlistPage/WishlistPage")
+  () => import("../pages/WishlistPage/WishlistPage")
 );
-const CartPage = lazy(() => import("../components/CartPage/CartPage"));
+const CartPage = lazy(() => import("../pages/CartPage/CartPage"));
 const AppRoutes = () => {
   return (
     <Routes>

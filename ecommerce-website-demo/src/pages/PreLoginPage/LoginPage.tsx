@@ -1,5 +1,5 @@
-import FooterSection from "../FooterSection/FooterSection";
-import PreLoginHeaderSection from "../HeaderSection/PreLoginHeaderSection";
+import FooterSection from "../../components/FooterSection/FooterSection";
+import PreLoginHeaderSection from "../../components/HeaderSection/PreLoginHeaderSection";
 import LoginSection from "./LoginSection";
 
 const LoginPage = () => {

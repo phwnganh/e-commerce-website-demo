@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import type { CartItems } from "../../types/ProductTypes";
+import type { Carts } from "../../types/ProductTypes";
 import DropUpIcon from "../../assets/drop-up-icon.svg";
 import DropDownIcon from "../../assets/drop-down-icon.svg";
 const CartSection = () => {
-  const [cartItems, setCartItems] = useState<CartItems[]>([]);
-
+  const [cart, setCart] = useState<Carts>();
   useEffect(() => {
-    fetch("https://dummyjson.com/carts/1")
-      .then((res) => res.json())
-      .then((res) => setCartItems(res.products));
+    const savedCarts = localStorage.getItem("carts");
+    if (savedCarts) {
+      setCart(JSON.parse(savedCarts));
+    }
   }, []);
   return (
     <section className="max-w-[1170px] mx-auto mt-20 mb-35">
@@ -31,24 +31,24 @@ const CartSection = () => {
           </div>
 
           <div className="flex flex-col gap-10">
-            {cartItems.map((cart) => (
+            {cart?.products.map((item) => (
               <div
-                key={cart.id}
+                key={item.id}
                 className="grid grid-cols-4 py-6 items-center rounded-sm shadow-[0px_1px_13px_0px_#0000000D]
 "
               >
                 <div className="flex flex-row items-center gap-5">
                   <img
-                    src={cart.thumbnail}
-                    alt={cart.title}
+                    src={item.thumbnail}
+                    alt={item.title}
                     className="w-13.5 h-13.5"
                   />
-                  <p className="">{cart.title}</p>
+                  <p className="">{item.title}</p>
                 </div>
-                <p>${cart.price}</p>
+                <p>${item.price}</p>
                 <div className="border-[1.5px] border-[#00000066] w-18 rounded-sm">
                   <div className="flex gap-4 items-center justify-center py-1.5 px-3">
-                    <p>{cart.quantity}</p>
+                    <p>{item.quantity}</p>
                     <div className="flex flex-col">
                       <button className="w-4 h-4 flex justify-center">
                         <img src={DropUpIcon} alt="drop-up-icon" />
@@ -59,7 +59,7 @@ const CartSection = () => {
                     </div>
                   </div>
                 </div>
-                <p>${cart.discountedTotal}</p>
+                <p>${item.total}</p>
               </div>
             ))}
           </div>
@@ -92,7 +92,7 @@ const CartSection = () => {
               <div className="flex flex-col gap-4 mt-6">
                 <div className="flex justify-between">
                   <p>Subtotal:</p>
-                  <p>$17502</p>
+                  <p>${cart?.total?.toFixed(2)}</p>
                 </div>
                 <hr />
                 <div className="flex justify-between">
@@ -102,7 +102,7 @@ const CartSection = () => {
                 <hr />
                 <div className="flex justify-between">
                   <p>Total:</p>
-                  <p>$17502</p>
+                  <p>${cart?.total?.toFixed(2)}</p>
                 </div>
 
                 <div className="flex justify-center">

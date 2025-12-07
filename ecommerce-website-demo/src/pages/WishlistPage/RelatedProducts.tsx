@@ -1,14 +1,18 @@
-import StarRating from "../ui/StarRating";
-import EyeIcon from "../../assets/Eye-icon.svg";
 import { useEffect, useState } from "react";
-import type { Products } from "../../types/ProductTypes";
-import HeartIcon from "../../assets/heart-icon.svg";
+import type { CartItems, Carts, Products } from "../../types/ProductTypes";
+import EyeIcon from "../../assets/Eye-icon.svg";
+import StarRating from "../../components/ui/StarRating";
 import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 
-const RelatedItemSection = () => {
+const RelatedProducts = () => {
   const [todaysProducts, setTodaysProducts] = useState<Products[]>([]);
-  const [wishlists, setWishlists] = useState<Products[]>([]);
+  const [cartsSaved, setCartsSaved] = useState<Carts>({
+    id: "1",
+    total: 0,
+    discountTotal: 0,
+    products: [],
+  });
   const navigate = useNavigate();
   useEffect(() => {
     fetch("https://dummyjson.com/products")
@@ -16,32 +20,38 @@ const RelatedItemSection = () => {
       .then((res) => setTodaysProducts(res.products));
   }, []);
 
-  useEffect(() => {
-    const savedWishlist = localStorage.getItem("wishlist");
-    if (savedWishlist) {
-      setWishlists(JSON.parse(savedWishlist));
-    }
-  }, []);
+  const handleAddToCart = (product: Products) => {
+    let updated = { ...cartsSaved };
 
-  const handleAddToWishlist = (product: Products) => {
-    const exists = wishlists.some((item) => item.id === product.id);
-    let updated;
-
+    const exists = cartsSaved.products.find((item) => item.id === product.id);
     if (exists) {
-      updated = wishlists.filter((item) => item.id !== product.id);
+      exists.quantity += 1;
+      exists.total = exists.quantity * exists.price;
     } else {
-      updated = [...wishlists, product];
+      const newItem: CartItems = {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        quantity: 1,
+        total: product.price * 0.5,
+        thumbnail: product.thumbnail,
+      };
+      updated.products.push(newItem);
     }
-    setWishlists(updated);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
+    updated.total = updated.products.reduce((sum, item) => sum + item.total, 0);
+    setCartsSaved(updated);
+    localStorage.setItem("carts", JSON.stringify(updated));
   };
   return (
-    <section className="my-35 mx-auto max-w-[1170px]">
+    <section className="max-w-[1170px] mx-auto mt-15 mb-35">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row gap-4 items-center">
           <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-          <p className="font-semibold text-[#DB4444]">Related Item</p>
+          <p className="text-xl font-semibold">Just For You</p>
         </div>
+        <button className="border-[#00000080] border rounded-sm py-4 px-12">
+          See All
+        </button>
       </div>
 
       <div className="mt-15 grid grid-cols-4 gap-7">
@@ -58,31 +68,13 @@ const RelatedItemSection = () => {
               />
               <div className="flex flex-col gap-2 absolute top-3 right-3 ">
                 <button
-                  onClick={() => handleAddToWishlist(product)}
-                  className={`${
-                    wishlists.some((item) => item.id === product.id)
-                      ? "bg-[#DB4444] hover:bg-[#b42424]"
-                      : "bg-white hover:bg-gray-200"
-                  }  flex justify-center rounded-full w-8 h-8 p-2.5  `}
-                >
-                  <img
-                    src={HeartIcon}
-                    alt="heart-icon"
-                    className={
-                      wishlists.some((item) => item.id === product.id)
-                        ? "brightness-1 invert"
-                        : ""
-                    }
-                  />
-                </button>
-                <button
-                  className="bg-white flex justify-center rounded-full w-8 h-8 p-2.5 hover:bg-gray-200"
                   onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
+                  className="bg-white flex items-center justify-center rounded-full w-8 h-8 p-2.5 hover:bg-gray-200"
                 >
                   <img src={EyeIcon} alt="eye-icon" />
                 </button>
               </div>
-              <button className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block">
+              <button onClick={() => handleAddToCart(product)} className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block">
                 Add to Cart
               </button>
             </div>
@@ -105,4 +97,4 @@ const RelatedItemSection = () => {
   );
 };
 
-export default RelatedItemSection;
+export default RelatedProducts;

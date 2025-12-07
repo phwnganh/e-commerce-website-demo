@@ -23,12 +23,12 @@ export type CartItems = {
   price: number;
   quantity: number;
   total: number;
-  discountPercentage: number;
-  discountedTotal: number;
   thumbnail: string;
 };
 
 export type Carts = {
   id: string;
+  total: number;
+  discountTotal: number;
   products: CartItems[];
 };

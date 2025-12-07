@@ -1,19 +1,26 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { CART, HOMEPAGE, LOGIN, WISHLIST } from "../../constants/route.constants";
+import {
+  CART,
+  HOMEPAGE,
+  LOGIN,
+  WISHLIST,
+} from "../../constants/route.constants";
 import HeartIcon from "../../assets/heart-icon.svg";
 import CartIcon from "../../assets/Cart1.svg";
 import UserIcon from "../../assets/user.svg";
+import WhiteUserIcon from '../../assets/white-user-icon.svg'
 import CancelIcon from "../../assets/icon-cancel.svg";
 import ReviewsIcon from "../../assets/Icon-Reviews.svg";
 import LogoutIcon from "../../assets/Icon-logout.svg";
 import { useEffect, useState } from "react";
 import type { User } from "../../types/AuthType";
-import type { Products } from "../../types/ProductTypes";
+import type { Carts, Products } from "../../types/ProductTypes";
 const MainNavigation = () => {
   const [user, setUser] = useState<User | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [wishlists, setWishlists] = useState<Products[]>([]);
-  const navigate = useNavigate()
+  const [carts, setCarts] = useState<Carts>();
+  const navigate = useNavigate();
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -29,6 +36,13 @@ const MainNavigation = () => {
     const savedWishlist = localStorage.getItem("wishlist");
     if (savedWishlist) {
       setWishlists(JSON.parse(savedWishlist));
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedCarts = localStorage.getItem("carts");
+    if (savedCarts) {
+      setCarts(JSON.parse(savedCarts));
     }
   }, []);
 
@@ -98,7 +112,10 @@ const MainNavigation = () => {
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg> */}
-          <button onClick={() => navigate(WISHLIST)} className="w-8 h-8 flex justify-center items-center rounded-full relative">
+          <button
+            onClick={() => navigate(WISHLIST)}
+            className="w-8 h-8 flex justify-center items-center rounded-full relative"
+          >
             <img src={HeartIcon} alt="heart-icon" className="w-5 h-5" />
             <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] justify-center items-center text-xs">
               {wishlists.length}
@@ -119,8 +136,14 @@ const MainNavigation = () => {
             <circle cx="20" cy="21" r="1" />
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
           </svg> */}
-          <button onClick={() => navigate(CART)} className="w-8 h-8 flex justify-center">
-            <img src={CartIcon} alt="cart-icon"  />
+          <button
+            onClick={() => navigate(CART)}
+            className="w-8 h-8 flex justify-center relative"
+          >
+            <img src={CartIcon} alt="cart-icon" />
+            <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] justify-center items-center text-xs">
+              {carts?.products.length}
+            </div>
           </button>
           <button
             onClick={handleUserClick}
@@ -136,33 +159,35 @@ const MainNavigation = () => {
             {isDropdownOpen && (
               <div className="absolute top-9 right-0">
                 <div className="flex flex-col gap-3 bg-[#0000000A] backdrop-blur-[150px] rounded-sm p-3.5 text-[#FAFAFA]">
-                  <div className="flex flex-row gap-4 w-56">
+                  <div className="flex flex-row gap-4 w-56 hover:bg-gray-300 group">
                     <div className="w-6 h-6 flex justify-center items-center">
                       <img
-                        src={UserIcon}
+                        src={WhiteUserIcon}
                         alt="user-icon"
-                        className="brightness-0 invert"
+                        className="group-hover:brightness-1"
                       />
                     </div>
-                    <p className="text-sm">Manage My Account</p>
+                    <p className="text-sm group-hover:text-black">
+                      Manage My Account
+                    </p>
                   </div>
-                  <div className="flex flex-row gap-4">
+                  <div className="flex flex-row gap-4 group hover:bg-gray-300">
                     <div className="w-6 h-6 flex justify-center items-center">
-                      <img src={CancelIcon} alt="cancel-icon" />
+                      <img src={CancelIcon} alt="cancel-icon" className="group-hover:brightness-1" />
                     </div>
-                    <p className="text-sm">My Cancellations</p>
+                    <p className="text-sm group-hover:text-black">My Cancellations</p>
                   </div>
-                  <div className="flex flex-row gap-4">
+                  <div className="flex flex-row gap-4 hover:bg-gray-300 group">
                     <div className="w-6 h-6 flex justify-center items-center">
-                      <img src={ReviewsIcon} alt="review-icon" />
+                      <img src={ReviewsIcon} alt="review-icon" className="group-hover:brightness-1"/>
                     </div>
-                    <p className="text-sm">My Reviews</p>
+                    <p className="text-sm group-hover:text-black">My Reviews</p>
                   </div>
-                  <div className="flex flex-row gap-4">
+                  <div className="flex flex-row gap-4 hover:bg-gray-300 group">
                     <div className="w-6 h-6 flex justify-center items-center">
-                      <img src={LogoutIcon} alt="logout-icon" />
+                      <img src={LogoutIcon} alt="logout-icon" className="group-hover:brightness-1"/>
                     </div>
-                    <p className="text-sm">Logout</p>
+                    <p className="text-sm group-hover:text-black">Logout</p>
                   </div>
                 </div>
               </div>

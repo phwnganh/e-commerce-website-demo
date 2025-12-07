@@ -1,5 +1,5 @@
-import FooterSection from '../FooterSection/FooterSection';
-import PostLoginHeaderSection from '../HeaderSection/PostLoginHeaderSection';
+import FooterSection from '../../components/FooterSection/FooterSection';
+import PostLoginHeaderSection from '../../components/HeaderSection/PostLoginHeaderSection';
 import CartSection from './CartSection';
 
 const CartPage = () => {

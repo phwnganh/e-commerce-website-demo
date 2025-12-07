@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import PostLoginHeaderSection from "../HeaderSection/PostLoginHeaderSection";
+import PostLoginHeaderSection from "../../components/HeaderSection/PostLoginHeaderSection";
 import ProductDetailSection from "./ProductDetailSection";
 import RelatedItemSection from "./RelatedItemSection";
-import FooterSection from "../FooterSection/FooterSection";
+import FooterSection from "../../components/FooterSection/FooterSection";
 import { useEffect, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 

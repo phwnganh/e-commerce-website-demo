@@ -1,5 +1,5 @@
 import type { Products } from "../../types/ProductTypes";
-import StarRating from "../ui/StarRating";
+import StarRating from "../../components/ui/StarRating";
 import PlusIcon from "../../assets/plus-icon.svg";
 import HeartIcon from "../../assets/heart-icon.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
