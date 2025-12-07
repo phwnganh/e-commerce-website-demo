@@ -51,8 +51,13 @@ const MainNavigation = () => {
   };
   return (
     <section className="flex flex-row justify-between items-center py-[7px]">
+      <button className="lg:hidden block">
+        <svg width="24" height="24" stroke="currentColor">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+      </button>
       <h3 className="font-bold text-2xl">Exclusive</h3>
-      <div className="flex gap-12 items-center">
+      <div className="hidden lg:flex gap-12 items-center">
         <NavLink
           className={({ isActive }) =>
             `${isActive ? "border-b-2" : "hover:border-b-2"}`
@@ -76,7 +81,7 @@ const MainNavigation = () => {
       </div>
 
       <div className="flex gap-6 items-center">
-        <div className=" bg-[#F5F5F5] py-1.75 flex gap-8.5 pl-5 pr-3 rounded-sm">
+        <div className=" bg-[#F5F5F5] py-1.75 hidden sm:flex gap-8.5 pl-5 pr-3 rounded-sm">
           <div className="min-w-[153px]">
             <input
               type="text"
