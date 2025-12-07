@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { HOMEPAGE, LOGIN, WISHLIST } from "../../constants/route.constants";
+import { CART, HOMEPAGE, LOGIN, WISHLIST } from "../../constants/route.constants";
 import HeartIcon from "../../assets/heart-icon.svg";
 import CartIcon from "../../assets/Cart1.svg";
 import UserIcon from "../../assets/user.svg";
@@ -119,7 +119,7 @@ const MainNavigation = () => {
             <circle cx="20" cy="21" r="1" />
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
           </svg> */}
-          <button className="w-8 h-8 flex justify-center">
+          <button onClick={() => navigate(CART)} className="w-8 h-8 flex justify-center">
             <img src={CartIcon} alt="cart-icon"  />
           </button>
           <button
