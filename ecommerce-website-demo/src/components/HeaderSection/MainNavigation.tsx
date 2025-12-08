@@ -150,68 +150,72 @@ const MainNavigation = () => {
               {carts?.products.length || 0}
             </div>
           </button>
-          <button
-            onClick={handleUserClick}
-            className={`relative w-8 h-8 flex justify-center ${
-              isDropdownOpen ? "bg-[#DB4444] rounded-full" : ""
-            }`}
-          >
-            <img
-              src={UserIcon}
-              alt="user-icon"
-              className={`${isDropdownOpen ? "brightness-0 invert" : ""}`}
-            />
-            {isDropdownOpen && (
-              <div className="absolute top-9 right-0">
-                <div className="flex flex-col gap-3 bg-[#0000000A] backdrop-blur-[150px] rounded-sm p-3.5 text-[#FAFAFA]">
-                  <div className="flex flex-row gap-4 w-56 hover:bg-gray-300 group">
-                    <div className="w-6 h-6 flex justify-center items-center">
-                      <img
-                        src={WhiteUserIcon}
-                        alt="user-icon"
-                        className="group-hover:brightness-1"
-                      />
+          {user && (
+            <button
+              onClick={handleUserClick}
+              className={`relative w-8 h-8 flex justify-center ${
+                isDropdownOpen ? "bg-[#DB4444] rounded-full" : ""
+              }`}
+            >
+              <img
+                src={UserIcon}
+                alt="user-icon"
+                className={`${isDropdownOpen ? "brightness-0 invert" : ""}`}
+              />
+              {isDropdownOpen && (
+                <div className="absolute top-9 right-0">
+                  <div className="flex flex-col gap-3 bg-[#0000000A] backdrop-blur-[150px] rounded-sm p-3.5 text-[#FAFAFA]">
+                    <div className="flex flex-row gap-4 w-56 hover:bg-gray-300 group">
+                      <div className="w-6 h-6 flex justify-center items-center">
+                        <img
+                          src={WhiteUserIcon}
+                          alt="user-icon"
+                          className="group-hover:brightness-1"
+                        />
+                      </div>
+                      <p className="text-sm group-hover:text-black">
+                        Manage My Account
+                      </p>
                     </div>
-                    <p className="text-sm group-hover:text-black">
-                      Manage My Account
-                    </p>
-                  </div>
-                  <div className="flex flex-row gap-4 group hover:bg-gray-300">
-                    <div className="w-6 h-6 flex justify-center items-center">
-                      <img
-                        src={CancelIcon}
-                        alt="cancel-icon"
-                        className="group-hover:brightness-1"
-                      />
+                    <div className="flex flex-row gap-4 group hover:bg-gray-300">
+                      <div className="w-6 h-6 flex justify-center items-center">
+                        <img
+                          src={CancelIcon}
+                          alt="cancel-icon"
+                          className="group-hover:brightness-1"
+                        />
+                      </div>
+                      <p className="text-sm group-hover:text-black">
+                        My Cancellations
+                      </p>
                     </div>
-                    <p className="text-sm group-hover:text-black">
-                      My Cancellations
-                    </p>
-                  </div>
-                  <div className="flex flex-row gap-4 hover:bg-gray-300 group">
-                    <div className="w-6 h-6 flex justify-center items-center">
-                      <img
-                        src={ReviewsIcon}
-                        alt="review-icon"
-                        className="group-hover:brightness-1"
-                      />
+                    <div className="flex flex-row gap-4 hover:bg-gray-300 group">
+                      <div className="w-6 h-6 flex justify-center items-center">
+                        <img
+                          src={ReviewsIcon}
+                          alt="review-icon"
+                          className="group-hover:brightness-1"
+                        />
+                      </div>
+                      <p className="text-sm group-hover:text-black">
+                        My Reviews
+                      </p>
                     </div>
-                    <p className="text-sm group-hover:text-black">My Reviews</p>
-                  </div>
-                  <div className="flex flex-row gap-4 hover:bg-gray-300 group">
-                    <div className="w-6 h-6 flex justify-center items-center">
-                      <img
-                        src={LogoutIcon}
-                        alt="logout-icon"
-                        className="group-hover:brightness-1"
-                      />
+                    <div className="flex flex-row gap-4 hover:bg-gray-300 group">
+                      <div className="w-6 h-6 flex justify-center items-center">
+                        <img
+                          src={LogoutIcon}
+                          alt="logout-icon"
+                          className="group-hover:brightness-1"
+                        />
+                      </div>
+                      <p className="text-sm group-hover:text-black">Logout</p>
                     </div>
-                    <p className="text-sm group-hover:text-black">Logout</p>
                   </div>
                 </div>
-              </div>
-            )}
-          </button>
+              )}
+            </button>
+          )}
         </div>
       </div>
     </section>
