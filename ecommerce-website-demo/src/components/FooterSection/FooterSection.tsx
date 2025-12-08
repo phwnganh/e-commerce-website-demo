@@ -9,8 +9,8 @@ import send from "../../assets/send.svg";
 import copyRight from "../../assets/icon-copyright.svg";
 const FooterSection = () => {
   return (
-    <footer className="bg-black text-[#FAFAFA] pb-6 pt-20">
-      <div className="max-w-[1170px] mx-auto flex sm:flex-row flex-col gap-21 mb-15 p-5 sm:p-0 text-center sm:text-start">
+    <footer className="bg-black text-[#FAFAFA] pb-6 lg:pt-20 pt-3">
+      <div className="max-w-[1170px] mx-auto lg:flex lg:flex-row sm:grid sm:grid-cols-2 flex flex-col gap-21 mb-15 p-5 sm:p-6 lg:p-0 text-center sm:text-start">
         {/* exclusive */}
         <div className="flex flex-col gap-4 w-full">
           <div className="flex flex-col gap-6">
