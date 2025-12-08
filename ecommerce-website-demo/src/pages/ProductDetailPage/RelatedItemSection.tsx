@@ -30,15 +30,15 @@ const RelatedItemSection = () => {
       .then((res) => setTodaysProducts(res.products));
   }, []);
   return (
-    <section className="my-35 mx-auto max-w-[1170px]">
+    <section className="my-15 lg:my-35 mx-auto max-w-[1170px] px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row gap-4 items-center">
           <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-          <p className="font-semibold text-[#DB4444]">Related Item</p>
+          <p className="font-semibold text-[#DB4444] text-sm lg:text-base">Related Item</p>
         </div>
       </div>
 
-      <div className="mt-15 grid grid-cols-4 gap-7">
+      <div className="mt-10 lg:mt-15 grid grid-cols-4 gap-7">
         {todaysProducts.slice(0, 4).map((product) => (
           <React.Fragment key={product.id}>
             <HomeProductItem
