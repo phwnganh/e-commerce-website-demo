@@ -147,7 +147,7 @@ const MainNavigation = () => {
           >
             <img src={CartIcon} alt="cart-icon" />
             <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] justify-center items-center text-xs">
-              {carts?.products.length}
+              {carts?.products.length || 0}
             </div>
           </button>
           <button
