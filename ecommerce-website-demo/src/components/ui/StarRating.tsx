@@ -16,7 +16,11 @@ const StarRating = ({
   const emptyStar = 5 - fullStar - (hasHalfStar ? 1 : 0);
 
   const sizeClass =
-    size === "lg" ? "w-6 h-6" : size === "md" ? "w-5 h-5" : "w-4 h-4";
+    size === "lg"
+      ? "w-6 h-6"
+      : size === "md"
+      ? "w-5 h-5"
+      : "w-3 h-3 md:w-4 md:h-4";
   return (
     <div className="flex items-center">
       {/* full star */}
@@ -27,7 +31,7 @@ const StarRating = ({
             src={StarFull}
             alt="star-full"
             key={`full-${i}`}
-            className={sizeClass}
+            className={`${sizeClass} max-w-none`}
           />
         ))}
 
@@ -53,7 +57,9 @@ const StarRating = ({
         ))}
 
       {showNumber && (
-        <span className="ml-2 text-sm font-medium opacity-50">({rating.toFixed(1)})</span>
+        <span className="ml-1 md:ml-2 text-xs md:text-sm font-medium opacity-50">
+          ({rating.toFixed(1)})
+        </span>
       )}
     </div>
   );

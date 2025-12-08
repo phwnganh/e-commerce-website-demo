@@ -179,7 +179,7 @@ const TodaysProductsList = () => {
       </div>
 
       <div className="mt-15 flex justify-center">
-        <button className="bg-[#DB4444] font-medium text-[#FAFAFA] py-4 px-12 rounded-sm">
+        <button className="bg-[#DB4444] font-medium text-[#FAFAFA] text-xs md:text-base py-3 px-10 md:py-4 md:px-12 rounded-sm">
           View All Products
         </button>
       </div>
