@@ -112,7 +112,7 @@ const WishlistSection = () => {
               <p className="font-medium text-xs md:text-base line-clamp-1">
                 {product.title}
               </p>
-              <div className="flex flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-0 sm:gap-3">
                 <p className="font-medium text-[#DB4444] text-xs md:text-base">
                   ${(product.price * 0.5).toFixed(2)}
                 </p>
