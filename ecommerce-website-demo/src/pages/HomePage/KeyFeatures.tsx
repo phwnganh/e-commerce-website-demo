@@ -3,7 +3,7 @@ import CustomerServiceIcon from "../../assets/Icon-Customer service.svg";
 import SecureIcon from "../../assets/Icon-secure.svg";
 const KeyFeatures = () => {
   return (
-    <section className="max-w-[1170px] mx-auto flex justify-center gap-12 md:gap-22 my-35 p-4 lg:p-0">
+    <section className="max-w-[1170px] mx-auto flex justify-center gap-12 md:gap-22 my-17 md:my-35 p-4 lg:p-0">
       <div className="flex flex-col gap-2 items-center">
         <div className="rounded-full bg-[#2F2E30] p-3 w-20 h-20">
           <div className="rounded-full bg-black p-2">
