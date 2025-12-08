@@ -50,8 +50,8 @@ const MainNavigation = () => {
     setIsDropdownOpen((prev) => !prev);
   };
   return (
-    <section className="flex flex-row justify-between items-center py-[7px]">
-      <button className="lg:hidden block">
+    <section className="flex flex-row justify-between items-center py-[7px] px-4 lg:p-0">
+      <button className="md:hidden block">
         <svg width="24" height="24" stroke="currentColor">
           <path d="M3 6h18M3 12h18M3 18h18" />
         </svg>
