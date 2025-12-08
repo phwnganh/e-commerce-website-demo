@@ -72,32 +72,32 @@ const WishlistSection = () => {
     localStorage.setItem("wishlist", JSON.stringify(updated));
   };
   return (
-    <section className="max-w-[1170px] mx-auto mt-20">
+    <section className="max-w-[1170px] mx-auto mt-20 px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">
-        <p className="text-xl">Wishlist ({wishlists.length})</p>
-        <button className="border-[#00000080] border rounded-sm py-4 px-12">
+        <p className="text-base md:text-xl">Wishlist ({wishlists.length})</p>
+        <button className="border-[#00000080] border rounded-sm py-3 px-10 md:py-4 md:px-12 text-sm md:text-base">
           Move All To Bag
         </button>
       </div>
 
-      <div className="mt-15 grid grid-cols-4 gap-7">
+      <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
         {wishlists.slice(0, 4).map((product) => (
-          <div className="flex flex-col gap-4" key={product.id}>
-            <div className="bg-[#F5F5F5] rounded-sm w-[270px] relative group">
+          <div className="flex flex-col gap-4 w-full" key={product.id}>
+            <div className="bg-[#F5F5F5] rounded-sm w-[270px] w-full relative group">
               <div className="bg-[#DB4444] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
                 {Math.round(product.discountPercentage)}%
               </div>
               <img
                 src={product.images[0]}
                 alt="product-imgs"
-                className="w-full"
+                className="w-full h-full"
               />
-              <div className="flex flex-col gap-2 absolute top-3 right-3 ">
+              <div className="flex flex-col gap-1 md:gap-2 absolute top-1 md:top-3 right-2 md:right-3 ">
                 <button
                   onClick={() => handleRemoveWishlist(product)}
-                  className="bg-white flex items-center justify-center rounded-full w-8 h-8 p-2.5 hover:bg-gray-200"
+                  className="bg-white flex items-center justify-center rounded-full w-6 h-6 p-1.5 md:w-8 md:h-8 md:p-2.5 hover:bg-gray-200"
                 >
-                  <img src={TrashIcon} alt="trash-icon" />
+                  <img src={TrashIcon} alt="trash-icon" className="w-3 h-3 sm:w-4 sm:h-4"/>
                 </button>
               </div>
 
@@ -109,12 +109,14 @@ const WishlistSection = () => {
               </button>
             </div>
             <div className="flex flex-col gap-2">
-              <p className="font-medium">{product.title}</p>
+              <p className="font-medium text-xs md:text-base line-clamp-1">
+                {product.title}
+              </p>
               <div className="flex flex-row gap-3">
-                <p className="font-medium text-[#DB4444]">
+                <p className="font-medium text-[#DB4444] text-xs md:text-base">
                   ${(product.price * 0.5).toFixed(2)}
                 </p>
-                <p className="font-medium opacity-50 line-through">
+                <p className="font-medium opacity-50 line-through text-xs md:text-base">
                   ${product.price.toFixed(2)}
                 </p>
               </div>
