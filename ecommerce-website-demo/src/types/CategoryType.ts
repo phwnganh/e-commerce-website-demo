@@ -1,4 +1,4 @@
-export type Categorys = {
+export type Categories = {
   slug: string;
   name: string;
 };

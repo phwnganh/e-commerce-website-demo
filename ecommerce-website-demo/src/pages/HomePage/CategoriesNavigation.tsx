@@ -1,13 +1,7 @@
-import { useEffect, useState } from "react";
 
-const CategoriesNavigation = () => {
-  const [categories, setCategories] = useState([]);
+const CategoriesNavigation = ({categories}: {categories: string[]}) => {
 
-  useEffect(() => {
-    fetch("https://dummyjson.com/products/category-list")
-      .then((res) => res.json())
-      .then((res) => setCategories(res));
-  }, []);
+  
 
   const displayedCategories = categories.slice(0, 8);
   return (

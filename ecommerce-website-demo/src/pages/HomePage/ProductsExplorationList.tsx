@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import LeftArrow from "../../assets/icons-arrow-left.svg";
 import LeftArrow1 from '../../assets/arrow-left-1.svg'
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import type { Products } from "../../types/ProductTypes";
 
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import CustomButton from "../../components/ui/CustomButton";
-const ProductsExplorationList = () => {
-  const [exploratedProducts, setExploratedProducts] = useState<Products[]>([]);
+const ProductsExplorationList = ({products}: {products: Products[]}) => {
   const [itemsPerView, setItemsPerView] = useState(8);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [wishlists, setWishlists] = useState<Products[]>([]);
@@ -44,7 +42,7 @@ const ProductsExplorationList = () => {
     setWishlists(updated);
     localStorage.setItem("wishlist", JSON.stringify(updated));
   };
-  const totalGroups = Math.ceil(exploratedProducts.length / itemsPerView);
+  const totalGroups = Math.ceil(products.length / itemsPerView);
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % totalGroups);
@@ -55,15 +53,10 @@ const ProductsExplorationList = () => {
   };
 
   const startIndex = currentIndex * itemsPerView;
-  const currentProducts = exploratedProducts.slice(
+  const currentProducts = products.slice(
     startIndex,
     startIndex + itemsPerView
   );
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((res) => setExploratedProducts(res.products));
-  }, []);
 
   return (
     <section className="mt-17 max-w-[1170px] mx-auto p-4 lg:p-0">

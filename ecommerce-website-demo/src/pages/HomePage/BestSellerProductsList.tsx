@@ -2,19 +2,13 @@ import React, { useEffect, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import CustomButton from "../../components/ui/CustomButton";
-const BestSellerProductsList = () => {
-  const [bestSellerProducts, setBestSellerProducts] = useState<Products[]>([]);
+const BestSellerProductsList = ({products}: {products: Products[]}) => {
   const [wishlists, setWishlists] = useState<Products[]>([]);
   useEffect(() => {
     const savedWishlist = localStorage.getItem("wishlist");
     if (savedWishlist) {
       setWishlists(JSON.parse(savedWishlist));
     }
-  }, []);
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((res) => setBestSellerProducts(res.products));
   }, []);
 
   const handleAddToWishlist = (product: Products) => {
@@ -43,7 +37,7 @@ const BestSellerProductsList = () => {
       </div>
 
       <div className="grid grid-cols-4 gap-7 mt-15">
-        {bestSellerProducts.slice(0, 4).map((product) => (
+        {products.slice(0, 4).map((product) => (
           <React.Fragment key={product.id}>
             <HomeProductItem
               product={product}

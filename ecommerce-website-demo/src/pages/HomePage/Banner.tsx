@@ -1,10 +1,17 @@
+import { useEffect, useState } from "react";
 import CategoriesNavigation from "./CategoriesNavigation";
 import HeroBanner from "./HeroBanner";
 
 const Banner = () => {
+  const [categoriesNavigation, setCategoriesNavigation] = useState<string[]>([]);
+  useEffect(() => {
+    fetch("https://dummyjson.com/products/category-list")
+      .then((res) => res.json())
+      .then((res) => setCategoriesNavigation(res));
+  }, []);
   return (
     <section className="max-w-[1170px] mx-auto flex lg:flex-row md:flex-col flex-col gap-11 p-4 lg:p-0">
-      <CategoriesNavigation />
+      <CategoriesNavigation categories={categoriesNavigation} />
       <HeroBanner />
     </section>
   );

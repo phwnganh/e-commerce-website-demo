@@ -6,19 +6,13 @@ import React, { useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import CustomButton from "../../components/ui/CustomButton";
-const TodaysProductsList = () => {
-  const [todaysProducts, setTodaysProducts] = useState<Products[]>([]);
+const TodaysProductsList = ({products}: {products: Products[]}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [itemsPerView, setItemsPerView] = useState(4);
   const [wishlists, setWishlists] = useState<Products[]>([]);
   const [itemWidth, setItemWidth] = useState(0);
-  useEffect(() => {
-    const savedWishlist = localStorage.getItem("wishlist");
-    if (savedWishlist) {
-      setWishlists(JSON.parse(savedWishlist));
-    }
-  }, []);
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,7 +38,7 @@ const TodaysProductsList = () => {
         setItemWidth(firstItem.offsetWidth + gap);
       }
     }
-  }, [todaysProducts]);
+  }, [products]);
 
   const handleAddToWishlist = (product: Products) => {
     const exists = wishlists.some((item) => item.id === product.id);
@@ -58,14 +52,10 @@ const TodaysProductsList = () => {
     setWishlists(updated);
     localStorage.setItem("wishlist", JSON.stringify(updated));
   };
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((res) => setTodaysProducts(res.products));
-  }, []);
+  
 
   // Tính toán tổng số nhóm có thể hiển thị
-  const totalGroups = Math.ceil(todaysProducts.length / itemsPerView);
+  const totalGroups = Math.ceil(products.length / itemsPerView);
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % totalGroups);
@@ -157,7 +147,7 @@ const TodaysProductsList = () => {
               transform: `translateX(${translateX}px)`,
             }}
           >
-            {todaysProducts.map((product) => (
+            {products.map((product) => (
               <React.Fragment key={product.id}>
                 <HomeProductItem
                   product={product}
@@ -170,7 +160,7 @@ const TodaysProductsList = () => {
         </div>
 
         <div className="flex md:hidden overflow-x-auto gap-7.5 no-scrollbar">
-          {todaysProducts.map((product) => (
+          {products.map((product) => (
             <React.Fragment key={product.id}>
               <HomeProductItem
                 product={product}

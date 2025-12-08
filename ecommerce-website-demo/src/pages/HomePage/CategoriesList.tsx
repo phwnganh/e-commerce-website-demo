@@ -1,20 +1,14 @@
-import LeftArrow from "../../assets/icons-arrow-left.svg";
 import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import Cosmetics from "../../assets/cosmetics.png";
-import { useEffect, useRef, useState } from "react";
-import type { Categorys } from "../../types/CategoryType";
-const CategoriesList = () => {
-  const [categories, setCategories] = useState<Categorys[]>([]);
+import { useRef } from "react";
+import type { Categories } from "../../types/CategoryType";
+const CategoriesList = ({categories}: {categories: Categories[]}) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const itemsToShow = 6;
   const itemWidth = 198;
-  useEffect(() => {
-    fetch("https://dummyjson.com/products/categories")
-      .then((res) => res.json())
-      .then((res) => setCategories(res));
-  }, []);
+
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
