@@ -40,10 +40,10 @@ const LoginSection = () => {
   return (
     <section className="max-w-[1170px] mx-auto justify-center mt-15 mb-[140px]">
       <div className="flex items-center">
-        <div className="flex-[0_0_60%]">
+        <div className="basis-[60%]">
           <img src={prelogin} alt="pre-login-img" className="w-full" />
         </div>
-        <div className="flex-[0_0_40%]">
+        <div className="basis-[40%]">
           <div className="flex justify-end">
             <div className="flex flex-col gap-6">
               <h3 className="text-4xl">Log in to Exclusive</h3>

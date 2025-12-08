@@ -12,6 +12,9 @@ import WhiteUserIcon from "../../assets/white-user-icon.svg";
 import CancelIcon from "../../assets/icon-cancel.svg";
 import ReviewsIcon from "../../assets/Icon-Reviews.svg";
 import LogoutIcon from "../../assets/Icon-logout.svg";
+import Wishlist from "../../assets/Wishlist.svg";
+import UserCircle from "../../assets/user-circle.svg";
+import UserShape from "../../assets/user-shape.svg";
 import { useEffect, useState } from "react";
 import type { User } from "../../types/AuthType";
 import type { Carts, Products } from "../../types/ProductTypes";
@@ -119,9 +122,9 @@ const MainNavigation = () => {
           </svg> */}
           <button
             onClick={() => navigate(WISHLIST)}
-            className="w-8 h-8 flex justify-center items-center rounded-full relative"
+            className="rounded-full relative"
           >
-            <img src={HeartIcon} alt="heart-icon" className="w-5 h-5" />
+            <img src={Wishlist} alt="heart-icon" />
             <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] justify-center items-center text-xs">
               {wishlists.length}
             </div>
@@ -157,16 +160,37 @@ const MainNavigation = () => {
                 isDropdownOpen ? "bg-[#DB4444] rounded-full" : ""
               }`}
             >
-              <img
+              <div
+                className={`flex flex-col items-center justify-center ${
+                  isDropdownOpen ? "gap-0.5" : "gap-0.5"
+                } `}
+              >
+                <img
+                  src={UserCircle}
+                  alt=""
+                  className={`${
+                    isDropdownOpen ? "w-1.5 h-1.5 brightness-0 invert" : "w-2.5 h-2.5"
+                  }`}
+                />
+                <img
+                  src={UserShape}
+                  alt=""
+                  className={`${
+                    isDropdownOpen ? "w-[11px] h-[5px] brightness-0 invert" : "w-[17px] h-2"
+                  }`}
+                />
+              </div>
+
+              {/* <img
                 src={UserIcon}
                 alt="user-icon"
-                className={`${isDropdownOpen ? "brightness-0 invert" : ""}`}
-              />
+                className={`${isDropdownOpen ? "brightness-0 invert w-full h-full border" : ""}`}
+              /> */}
               {isDropdownOpen && (
                 <div className="absolute top-9 right-0">
                   <div className="flex flex-col gap-3 bg-[#0000000A] backdrop-blur-[150px] rounded-sm p-3.5 text-[#FAFAFA]">
-                    <div className="flex flex-row gap-4 w-56 hover:bg-gray-300 group">
-                      <div className="w-6 h-6 flex justify-center items-center">
+                    <div className="flex flex-row items-center gap-4 w-56 hover:bg-gray-300 group">
+                      <div className="w-8 h-8 flex justify-center items-center">
                         <img
                           src={WhiteUserIcon}
                           alt="user-icon"
@@ -177,7 +201,7 @@ const MainNavigation = () => {
                         Manage My Account
                       </p>
                     </div>
-                    <div className="flex flex-row gap-4 group hover:bg-gray-300">
+                    <div className="flex flex-row items-center gap-4 group hover:bg-gray-300">
                       <div className="w-6 h-6 flex justify-center items-center">
                         <img
                           src={CancelIcon}
@@ -189,7 +213,7 @@ const MainNavigation = () => {
                         My Cancellations
                       </p>
                     </div>
-                    <div className="flex flex-row gap-4 hover:bg-gray-300 group">
+                    <div className="flex flex-row items-center gap-4 hover:bg-gray-300 group">
                       <div className="w-6 h-6 flex justify-center items-center">
                         <img
                           src={ReviewsIcon}
@@ -201,7 +225,7 @@ const MainNavigation = () => {
                         My Reviews
                       </p>
                     </div>
-                    <div className="flex flex-row gap-4 hover:bg-gray-300 group">
+                    <div className="flex flex-row items-center gap-4 hover:bg-gray-300 group">
                       <div className="w-6 h-6 flex justify-center items-center">
                         <img
                           src={LogoutIcon}
