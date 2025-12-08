@@ -4,9 +4,10 @@ import RightArrow from "../../assets/icon-arrow-right.svg";
 import type { Products } from "../../types/ProductTypes";
 
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
+import CustomButton from "../../components/ui/CustomButton";
 const ProductsExplorationList = () => {
   const [exploratedProducts, setExploratedProducts] = useState<Products[]>([]);
-  const ITEMS_PER_VIEW = 8;
+  const [itemsPerView, setItemsPerView] = useState(8);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [wishlists, setWishlists] = useState<Products[]>([]);
   useEffect(() => {
@@ -14,6 +15,20 @@ const ProductsExplorationList = () => {
     if (savedWishlist) {
       setWishlists(JSON.parse(savedWishlist));
     }
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setItemsPerView(8);
+      } else {
+        setItemsPerView(2);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleAddToWishlist = (product: Products) => {
@@ -28,7 +43,7 @@ const ProductsExplorationList = () => {
     setWishlists(updated);
     localStorage.setItem("wishlist", JSON.stringify(updated));
   };
-  const totalGroups = Math.ceil(exploratedProducts.length / ITEMS_PER_VIEW);
+  const totalGroups = Math.ceil(exploratedProducts.length / itemsPerView);
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % totalGroups);
@@ -38,10 +53,10 @@ const ProductsExplorationList = () => {
     setCurrentIndex((prev) => (prev - 1 + totalGroups) % totalGroups);
   };
 
-  const startIndex = currentIndex * ITEMS_PER_VIEW;
+  const startIndex = currentIndex * itemsPerView;
   const currentProducts = exploratedProducts.slice(
     startIndex,
-    startIndex + ITEMS_PER_VIEW
+    startIndex + itemsPerView
   );
   useEffect(() => {
     fetch("https://dummyjson.com/products")
@@ -55,9 +70,13 @@ const ProductsExplorationList = () => {
         <div className="flex flex-col gap-6">
           <div className="flex flex-row gap-4 items-center">
             <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-            <p className="text-[#DB4444] font-semibold">Our Products</p>
+            <p className="text-[#DB4444] font-semibold text-sm md:text-base">
+              Our Products
+            </p>
           </div>
-          <h3 className="font-semibold text-4xl">Explore Our Products</h3>
+          <h3 className="font-semibold text-2xl md:text-4xl">
+            Explore Our Products
+          </h3>
         </div>
 
         <div className="flex flex-row gap-2">
@@ -86,7 +105,7 @@ const ProductsExplorationList = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-7 mt-15">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-7 mt-15">
         {currentProducts.map((product) => (
           <React.Fragment key={product.id}>
             <HomeProductItem
@@ -99,9 +118,7 @@ const ProductsExplorationList = () => {
       </div>
 
       <div className="mt-15 flex justify-center">
-        <button className="bg-[#DB4444] font-medium text-[#FAFAFA] py-4 px-12 rounded-sm">
-          View All Products
-        </button>
+        <CustomButton bgColor={"#DB4444"}>View All Products</CustomButton>
       </div>
     </section>
   );
