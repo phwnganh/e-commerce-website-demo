@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LeftArrow from "../../assets/icons-arrow-left.svg";
+import LeftArrow1 from '../../assets/arrow-left-1.svg'
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import type { Products } from "../../types/ProductTypes";
 
@@ -89,7 +90,7 @@ const ProductsExplorationList = () => {
                 : "hover:bg-gray-200"
             }`}
           >
-            <img src={LeftArrow} alt="left-arrow" />
+            <img src={LeftArrow1} alt="left-arrow" />
           </button>
           <button
             onClick={goToNext}

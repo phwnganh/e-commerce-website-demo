@@ -1,4 +1,5 @@
 import LeftArrow from "../../assets/icons-arrow-left.svg";
+import LeftArrow1 from '../../assets/arrow-left-1.svg'
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import Circle from "../../assets/circle.svg";
 import React, { useEffect, useRef, useState } from "react";
@@ -131,7 +132,7 @@ const TodaysProductsList = () => {
             onClick={goToPrev}
             disabled={currentIndex === 0}
           >
-            <img src={LeftArrow} alt="left-arrow" />
+            <img src={LeftArrow1} alt="left-arrow" />
           </button>
           <button
             onClick={goToNext}

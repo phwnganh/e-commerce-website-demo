@@ -18,13 +18,13 @@ const FooterSection = () => {
             <h5 className="text-xl">Subscribe</h5>
             <p>Get 10% off your first order</p>
           </div>
-          <div className="flex flex-row gap-8 justify-between border-[#FAFAFA] border-[1.5px] rounded-sm p-3">
+          <div className="flex flex-row gap-8 justify-between items-center border-[#FAFAFA] border-[1.5px] rounded-sm p-3">
             <input
               type="text"
               className="opacity-40 sm:max-w-[130px]"
               placeholder="Enter your email"
             />
-            <div className="w-6 h-6">
+            <div className="w-6 h-6 flex justify-center items-center">
               <img src={send} alt="send" className="w-auto h-auto" />
             </div>
           </div>

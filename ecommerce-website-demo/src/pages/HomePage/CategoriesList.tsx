@@ -1,4 +1,5 @@
 import LeftArrow from "../../assets/icons-arrow-left.svg";
+import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import Cosmetics from "../../assets/cosmetics.png";
 import { useEffect, useRef, useState } from "react";
@@ -39,9 +40,13 @@ const CategoriesList = () => {
         <div className="flex flex-col gap-4 md:gap-6">
           <div className="flex flex-row gap-4 items-center">
             <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-            <p className="text-[#DB4444] font-semibold text-sm md:text-base">Categories</p>
+            <p className="text-[#DB4444] font-semibold text-sm md:text-base">
+              Categories
+            </p>
           </div>
-          <h3 className="font-semibold text-2xl md:text-4xl">Browse By Category</h3>
+          <h3 className="font-semibold text-2xl md:text-4xl">
+            Browse By Category
+          </h3>
         </div>
 
         <div className="flex flex-row gap-2">
@@ -49,7 +54,7 @@ const CategoriesList = () => {
             onClick={scrollLeft}
             className="bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors"
           >
-            <img src={LeftArrow} alt="left-arrow" />
+            <img src={LeftArrow1} alt="left-arrow" />
           </button>
           <button
             onClick={scrollRight}
@@ -71,9 +76,15 @@ const CategoriesList = () => {
             key={index}
           >
             <div className="w-14 h-14">
-              <img src={Cosmetics} alt="" className="group-hover:invert group-hover:brightness-0 group-hover:filter" />
+              <img
+                src={Cosmetics}
+                alt=""
+                className="group-hover:invert group-hover:brightness-0 group-hover:filter"
+              />
             </div>
-            <p className="text-center text-sm md:text-base group-hover:text-[#FAFAFA]">{category.name}</p>
+            <p className="text-center text-sm md:text-base group-hover:text-[#FAFAFA]">
+              {category.name}
+            </p>
           </button>
         ))}
       </div>

@@ -5,9 +5,7 @@ import {
   LOGIN,
   WISHLIST,
 } from "../../constants/route.constants";
-import HeartIcon from "../../assets/heart-icon.svg";
 import CartIcon from "../../assets/Cart1.svg";
-import UserIcon from "../../assets/user.svg";
 import WhiteUserIcon from "../../assets/white-user-icon.svg";
 import CancelIcon from "../../assets/icon-cancel.svg";
 import ReviewsIcon from "../../assets/Icon-Reviews.svg";
@@ -188,7 +186,7 @@ const MainNavigation = () => {
               /> */}
               {isDropdownOpen && (
                 <div className="absolute top-9 right-0">
-                  <div className="flex flex-col gap-3 bg-[#0000000A] backdrop-blur-[150px] rounded-sm p-3.5 text-[#FAFAFA]">
+                  <div className="flex flex-col gap-3 bg-[#0000000A] backdrop-blur-[150px] rounded-sm pt-[18px] pl-5 pr-3 pb-2.5 text-[#FAFAFA]">
                     <div className="flex flex-row items-center gap-4 w-56 hover:bg-gray-300 group">
                       <div className="w-8 h-8 flex justify-center items-center">
                         <img
