@@ -21,7 +21,7 @@ const FooterSection = () => {
           <div className="flex flex-row gap-8 justify-between items-center border-[#FAFAFA] border-[1.5px] rounded-sm p-3">
             <input
               type="text"
-              className="opacity-40 sm:max-w-[130px]"
+              className="text-[#FAFAFA66] sm:max-w-[130px] outline-none"
               placeholder="Enter your email"
             />
             <div className="w-6 h-6 flex justify-center items-center">

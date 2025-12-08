@@ -87,7 +87,7 @@ const MainNavigation = () => {
             <input
               type="text"
               placeholder="What are you looking for?"
-              className="text-xs w-full"
+              className="text-xs w-full outline-none"
             />
           </div>
 
