@@ -140,7 +140,7 @@ const HomeProductItem = ({
             ${product.price.toFixed(2)}
           </p>
         </div>
-        <StarRating rating={product.rating} size="sm"></StarRating>
+        <StarRating rating={product.rating}></StarRating>
       </div>
     </div>
   );

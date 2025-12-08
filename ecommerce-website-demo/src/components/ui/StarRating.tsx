@@ -8,19 +8,11 @@ interface StarRatingProps {
 }
 const StarRating = ({
   rating,
-  size = "sm",
   showNumber = true,
 }: StarRatingProps) => {
   const fullStar = Math.floor(rating);
   const hasHalfStar = rating - fullStar >= 0.5;
   const emptyStar = 5 - fullStar - (hasHalfStar ? 1 : 0);
-
-  const sizeClass =
-    size === "lg"
-      ? "w-6 h-6"
-      : size === "md"
-      ? "w-5 h-5"
-      : "w-3 h-3 md:w-4 md:h-4";
   return (
     <div className="flex items-center">
       {/* full star */}
@@ -31,7 +23,7 @@ const StarRating = ({
             src={StarFull}
             alt="star-full"
             key={`full-${i}`}
-            className={`${sizeClass} max-w-none`}
+            className={`w-3 h-3 md:w-4 md:h-4 max-w-none`}
           />
         ))}
 
@@ -40,7 +32,7 @@ const StarRating = ({
         <img
           src={StarHalfFilled}
           alt="star-half-filled"
-          className={sizeClass}
+          className="w-3 h-3 md:w-4 md:h-4"
         />
       )}
 
@@ -52,7 +44,7 @@ const StarRating = ({
             key={`empty-${i}`}
             src={StarEmpty}
             alt="star-empty"
-            className={sizeClass}
+            className="w-3 h-3 md:w-4 md:h-4"
           />
         ))}
 
