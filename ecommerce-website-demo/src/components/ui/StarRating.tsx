@@ -49,7 +49,7 @@ const StarRating = ({
         ))}
 
       {showNumber && (
-        <span className="ml-1 md:ml-2 text-xs md:text-sm font-medium opacity-50">
+        <span className="ml-1 md:ml-2 text-xs md:text-sm font-medium opacity-50 hidden sm:block">
           ({rating.toFixed(1)})
         </span>
       )}

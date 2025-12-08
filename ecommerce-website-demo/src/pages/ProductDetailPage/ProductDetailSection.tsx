@@ -21,16 +21,16 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
           <div className="flex flex-col-reverse lg:flex-row gap-7.5">
             <div className="flex flex-row lg:flex-col gap-4">
               <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
-                <img src={productData.thumbnail} alt="" />
+                <img src={productData.thumbnail} alt={productData.title} className="w-full h-full object-cover" />
               </div>
               <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
-                <img src={productData.thumbnail} alt="" />
+                <img src={productData.thumbnail} alt={productData.title} className="w-full h-full object-cover" />
               </div>
               <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
-                <img src={productData.thumbnail} alt="" />
+                <img src={productData.thumbnail} alt={productData.title} className="w-full h-full object-cover" />
               </div>
               <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
-                <img src={productData.thumbnail} alt="" />
+                <img src={productData.thumbnail} alt={productData.title} className="w-full h-full object-cover" />
               </div>
             </div>
             <div className="lg:w-[500px] lg:h-[600px] w-full bg-[#F5F5F5] flex justify-center rounded-sm">
