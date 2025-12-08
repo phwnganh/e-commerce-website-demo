@@ -4,6 +4,7 @@ import Circle from "../../assets/circle.svg";
 import React, { useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
+import CustomButton from "../../components/ui/CustomButton";
 const TodaysProductsList = () => {
   const [todaysProducts, setTodaysProducts] = useState<Products[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -81,7 +82,9 @@ const TodaysProductsList = () => {
           <div className="flex flex-col gap-4 md:gap-6">
             <div className="flex flex-row gap-4 items-center">
               <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-              <p className="text-[#DB4444] font-semibold text-sm md:text-base">Today's</p>
+              <p className="text-[#DB4444] font-semibold text-sm md:text-base">
+                Today's
+              </p>
             </div>
             <h3 className="font-semibold text-2xl md:text-4xl">Flash Sales</h3>
           </div>
@@ -179,9 +182,7 @@ const TodaysProductsList = () => {
       </div>
 
       <div className="mt-15 flex justify-center">
-        <button className="bg-[#DB4444] font-medium text-[#FAFAFA] text-xs md:text-base py-3 px-10 md:py-4 md:px-12 rounded-sm">
-          View All Products
-        </button>
+        <CustomButton bgColor="#DB4444">View All Products</CustomButton>
       </div>
       <hr className="mt-15 opacity-30"></hr>
     </section>

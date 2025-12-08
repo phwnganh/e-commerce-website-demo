@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
+import CustomButton from "../../components/ui/CustomButton";
 const BestSellerProductsList = () => {
   const [bestSellerProducts, setBestSellerProducts] = useState<Products[]>([]);
   const [wishlists, setWishlists] = useState<Products[]>([]);
@@ -34,14 +35,11 @@ const BestSellerProductsList = () => {
         <div className="flex flex-col gap-6">
           <div className="flex flex-row gap-4 items-center">
             <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-            <p className="text-[#DB4444] font-semibold">This Month</p>
+            <p className="text-[#DB4444] font-semibold text-sm md:text-base">This Month</p>
           </div>
-          <h3 className="font-semibold text-4xl">Best Selling Products</h3>
+          <h3 className="font-semibold text-2xl md:text-4xl">Best Selling Products</h3>
         </div>
-
-        <button className="bg-[#DB4444] text-[#FAFAFA] py-4 px-12 rounded-sm">
-          View All
-        </button>
+        <CustomButton bgColor="#DB4444">View All</CustomButton>
       </div>
 
       <div className="grid grid-cols-4 gap-7 mt-15">
