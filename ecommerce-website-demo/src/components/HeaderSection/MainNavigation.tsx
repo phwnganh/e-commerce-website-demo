@@ -61,7 +61,7 @@ const MainNavigation = () => {
       <div className="hidden lg:flex gap-12 items-center">
         <NavLink
           className={({ isActive }) =>
-            `${isActive ? "border-b-2" : "hover:border-b-2"}`
+            `${isActive ? "border-b-2 border-b-[#00000080]" : "hover:border-b-2 border-b-[#00000080]"}`
           }
           to={HOMEPAGE}
         >

@@ -6,7 +6,7 @@ const CartPage = () => {
       return (
             <>
                   <PostLoginHeaderSection/>
-                  <hr className='mt-4'/>
+                  <hr className='mt-4 border-[0.5px] border-[#0000004D]'/>
                   <CartSection/>
                   <FooterSection/>
             </>

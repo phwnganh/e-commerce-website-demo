@@ -88,7 +88,7 @@ const CategoriesList = () => {
           </button>
         ))}
       </div>
-      <hr className="mt-15 opacity-30"></hr>
+                  <hr className='mt-4 border-[0.5px] border-[#0000004D]'/>
     </section>
   );
 };

@@ -21,8 +21,7 @@ const ProductDetailPage = () => {
   return (
     <div>
       <PostLoginHeaderSection />
-      <hr className="mt-4" />
-      <ProductDetailSection productData={productData} />
+                  <hr className='mt-4 border-[0.5px] border-[#0000004D]'/>      <ProductDetailSection productData={productData} />
       <RelatedItemSection />
       <FooterSection />
     </div>
