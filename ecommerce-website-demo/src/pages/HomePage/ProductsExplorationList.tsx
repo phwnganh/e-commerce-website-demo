@@ -67,7 +67,7 @@ const ProductsExplorationList = () => {
   return (
     <section className="mt-17 max-w-[1170px] mx-auto p-4 lg:p-0">
       <div className="flex flex-row items-end justify-between">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           <div className="flex flex-row gap-4 items-center">
             <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
             <p className="text-[#DB4444] font-semibold text-sm md:text-base">
