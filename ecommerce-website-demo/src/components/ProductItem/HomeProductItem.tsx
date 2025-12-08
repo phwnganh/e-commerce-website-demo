@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { CartItems, Carts, Products } from "../../types/ProductTypes";
 import StarRating from "../../components/ui/StarRating";
-import HeartIcon from "../../assets/heart-icon.svg";
+import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
@@ -97,28 +97,24 @@ const HomeProductItem = ({
               wishlists.some((item) => item.id === product.id)
                 ? "bg-[#DB4444] hover:bg-[#b42424]"
                 : "bg-white hover:bg-gray-200"
-            }  flex justify-center rounded-full w-6 h-6 p-1.5 md:w-8 md:h-8 md:p-2.5`}
+            }  flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px]`}
           >
             <img
-              src={HeartIcon}
+              src={HeartIcon1}
               alt="heart-icon"
               className={`
                 ${
                   wishlists.some((item) => item.id === product.id)
                     ? "brightness-1 invert"
                     : ""
-                } w-3 h-3 sm:w-4 sm:h-4`}
+                }`}
             />
           </button>
           <button
             onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
-            className="bg-white flex justify-center rounded-full w-6 h-6 p-1.5 md:w-8 md:h-8 md:p-2.5 hover:bg-gray-200"
+            className="bg-white flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200"
           >
-            <img
-              src={EyeIcon}
-              alt="eye-icon"
-              className="w-3 h-3 md:w-4 md:h-4"
-            />
+            <img src={EyeIcon} alt="eye-icon" />
           </button>
         </div>
         <button
