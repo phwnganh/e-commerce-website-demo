@@ -83,7 +83,7 @@ const WishlistSection = () => {
       <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
         {wishlists.slice(0, 4).map((product) => (
           <div className="flex flex-col gap-4 w-full" key={product.id}>
-            <div className="bg-[#F5F5F5] rounded-sm w-[270px] w-full relative group">
+            <div className="bg-[#F5F5F5] rounded-sm w-full relative group">
               <div className="bg-[#DB4444] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
                 {Math.round(product.discountPercentage)}%
               </div>
@@ -92,7 +92,7 @@ const WishlistSection = () => {
                 alt="product-imgs"
                 className="w-full h-full"
               />
-              <div className="flex flex-col gap-1 md:gap-2 absolute top-1 md:top-3 right-2 md:right-3 ">
+              <div className="flex flex-col gap-1 md:gap-2 absolute top-1 md:top-3 right-2 md:right-3">
                 <button
                   onClick={() => handleRemoveWishlist(product)}
                   className="bg-white flex items-center justify-center rounded-full w-6 h-6 p-1.5 md:w-8 md:h-8 md:p-2.5 hover:bg-gray-200"

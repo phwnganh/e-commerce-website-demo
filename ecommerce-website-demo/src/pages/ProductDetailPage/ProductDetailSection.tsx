@@ -4,7 +4,6 @@ import PlusIcon from "../../assets/plus-icon.svg";
 import HeartIcon from "../../assets/heart-icon.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
-import CustomButton from "../../components/ui/CustomButton";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {
   return (
