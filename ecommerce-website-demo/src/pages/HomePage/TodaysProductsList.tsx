@@ -78,18 +78,18 @@ const TodaysProductsList = () => {
     <section className="mt-[140px] max-w-[1170px] mx-auto p-4 lg:p-0">
       <div className="flex flex-row justify-between items-end">
         <div className="flex flex-row items-end gap-21">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 md:gap-6">
             <div className="flex flex-row gap-4 items-center">
               <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-              <p className="text-[#DB4444] font-semibold">Today's</p>
+              <p className="text-[#DB4444] font-semibold text-sm md:text-base">Today's</p>
             </div>
-            <h3 className="font-semibold text-4xl">Flash Sales</h3>
+            <h3 className="font-semibold text-2xl md:text-4xl">Flash Sales</h3>
           </div>
 
           <div className="flex items-center gap-4.5">
             <div className="">
               <p className="text-xs">Days</p>
-              <h3 className="font-bold text-3xl">03</h3>
+              <h3 className="font-bold text-xl md:text-3xl">03</h3>
             </div>
             <div className="flex flex-col gap-2">
               <img src={Circle} alt="circle-icon" />
@@ -97,7 +97,7 @@ const TodaysProductsList = () => {
             </div>
             <div>
               <p className="text-xs">Hours</p>
-              <h3 className="font-bold text-3xl">23</h3>
+              <h3 className="font-bold text-xl md:text-3xl">23</h3>
             </div>
             <div className="flex flex-col gap-2">
               <img src={Circle} alt="circle-icon" />
@@ -105,7 +105,7 @@ const TodaysProductsList = () => {
             </div>
             <div>
               <p className="text-xs">Minutes</p>
-              <h3 className="font-bold text-3xl">19</h3>
+              <h3 className="font-bold text-xl md:text-3xl">19</h3>
             </div>
             <div className="flex flex-col gap-2">
               <img src={Circle} alt="circle-icon" />
@@ -113,7 +113,7 @@ const TodaysProductsList = () => {
             </div>
             <div>
               <p className="text-xs">Seconds</p>
-              <h3 className="font-bold text-3xl">56</h3>
+              <h3 className="font-bold text-xl md:text-3xl">56</h3>
             </div>
           </div>
         </div>
