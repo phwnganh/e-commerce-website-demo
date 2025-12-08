@@ -1,10 +1,10 @@
 import PlayStation5 from "../../../public/play-station-5.png";
 import WomenCollection from "../../../public/attractive-woman-wearing-hat-posing-black-background1.png";
 import AmazonSpeaker from "../../../public/69-694768_amazon-echo-png-clipart-transparent-amazon-echo-png 1.png";
-import GucciPerfume from '../../../public/perfume.png'
+import GucciPerfume from "../../../public/perfume.png";
 const NewProductsAdvertisement = () => {
   return (
-    <section className="mt-35 max-w-[1170px] mx-auto">
+    <section className="mt-35 max-w-[1170px] mx-auto p-4 lg:p-0">
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-6">
           <div className="flex flex-row gap-4 items-center">
@@ -57,7 +57,7 @@ const NewProductsAdvertisement = () => {
           </div>
         </div>
         <div className="col-start-4 row-start-2 rounded-sm bg-black text-white relative">
-            <div className="p-7.5">
+          <div className="p-7.5">
             <img src={GucciPerfume} alt="amazon-speaker" />
           </div>
           <div className="flex flex-col gap-2 absolute left-6 bottom-6 items-start">

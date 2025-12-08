@@ -30,6 +30,8 @@ const HomeProductItem = ({
     }
   }, []);
 
+
+
   const handleAddToCart = (product: Products) => {
     const saved = localStorage.getItem("carts");
     let currentCarts: Carts = saved

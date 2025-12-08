@@ -1,7 +1,7 @@
 import BlutetoothSpeaker from "../../assets/JBL_BOOMBOX_2_HERO_020_x1 (1) 1.png";
 const LimitedOfferBanner = () => {
   return (
-    <section className="max-w-[1170px] mx-auto mt-35 bg-black">
+    <section className="max-w-[1170px] mx-auto mt-35 bg-black p-4 lg:p-0">
       <div className="flex flex-row gap-7 items-center p-10">
         <div className="flex flex-col gap-8 basis-[40%] items-start">
           <p className="text-[#00FF66] font-semibold">Categories</p>
@@ -27,7 +27,9 @@ const LimitedOfferBanner = () => {
             </div>
           </div>
 
-          <button className="mt-2 bg-[#00FF66] text-[#FAFAFA] rounded-sm py-4 px-12">Buy Now!</button>
+          <button className="mt-2 bg-[#00FF66] text-[#FAFAFA] rounded-sm py-4 px-12">
+            Buy Now!
+          </button>
         </div>
 
         <div className="basis-[60%]">
