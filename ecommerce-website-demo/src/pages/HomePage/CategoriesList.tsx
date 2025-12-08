@@ -39,9 +39,9 @@ const CategoriesList = () => {
         <div className="flex flex-col gap-6">
           <div className="flex flex-row gap-4 items-center">
             <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-            <p className="text-[#DB4444] font-semibold">Categories</p>
+            <p className="text-[#DB4444] font-semibold text-sm md:text-base">Categories</p>
           </div>
-          <h3 className="font-semibold text-4xl">Browse By Category</h3>
+          <h3 className="font-semibold text-2xl md:text-4xl">Browse By Category</h3>
         </div>
 
         <div className="flex flex-row gap-2">
@@ -73,7 +73,7 @@ const CategoriesList = () => {
             <div className="w-14 h-14">
               <img src={Cosmetics} alt="" className="group-hover:invert group-hover:brightness-0 group-hover:filter" />
             </div>
-            <p className="text-center group-hover:text-[#FAFAFA]">{category.name}</p>
+            <p className="text-center text-sm md:text-base group-hover:text-[#FAFAFA]">{category.name}</p>
           </button>
         ))}
       </div>
