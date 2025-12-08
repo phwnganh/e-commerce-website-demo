@@ -14,7 +14,7 @@ const HeroBanner = () => {
           </div>
           <div className="lg:text-5xl md:text-4xl text-3xl font-semibold mt-5">Up to 10% off Voucher</div>
           <div className="flex flex-row gap-2 items-center mt-5.5">
-            <p className="border-b">Shop Now</p>
+            <p className="border-b text-sm md:text-base">Shop Now</p>
             <div>
               <img src={arrowRight} alt="arrow-right" />
             </div>
