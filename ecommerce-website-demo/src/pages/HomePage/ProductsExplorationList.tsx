@@ -22,7 +22,7 @@ const ProductsExplorationList = () => {
       if (window.innerWidth >= 1024) {
         setItemsPerView(8);
       } else {
-        setItemsPerView(2);
+        setItemsPerView(4);
       }
     };
 
