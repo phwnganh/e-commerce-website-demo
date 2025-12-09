@@ -130,15 +130,15 @@ const MainNavigation = () => {
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg> */}
-          <button
-            onClick={() => navigate(WISHLIST)}
-            className="rounded-full relative cursor-pointer"
+          <NavLink
+            to={WISHLIST}
+            className="rounded-full relative"
           >
             <img src={Wishlist} alt="heart-icon" />
-            <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] justify-center items-center text-xs">
+            <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] flex justify-center items-center text-xs">
               {wishlists.length}
             </div>
-          </button>
+          </NavLink>
 
           {/* <svg
             width="32"
@@ -154,15 +154,15 @@ const MainNavigation = () => {
             <circle cx="20" cy="21" r="1" />
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
           </svg> */}
-          <button
-            onClick={() => navigate(CART)}
-            className="w-8 h-8 flex justify-center relative cursor-pointer"
+          <NavLink
+            to={CART}
+            className="w-8 h-8 flex justify-center relative"
           >
             <img src={CartIcon} alt="cart-icon" />
-            <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] justify-center items-center text-xs">
+            <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] flex justify-center items-center text-xs">
               {carts?.products.length || 0}
             </div>
-          </button>
+          </NavLink>
           {user && (
             <button
               onClick={handleUserClick}
