@@ -75,7 +75,7 @@ const WishlistSection = () => {
     <section className="max-w-[1170px] mx-auto mt-20 px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">
         <p className="text-base md:text-xl">Wishlist ({wishlists.length})</p>
-        <button className="border-[#00000080] border rounded-sm py-3 px-10 md:py-4 md:px-12 text-sm md:text-base">
+        <button className="border-[#00000080] border rounded-sm py-3 px-10 md:py-4 md:px-12 text-sm md:text-base cursor-pointer">
           Move All To Bag
         </button>
       </div>
@@ -95,7 +95,7 @@ const WishlistSection = () => {
               <div className="flex flex-col gap-1 md:gap-2 absolute top-1 md:top-3 right-2 md:right-3">
                 <button
                   onClick={() => handleRemoveWishlist(product)}
-                  className="bg-white flex items-center justify-center rounded-full w-6 h-6 p-1.5 md:w-8 md:h-8 md:p-2.5 hover:bg-gray-200"
+                  className="bg-white flex items-center justify-center rounded-full w-6 h-6 p-1.5 md:w-8 md:h-8 md:p-2.5 hover:bg-gray-200 cursor-pointer"
                 >
                   <img src={TrashIcon} alt="trash-icon" className="w-3 h-3 sm:w-4 sm:h-4"/>
                 </button>
@@ -103,7 +103,7 @@ const WishlistSection = () => {
 
               <button
                 onClick={() => handleAddToCart(product)}
-                className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block"
+                className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block cursor-pointer"
               >
                 Add to Cart
               </button>

@@ -80,7 +80,7 @@ const ProductsExplorationList = ({products}: {products: Products[]}) => {
             className={`bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center ${
               currentIndex === 0
                 ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-200"
+                : "hover:bg-gray-200 cursor-pointer"
             }`}
           >
             <img src={LeftArrow1} alt="left-arrow" />
@@ -91,7 +91,7 @@ const ProductsExplorationList = ({products}: {products: Products[]}) => {
             className={`bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center ${
               currentIndex === totalGroups - 1
                 ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-200"
+                : "hover:bg-gray-200 cursor-pointer"
             }`}
           >
             <img src={RightArrow} alt="right-arrow" />

@@ -24,9 +24,9 @@ const FooterSection = () => {
               className="text-[#FAFAFA66] sm:max-w-[130px] outline-none"
               placeholder="Enter your email"
             />
-            <div className="w-6 h-6 flex justify-center items-center">
+            <button className="w-6 h-6 flex justify-center items-center cursor-pointer">
               <img src={send} alt="send" className="w-auto h-auto" />
-            </div>
+            </button>
           </div>
         </div>
         {/* support */}
@@ -79,30 +79,30 @@ const FooterSection = () => {
             </div>
           </div>
           <div className="flex flex-row gap-6 justify-center sm:justify-start">
-            <div className="w-6 h-6 flex justify-center items-center">
+            <button className="w-6 h-6 flex justify-center items-center cursor-pointer">
               <img
                 src={facebook}
                 alt="facebook-icon"
                 className="w-auto h-auto"
               />
-            </div>
-            <div className="w-6 h-6 flex justify-center items-center">
+            </button>
+            <button className="w-6 h-6 flex justify-center items-center cursor-pointer">
               <img src={twitter} alt="twitter-icon" className="w-auto h-auto" />
-            </div>
-            <div className="w-6 h-6 flex justify-center items-center">
+            </button>
+            <button className="w-6 h-6 flex justify-center items-center cursor-pointer">
               <img
                 src={instagram}
                 alt="instagram-icon"
                 className="w-auto h-auto"
               />
-            </div>
-            <div className="w-6 h-6 flex justify-center items-center">
+            </button>
+            <button className="w-6 h-6 flex justify-center items-center cursor-pointer">
               <img
                 src={linkedln}
                 alt="linkedln-icon"
                 className="w-auto h-auto"
               />
-            </div>
+            </button>
           </div>
         </div>
       </div>

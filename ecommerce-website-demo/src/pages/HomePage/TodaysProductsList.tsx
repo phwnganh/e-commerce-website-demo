@@ -1,18 +1,17 @@
 import LeftArrow from "../../assets/icons-arrow-left.svg";
-import LeftArrow1 from '../../assets/arrow-left-1.svg'
+import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import Circle from "../../assets/circle.svg";
 import React, { useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import CustomButton from "../../components/ui/CustomButton";
-const TodaysProductsList = ({products}: {products: Products[]}) => {
+const TodaysProductsList = ({ products }: { products: Products[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [itemsPerView, setItemsPerView] = useState(4);
   const [wishlists, setWishlists] = useState<Products[]>([]);
   const [itemWidth, setItemWidth] = useState(0);
-  
 
   useEffect(() => {
     const handleResize = () => {
@@ -52,7 +51,6 @@ const TodaysProductsList = ({products}: {products: Products[]}) => {
     setWishlists(updated);
     localStorage.setItem("wishlist", JSON.stringify(updated));
   };
-  
 
   // Tính toán tổng số nhóm có thể hiển thị
   const totalGroups = Math.ceil(products.length / itemsPerView);
@@ -114,10 +112,10 @@ const TodaysProductsList = ({products}: {products: Products[]}) => {
 
         <div className="md:flex md:flex-row gap-2 hidden">
           <button
-            className={`bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center transition-all ${
+            className={`bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center transition-all  ${
               currentIndex === 0
                 ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-200"
+                : "hover:bg-gray-200 cursor-pointer"
             }`}
             onClick={goToPrev}
             disabled={currentIndex === 0}
@@ -130,7 +128,7 @@ const TodaysProductsList = ({products}: {products: Products[]}) => {
             className={`bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center ${
               currentIndex === totalGroups - 1
                 ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-200"
+                : "hover:bg-gray-200 cursor-pointer"
             }`}
           >
             <img src={RightArrow} alt="right-arrow" />
@@ -171,11 +169,11 @@ const TodaysProductsList = ({products}: {products: Products[]}) => {
           ))}
         </div>
       </div>
-
       <div className="mt-15 flex justify-center">
         <CustomButton bgColor="#DB4444">View All Products</CustomButton>
       </div>
-                  <hr className='mt-4 border-[0.5px] border-[#0000004D]'/>    </section>
+      <hr className="mt-15 border-[0.5px] border-[#0000004D]" />{" "}
+    </section>
   );
 };
 

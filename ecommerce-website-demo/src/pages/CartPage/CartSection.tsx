@@ -80,16 +80,23 @@ const CartSection = () => {
   return (
     <section className="max-w-[1170px] mx-auto mt-20 mb-11 md:mb-35 px-4 lg:px-0">
       <div className="flex flex-row gap-3 items-center">
-        <NavLink to={HOMEPAGE} className="opacity-50 text-sm">Home</NavLink>
+        <NavLink to={HOMEPAGE} className="opacity-50 text-sm">
+          Home
+        </NavLink>
         <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
-        <NavLink to={CART} className={({isActive}) => `${isActive ? "text-sm" : "opacity-50 text-sm"}`}>Cart</NavLink>
+        <NavLink
+          to={CART}
+          className={({ isActive }) =>
+            `${isActive ? "text-sm" : "opacity-50 text-sm"}`
+          }
+        >
+          Cart
+        </NavLink>
       </div>
 
       <div className="mt-20">
         <div className="flex flex-col gap-10">
-          <div
-            className="grid grid-cols-4 py-3 md:py-6 rounded-sm shadow-[0px_1px_13px_0px_#0000000D]"
-          >
+          <div className="grid grid-cols-4 py-3 md:py-6 rounded-sm shadow-[0px_1px_13px_0px_#0000000D]">
             <div className="text-sm md:text-base">Products</div>
             <div className="text-sm md:text-base">Price</div>
             <div className="text-sm md:text-base">Quantity</div>
@@ -104,11 +111,15 @@ const CartSection = () => {
               >
                 <div className="flex flex-row items-center gap-2 md:gap-5">
                   <div className="w-13.5 h-13.5 flex justify-center relative group">
-                    <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover"/>
+                    <img
+                      src={item.thumbnail}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
                     <div className="hidden group-hover:block">
                       <button
                         onClick={() => handleRemoveItemFromCart(item.id)}
-                        className="absolute top-0 -left-1.75 w-4.5 h-4.5 rounded-full bg-[#DB4444] flex justify-center items-center"
+                        className="absolute top-0 -left-1.75 w-4.5 h-4.5 rounded-full bg-[#DB4444] flex justify-center items-center cursor-pointer"
                       >
                         <img src={XIcon} alt="x-icon" />
                       </button>
@@ -123,13 +134,13 @@ const CartSection = () => {
                     <p className="text-sm md:text-base">{item.quantity}</p>
                     <div className="flex flex-col">
                       <button
-                        className="w-4 h-4 flex justify-center"
+                        className="w-4 h-4 flex justify-center cursor-pointer"
                         onClick={() => handleIncreaseQuantity(item.id)}
                       >
                         <img src={DropUpIcon} alt="drop-up-icon" />
                       </button>
                       <button
-                        className="w-4 h-4 flex justify-center"
+                        className="w-4 h-4 flex justify-center cursor-pointer"
                         onClick={() => handleDecreaseQuantity(item.id)}
                       >
                         <img src={DropDownIcon} alt="drop-down-icon" />
@@ -143,11 +154,11 @@ const CartSection = () => {
           </div>
         </div>
         <div className="flex flex-row justify-between mt-6">
-          <button className="flex justify-center items-center rounded-sm border py-3 px-10 md:py-4 md:px-12 font-medium border-[#00000080] text-sm md:text-base">
+          <button className="flex justify-center items-center rounded-sm border py-3 px-10 md:py-4 md:px-12 font-medium border-[#00000080] text-sm md:text-base cursor-pointer hover:bg-gray-200 hover:border-gray-200">
             Return To Shop
           </button>
           <button
-            className="flex justify-center items-center rounded-sm border py-3 px-10 text-sm md:text-base md:py-4 md:px-12 font-medium border-[#00000080] hover:bg-gray-200"
+            className="flex justify-center items-center rounded-sm border py-3 px-10 text-sm md:text-base md:py-4 md:px-12 font-medium border-[#00000080] hover:bg-gray-200 hover:border-gray-200 cursor-pointer"
             onClick={handleUpdateCart}
           >
             Update Cart
@@ -171,7 +182,9 @@ const CartSection = () => {
               <div className="flex flex-col gap-4 mt-6">
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Subtotal:</p>
-                  <p className="text-sm md:text-base">${cart?.total?.toFixed(2)}</p>
+                  <p className="text-sm md:text-base">
+                    ${cart?.total?.toFixed(2)}
+                  </p>
                 </div>
                 <hr />
                 <div className="flex justify-between">
@@ -181,11 +194,15 @@ const CartSection = () => {
                 <hr />
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Total:</p>
-                  <p className="text-sm md:text-base">${cart?.total?.toFixed(2)}</p>
+                  <p className="text-sm md:text-base">
+                    ${cart?.total?.toFixed(2)}
+                  </p>
                 </div>
 
                 <div className="flex justify-center">
-                  <CustomButton bgColor="#DB4444">Procees to checkout</CustomButton>
+                  <CustomButton bgColor="#DB4444">
+                    Procees to checkout
+                  </CustomButton>
                 </div>
               </div>
             </div>

@@ -76,7 +76,7 @@ const RelatedProducts = () => {
           <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
           <p className="text-base md:text-xl font-semibold">Just For You</p>
         </div>
-        <button className="border-[#00000080] border rounded-sm py-3 px-10 md:py-4 md:px-12 text-sm md:text-base">
+        <button className="border-[#00000080] border rounded-sm py-3 px-10 md:py-4 md:px-12 text-sm md:text-base cursor-pointer">
           See All
         </button>
       </div>
@@ -96,14 +96,14 @@ const RelatedProducts = () => {
               <div className="flex flex-col gap-1 md:gap-2 absolute top-1 md:top-3 right-2 md:right-3">
                 <button
                   onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
-                  className="bg-white flex items-center justify-center rounded-full w-6 h-6 p-1.5 md:w-8 md:h-8 md:p-2.5 hover:bg-gray-200"
+                  className="bg-white flex items-center justify-center rounded-full w-6 h-6 p-1.5 md:w-8 md:h-8 md:p-2.5 hover:bg-gray-200 cursor-pointer"
                 >
                   <img src={EyeIcon} alt="eye-icon" className="w-3 h-3 sm:w-4 sm:h-4"/>
                 </button>
               </div>
               <button
                 onClick={() => handleAddToCart(product)}
-                className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block"
+                className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block cursor-pointer"
               >
                 Add to Cart
               </button>

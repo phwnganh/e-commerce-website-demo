@@ -12,7 +12,7 @@ const CategoriesNavigation = ({categories}: {categories: string[]}) => {
           {category}
         </p>
       ))}
-      <button className="border-2 rounded-sm px-6">See More</button>
+      <button className="border-2 rounded-sm px-6 cursor-pointer">See More</button>
     </div>
     <div className="hidden lg:block border-[0.5px] opacity-30 rotate-180"></div>
     </aside>

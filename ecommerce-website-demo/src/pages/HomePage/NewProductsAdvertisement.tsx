@@ -32,7 +32,7 @@ const NewProductsAdvertisement = () => {
               <p className="text-xs md:text-sm text-[#FAFAFA]">
                 Black and White version of the PS5 coming out on sale.
               </p>
-              <button className="font-medium border-b text-sm md:text-base">
+              <button className="font-medium border-b text-sm md:text-base cursor-pointer">
                 Shop Now
               </button>
             </div>
@@ -51,7 +51,7 @@ const NewProductsAdvertisement = () => {
             <p className="text-xs md:text-sm text-[#FAFAFA]">
               Featured woman collections that give you another vibe.
             </p>
-            <button className="font-medium border-b text-sm md:text-base">
+            <button className="font-medium border-b text-sm md:text-base cursor-pointer">
               Shop Now
             </button>
           </div>
@@ -71,7 +71,7 @@ const NewProductsAdvertisement = () => {
             <p className="text-xs md:text-sm text-[#FAFAFA]">
               Amazon wireless speakers
             </p>
-            <button className="font-medium border-b text-sm md:text-base">
+            <button className="font-medium border-b text-sm md:text-base cursor-pointer">
               Shop Now
             </button>
           </div>
@@ -91,7 +91,7 @@ const NewProductsAdvertisement = () => {
             <p className="text-xs md:text-sm text-[#FAFAFA]">
               GUCCI INTENSE OUD EDP
             </p>
-            <button className="font-medium border-b text-sm md:text-base">
+            <button className="font-medium border-b text-sm md:text-base cursor-pointer">
               Shop Now
             </button>
           </div>

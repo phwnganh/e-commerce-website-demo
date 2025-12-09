@@ -98,7 +98,7 @@ const MainNavigation = () => {
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            className="shrink-0"
+            className="shrink-0  cursor-pointer"
           >
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.35-4.35" />
@@ -120,7 +120,7 @@ const MainNavigation = () => {
           </svg> */}
           <button
             onClick={() => navigate(WISHLIST)}
-            className="rounded-full relative"
+            className="rounded-full relative cursor-pointer"
           >
             <img src={Wishlist} alt="heart-icon" />
             <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] justify-center items-center text-xs">
@@ -144,7 +144,7 @@ const MainNavigation = () => {
           </svg> */}
           <button
             onClick={() => navigate(CART)}
-            className="w-8 h-8 flex justify-center relative"
+            className="w-8 h-8 flex justify-center relative cursor-pointer"
           >
             <img src={CartIcon} alt="cart-icon" />
             <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] justify-center items-center text-xs">
@@ -154,7 +154,7 @@ const MainNavigation = () => {
           {user && (
             <button
               onClick={handleUserClick}
-              className={`relative w-8 h-8 flex justify-center ${
+              className={`relative w-8 h-8 flex justify-center cursor-pointer ${
                 isDropdownOpen ? "bg-[#DB4444] rounded-full" : ""
               }`}
             >

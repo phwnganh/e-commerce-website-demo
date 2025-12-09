@@ -95,8 +95,8 @@ const HomeProductItem = ({
             onClick={() => onAddToWishlist(product)}
             className={`${
               wishlists.some((item) => item.id === product.id)
-                ? "bg-[#DB4444] hover:bg-[#b42424]"
-                : "bg-white hover:bg-gray-200"
+                ? "bg-[#DB4444] hover:bg-[#b42424] cursor-pointer"
+                : "bg-white hover:bg-gray-200 cursor-pointer"
             }  flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px]`}
           >
             <img
@@ -112,14 +112,14 @@ const HomeProductItem = ({
           </button>
           <button
             onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
-            className="bg-white flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200"
+            className="bg-white flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
           >
             <img src={EyeIcon} alt="eye-icon" />
           </button>
         </div>
         <button
           onClick={() => handleAddToCart(product)}
-          className="absolute w-full bottom-0 bg-black text-white font-medium text-center text-xs md:text-sm py-1 md:py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block"
+          className="absolute w-full bottom-0 bg-black text-white font-medium text-center text-xs md:text-sm py-1 md:py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block cursor-pointer"
         >
           Add to Cart
         </button>

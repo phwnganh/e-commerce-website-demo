@@ -3,12 +3,11 @@ import RightArrow from "../../assets/icon-arrow-right.svg";
 import Cosmetics from "../../assets/cosmetics.png";
 import { useRef } from "react";
 import type { Categories } from "../../types/CategoryType";
-const CategoriesList = ({categories}: {categories: Categories[]}) => {
+const CategoriesList = ({ categories }: { categories: Categories[] }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const itemsToShow = 6;
   const itemWidth = 198;
-
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -46,13 +45,13 @@ const CategoriesList = ({categories}: {categories: Categories[]}) => {
         <div className="flex flex-row gap-2">
           <button
             onClick={scrollLeft}
-            className="bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors"
+            className="bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer"
           >
             <img src={LeftArrow1} alt="left-arrow" />
           </button>
           <button
             onClick={scrollRight}
-            className="bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors"
+            className="bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer"
           >
             <img src={RightArrow} alt="right-arrow" />
           </button>
@@ -66,7 +65,7 @@ const CategoriesList = ({categories}: {categories: Categories[]}) => {
       >
         {categories.map((category, index) => (
           <button
-            className="flex flex-col gap-4 border-2 justify-center items-center rounded-sm border-[#0000004D] w-[170px] py-6 px-14 hover:bg-[#DB4444] hover:border-[#DB4444] group"
+            className="flex flex-col gap-4 border-2 justify-center items-center rounded-sm border-[#0000004D] w-[170px] py-6 px-14 hover:bg-[#DB4444] hover:border-[#DB4444] group cursor-pointer"
             key={index}
           >
             <div className="w-14 h-14">
@@ -82,7 +81,7 @@ const CategoriesList = ({categories}: {categories: Categories[]}) => {
           </button>
         ))}
       </div>
-                  <hr className='mt-4 border-[0.5px] border-[#0000004D]'/>
+      <hr className="mt-17.5 border-[0.5px] border-[#0000004D]" />
     </section>
   );
 };
