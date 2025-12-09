@@ -34,7 +34,7 @@ const StarRating = ({ rating, showNumber = true }: StarRatingProps) => {
     <defs>
       <linearGradient id="half-gradient">
         <stop offset="50%" stopColor="#FFAD33" />
-        <stop offset="50%" stopColor="#D1D5DB" />
+        <stop offset="50%" stopColor="#00000040" />
       </linearGradient>
     </defs>
 
