@@ -3,12 +3,13 @@ import type { Carts } from "../../types/ProductTypes";
 import DropUpIcon from "../../assets/drop-up-icon.svg";
 import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { CART, HOMEPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
 const CartSection = () => {
   const [cart, setCart] = useState<Carts>();
+  const navigate = useNavigate()
   useEffect(() => {
     const savedCarts = localStorage.getItem("carts");
     if (savedCarts) {
@@ -97,7 +98,7 @@ const CartSection = () => {
 
       <div className="mt-20">
         <div className="flex flex-col gap-10">
-          <div className="grid grid-cols-4 py-3 md:py-6 rounded-sm shadow-[0px_1px_13px_0px_#0000000D]">
+          <div className="grid grid-cols-4 pl-10 py-3 md:py-6 rounded-sm shadow-[0px_1px_13px_0px_#0000000D]">
             <div className="text-sm md:text-base">Products</div>
             <div className="text-sm md:text-base">Price</div>
             <div className="text-sm md:text-base">Quantity</div>
@@ -108,14 +109,14 @@ const CartSection = () => {
             {cart?.products.map((item) => (
               <div
                 key={item.id}
-                className="grid grid-cols-4 py-3 md:py-6 items-center rounded-sm shadow-[0px_1px_13px_0px_#0000000D]"
+                className="grid grid-cols-4 pl-10 py-3 md:py-6 items-center rounded-sm shadow-[0px_1px_13px_0px_#0000000D]"
               >
                 <div className="flex flex-row items-center gap-2 md:gap-5">
                   <div className="w-13.5 h-13.5 flex justify-center relative group">
                     <img
                       src={item.thumbnail}
                       alt={item.title}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain md:object-cover"
                     />
                     <div className="hidden group-hover:block">
                       <button
@@ -129,10 +130,10 @@ const CartSection = () => {
 
                   <p className="text-xs md:text-base">{item.title}</p>
                 </div>
-                <p className="text-xs md:text-base">${item.price}</p>
+                <p className="text-xs md:text-base">${(item.price).toFixed(2)}</p>
                 <div className="border-[1.5px] border-[#00000066] w-18 rounded-sm">
                   <div className="flex gap-4 items-center justify-center py-1.5 px-3">
-                    <p className="text-sm md:text-base">{item.quantity}</p>
+                    <p className="text-sm md:text-base min-w-7 text-center">{item.quantity}</p>
                     <div className="flex flex-col">
                       <button
                         className="w-4 h-4 flex justify-center cursor-pointer"
@@ -149,7 +150,7 @@ const CartSection = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-xs md:text-base">${item.total}</p>
+                <p className="text-xs md:text-base">${(item.total).toFixed(2)}</p>
               </div>
             ))}
           </div>
@@ -220,7 +221,7 @@ const CartSection = () => {
         </table> */}
 
         <div className="flex flex-row justify-between mt-6">
-          <SecondaryCustomButton>Return To Shop</SecondaryCustomButton>
+          <SecondaryCustomButton onClick={() => navigate(HOMEPAGE)}>Return To Shop</SecondaryCustomButton>
           <SecondaryCustomButton onClick={handleUpdateCart}>
             Update Cart
           </SecondaryCustomButton>
