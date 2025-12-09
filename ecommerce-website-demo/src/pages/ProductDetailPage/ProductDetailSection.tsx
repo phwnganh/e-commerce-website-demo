@@ -7,12 +7,39 @@ import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
 import { NavLink } from "react-router-dom";
 import { USER_PROFILE } from "../../constants/route.constants";
+import { useEffect, useState } from "react";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {
+  const [wishlists, setWishlists] = useState<Products[]>([]);
+  useEffect(() => {
+    const savedWishlist = localStorage.getItem("wishlist");
+    if (savedWishlist) {
+      setWishlists(JSON.parse(savedWishlist));
+    }
+  }, []);
+
+  const handleAddToWishlist = (product: Products) => {
+    const saved = localStorage.getItem("wishlist");
+    if (saved) {
+      setWishlists(JSON.parse(saved));
+    }
+    const exists = wishlists.some((item) => item.id === product.id);
+    let updated;
+
+    if (exists) {
+      updated = wishlists.filter((item) => item.id !== product.id);
+    } else {
+      updated = [...wishlists, product];
+    }
+    setWishlists(updated);
+    localStorage.setItem("wishlist", JSON.stringify(updated));
+  };
   return (
     <section className="mt-20 max-w-[1170px] mx-auto px-4 lg:px-0">
       <div className="flex flex-row gap-3 items-center">
-        <NavLink to={USER_PROFILE} className="opacity-50 text-sm">Account</NavLink>
+        <NavLink to={USER_PROFILE} className="opacity-50 text-sm">
+          Account
+        </NavLink>
         <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
         <p className="opacity-50 text-sm">{productData.brand}</p>
         <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
@@ -95,11 +122,22 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
               <button className="bg-[#DB4444] text-[#FAFAFA] text-nowrap py-3 px-10 lg:py-2.5 lg:px-12 h-full font-medium rounded-sm text-xs lg:text-base cursor-pointer">
                 Buy Now
               </button>
-              <button className="group ml-[3px] border border-[#00000080] hover:bg-[#DB4444] hover:border-[#DB4444] rounded-sm w-10 h-10 flex justify-center items-center">
+              <button
+                onClick={() => handleAddToWishlist(productData)}
+                className={`${
+                  wishlists.some((item) => item.id === productData.id)
+                    ? "bg-[#DB4444] border-[#DB4444] hover:bg-[#DB4444] hover:border-[#DB4444] cursor-pointer"
+                    : "bg-white hover:bg-gray-200 cursor-pointer"
+                } group ml-[3px] border border-[#00000080] hover:bg-[#DB4444] hover:border-gray-200 rounded-sm w-10 h-10 flex justify-center items-center`}
+              >
                 <img
                   src={HeartIcon}
                   alt="heart-icon"
-                  className="group-hover:brightness-0 group-hover:invert"
+                  className={`${
+                    wishlists.some((item) => item.id === productData.id)
+                      ? "brightness-1 invert"
+                      : ""
+                  } group-hover:brightness-0 group-hover:invert`}
                 />
               </button>
             </div>

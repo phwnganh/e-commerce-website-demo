@@ -36,7 +36,18 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
     }
   }, [products]);
 
+  useEffect(() => {
+    const savedWishlist = localStorage.getItem("wishlist");
+    if (savedWishlist) {
+      setWishlists(JSON.parse(savedWishlist));
+    }
+  }, []);
+
   const handleAddToWishlist = (product: Products) => {
+    const saved = localStorage.getItem("wishlist");
+    if (saved) {
+      setWishlists(JSON.parse(saved));
+    }
     const exists = wishlists.some((item) => item.id === product.id);
     let updated;
 
