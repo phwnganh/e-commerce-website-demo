@@ -1,5 +1,4 @@
 import StarFull from "../../assets/star-full.svg";
-import StarHalfFilled from "../../assets/star-half-filled.svg";
 import StarEmpty from "../../assets/star-empty.svg";
 interface StarRatingProps {
   rating: number;
@@ -28,7 +27,7 @@ const StarRating = ({ rating, showNumber = true }: StarRatingProps) => {
       {hasHalfStar && (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="w-3 h-3 md:w-4 md:h-4 max-w-none shrink-0"
+    className="w-3 h-3 md:w-4 md:h-4 max-w-none shrink-0 flex-none"
     viewBox="0 0 15 15"
     preserveAspectRatio="xMidYMid meet"
   >

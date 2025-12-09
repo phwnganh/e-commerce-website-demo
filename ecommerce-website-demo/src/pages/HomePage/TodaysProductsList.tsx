@@ -16,10 +16,8 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setItemsPerView(4);
-      } else if (window.innerWidth >= 768) {
-        setItemsPerView(2);
       } else {
-        setItemsPerView(1);
+        setItemsPerView(2);
       }
     };
     handleResize();
@@ -65,7 +63,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
   const translateX = -(currentIndex * itemWidth * itemsPerView); // % của container
   return (
     <section className="mt-15 md:mt-35 max-w-[1170px] mx-auto p-4 lg:p-0">
-      <div className="flex flex-row justify-between items-end">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end">
         <div className="flex flex-col md:flex-row items-start md:items-end gap-6 md:gap-21">
           <div className="flex flex-col gap-4 md:gap-6">
             <div className="flex flex-row gap-4 items-center">
@@ -109,7 +107,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
           </div>
         </div>
 
-        <div className="md:flex md:flex-row gap-2 hidden">
+        <div className="flex md:flex-row gap-2">
           <button
             className={`bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center transition-all  ${
               currentIndex === 0
@@ -135,7 +133,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
         </div>
       </div>
       <div className="mt-10">
-        <div className="hidden md:block overflow-hidden">
+        <div className="overflow-x-hidden">
           <div
             ref={containerRef}
             className="flex flex-row gap-7.5 transition-transform duration-1000 ease-in-out"
@@ -156,7 +154,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
           </div>
         </div>
 
-        <div className="flex md:hidden overflow-x-auto gap-7.5 no-scrollbar">
+        {/* <div className="flex md:hidden overflow-x-auto gap-7.5 no-scrollbar">
           {products.map((product) => (
             <React.Fragment key={product.id}>
               <HomeProductItem
@@ -166,10 +164,12 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
               />
             </React.Fragment>
           ))}
-        </div>
+        </div> */}
       </div>
       <div className="mt-15 flex justify-center">
-        <PrimaryCustomButton bgColor="#DB4444">View All Products</PrimaryCustomButton>
+        <PrimaryCustomButton bgColor="#DB4444">
+          View All Products
+        </PrimaryCustomButton>
       </div>
       <hr className="mt-15 border-[0.5px] border-[#0000004D]" />{" "}
     </section>
