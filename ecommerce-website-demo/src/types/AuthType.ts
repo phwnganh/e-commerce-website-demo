@@ -1,3 +1,6 @@
+import type { Categories } from "./CategoryType";
+import type { Products } from "./ProductTypes";
+
 export type LoginResponse = {
   id: string;
   username: string;
@@ -18,4 +21,9 @@ export type User = {
   lastName: string;
   gender: string;
   image: string;
+}
+
+export type GlobalContext = {
+  products: Products[]
+  categories: Categories[]
 }
