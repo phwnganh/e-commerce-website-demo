@@ -115,7 +115,7 @@ const CartSection = () => {
                     <img
                       src={item.thumbnail}
                       alt={item.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                     <div className="hidden group-hover:block">
                       <button
@@ -127,9 +127,9 @@ const CartSection = () => {
                     </div>
                   </div>
 
-                  <p className="text-sm md:text-base">{item.title}</p>
+                  <p className="text-xs md:text-base">{item.title}</p>
                 </div>
-                <p className="text-sm md:text-base">${item.price}</p>
+                <p className="text-xs md:text-base">${item.price}</p>
                 <div className="border-[1.5px] border-[#00000066] w-18 rounded-sm">
                   <div className="flex gap-4 items-center justify-center py-1.5 px-3">
                     <p className="text-sm md:text-base">{item.quantity}</p>
@@ -149,11 +149,76 @@ const CartSection = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-sm md:text-base">${item.total}</p>
+                <p className="text-xs md:text-base">${item.total}</p>
               </div>
             ))}
           </div>
         </div>
+
+        {/* <table className="w-full table-fixed">
+          <thead>
+            <tr className="rounded-sm shadow-[0px_1px_13px_0px_#0000000D] py-3 md:py-6">
+              <td className="text-sm md:text-base">Product</td>
+              <td className="text-sm md:text-base">Price</td>
+              <td className="text-sm md:text-base">Quantity</td>
+              <td className="text-sm md:text-base">Subtotal</td>
+            </tr>
+          </thead>
+          <tbody>
+            {cart?.products.map((item) => (
+              <tr key={item.id} className="rounded-sm shadow-[0px_1px_13px_0px_#0000000D] py-3 md:py-6">
+                <td>
+                  {" "}
+                  <div className="flex flex-row items-center gap-2 md:gap-5">
+                    <div className="w-13.5 h-13.5 flex justify-center relative group">
+                      <img
+                        src={item.thumbnail}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="hidden group-hover:block">
+                        <button
+                          onClick={() => handleRemoveItemFromCart(item.id)}
+                          className="absolute top-0 -left-1.75 w-4.5 h-4.5 rounded-full bg-[#DB4444] flex justify-center items-center cursor-pointer"
+                        >
+                          <img src={XIcon} alt="x-icon" />
+                        </button>
+                      </div>
+                    </div>
+
+                    <p className="text-sm md:text-base">{item.title}</p>
+                  </div>
+                </td>
+                <td className="text-sm md:text-base">{item.price}</td>
+                <td>
+                  {" "}
+                  <div className="border-[1.5px] border-[#00000066] w-18 rounded-sm">
+                    <div className="flex gap-4 items-center justify-center py-1.5 px-3">
+                      <p className="text-sm md:text-base">{item.quantity}</p>
+                      <div className="flex flex-col">
+                        <button
+                          className="w-4 h-4 flex justify-center cursor-pointer"
+                          onClick={() => handleIncreaseQuantity(item.id)}
+                        >
+                          <img src={DropUpIcon} alt="drop-up-icon" />
+                        </button>
+                        <button
+                          className="w-4 h-4 flex justify-center cursor-pointer"
+                          onClick={() => handleDecreaseQuantity(item.id)}
+                        >
+                          <img src={DropDownIcon} alt="drop-down-icon" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td className="text-sm md:text-base">{item.total}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table> */}
+
         <div className="flex flex-row justify-between mt-6">
           <SecondaryCustomButton>Return To Shop</SecondaryCustomButton>
           <SecondaryCustomButton onClick={handleUpdateCart}>
@@ -162,7 +227,7 @@ const CartSection = () => {
         </div>
 
         <div className="mt-11 md:mt-20 flex flex-col md:flex-row justify-between items-start gap-4 md:gap-0">
-          <div className="flex flex-row gap-4">
+          <div className="hidden sm:flex flex-row gap-4">
             <input
               type="text"
               name="code"
@@ -174,7 +239,7 @@ const CartSection = () => {
               Apply Coupon
             </PrimaryCustomButton>
           </div>
-          <div className="border-[1.5px] rounded-sm w-[470px] py-5 md:py-8 px-6">
+          <div className="border-[1.5px] rounded-sm w-full sm:w-[470px] py-5 md:py-8 px-6">
             <div className="flex flex-col">
               <p className="font-medium text-base md:text-xl">Cart Total</p>
               <div className="flex flex-col gap-4 mt-6">

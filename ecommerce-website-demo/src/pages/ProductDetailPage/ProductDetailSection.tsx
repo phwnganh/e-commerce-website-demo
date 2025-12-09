@@ -5,13 +5,14 @@ import MinusIcon from "../../assets/icon-minus.svg";
 import HeartIcon from "../../assets/Wishlist.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
-import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import { NavLink } from "react-router-dom";
+import { USER_PROFILE } from "../../constants/route.constants";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {
   return (
     <section className="mt-20 max-w-[1170px] mx-auto px-4 lg:px-0">
       <div className="flex flex-row gap-3 items-center">
-        <p className="opacity-50 text-sm">Account</p>
+        <NavLink to={USER_PROFILE} className="opacity-50 text-sm">Account</NavLink>
         <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
         <p className="opacity-50 text-sm">{productData.brand}</p>
         <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
