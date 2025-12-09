@@ -82,15 +82,24 @@ const WishlistSection = () => {
       <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
         {wishlists.slice(0, 4).map((product) => (
           <div className="flex flex-col gap-4 w-full" key={product.id}>
-            <div className="bg-[#F5F5F5] rounded-sm w-full relative group">
-              <div className="bg-[#DB4444] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
-                {Math.round(product.discountPercentage)}%
+            <div className="bg-[#F5F5F5] rounded-sm w-full relative">
+              <div className="relative group/image">
+                <div className="bg-[#DB4444] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
+                  {Math.round(product.discountPercentage)}%
+                </div>
+                <img
+                  src={product.images[0]}
+                  alt="product-imgs"
+                  className="w-full h-full"
+                />
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover/image:block cursor-pointer"
+                >
+                  Add to Cart
+                </button>
               </div>
-              <img
-                src={product.images[0]}
-                alt="product-imgs"
-                className="w-full h-full"
-              />
+
               <div className="flex flex-col gap-1 md:gap-2 absolute top-1 md:top-3 right-2 md:right-3">
                 <button
                   onClick={() => handleRemoveWishlist(product)}
@@ -99,13 +108,6 @@ const WishlistSection = () => {
                   <img src={TrashIcon} alt="trash-icon" />
                 </button>
               </div>
-
-              <button
-                onClick={() => handleAddToCart(product)}
-                className="absolute w-full bottom-0 bg-black text-white font-medium text-center py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block cursor-pointer"
-              >
-                Add to Cart
-              </button>
             </div>
             <div className="flex flex-col gap-2">
               <p className="font-medium text-xs md:text-base line-clamp-1">

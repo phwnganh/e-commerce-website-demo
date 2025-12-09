@@ -79,17 +79,26 @@ const HomeProductItem = ({
   })();
   return (
     <div className="flex flex-col gap-4 w-full">
-      <div className="bg-[#F5F5F5] rounded-sm max-w-[270px] w-full relative group">
-        {isNew && (
-          <div className="bg-[#00FF66] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
-            NEW
-          </div>
-        )}
-        <img
-          src={product.images[0]}
-          alt="product-imgs"
-          className="w-full h-full"
-        />
+      <div className="bg-[#F5F5F5] rounded-sm max-w-[270px] w-full relative">
+        <div className="relative group/image">
+          {isNew && (
+            <div className="bg-[#00FF66] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
+              NEW
+            </div>
+          )}
+          <img
+            src={product.images[0]}
+            alt="product-imgs"
+            className="w-full h-full"
+          />
+          <button
+            onClick={() => handleAddToCart(product)}
+            className="absolute w-full bottom-0 bg-black text-white font-medium text-center text-xs md:text-sm py-1 md:py-2 rounded-bl-sm rounded-br-sm hidden group-hover/image:block cursor-pointer"
+          >
+            Add to Cart
+          </button>
+        </div>
+
         <div className="flex flex-col gap-1 md:gap-2 absolute top-1 right-2 md:top-3 md:right-3 ">
           <button
             onClick={() => onAddToWishlist(product)}
@@ -117,15 +126,12 @@ const HomeProductItem = ({
             <img src={EyeIcon} alt="eye-icon" />
           </button>
         </div>
-        <button
-          onClick={() => handleAddToCart(product)}
-          className="absolute w-full bottom-0 bg-black text-white font-medium text-center text-xs md:text-sm py-1 md:py-2 rounded-bl-sm rounded-br-sm hidden group-hover:block cursor-pointer"
-        >
-          Add to Cart
-        </button>
       </div>
       <div className="flex flex-col gap-2">
-        <Link to={`${HOMEPAGE}/${product.id}`} className="font-medium text-xs md:text-base line-clamp-1">
+        <Link
+          to={`${HOMEPAGE}/${product.id}`}
+          className="font-medium text-xs md:text-base line-clamp-1"
+        >
           {product.title}
         </Link>
         <div className="flex flex-col sm:flex-row gap-0 sm:gap-3">
