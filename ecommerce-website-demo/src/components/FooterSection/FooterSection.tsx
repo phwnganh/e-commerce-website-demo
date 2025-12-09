@@ -69,11 +69,11 @@ const FooterSection = () => {
                 <img src={qrCode} alt="qrCode" />
               </div>
               <div className="flex flex-col gap-2.5">
-                <div className="border-[0.6px] border-[#FAFAFA] rounded-sm w-[104px]">
-                  <img src={ggPlay} alt="google-play " />
+                <div className="border-[0.6px] border-[#FAFAFA] rounded-sm w-[104px] overflow-hidden">
+                  <img src={ggPlay} alt="google-play " className="w-full h-full object-contain"/>
                 </div>
-                <div className="border-[0.6px] rounded-sm w-[104px]">
-                  <img src={appStore} alt="app-store" />
+                <div className="border-[0.6px] rounded-sm w-[104px] border-[#FAFAFA] overflow-hidden">
+                  <img src={appStore} alt="app-store" className="w-full h-full object-contain"/>
                 </div>
               </div>
             </div>
@@ -106,9 +106,9 @@ const FooterSection = () => {
           </div>
         </div>
       </div>
-      <div className="opacity-40 border-t-2">
-        <div className="flex flex-row justify-center gap-1.5 text-center mt-4 text-[#FFFFFF] opacity-60">
-          <img src={copyRight} alt="copyright-icon" />
+      <div className="border-t border-t-[#FFFFFF66]">
+        <div className="flex flex-row justify-center gap-1.5 text-center mt-4 text-[#FFFFFF99]">
+          <img src={copyRight} alt="copyright-icon" className="opacity-60"/>
           <span>Copyright Rimel 2022. All right reserved</span>
         </div>
       </div>
