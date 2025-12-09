@@ -6,7 +6,8 @@ const LoginPage = () => {
   return (
     <>
       <PreLoginHeaderSection />
-      <hr className="mt-4 border-[0.5px] border-[#0000004D]" /> <LoginSection />
+      <hr className="mt-4 border-[0.5px] border-[#0000004D]" /> 
+      <LoginSection />
       <FooterSection />
     </>
   );
