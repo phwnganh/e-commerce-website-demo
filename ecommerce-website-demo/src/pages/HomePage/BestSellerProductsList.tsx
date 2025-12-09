@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
-import CustomButton from "../../components/ui/CustomButton";
+import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 const BestSellerProductsList = ({products}: {products: Products[]}) => {
   const [wishlists, setWishlists] = useState<Products[]>([]);
   useEffect(() => {
@@ -33,7 +33,7 @@ const BestSellerProductsList = ({products}: {products: Products[]}) => {
           </div>
           <h3 className="font-semibold text-2xl md:text-4xl">Best Selling Products</h3>
         </div>
-        <CustomButton bgColor="#DB4444">View All</CustomButton>
+        <PrimaryCustomButton bgColor="#DB4444">View All</PrimaryCustomButton>
       </div>
 
       <div className="grid grid-cols-4 gap-7 mt-15">

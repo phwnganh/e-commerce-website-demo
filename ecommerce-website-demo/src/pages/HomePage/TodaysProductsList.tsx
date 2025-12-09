@@ -1,11 +1,10 @@
-import LeftArrow from "../../assets/icons-arrow-left.svg";
 import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import Circle from "../../assets/circle.svg";
 import React, { useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
-import CustomButton from "../../components/ui/CustomButton";
+import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 const TodaysProductsList = ({ products }: { products: Products[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -170,7 +169,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
         </div>
       </div>
       <div className="mt-15 flex justify-center">
-        <CustomButton bgColor="#DB4444">View All Products</CustomButton>
+        <PrimaryCustomButton bgColor="#DB4444">View All Products</PrimaryCustomButton>
       </div>
       <hr className="mt-15 border-[0.5px] border-[#0000004D]" />{" "}
     </section>

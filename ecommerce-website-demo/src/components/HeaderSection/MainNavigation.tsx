@@ -167,7 +167,7 @@ const MainNavigation = () => {
                   src={UserCircle}
                   alt=""
                   className={`${
-                    isDropdownOpen ? "w-1.5 h-1.5 brightness-0 invert" : "w-2.5 h-2.5"
+                    isDropdownOpen ? "w-1.5 h-1.5 brightness-0 invert" : "w-3 h-3"
                   }`}
                 />
                 <img

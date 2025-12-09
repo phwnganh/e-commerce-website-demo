@@ -5,7 +5,8 @@ import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
 import { NavLink } from "react-router-dom";
 import { CART, HOMEPAGE } from "../../constants/route.constants";
-import CustomButton from "../../components/ui/CustomButton";
+import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
 const CartSection = () => {
   const [cart, setCart] = useState<Carts>();
   useEffect(() => {
@@ -154,15 +155,10 @@ const CartSection = () => {
           </div>
         </div>
         <div className="flex flex-row justify-between mt-6">
-          <button className="flex justify-center items-center rounded-sm border py-3 px-10 md:py-4 md:px-12 font-medium border-[#00000080] text-sm md:text-base cursor-pointer hover:bg-gray-200 hover:border-gray-200">
-            Return To Shop
-          </button>
-          <button
-            className="flex justify-center items-center rounded-sm border py-3 px-10 text-sm md:text-base md:py-4 md:px-12 font-medium border-[#00000080] hover:bg-gray-200 hover:border-gray-200 cursor-pointer"
-            onClick={handleUpdateCart}
-          >
+          <SecondaryCustomButton>Return To Shop</SecondaryCustomButton>
+          <SecondaryCustomButton onClick={handleUpdateCart}>
             Update Cart
-          </button>
+          </SecondaryCustomButton>
         </div>
 
         <div className="mt-11 md:mt-20 flex flex-col md:flex-row justify-between items-start gap-4 md:gap-0">
@@ -174,7 +170,9 @@ const CartSection = () => {
               placeholder="Coupon Code"
               className="border rounded-sm text-sm md:text-base py-2 md:py-4 pl-6"
             />
-            <CustomButton bgColor="#DB4444">Apply Coupon</CustomButton>
+            <PrimaryCustomButton bgColor="#DB4444">
+              Apply Coupon
+            </PrimaryCustomButton>
           </div>
           <div className="border-[1.5px] rounded-sm w-[470px] py-5 md:py-8 px-6">
             <div className="flex flex-col">
@@ -200,9 +198,9 @@ const CartSection = () => {
                 </div>
 
                 <div className="flex justify-center">
-                  <CustomButton bgColor="#DB4444">
+                  <PrimaryCustomButton bgColor="#DB4444">
                     Procees to checkout
-                  </CustomButton>
+                  </PrimaryCustomButton>
                 </div>
               </div>
             </div>

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import LeftArrow1 from '../../assets/arrow-left-1.svg'
+import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import type { Products } from "../../types/ProductTypes";
 
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
-import CustomButton from "../../components/ui/CustomButton";
-const ProductsExplorationList = ({products}: {products: Products[]}) => {
+import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+const ProductsExplorationList = ({ products }: { products: Products[] }) => {
   const [itemsPerView, setItemsPerView] = useState(8);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [wishlists, setWishlists] = useState<Products[]>([]);
@@ -53,10 +53,7 @@ const ProductsExplorationList = ({products}: {products: Products[]}) => {
   };
 
   const startIndex = currentIndex * itemsPerView;
-  const currentProducts = products.slice(
-    startIndex,
-    startIndex + itemsPerView
-  );
+  const currentProducts = products.slice(startIndex, startIndex + itemsPerView);
 
   return (
     <section className="mt-17 max-w-[1170px] mx-auto p-4 lg:p-0">
@@ -112,7 +109,9 @@ const ProductsExplorationList = ({products}: {products: Products[]}) => {
       </div>
 
       <div className="mt-15 flex justify-center">
-        <CustomButton bgColor={"#DB4444"}>View All Products</CustomButton>
+        <PrimaryCustomButton bgColor={"#DB4444"}>
+          View All Products
+        </PrimaryCustomButton>
       </div>
     </section>
   );
