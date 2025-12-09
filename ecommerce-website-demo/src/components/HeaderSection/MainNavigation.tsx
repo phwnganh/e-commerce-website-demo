@@ -1,8 +1,9 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
   CART,
   HOMEPAGE,
   LOGIN,
+  USER_PROFILE,
   WISHLIST,
 } from "../../constants/route.constants";
 import CartIcon from "../../assets/Cart1.svg";
@@ -22,6 +23,7 @@ const MainNavigation = () => {
   const [wishlists, setWishlists] = useState<Products[]>([]);
   const [carts, setCarts] = useState<Carts>();
   const navigate = useNavigate();
+  const location = useLocation();
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -50,6 +52,12 @@ const MainNavigation = () => {
   const handleUserClick = () => {
     setIsDropdownOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (location.pathname.startsWith(USER_PROFILE)) {
+      setIsDropdownOpen(true);
+    }
+  }, [location.pathname]);
   return (
     <section className="flex flex-row justify-between items-center py-[7px] px-4 lg:p-0">
       <button className="md:hidden block">
@@ -61,7 +69,11 @@ const MainNavigation = () => {
       <div className="hidden lg:flex gap-12 items-center">
         <NavLink
           className={({ isActive }) =>
-            `${isActive ? "border-b-2 border-b-[#00000080]" : "hover:border-b-2 border-b-[#00000080]"}`
+            `${
+              isActive
+                ? "border-b-2 border-b-[#00000080]"
+                : "hover:border-b-2 border-b-[#00000080]"
+            }`
           }
           to={HOMEPAGE}
         >
@@ -155,7 +167,9 @@ const MainNavigation = () => {
             <button
               onClick={handleUserClick}
               className={`relative w-8 h-8 flex justify-center cursor-pointer ${
-                isDropdownOpen ? "bg-[#DB4444] rounded-full" : ""
+                isDropdownOpen || location.pathname.startsWith(USER_PROFILE)
+                  ? "bg-[#DB4444] rounded-full"
+                  : ""
               }`}
             >
               <div
@@ -167,14 +181,18 @@ const MainNavigation = () => {
                   src={UserCircle}
                   alt=""
                   className={`${
-                    isDropdownOpen ? "w-1.5 h-1.5 brightness-0 invert" : "w-3 h-3"
+                    isDropdownOpen
+                      ? "w-1.5 h-1.5 brightness-0 invert"
+                      : "w-3 h-3"
                   }`}
                 />
                 <img
                   src={UserShape}
                   alt=""
                   className={`${
-                    isDropdownOpen ? "w-[11px] h-[5px] brightness-0 invert" : "w-[17px] h-2"
+                    isDropdownOpen
+                      ? "w-[11px] h-[5px] brightness-0 invert"
+                      : "w-[17px] h-2"
                   }`}
                 />
               </div>
@@ -187,7 +205,14 @@ const MainNavigation = () => {
               {isDropdownOpen && (
                 <div className="absolute top-9 right-0">
                   <div className="flex flex-col gap-3 bg-[#0000000A] backdrop-blur-[150px] rounded-sm pt-[18px] pl-5 pr-3 pb-2.5 text-[#FAFAFA]">
-                    <div className="flex flex-row items-center gap-4 w-56 hover:bg-gray-300 group">
+                    <NavLink
+                      to={USER_PROFILE}
+                      className={({ isActive }) =>
+                        `flex flex-row items-center gap-4 w-56 group ${
+                          isActive ? "bg-gray-300" : "hover:bg-gray-300"
+                        }`
+                      }
+                    >
                       <div className="w-8 h-8 flex justify-center items-center">
                         <img
                           src={WhiteUserIcon}
@@ -198,7 +223,7 @@ const MainNavigation = () => {
                       <p className="text-sm group-hover:text-black">
                         Manage My Account
                       </p>
-                    </div>
+                    </NavLink>
                     <div className="flex flex-row items-center gap-4 group hover:bg-gray-300">
                       <div className="w-6 h-6 flex justify-center items-center">
                         <img

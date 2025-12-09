@@ -60,7 +60,7 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
 
       <div
         ref={scrollContainerRef}
-        className="mt-15 flex flex-row gap-7 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
+        className="mt-15 flex flex-row gap-7 overflow-x-hidden scrollbar-hide snap-x snap-mandatory"
         style={{ scrollBehavior: "smooth" }}
       >
         {categories.map((category, index) => (

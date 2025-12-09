@@ -1,9 +1,11 @@
 import type { Products } from "../../types/ProductTypes";
 import StarRating from "../../components/ui/StarRating";
-import PlusIcon from "../../assets/plus-icon.svg";
-import HeartIcon from "../../assets/heart-icon.svg";
+import PlusIcon from "../../assets/icon-plus.svg";
+import MinusIcon from "../../assets/icon-minus.svg";
+import HeartIcon from "../../assets/Wishlist.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
+import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {
   return (
@@ -21,16 +23,32 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
           <div className="flex flex-col-reverse lg:flex-row gap-7.5">
             <div className="flex flex-row lg:flex-col gap-4">
               <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
-                <img src={productData.thumbnail} alt={productData.title} className="w-full h-full object-cover" />
+                <img
+                  src={productData.thumbnail}
+                  alt={productData.title}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
-                <img src={productData.thumbnail} alt={productData.title} className="w-full h-full object-cover" />
+                <img
+                  src={productData.thumbnail}
+                  alt={productData.title}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
-                <img src={productData.thumbnail} alt={productData.title} className="w-full h-full object-cover" />
+                <img
+                  src={productData.thumbnail}
+                  alt={productData.title}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
-                <img src={productData.thumbnail} alt={productData.title} className="w-full h-full object-cover" />
+                <img
+                  src={productData.thumbnail}
+                  alt={productData.title}
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
             <div className="lg:w-[500px] lg:h-[600px] w-full bg-[#F5F5F5] flex justify-center rounded-sm">
@@ -39,9 +57,11 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="font-semibold text-xl lg:text-2xl">{productData.title}</h3>
+            <h3 className="font-semibold text-xl lg:text-2xl">
+              {productData.title}
+            </h3>
             <div className="flex flex-row gap-4 items-center">
-              <StarRating rating={productData.rating}/>
+              <StarRating rating={productData.rating} />
               <div className="-rotate-90 border opacity-50 w-4"></div>
               <p className="opacity-60 text-xs lg:text-sm text-[#00FF66]">
                 {productData.availabilityStatus}
@@ -49,35 +69,43 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
             </div>
             <h3 className="text-xl lg:text-2xl">${productData.price}</h3>
             <p className="mt-2 text-xs lg:text-sm">{productData.description}</p>
-            <hr className="mt-2 opacity-50" />
-            <div className="flex flex-row gap-4 items-end">
-              <div className="mt-2 flex flex-row border rounded-bl-sm rounded-tl-sm rounded-tr-sm rounded-br-sm">
-                <button className="h-11 w-10 py-[22px] px-3 border-r">
-                  <div className="border-[1.5px] w-4"></div>
+            <hr className="mt-2 border-[#00000080]" />
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center mt-2">
+              <div className=" flex flex-row border border-[#00000080] rounded-bl-sm rounded-tl-sm rounded-tr-sm rounded-br-sm">
+                <button className="group flex justify-center items-center py-2.5 px-2 border-r-[#00000080] border-r hover:border-[#DB4444] hover:rounded-tl-sm hover:rounded-bl-sm hover:bg-[#DB4444] cursor-pointer">
+                  <img
+                    src={MinusIcon}
+                    alt="minus-icon"
+                    className="group-hover:brightness-0 group-hover:invert"
+                  />
                 </button>
-                <div className="h-11 w-20 py-2 px-[34px] border-r flex justify-center items-center">
+                <div className="py-2 px-[34px] border-r-[#00000080] flex justify-center items-center">
                   <p className="font-medium text-base lg:text-xl">2</p>
                 </div>
-                <button className="h-11 w-10 py-3.5 px-3">
+                <button className="group py-2.5 px-2 flex justify-center border-l border-l-[#00000080] items-center hover:bg-[#DB4444] hover:border-[#DB4444] hover:rounded-tr-sm hover:rounded-br-sm cursor-pointer">
                   <img
                     src={PlusIcon}
                     alt="plus-icon"
-                    className="brightness-1"
+                    className="group-hover:brightness-0 group-hover:invert"
                   />
                 </button>
               </div>
 
-              <button className="bg-[#DB4444] text-[#FAFAFA] text-nowrap py-3 px-10 lg:py-2.5 lg:px-12 h-11 font-medium rounded-sm text-xs lg:text-base ">
+              <button className="bg-[#DB4444] text-[#FAFAFA] text-nowrap py-3 px-10 lg:py-2.5 lg:px-12 h-full font-medium rounded-sm text-xs lg:text-base cursor-pointer">
                 Buy Now
               </button>
-              <button className="ml-[3px] border border-[#00000080] rounded-sm w-10 h-10 flex justify-center items-center">
-                <img src={HeartIcon} alt="heart-icon" />
+              <button className="group ml-[3px] border border-[#00000080] hover:bg-[#DB4444] hover:border-[#DB4444] rounded-sm w-10 h-10 flex justify-center items-center">
+                <img
+                  src={HeartIcon}
+                  alt="heart-icon"
+                  className="group-hover:brightness-0 group-hover:invert"
+                />
               </button>
             </div>
 
             <div className="flex flex-col rounded-sm border border-[#00000080] mt-6">
-              <div className="flex flex-row gap-4 items-center pt-4 lg:pt-6 pr-0 lg:pr-[51px] pb-2 lg:pb-4 pl-2 lg:pl-4">
-                <div className="w-10 h-10 flex justify-center">
+              <div className="flex flex-row gap-4 items-center pt-4 lg:pt-6 pb-2 lg:pb-4 pl-2 lg:pl-4">
+                <div className="flex justify-center items-center">
                   <img
                     src={DeliveryIcon}
                     alt="delivery-icon"
@@ -85,7 +113,9 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <p className="font-medium text-sm lg:text-base">Free Delivery</p>
+                  <p className="font-medium text-sm lg:text-base">
+                    Free Delivery
+                  </p>
                   <p className="text-[10px] lg:text-xs font-medium underline">
                     Enter your postal code for Delivery Availability
                   </p>
@@ -94,11 +124,13 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
               <hr />
 
               <div className="flex flex-row gap-4 items-center pt-2 lg:pt-4 pb-4 lg:pb-6 pl-2 lg:pl-4">
-                <div className="w-10 h-10 flex justify-center">
+                <div className="flex justify-center items-center">
                   <img src={ReturnDeliveryIcon} alt="return-delivery-icon" />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <p className="font-medium text-sm lg:text-base">Return Delivery</p>
+                  <p className="font-medium text-sm lg:text-base">
+                    Return Delivery
+                  </p>
                   <p className="text-[10px] lg:text-xs font-medium">
                     Free 30 Days Delivery Returns.{" "}
                     <span className="underline">Details</span>

@@ -3,7 +3,7 @@ import type { CartItems, Carts, Products } from "../../types/ProductTypes";
 import StarRating from "../../components/ui/StarRating";
 import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 const HomeProductItem = ({
   product,
@@ -112,7 +112,7 @@ const HomeProductItem = ({
           </button>
           <button
             onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
-            className="bg-white flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
+            className="bg-white hidden md:flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
           >
             <img src={EyeIcon} alt="eye-icon" />
           </button>
@@ -125,9 +125,9 @@ const HomeProductItem = ({
         </button>
       </div>
       <div className="flex flex-col gap-2">
-        <p className="font-medium text-xs md:text-base line-clamp-1">
+        <Link to={`${HOMEPAGE}/${product.id}`} className="font-medium text-xs md:text-base line-clamp-1">
           {product.title}
-        </p>
+        </Link>
         <div className="flex flex-col sm:flex-row gap-0 sm:gap-3">
           <p className="font-medium text-[#DB4444] text-xs md:text-base">
             ${(product.price * 0.5).toFixed(2)}
