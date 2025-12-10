@@ -41,9 +41,11 @@ const SignupSection = () => {
             <span>Sign up with Google</span>
           </button>
           <div className="mt-4 flex flex-row gap-4 justify-center">
-            <p className="text-sm md:text-base">Already have account?</p>
+            <p className="text-sm md:text-base text-[#000000B3]">
+              Already have account?
+            </p>
             <a
-              className="text-sm md:text-base hover:font-medium hover:border-b hover:border-b-[#00000080]"
+              className="text-sm text-[#000000B3] font-medium md:text-base border-b border-transparent hover:border-b-[#00000080]"
               href={LOGIN}
             >
               Login
