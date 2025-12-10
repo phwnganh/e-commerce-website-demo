@@ -17,11 +17,13 @@ import Wishlist from "../../assets/Wishlist.svg";
 import UserCircle from "../../assets/user-circle.svg";
 import UserShape from "../../assets/user-shape.svg";
 import { useEffect, useRef, useState } from "react";
-import type { User } from "../../types/AuthType";
 import type { Carts, Products } from "../../types/ProductTypes";
+import { useAtomValue, useSetAtom } from "jotai";
+import { userAtom } from "../../atom/store";
 const MainNavigation = () => {
-  const [user, setUser] = useState<User | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const user = useAtomValue(userAtom);
+  const setUser = useSetAtom(userAtom);
   const [wishlists, setWishlists] = useState<Products[]>([]);
   const [carts, setCarts] = useState<Carts>({
     id: "1",
@@ -32,16 +34,6 @@ const MainNavigation = () => {
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }, []);
 
   useEffect(() => {
     const savedWishlist = localStorage.getItem("wishlist");
@@ -78,6 +70,7 @@ const MainNavigation = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
+    setUser(null);
     navigate(LOGIN);
   };
   return (
@@ -170,7 +163,10 @@ const MainNavigation = () => {
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg> */}
-          <NavLink to={user ? WISHLIST : LOGIN} className="rounded-full relative">
+          <NavLink
+            to={user ? WISHLIST : LOGIN}
+            className="rounded-full relative"
+          >
             <img src={Wishlist} alt="heart-icon" />
             {user && (
               <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] flex justify-center items-center text-xs">
@@ -193,7 +189,10 @@ const MainNavigation = () => {
             <circle cx="20" cy="21" r="1" />
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
           </svg> */}
-          <NavLink to={user ? CART : LOGIN} className="w-8 h-8 flex justify-center relative">
+          <NavLink
+            to={user ? CART : LOGIN}
+            className="w-8 h-8 flex justify-center relative"
+          >
             <img src={CartIcon} alt="cart-icon" />
             {user && (
               <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] flex justify-center items-center text-xs">

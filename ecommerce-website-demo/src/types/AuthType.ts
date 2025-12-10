@@ -27,4 +27,6 @@ export type GlobalContext = {
   products: Products[];
   categories: Categories[];
   categoriesNavigation: string[];
+  user: User | null;
+  setUser: () => void;
 };

@@ -5,7 +5,8 @@ import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
-import type { User } from "../../types/AuthType";
+import { useAtomValue } from "jotai";
+import { userAtom } from "../../atom/store";
 const HomeProductItem = ({
   product,
   wishlists,
@@ -16,24 +17,13 @@ const HomeProductItem = ({
   onAddToWishlist: (product: Products) => void;
 }) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
+  const user = useAtomValue(userAtom);
   const [cartsSaved, setCartsSaved] = useState<Carts>({
     id: "1",
     total: 0,
     discountTotal: 0,
     products: [],
   });
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }, []);
 
   useEffect(() => {
     const savedCarts = localStorage.getItem("carts");

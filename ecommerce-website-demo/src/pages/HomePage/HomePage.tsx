@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import Banner from "./Banner";
 import BestSellerProductsList from "./BestSellerProductsList";
 import CategoriesList from "./CategoriesList";
@@ -7,10 +6,12 @@ import LimitedOfferBanner from "./LimitedOfferBanner";
 import NewProductsAdvertisement from "./NewProductsAdvertisement";
 import ProductsExplorationList from "./ProductsExplorationList";
 import TodaysProductsList from "./TodaysProductsList";
-import { DataContext } from "../../context/GlobalDataContext";
+import { useAtomValue } from "jotai";
+import { categoriesAtom, productsAtom } from "../../atom/store";
 
 const HomePage = () => {
-  const { products, categories } = useContext(DataContext);
+  const products = useAtomValue(productsAtom)
+  const categories = useAtomValue(categoriesAtom)
 
   return (
     <main className="max-w-[1170px] mx-auto">

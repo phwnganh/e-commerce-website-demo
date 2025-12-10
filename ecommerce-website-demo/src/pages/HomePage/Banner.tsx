@@ -1,10 +1,10 @@
-import { useContext,} from "react";
 import CategoriesNavigation from "./CategoriesNavigation";
 import HeroBanner from "./HeroBanner";
-import { DataContext } from "../../context/GlobalDataContext";
+import { useAtomValue } from "jotai";
+import { categoriesNavigationAtom } from "../../atom/store";
 
 const Banner = () => {
-  const { categoriesNavigation } = useContext(DataContext);
+  const categoriesNavigation = useAtomValue(categoriesNavigationAtom)
   return (
     <section className="flex lg:flex-row md:flex-col flex-col gap-11 p-4 lg:p-0">
       <CategoriesNavigation categories={categoriesNavigation} />

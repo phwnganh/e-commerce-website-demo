@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
-import { DataContext } from "../../context/GlobalDataContext";
+import { useAtomValue } from "jotai";
+import { productsAtom } from "../../atom/store";
 
 const RelatedItemSection = () => {
   const [wishlists, setWishlists] = useState<Products[]>([]);
-  const { products } = useContext(DataContext);
+  const products = useAtomValue(productsAtom)
   useEffect(() => {
     const savedWishlist = localStorage.getItem("wishlist");
     if (savedWishlist) {

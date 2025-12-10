@@ -8,27 +8,17 @@ import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { LOGIN, USER_PROFILE } from "../../constants/route.constants";
 import { useEffect, useState } from "react";
-import type { User } from "../../types/AuthType";
+import { useAtomValue } from "jotai";
+import { userAtom } from "../../atom/store";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {
   const [wishlists, setWishlists] = useState<Products[]>([]);
-  const [user, setUser] = useState<User | null>(null);
+  const user = useAtomValue(userAtom)
   const navigate = useNavigate();
   useEffect(() => {
     const savedWishlist = localStorage.getItem("wishlist");
     if (savedWishlist) {
       setWishlists(JSON.parse(savedWishlist));
-    }
-  }, []);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (error) {
-        console.log(error);
-      }
     }
   }, []);
   const handleAddToWishlist = (product: Products) => {

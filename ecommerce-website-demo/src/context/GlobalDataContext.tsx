@@ -1,19 +1,17 @@
-import React, { createContext, useEffect, useState } from "react";
-import type { Products } from "../types/ProductTypes";
-import type { Categories } from "../types/CategoryType";
-import type { GlobalContext } from "../types/AuthType";
+import React, { useEffect } from "react";
+import { useSetAtom } from "jotai";
+import {
+  categoriesAtom,
+  categoriesNavigationAtom,
+  productsAtom,
+  userAtom,
+} from "../atom/store";
 
-export const DataContext = createContext<GlobalContext>({
-  products: [],
-  categories: [],
-  categoriesNavigation: [],
-});
 const DataProvider = ({ children }: { children: React.ReactNode }) => {
-  const [products, setProducts] = useState<Products[]>([]);
-  const [categories, setCategories] = useState<Categories[]>([]);
-  const [categoriesNavigation, setCategoriesNavigation] = useState<string[]>(
-    []
-  );
+  const setProducts = useSetAtom(productsAtom);
+  const setCategories = useSetAtom(categoriesAtom);
+  const setCategoriesNavigation = useSetAtom(categoriesNavigationAtom);
+  const setUser = useSetAtom(userAtom);
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
@@ -30,17 +28,14 @@ const DataProvider = ({ children }: { children: React.ReactNode }) => {
       .then((res) => res.json())
       .then((res) => setCategoriesNavigation(res));
   }, []);
-  return (
-    <DataContext.Provider
-      value={{
-        products: products,
-        categories: categories,
-        categoriesNavigation: categoriesNavigation,
-      }}
-    >
-      {children}
-    </DataContext.Provider>
-  );
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+  return children;
 };
 
 export default DataProvider;

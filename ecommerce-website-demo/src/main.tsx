@@ -5,9 +5,9 @@ import { BrowserRouter } from "react-router-dom";
 import DataProvider from "./context/GlobalDataContext";
 
 createRoot(document.getElementById("root")!).render(
+  <DataProvider>
     <BrowserRouter>
-      <DataProvider>
-          <AppRoutes />
-      </DataProvider>
+      <AppRoutes />
     </BrowserRouter>
+  </DataProvider>
 );

@@ -4,10 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import PreLoginComponent from "../../components/ui/PreLoginComponent";
+import { useSetAtom } from "jotai";
+import { userAtom } from "../../atom/store";
 const LoginSection = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const setUser = useSetAtom(userAtom);
   const navigate = useNavigate();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +35,7 @@ const LoginSection = () => {
 
       localStorage.setItem("user", JSON.stringify(data));
       localStorage.setItem("token", data.accessToken);
+      setUser(data);
       navigate(HOMEPAGE);
     } catch (error: any) {
       setError(error.message);

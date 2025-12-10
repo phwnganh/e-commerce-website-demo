@@ -1,10 +1,10 @@
-import { useContext } from "react";
 import RelatedProducts from "./RelatedProducts";
 import WishlistSection from "./WishlistSection";
-import { DataContext } from "../../context/GlobalDataContext";
+import { useAtomValue } from "jotai";
+import { productsAtom } from "../../atom/store";
 
 const WishlistPage = () => {
-  const { products } = useContext(DataContext);
+  const products = useAtomValue(productsAtom);
 
   return (
     <main className="max-w-[1170px] mx-auto">
