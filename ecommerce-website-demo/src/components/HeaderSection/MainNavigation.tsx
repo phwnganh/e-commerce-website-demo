@@ -60,11 +60,10 @@ const MainNavigation = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
-  useEffect(() => {
-    if (location.pathname.startsWith(USER_PROFILE)) {
-      setIsDropdownOpen(true);
-    }
-  }, [location.pathname]);
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate(LOGIN);
+  };
   return (
     <section className="flex flex-row justify-between items-center py-[7px] px-4 lg:px-0">
       <button className="md:hidden block">
@@ -190,9 +189,7 @@ const MainNavigation = () => {
             <button
               onClick={handleUserClick}
               className={`relative w-8 h-8 flex justify-center cursor-pointer ${
-                isDropdownOpen || location.pathname.startsWith(USER_PROFILE)
-                  ? "bg-[#DB4444] rounded-full"
-                  : ""
+                isDropdownOpen ? "bg-[#DB4444] rounded-full" : ""
               }`}
             >
               <div
@@ -226,17 +223,13 @@ const MainNavigation = () => {
                 className={`${isDropdownOpen ? "brightness-0 invert w-full h-full border" : ""}`}
               /> */}
               {isDropdownOpen && (
-                <div className="absolute top-9 right-0">
-                  <div className="flex flex-col gap-3 bg-[#0000000A] backdrop-blur-[150px] rounded-sm pt-[18px] pl-5 pr-3 pb-2.5 text-[#FAFAFA]">
-                    <NavLink
-                      to={USER_PROFILE}
-                      className={({ isActive }) =>
-                        `flex flex-row items-center gap-4 w-56 group ${
-                          isActive ? "bg-gray-300" : "hover:bg-gray-300"
-                        }`
-                      }
+                <div className="absolute top-9 right-0 z-10">
+                  <div className="flex flex-col gap-3 bg-[#0000000A] w-56 pt-[18px] pb-2.5 backdrop-blur-[150px] rounded-sm text-[#FAFAFA]">
+                    <button
+                      onClick={() => navigate(USER_PROFILE)}
+                      className={`flex flex-row items-center gap-4 py-0.5 group hover:bg-gray-300`}
                     >
-                      <div className="w-8 h-8 flex justify-center items-center">
+                      <div className="w-6 h-6 flex justify-center items-center">
                         <img
                           src={WhiteUserIcon}
                           alt="user-icon"
@@ -246,8 +239,8 @@ const MainNavigation = () => {
                       <p className="text-sm group-hover:text-black">
                         Manage My Account
                       </p>
-                    </NavLink>
-                    <div className="flex flex-row items-center gap-4 group hover:bg-gray-300">
+                    </button>
+                    <button className="flex flex-row items-center gap-4 py-0.5 group hover:bg-gray-300">
                       <div className="w-6 h-6 flex justify-center items-center">
                         <img
                           src={CancelIcon}
@@ -258,8 +251,8 @@ const MainNavigation = () => {
                       <p className="text-sm group-hover:text-black">
                         My Cancellations
                       </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-4 hover:bg-gray-300 group">
+                    </button>
+                    <button className="flex flex-row items-center gap-4 py-0.5 hover:bg-gray-300 group">
                       <div className="w-6 h-6 flex justify-center items-center">
                         <img
                           src={ReviewsIcon}
@@ -270,8 +263,11 @@ const MainNavigation = () => {
                       <p className="text-sm group-hover:text-black">
                         My Reviews
                       </p>
-                    </div>
-                    <div className="flex flex-row items-center gap-4 hover:bg-gray-300 group">
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      className="flex flex-row items-center gap-4 py-0.5 hover:bg-gray-300 group"
+                    >
                       <div className="w-6 h-6 flex justify-center items-center">
                         <img
                           src={LogoutIcon}
@@ -280,7 +276,7 @@ const MainNavigation = () => {
                         />
                       </div>
                       <p className="text-sm group-hover:text-black">Logout</p>
-                    </div>
+                    </button>
                   </div>
                 </div>
               )}

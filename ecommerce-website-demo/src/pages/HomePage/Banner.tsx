@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext,} from "react";
 import CategoriesNavigation from "./CategoriesNavigation";
 import HeroBanner from "./HeroBanner";
 import { DataContext } from "../../context/GlobalDataContext";

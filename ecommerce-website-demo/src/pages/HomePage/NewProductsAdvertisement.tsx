@@ -84,7 +84,7 @@ const NewProductsAdvertisement = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="flex flex-col gap-2 absolute left-6 bottom-6 items-start">
+          <div className="flex flex-col gap-2 absolute left-6 bottom-15 items-start">
             <h4 className="font-semibold text-xl md:text-2xl text-[#FAFAFA]">
               Perfume
             </h4>

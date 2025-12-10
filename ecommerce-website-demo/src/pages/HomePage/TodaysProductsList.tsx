@@ -182,7 +182,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
           View All Products
         </PrimaryCustomButton>
       </div>
-      <hr className="mt-15 border-[0.5px] border-[#0000004D]" />{" "}
+      <hr className="mt-15 border-t border-t-[#0000004D]" />{" "}
     </section>
   );
 };

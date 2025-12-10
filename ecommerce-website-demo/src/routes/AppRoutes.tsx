@@ -10,8 +10,6 @@ import {
   USER_PROFILE,
   WISHLIST,
 } from "../constants/route.constants";
-import PostLoginLayout from "../components/layouts/PostLoginLayout";
-import PreLoginLayout from "../components/layouts/PreLoginLayout";
 import MainLayout from "../components/layouts/MainLayout";
 
 const LoginPage = lazy(() => import("../pages/PreLoginPage/LoginPage"));

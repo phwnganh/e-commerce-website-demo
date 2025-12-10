@@ -57,7 +57,6 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
           </button>
         </div>
       </div>
-
       <div
         ref={scrollContainerRef}
         className="mt-15 flex flex-row gap-7 overflow-x-hidden scrollbar-hide snap-x snap-mandatory"
@@ -65,7 +64,7 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
       >
         {categories.map((category, index) => (
           <button
-            className="flex flex-col gap-4 border-2 justify-center items-center rounded-sm border-[#0000004D] w-[170px] py-6 px-14 hover:bg-[#DB4444] hover:border-[#DB4444] group cursor-pointer"
+            className="flex flex-col gap-4 border justify-center items-center rounded-sm border-[#0000004D] w-[170px] py-6 px-14 hover:bg-[#DB4444] hover:border-[#DB4444] group cursor-pointer"
             key={index}
           >
             <div className="w-14 h-14">
@@ -81,7 +80,7 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
           </button>
         ))}
       </div>
-      <hr className="mt-17.5 border-[0.5px] border-[#0000004D]" />
+      <hr className="mt-17.5 border-t border-t-[#0000004D]" />{" "}
     </section>
   );
 };
