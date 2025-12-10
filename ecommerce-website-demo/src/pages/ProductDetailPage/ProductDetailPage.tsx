@@ -17,11 +17,10 @@ const ProductDetailPage = () => {
     return;
   }
   return (
-    <div>
-      {" "}
+    <main className="max-w-[1170px] mx-auto">
       <ProductDetailSection productData={productData} />
       <RelatedItemSection />
-    </div>
+    </main>
   );
 };
 

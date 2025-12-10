@@ -56,7 +56,7 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
   const currentProducts = products.slice(startIndex, startIndex + itemsPerView);
 
   return (
-    <section className="mt-17 max-w-[1170px] mx-auto p-4 lg:p-0">
+    <section className="mt-17 p-4 lg:p-0">
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-4 md:gap-6">
           <div className="flex flex-row gap-4 items-center">

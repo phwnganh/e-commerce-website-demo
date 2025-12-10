@@ -1,8 +1,8 @@
 
 const AccountPage = () => {
     return (
-        <div>
-        </div>
+        <main className="max-w-[1170px] mx-auto">
+        </main>
     );
 };
 

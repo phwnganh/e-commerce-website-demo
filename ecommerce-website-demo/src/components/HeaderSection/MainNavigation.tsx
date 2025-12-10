@@ -66,7 +66,7 @@ const MainNavigation = () => {
     }
   }, [location.pathname]);
   return (
-    <section className="flex flex-row justify-between items-center py-[7px] px-4 lg:p-0">
+    <section className="flex flex-row justify-between items-center py-[7px] px-4 lg:px-0">
       <button className="md:hidden block">
         <svg width="24" height="24" stroke="currentColor">
           <path d="M3 6h18M3 12h18M3 18h18" />
@@ -77,8 +77,8 @@ const MainNavigation = () => {
         <NavLink
           className={({ isActive }) =>
             `${
-              isActive && "border-b-2 border-b-[#00000080]"
-            } hover:border-b-2 border-b-[#00000080]`
+              isActive && "border-b border-b-[#00000080]"
+            } hover:border-b hover:border-b-[#00000080]`
           }
           to={HOMEPAGE}
         >
@@ -86,18 +86,31 @@ const MainNavigation = () => {
         </NavLink>
         <NavLink
           to={CONTACT}
-          className={({ isActive }) => `${isActive && "border-b-2"}`}
+          className={({ isActive }) =>
+            `${
+              isActive && "border-b border-b-[#00000080]"
+            } hover:border-b border-b-[#00000080]`
+          }
         >
           Contact
         </NavLink>
-        <NavLink to={ABOUT}>About</NavLink>
+        <NavLink
+          to={ABOUT}
+          className={({ isActive }) =>
+            `${
+              isActive && "border-b border-b-[#00000080]"
+            } hover:border-b border-b-[#00000080]`
+          }
+        >
+          About
+        </NavLink>
         {!user && (
           <NavLink
             to={LOGIN}
             className={({ isActive }) =>
               `${
-                isActive && "border-b-2 border-b-[#00000080]"
-              } hover:border-b-2 border-b-[#00000080]`
+                isActive && "border-b border-b-[#00000080]"
+              } hover:border-b border-b-[#00000080]`
             }
           >
             Login

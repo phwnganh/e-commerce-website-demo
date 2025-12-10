@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import Banner from "./Banner";
 import BestSellerProductsList from "./BestSellerProductsList";
 import CategoriesList from "./CategoriesList";
@@ -13,7 +13,7 @@ const HomePage = () => {
   const { products, categories } = useContext(DataContext);
 
   return (
-    <div>
+    <main className="max-w-[1170px] mx-auto">
       <Banner />
       <TodaysProductsList products={products} />
       <CategoriesList categories={categories} />
@@ -22,7 +22,7 @@ const HomePage = () => {
       <ProductsExplorationList products={products} />
       <NewProductsAdvertisement />
       <KeyFeatures />
-    </div>
+    </main>
   );
 };
 

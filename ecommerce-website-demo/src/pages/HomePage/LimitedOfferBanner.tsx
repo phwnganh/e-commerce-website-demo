@@ -2,7 +2,7 @@ import BlutetoothSpeaker from "../../assets/JBL_BOOMBOX_2_HERO_020_x1 (1) 1.png"
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 const LimitedOfferBanner = () => {
   return (
-    <section className="max-w-[1170px] mx-auto mt-35 bg-black">
+    <section className="mt-35 bg-black">
       <div className="flex flex-col md:flex-row gap-7 items-center p-4 md:p-10">
         <div className="flex flex-col gap-6 md:gap-8 basis-[50%] md:basis-[40%] items-start">
           <p className="text-[#00FF66] font-semibold text-sm md:text-base">

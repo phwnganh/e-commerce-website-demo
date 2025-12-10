@@ -73,7 +73,7 @@ const WishlistSection = () => {
     localStorage.setItem("wishlist", JSON.stringify(updated));
   };
   return (
-    <section className="max-w-[1170px] mx-auto mt-20 px-4 lg:px-0">
+    <section className="mt-20 px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">
         <p className="text-base md:text-xl">Wishlist ({wishlists.length})</p>
         <SecondaryCustomButton>Move All To Bag</SecondaryCustomButton>

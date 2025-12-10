@@ -85,7 +85,7 @@ const CartSection = () => {
   };
 
   return (
-    <section className="max-w-[1170px] mx-auto mt-20 mb-11 md:mb-35 px-4 lg:px-0">
+    <section className="mt-20 mb-11 md:mb-35 px-4 lg:px-0">
       <div className="flex flex-row gap-3 items-center">
         <NavLink to={HOMEPAGE} className="opacity-50 text-sm">
           Home

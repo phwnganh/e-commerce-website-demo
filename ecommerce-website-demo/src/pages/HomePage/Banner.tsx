@@ -10,7 +10,7 @@ const Banner = () => {
       .then((res) => setCategoriesNavigation(res));
   }, []);
   return (
-    <section className="max-w-[1170px] mx-auto flex lg:flex-row md:flex-col flex-col gap-11 p-4 lg:p-0">
+    <section className="flex lg:flex-row md:flex-col flex-col gap-11 p-4 lg:p-0">
       <CategoriesNavigation categories={categoriesNavigation} />
       <HeroBanner />
     </section>

@@ -35,7 +35,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
     localStorage.setItem("wishlist", JSON.stringify(updated));
   };
   return (
-    <section className="mt-20 max-w-[1170px] mx-auto px-4 lg:px-0">
+    <section className="mt-20 px-4 lg:px-0">
       <div className="flex flex-row gap-3 items-center">
         <NavLink to={USER_PROFILE} className="opacity-50 text-sm">
           Account

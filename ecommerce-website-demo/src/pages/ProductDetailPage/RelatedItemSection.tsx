@@ -26,7 +26,7 @@ const RelatedItemSection = () => {
     localStorage.setItem("wishlist", JSON.stringify(updated));
   };
   return (
-    <section className="my-15 lg:my-35 mx-auto max-w-[1170px] px-4 lg:px-0">
+    <section className="my-15 lg:my-35 px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row gap-4 items-center">
           <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>

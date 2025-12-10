@@ -68,7 +68,7 @@ const RelatedProducts = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="max-w-[1170px] mx-auto mt-15 mb-15 md:mb-35 px-4 lg:px-0">
+    <section className="mt-15 mb-15 md:mb-35 px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row gap-4 items-center">
           <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>

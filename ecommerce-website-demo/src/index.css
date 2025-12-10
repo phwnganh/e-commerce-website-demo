@@ -71,4 +71,5 @@ button:focus-visible {
 
 :root {
   font-family: Poppins;
+  overflow-y: scroll;
 }
