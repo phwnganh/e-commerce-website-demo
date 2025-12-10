@@ -1,4 +1,4 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   ABOUT,
   CART,
@@ -9,10 +9,7 @@ import {
   WISHLIST,
 } from "../../constants/route.constants";
 import CartIcon from "../../assets/Cart1.svg";
-import WhiteUserIcon from "../../assets/white-user-icon.svg";
-import CancelIcon from "../../assets/icon-cancel.svg";
-import ReviewsIcon from "../../assets/Icon-Reviews.svg";
-import LogoutIcon from "../../assets/Icon-logout.svg";
+
 import Wishlist from "../../assets/Wishlist.svg";
 import UserCircle from "../../assets/user-circle.svg";
 import UserShape from "../../assets/user-shape.svg";
@@ -20,10 +17,10 @@ import { useEffect, useRef, useState } from "react";
 import type { Carts, Products } from "../../types/ProductTypes";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom } from "../../atom/store";
+import UserDropdown from "../ui/UserDropdown";
 const MainNavigation = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = useAtomValue(userAtom);
-  const setUser = useSetAtom(userAtom);
   const [wishlists, setWishlists] = useState<Products[]>([]);
   const [carts, setCarts] = useState<Carts>({
     id: "1",
@@ -32,8 +29,9 @@ const MainNavigation = () => {
     products: [],
   });
   const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const navigate = useNavigate();
   const location = useLocation();
+
+  const isUserActive = isDropdownOpen || location.pathname === USER_PROFILE;
 
   useEffect(() => {
     const savedWishlist = localStorage.getItem("wishlist");
@@ -68,11 +66,6 @@ const MainNavigation = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-    navigate(LOGIN);
-  };
   return (
     <section className="flex flex-row justify-between items-center py-[7px] px-4 lg:px-0">
       <button className="md:hidden block">
@@ -205,7 +198,7 @@ const MainNavigation = () => {
               <button
                 onClick={handleUserClick}
                 className={`relative w-8 h-8 flex justify-center cursor-pointer ${
-                  isDropdownOpen ? "bg-[#DB4444] rounded-full" : ""
+                  isUserActive ? "bg-[#DB4444] rounded-full" : ""
                 }`}
               >
                 <div
@@ -217,7 +210,7 @@ const MainNavigation = () => {
                     src={UserCircle}
                     alt=""
                     className={`${
-                      isDropdownOpen
+                      isUserActive
                         ? "w-1.5 h-1.5 brightness-0 invert"
                         : "w-3 h-3"
                     }`}
@@ -226,7 +219,7 @@ const MainNavigation = () => {
                     src={UserShape}
                     alt=""
                     className={`${
-                      isDropdownOpen
+                      isUserActive
                         ? "w-[11px] h-[5px] brightness-0 invert"
                         : "w-[17px] h-2"
                     }`}
@@ -238,64 +231,7 @@ const MainNavigation = () => {
                 alt="user-icon"
                 className={`${isDropdownOpen ? "brightness-0 invert w-full h-full border" : ""}`}
               /> */}
-                {isDropdownOpen && (
-                  <div className="absolute top-9 right-0 z-10">
-                    <div className="flex flex-col gap-3 bg-[#0000000A] w-56 pt-[18px] pb-2.5 backdrop-blur-[150px] rounded-sm text-[#FAFAFA]">
-                      <button
-                        onClick={() => navigate(USER_PROFILE)}
-                        className={`flex flex-row items-center gap-4 py-0.5 group hover:bg-gray-300`}
-                      >
-                        <div className="w-6 h-6 flex justify-center items-center">
-                          <img
-                            src={WhiteUserIcon}
-                            alt="user-icon"
-                            className="group-hover:brightness-1"
-                          />
-                        </div>
-                        <p className="text-sm group-hover:text-black">
-                          Manage My Account
-                        </p>
-                      </button>
-                      <button className="flex flex-row items-center gap-4 py-0.5 group hover:bg-gray-300">
-                        <div className="w-6 h-6 flex justify-center items-center">
-                          <img
-                            src={CancelIcon}
-                            alt="cancel-icon"
-                            className="group-hover:brightness-1"
-                          />
-                        </div>
-                        <p className="text-sm group-hover:text-black">
-                          My Cancellations
-                        </p>
-                      </button>
-                      <button className="flex flex-row items-center gap-4 py-0.5 hover:bg-gray-300 group">
-                        <div className="w-6 h-6 flex justify-center items-center">
-                          <img
-                            src={ReviewsIcon}
-                            alt="review-icon"
-                            className="group-hover:brightness-1"
-                          />
-                        </div>
-                        <p className="text-sm group-hover:text-black">
-                          My Reviews
-                        </p>
-                      </button>
-                      <button
-                        onClick={handleLogout}
-                        className="flex flex-row items-center gap-4 py-0.5 hover:bg-gray-300 group"
-                      >
-                        <div className="w-6 h-6 flex justify-center items-center">
-                          <img
-                            src={LogoutIcon}
-                            alt="logout-icon"
-                            className="group-hover:brightness-1"
-                          />
-                        </div>
-                        <p className="text-sm group-hover:text-black">Logout</p>
-                      </button>
-                    </div>
-                  </div>
-                )}
+                {isDropdownOpen && <UserDropdown />}
               </button>
             </div>
           )}
