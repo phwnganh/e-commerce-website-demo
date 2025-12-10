@@ -4,3 +4,5 @@ export const HOMEPAGE = "/home";
 export const WISHLIST = "/wishlist";
 export const CART = "/cart";
 export const USER_PROFILE = "/account";
+export const CONTACT = "/contact";
+export const ABOUT = "/about";

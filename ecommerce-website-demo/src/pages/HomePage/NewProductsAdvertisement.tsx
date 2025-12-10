@@ -1,7 +1,7 @@
-import PlayStation5 from "../../../public/play-station-5.png";
-import WomenCollection from "../../../public/attractive-woman-wearing-hat-posing-black-background1.png";
-import AmazonSpeaker from "../../../public/69-694768_amazon-echo-png-clipart-transparent-amazon-echo-png 1.png";
-import GucciPerfume from "../../../public/perfume.png";
+import PlayStation5 from "../../assets/play-station-5.png";
+import WomenCollection from "../../assets/attractive-woman-wearing-hat-posing-black-background1.png";
+import AmazonSpeaker from "../../assets/69-694768_amazon-echo-png-clipart-transparent-amazon-echo-png 1.png";
+import GucciPerfume from "../../assets/perfume.png";
 const NewProductsAdvertisement = () => {
   return (
     <section className="mt-17 md:mt-35 max-w-[1170px] mx-auto p-4 lg:p-0">

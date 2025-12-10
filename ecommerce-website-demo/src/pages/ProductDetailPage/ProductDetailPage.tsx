@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
-import PostLoginHeaderSection from "../../components/HeaderSection/PostLoginHeaderSection";
 import ProductDetailSection from "./ProductDetailSection";
 import RelatedItemSection from "./RelatedItemSection";
-import FooterSection from "../../components/FooterSection/FooterSection";
 import { useEffect, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 
@@ -20,10 +18,9 @@ const ProductDetailPage = () => {
   }
   return (
     <div>
-      <PostLoginHeaderSection />
-                  <hr className='mt-4 border-[0.5px] border-[#0000004D]'/>      <ProductDetailSection productData={productData} />
+      {" "}
+      <ProductDetailSection productData={productData} />
       <RelatedItemSection />
-      <FooterSection />
     </div>
   );
 };

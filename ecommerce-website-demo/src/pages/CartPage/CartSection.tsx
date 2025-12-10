@@ -8,7 +8,12 @@ import { CART, HOMEPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
 const CartSection = () => {
-  const [cart, setCart] = useState<Carts>();
+  const [cart, setCart] = useState<Carts>({
+    id: "1",
+    total: 0,
+    discountTotal: 0,
+    products: []
+  });
   const navigate = useNavigate()
   useEffect(() => {
     const savedCarts = localStorage.getItem("carts");

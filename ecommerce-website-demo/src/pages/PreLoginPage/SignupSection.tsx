@@ -1,14 +1,14 @@
 import googleIcon from "../../assets/Icon-Google.svg";
-import PreLoginLayout from "../../components/layouts/PreLoginLayout";
+import PreLoginComponent from "../../components/ui/PreLoginComponent";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import { LOGIN } from "../../constants/route.constants";
 const SignupSection = () => {
   return (
-    <PreLoginLayout>
+    <PreLoginComponent>
       <h3 className="text-2xl md:text-4xl">Create an account</h3>
       <p className="text-sm md:text-base">Enter your details below</p>
 
-      <form className="mt-12 flex flex-col gap-10" method="post">
+      <form className="mt-12 flex flex-col gap-10 w-full" method="post">
         <input
           type="text"
           name="name"
@@ -51,7 +51,7 @@ const SignupSection = () => {
           </div>
         </div>
       </form>
-    </PreLoginLayout>
+    </PreLoginComponent>
   );
 };
 

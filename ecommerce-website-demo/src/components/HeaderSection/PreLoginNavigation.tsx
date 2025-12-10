@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { HOMEPAGE, LOGIN, SIGNUP } from "../../constants/route.constants";
+import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
 
 const PreLoginNavigation = () => {
   return (

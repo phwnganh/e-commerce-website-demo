@@ -2,8 +2,8 @@ import { useState, type FormEvent } from "react";
 import type { LoginResponse } from "../../types/AuthType";
 import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
-import PreLoginLayout from "../../components/layouts/PreLoginLayout";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import PreLoginComponent from "../../components/ui/PreLoginComponent";
 const LoginSection = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -39,7 +39,7 @@ const LoginSection = () => {
   };
 
   return (
-    <PreLoginLayout>
+    <PreLoginComponent>
       <h3 className="text-2xl md:text-4xl">Log in to Exclusive</h3>
       <p className="text-sm md:text-base">Enter your details below</p>
       <form className="mt-12 flex flex-col gap-10" onSubmit={handleSubmit}>
@@ -72,7 +72,7 @@ const LoginSection = () => {
           </a>
         </div>
       </form>
-    </PreLoginLayout>
+    </PreLoginComponent>
   );
 };
 

@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import FooterSection from "../FooterSection/FooterSection";
 import PostLoginHeaderSection from "../HeaderSection/PostLoginHeaderSection";
+import FooterSection from "../FooterSection/FooterSection";
 
-const PreLoginLayout = () => {
+const PostLoginLayout = () => {
   return (
     <>
       <PostLoginHeaderSection />
@@ -12,4 +12,4 @@ const PreLoginLayout = () => {
   );
 };
 
-export default PreLoginLayout;
+export default PostLoginLayout;
