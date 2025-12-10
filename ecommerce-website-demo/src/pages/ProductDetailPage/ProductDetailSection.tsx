@@ -5,12 +5,15 @@ import MinusIcon from "../../assets/icon-minus.svg";
 import HeartIcon from "../../assets/Wishlist.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
-import { NavLink } from "react-router-dom";
-import { USER_PROFILE } from "../../constants/route.constants";
+import { NavLink, useNavigate } from "react-router-dom";
+import { LOGIN, USER_PROFILE } from "../../constants/route.constants";
 import { useEffect, useState } from "react";
+import type { User } from "../../types/AuthType";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {
   const [wishlists, setWishlists] = useState<Products[]>([]);
+  const [user, setUser] = useState<User | null>(null);
+  const navigate = useNavigate();
   useEffect(() => {
     const savedWishlist = localStorage.getItem("wishlist");
     if (savedWishlist) {
@@ -18,6 +21,16 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
     }
   }, []);
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, []);
   const handleAddToWishlist = (product: Products) => {
     const saved = localStorage.getItem("wishlist");
     if (saved) {
@@ -34,6 +47,18 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
     setWishlists(updated);
     localStorage.setItem("wishlist", JSON.stringify(updated));
   };
+
+  const requireLogin = () => {
+    if (!user) {
+      navigate(LOGIN);
+      return false;
+    }
+    return true;
+  };
+
+  const isInWishlist =
+    user && wishlists.some((item) => item.id === productData.id);
+
   return (
     <section className="mt-20 px-4 lg:px-0">
       <div className="flex flex-row gap-3 items-center">
@@ -123,9 +148,14 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                 Buy Now
               </button>
               <button
-                onClick={() => handleAddToWishlist(productData)}
+                onClick={() => {
+                  if (!requireLogin()) {
+                    return;
+                  }
+                  handleAddToWishlist(productData);
+                }}
                 className={`${
-                  wishlists.some((item) => item.id === productData.id)
+                  isInWishlist
                     ? "bg-[#DB4444] border-[#DB4444] hover:bg-[#DB4444] hover:border-[#DB4444] cursor-pointer"
                     : "bg-white hover:bg-gray-200 cursor-pointer"
                 } group ml-[3px] border border-[#00000080] hover:bg-[#DB4444] hover:border-gray-200 rounded-sm w-10 h-10 flex justify-center items-center`}
@@ -134,9 +164,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                   src={HeartIcon}
                   alt="heart-icon"
                   className={`${
-                    wishlists.some((item) => item.id === productData.id)
-                      ? "brightness-1 invert"
-                      : ""
+                    isInWishlist ? "brightness-1 invert" : ""
                   } group-hover:brightness-0 group-hover:invert`}
                 />
               </button>
@@ -160,7 +188,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                   </p>
                 </div>
               </div>
-              <hr />
+              <hr className="border-[#00000080]" />
 
               <div className="flex flex-row gap-4 items-center pt-2 lg:pt-4 pb-4 lg:pb-6 pl-2 lg:pl-4">
                 <div className="flex justify-center items-center">

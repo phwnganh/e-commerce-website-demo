@@ -16,7 +16,7 @@ import LogoutIcon from "../../assets/Icon-logout.svg";
 import Wishlist from "../../assets/Wishlist.svg";
 import UserCircle from "../../assets/user-circle.svg";
 import UserShape from "../../assets/user-shape.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { User } from "../../types/AuthType";
 import type { Carts, Products } from "../../types/ProductTypes";
 const MainNavigation = () => {
@@ -29,6 +29,7 @@ const MainNavigation = () => {
     discountTotal: 0,
     products: [],
   });
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
@@ -54,6 +55,21 @@ const MainNavigation = () => {
     if (savedCarts) {
       setCarts(JSON.parse(savedCarts));
     }
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const handleUserClick = () => {
@@ -154,7 +170,7 @@ const MainNavigation = () => {
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg> */}
-          <NavLink to={WISHLIST} className="rounded-full relative">
+          <NavLink to={user ? WISHLIST : LOGIN} className="rounded-full relative">
             <img src={Wishlist} alt="heart-icon" />
             {user && (
               <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] flex justify-center items-center text-xs">
@@ -177,7 +193,7 @@ const MainNavigation = () => {
             <circle cx="20" cy="21" r="1" />
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
           </svg> */}
-          <NavLink to={CART} className="w-8 h-8 flex justify-center relative">
+          <NavLink to={user ? CART : LOGIN} className="w-8 h-8 flex justify-center relative">
             <img src={CartIcon} alt="cart-icon" />
             {user && (
               <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] flex justify-center items-center text-xs">
@@ -186,101 +202,103 @@ const MainNavigation = () => {
             )}
           </NavLink>
           {user && (
-            <button
-              onClick={handleUserClick}
-              className={`relative w-8 h-8 flex justify-center cursor-pointer ${
-                isDropdownOpen ? "bg-[#DB4444] rounded-full" : ""
-              }`}
-            >
-              <div
-                className={`flex flex-col items-center justify-center ${
-                  isDropdownOpen ? "gap-0.5" : "gap-0.5"
-                } `}
+            <div ref={dropdownRef} className="relative">
+              <button
+                onClick={handleUserClick}
+                className={`relative w-8 h-8 flex justify-center cursor-pointer ${
+                  isDropdownOpen ? "bg-[#DB4444] rounded-full" : ""
+                }`}
               >
-                <img
-                  src={UserCircle}
-                  alt=""
-                  className={`${
-                    isDropdownOpen
-                      ? "w-1.5 h-1.5 brightness-0 invert"
-                      : "w-3 h-3"
-                  }`}
-                />
-                <img
-                  src={UserShape}
-                  alt=""
-                  className={`${
-                    isDropdownOpen
-                      ? "w-[11px] h-[5px] brightness-0 invert"
-                      : "w-[17px] h-2"
-                  }`}
-                />
-              </div>
+                <div
+                  className={`flex flex-col items-center justify-center ${
+                    isDropdownOpen ? "gap-0.5" : "gap-0.5"
+                  } `}
+                >
+                  <img
+                    src={UserCircle}
+                    alt=""
+                    className={`${
+                      isDropdownOpen
+                        ? "w-1.5 h-1.5 brightness-0 invert"
+                        : "w-3 h-3"
+                    }`}
+                  />
+                  <img
+                    src={UserShape}
+                    alt=""
+                    className={`${
+                      isDropdownOpen
+                        ? "w-[11px] h-[5px] brightness-0 invert"
+                        : "w-[17px] h-2"
+                    }`}
+                  />
+                </div>
 
-              {/* <img
+                {/* <img
                 src={UserIcon}
                 alt="user-icon"
                 className={`${isDropdownOpen ? "brightness-0 invert w-full h-full border" : ""}`}
               /> */}
-              {isDropdownOpen && (
-                <div className="absolute top-9 right-0 z-10">
-                  <div className="flex flex-col gap-3 bg-[#0000000A] w-56 pt-[18px] pb-2.5 backdrop-blur-[150px] rounded-sm text-[#FAFAFA]">
-                    <button
-                      onClick={() => navigate(USER_PROFILE)}
-                      className={`flex flex-row items-center gap-4 py-0.5 group hover:bg-gray-300`}
-                    >
-                      <div className="w-6 h-6 flex justify-center items-center">
-                        <img
-                          src={WhiteUserIcon}
-                          alt="user-icon"
-                          className="group-hover:brightness-1"
-                        />
-                      </div>
-                      <p className="text-sm group-hover:text-black">
-                        Manage My Account
-                      </p>
-                    </button>
-                    <button className="flex flex-row items-center gap-4 py-0.5 group hover:bg-gray-300">
-                      <div className="w-6 h-6 flex justify-center items-center">
-                        <img
-                          src={CancelIcon}
-                          alt="cancel-icon"
-                          className="group-hover:brightness-1"
-                        />
-                      </div>
-                      <p className="text-sm group-hover:text-black">
-                        My Cancellations
-                      </p>
-                    </button>
-                    <button className="flex flex-row items-center gap-4 py-0.5 hover:bg-gray-300 group">
-                      <div className="w-6 h-6 flex justify-center items-center">
-                        <img
-                          src={ReviewsIcon}
-                          alt="review-icon"
-                          className="group-hover:brightness-1"
-                        />
-                      </div>
-                      <p className="text-sm group-hover:text-black">
-                        My Reviews
-                      </p>
-                    </button>
-                    <button
-                      onClick={handleLogout}
-                      className="flex flex-row items-center gap-4 py-0.5 hover:bg-gray-300 group"
-                    >
-                      <div className="w-6 h-6 flex justify-center items-center">
-                        <img
-                          src={LogoutIcon}
-                          alt="logout-icon"
-                          className="group-hover:brightness-1"
-                        />
-                      </div>
-                      <p className="text-sm group-hover:text-black">Logout</p>
-                    </button>
+                {isDropdownOpen && (
+                  <div className="absolute top-9 right-0 z-10">
+                    <div className="flex flex-col gap-3 bg-[#0000000A] w-56 pt-[18px] pb-2.5 backdrop-blur-[150px] rounded-sm text-[#FAFAFA]">
+                      <button
+                        onClick={() => navigate(USER_PROFILE)}
+                        className={`flex flex-row items-center gap-4 py-0.5 group hover:bg-gray-300`}
+                      >
+                        <div className="w-6 h-6 flex justify-center items-center">
+                          <img
+                            src={WhiteUserIcon}
+                            alt="user-icon"
+                            className="group-hover:brightness-1"
+                          />
+                        </div>
+                        <p className="text-sm group-hover:text-black">
+                          Manage My Account
+                        </p>
+                      </button>
+                      <button className="flex flex-row items-center gap-4 py-0.5 group hover:bg-gray-300">
+                        <div className="w-6 h-6 flex justify-center items-center">
+                          <img
+                            src={CancelIcon}
+                            alt="cancel-icon"
+                            className="group-hover:brightness-1"
+                          />
+                        </div>
+                        <p className="text-sm group-hover:text-black">
+                          My Cancellations
+                        </p>
+                      </button>
+                      <button className="flex flex-row items-center gap-4 py-0.5 hover:bg-gray-300 group">
+                        <div className="w-6 h-6 flex justify-center items-center">
+                          <img
+                            src={ReviewsIcon}
+                            alt="review-icon"
+                            className="group-hover:brightness-1"
+                          />
+                        </div>
+                        <p className="text-sm group-hover:text-black">
+                          My Reviews
+                        </p>
+                      </button>
+                      <button
+                        onClick={handleLogout}
+                        className="flex flex-row items-center gap-4 py-0.5 hover:bg-gray-300 group"
+                      >
+                        <div className="w-6 h-6 flex justify-center items-center">
+                          <img
+                            src={LogoutIcon}
+                            alt="logout-icon"
+                            className="group-hover:brightness-1"
+                          />
+                        </div>
+                        <p className="text-sm group-hover:text-black">Logout</p>
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
-            </button>
+                )}
+              </button>
+            </div>
           )}
         </div>
       </div>

@@ -255,12 +255,12 @@ const CartSection = () => {
                     ${cart?.total?.toFixed(2)}
                   </p>
                 </div>
-                <hr />
+                <hr className="border-[#00000066]"/>
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Shipping:</p>
                   <p className="text-sm md:text-base">Free</p>
                 </div>
-                <hr />
+                <hr className="border-[#00000066]"/>
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Total:</p>
                   <p className="text-sm md:text-base">

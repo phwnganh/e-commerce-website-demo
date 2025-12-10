@@ -4,7 +4,8 @@ import StarRating from "../../components/ui/StarRating";
 import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { HOMEPAGE } from "../../constants/route.constants";
+import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
+import type { User } from "../../types/AuthType";
 const HomeProductItem = ({
   product,
   wishlists,
@@ -15,7 +16,7 @@ const HomeProductItem = ({
   onAddToWishlist: (product: Products) => void;
 }) => {
   const navigate = useNavigate();
-
+  const [user, setUser] = useState<User | null>(null);
   const [cartsSaved, setCartsSaved] = useState<Carts>({
     id: "1",
     total: 0,
@@ -24,11 +25,30 @@ const HomeProductItem = ({
   });
 
   useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     const savedCarts = localStorage.getItem("carts");
     if (savedCarts) {
       setCartsSaved(JSON.parse(savedCarts));
     }
   }, []);
+
+  const requireLogin = () => {
+    if (!user) {
+      navigate(LOGIN);
+      return false;
+    }
+    return true;
+  };
 
   const handleAddToCart = (product: Products) => {
     const saved = localStorage.getItem("carts");
@@ -77,6 +97,8 @@ const HomeProductItem = ({
     const octoberFirstThisYear = new Date(now.getFullYear(), 9, 1);
     return createdDate >= octoberFirstThisYear;
   })();
+
+  const isInWishlist = user && wishlists.some((item) => item.id === product.id);
   return (
     <div className="flex flex-col gap-4 w-full">
       <div className="bg-[#F5F5F5] rounded-sm max-w-[270px] w-full relative">
@@ -92,7 +114,12 @@ const HomeProductItem = ({
             className="w-full h-full"
           />
           <button
-            onClick={() => handleAddToCart(product)}
+            onClick={() => {
+              if (!requireLogin()) {
+                return;
+              }
+              handleAddToCart(product);
+            }}
             className="absolute w-full bottom-0 bg-black text-white font-medium text-center text-xs md:text-sm py-1 md:py-2 rounded-bl-sm rounded-br-sm hidden group-hover/image:block cursor-pointer"
           >
             Add to Cart
@@ -101,9 +128,14 @@ const HomeProductItem = ({
 
         <div className="flex flex-col gap-1 md:gap-2 absolute top-1 right-2 md:top-3 md:right-3 ">
           <button
-            onClick={() => onAddToWishlist(product)}
+            onClick={() => {
+              if (!requireLogin()) {
+                return;
+              }
+              onAddToWishlist(product);
+            }}
             className={`${
-              wishlists.some((item) => item.id === product.id)
+              isInWishlist
                 ? "bg-[#DB4444] hover:bg-[#b42424] cursor-pointer"
                 : "bg-white hover:bg-gray-200 cursor-pointer"
             }  flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px]`}
@@ -112,11 +144,7 @@ const HomeProductItem = ({
               src={HeartIcon1}
               alt="heart-icon"
               className={`
-                ${
-                  wishlists.some((item) => item.id === product.id)
-                    ? "brightness-1 invert"
-                    : ""
-                }`}
+                ${isInWishlist ? "brightness-1 invert" : ""}`}
             />
           </button>
           <button
