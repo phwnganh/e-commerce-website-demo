@@ -14,16 +14,17 @@ export type LoginResponse = {
 };
 
 export type User = {
-    id: string;
+  id: string;
   username: string;
   email: string;
   firstName: string;
   lastName: string;
   gender: string;
   image: string;
-}
+};
 
 export type GlobalContext = {
-  products: Products[]
-  categories: Categories[]
-}
+  products: Products[];
+  categories: Categories[];
+  categoriesNavigation: string[];
+};
