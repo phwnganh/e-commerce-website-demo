@@ -55,7 +55,7 @@ const CategoryListSection = () => {
         </NavLink>
       </div>
 
-      <div className="mt-15 grid grid-cols-4 gap-4">
+      <div className="mt-15 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {categories.slice(0, visibleCount).map((category, index) => (
           <div
             onClick={() => navigate(`${PRODUCTPAGE}/${category.slug}`)}

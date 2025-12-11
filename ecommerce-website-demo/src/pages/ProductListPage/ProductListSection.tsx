@@ -85,7 +85,7 @@ const CategoryProductListSection = ({
         </NavLink>
       </div>
 
-      <div className="mt-15 grid grid-cols-4 gap-4">
+      <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-4">
         {categoryData.products.slice(0, visibleCount).map((product) => (
           <React.Fragment key={product.id}>
             <HomeProductItem
