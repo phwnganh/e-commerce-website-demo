@@ -6,7 +6,7 @@ import HeartIcon from "../../assets/Wishlist.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { LOGIN, HOMEPAGE } from "../../constants/route.constants";
+import { LOGIN, HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom, wishlistAtom } from "../../atom/store";
 
@@ -50,7 +50,14 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
           Home
         </NavLink>
         <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
-        <p className="opacity-50 text-sm">{productData.brand}</p>
+        <NavLink
+          to={`${PRODUCTPAGE}/${productData.category}`}
+          className={({ isActive }) =>
+            `${isActive ? "text-sm" : "text-[#00000080] text-sm"}`
+          }
+        >
+          {productData.category}
+        </NavLink>
         <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
         <NavLink
           to={`${HOMEPAGE}/${productData.id}`}

@@ -1,7 +1,11 @@
 import { useAtomValue } from "jotai";
 import { categoriesAtom } from "../../atom/store";
-import { NavLink } from "react-router-dom";
-import { CATEGORYPAGE, HOMEPAGE } from "../../constants/route.constants";
+import { NavLink, useNavigate } from "react-router-dom";
+import {
+  CATEGORYPAGE,
+  HOMEPAGE,
+  PRODUCTPAGE,
+} from "../../constants/route.constants";
 import Cosmetics from "../../assets/cosmetics.png";
 import { useEffect, useRef, useState } from "react";
 
@@ -10,7 +14,7 @@ const CategoryListSection = () => {
   const [visibleCount, setVisibleCount] = useState(8);
   const [isLoading, setIsLoading] = useState(false);
   const loadMoreRef = useRef(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (visibleCount >= categories.length || isLoading) {
       return;
@@ -54,6 +58,7 @@ const CategoryListSection = () => {
       <div className="mt-15 grid grid-cols-4 gap-4">
         {categories.slice(0, visibleCount).map((category, index) => (
           <div
+            onClick={() => navigate(`${PRODUCTPAGE}/${category.slug}`)}
             key={index}
             className="flex flex-col gap-4 border justify-center items-center rounded-sm border-[#0000004D] py-6 px-14 hover:bg-[#DB4444] hover:border-[#DB4444] group cursor-pointer"
           >

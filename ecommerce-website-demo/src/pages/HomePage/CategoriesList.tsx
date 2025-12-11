@@ -3,9 +3,11 @@ import RightArrow from "../../assets/icon-arrow-right.svg";
 import Cosmetics from "../../assets/cosmetics.png";
 import { useRef } from "react";
 import type { Categories } from "../../types/CategoryType";
+import { useNavigate } from "react-router-dom";
+import { PRODUCTPAGE } from "../../constants/route.constants";
 const CategoriesList = ({ categories }: { categories: Categories[] }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
+  const navigate = useNavigate();
   const itemsToShow = 6;
   const itemWidth = 198;
 
@@ -64,6 +66,7 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
       >
         {categories.map((category, index) => (
           <button
+            onClick={() => navigate(`${PRODUCTPAGE}/${category.slug}`)}
             className="flex flex-col gap-4 border justify-center items-center rounded-sm border-[#0000004D] w-[170px] py-6 px-14 hover:bg-[#DB4444] hover:border-[#DB4444] group cursor-pointer"
             key={index}
           >

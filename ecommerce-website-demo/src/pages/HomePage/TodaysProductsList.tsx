@@ -7,14 +7,16 @@ import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
 import { wishlistAtom } from "../../atom/store";
+import { useNavigate } from "react-router-dom";
+import { PRODUCTPAGE } from "../../constants/route.constants";
 const TodaysProductsList = ({ products }: { products: Products[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [itemsPerView, setItemsPerView] = useState(4);
-  const wishlists = useAtomValue(wishlistAtom)
-  const setWishlists = useSetAtom(wishlistAtom)
+  const wishlists = useAtomValue(wishlistAtom);
+  const setWishlists = useSetAtom(wishlistAtom);
   const [itemWidth, setItemWidth] = useState(0);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
@@ -174,7 +176,10 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
         </div> */}
       </div>
       <div className="mt-15 flex justify-center">
-        <PrimaryCustomButton bgColor="#DB4444">
+        <PrimaryCustomButton
+          bgColor="#DB4444"
+          onClick={() => navigate(PRODUCTPAGE)}
+        >
           View All Products
         </PrimaryCustomButton>
       </div>

@@ -4,10 +4,12 @@ import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
 import { wishlistAtom } from "../../atom/store";
+import { useNavigate } from "react-router-dom";
+import { PRODUCTPAGE } from "../../constants/route.constants";
 const BestSellerProductsList = ({ products }: { products: Products[] }) => {
-  const wishlists = useAtomValue(wishlistAtom)
-  const setWishlists = useSetAtom(wishlistAtom)
-
+  const wishlists = useAtomValue(wishlistAtom);
+  const setWishlists = useSetAtom(wishlistAtom);
+  const navigate = useNavigate();
   const handleAddToWishlist = (product: Products) => {
     const exists = wishlists.some((item) => item.id === product.id);
     let updated;
@@ -34,7 +36,12 @@ const BestSellerProductsList = ({ products }: { products: Products[] }) => {
             Best Selling Products
           </h3>
         </div>
-        <PrimaryCustomButton bgColor="#DB4444">View All</PrimaryCustomButton>
+        <PrimaryCustomButton
+          bgColor="#DB4444"
+          onClick={() => navigate(PRODUCTPAGE)}
+        >
+          View All
+        </PrimaryCustomButton>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-7 mt-15">
