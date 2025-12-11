@@ -6,7 +6,7 @@ import HeartIcon from "../../assets/Wishlist.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { LOGIN, USER_PROFILE } from "../../constants/route.constants";
+import { LOGIN, ACCOUNT } from "../../constants/route.constants";
 import { useEffect, useState } from "react";
 import { useAtomValue } from "jotai";
 import { userAtom } from "../../atom/store";
@@ -52,7 +52,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
   return (
     <section className="mt-20 px-4 lg:px-0">
       <div className="flex flex-row gap-3 items-center">
-        <NavLink to={USER_PROFILE} className="opacity-50 text-sm">
+        <NavLink to={ACCOUNT} className="opacity-50 text-sm">
           Account
         </NavLink>
         <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>

@@ -2,14 +2,24 @@ import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import {
   ABOUT,
+  ACCOUNT,
+  ADDRESS_BOOK,
+  CANCELLATIONS,
   CART,
   CONTACT,
   HOMEPAGE,
   LOGIN,
+  PAYMENT_OPTION,
+  RETURNS,
   SIGNUP,
   USER_PROFILE,
   WISHLIST,
 } from "../constants/route.constants";
+import AccountSection from "../pages/AccountPage/accounts/AccountSection";
+import AddressBookSection from "../pages/AccountPage/accounts/AddressBookSection";
+import PaymentOptionSection from "../pages/AccountPage/accounts/PaymentOptionSection";
+import ReturnSection from "../pages/AccountPage/accounts/ReturnSection";
+import CancellationSection from "../pages/AccountPage/accounts/CancellationSection";
 
 const MainLayout = lazy(() => import("../components/layouts/MainLayout"));
 const LoginPage = lazy(() => import("../pages/PreLoginPage/LoginPage"));
@@ -22,7 +32,7 @@ const ProductDetailPage = lazy(
 );
 const ContactPage = lazy(() => import("../pages/ContactPage/ContactPage"));
 const AboutUsPage = lazy(() => import("../pages/AbouUsPage/AbouUsPage"));
-const AccountPage = lazy(() => import("../pages/UserProfilePage/AccountPage"));
+const AccountPage = lazy(() => import("../pages/AccountPage/AccountPage"));
 const AppRoutes = () => {
   return (
     <Suspense
@@ -40,7 +50,15 @@ const AppRoutes = () => {
           <Route path={CART} element={<CartPage />} />
           <Route path={CONTACT} element={<ContactPage />} />
           <Route path={ABOUT} element={<AboutUsPage />} />
-          <Route path={USER_PROFILE} element={<AccountPage />} />
+          <Route path={ACCOUNT} element={<AccountPage />}>
+            <Route index element={<AccountSection />} />
+            <Route path={USER_PROFILE} element={<AccountSection />} />
+            <Route path={ADDRESS_BOOK} element={<AddressBookSection />} />
+            <Route path={PAYMENT_OPTION} element={<PaymentOptionSection />} />
+            <Route path={RETURNS} element={<ReturnSection />} />
+            <Route path={CANCELLATIONS} element={<CancellationSection />} />
+          </Route>
+
           <Route path={HOMEPAGE} element={<HomePage />} />
           <Route
             path={`${HOMEPAGE}/:productId`}

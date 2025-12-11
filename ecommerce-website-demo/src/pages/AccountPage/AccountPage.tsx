@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { HOMEPAGE, USER_PROFILE } from "../../constants/route.constants";
+import { HOMEPAGE, ACCOUNT } from "../../constants/route.constants";
 import { useAtomValue } from "jotai";
 import { userAtom } from "../../atom/store";
-import AccountSection from "./AccountSection";
 import AccountNavigation from "./AccountNavigation";
+import AccountSectionLayout from "../../components/layouts/AccountSectionLayout";
 
 const AccountPage = () => {
   const user = useAtomValue(userAtom);
@@ -16,7 +16,7 @@ const AccountPage = () => {
           </NavLink>
           <div className="border border-[#00000080] rotate-[117.05deg] w-3 h-0"></div>
           <NavLink
-            to={USER_PROFILE}
+            to={ACCOUNT}
             className={({ isActive }) =>
               `${isActive ? "text-sm" : "text-[#00000080] text-sm"}`
             }
@@ -32,10 +32,7 @@ const AccountPage = () => {
 
       <div className="flex flex-row gap-25 mt-20 justify-between">
         <AccountNavigation />
-        <div className="w-[870px] shadow-[0_1px_13px_0_#0000000D]
-">
-          <AccountSection />
-        </div>
+        <AccountSectionLayout/>
       </div>
     </main>
   );

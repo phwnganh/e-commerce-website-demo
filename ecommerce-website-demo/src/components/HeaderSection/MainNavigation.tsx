@@ -5,7 +5,7 @@ import {
   CONTACT,
   HOMEPAGE,
   LOGIN,
-  USER_PROFILE,
+  ACCOUNT,
   WISHLIST,
 } from "../../constants/route.constants";
 import CartIcon from "../../assets/Cart1.svg";
@@ -31,7 +31,7 @@ const MainNavigation = () => {
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
 
-  const isUserActive = isDropdownOpen || location.pathname === USER_PROFILE;
+  const isUserActive = isDropdownOpen || location.pathname === ACCOUNT;
 
   useEffect(() => {
     const savedWishlist = localStorage.getItem("wishlist");
