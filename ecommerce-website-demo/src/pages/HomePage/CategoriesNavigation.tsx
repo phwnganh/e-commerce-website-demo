@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { CATEGORYPAGE } from "../../constants/route.constants";
+import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
 
 const CategoriesNavigation = ({ categories }: { categories: string[] }) => {
   const navigate = useNavigate()
@@ -12,9 +13,7 @@ const CategoriesNavigation = ({ categories }: { categories: string[] }) => {
             {category}
           </p>
         ))}
-        <button className="border-2 rounded-sm px-6 cursor-pointer" onClick={() => navigate(CATEGORYPAGE)}>
-          See More
-        </button>
+        <SecondaryCustomButton onClick={() => navigate(CATEGORYPAGE)}>See More</SecondaryCustomButton>
       </div>
       <div className="hidden lg:block border-l border-l-[#0000004D] rotate-180"></div>
     </aside>

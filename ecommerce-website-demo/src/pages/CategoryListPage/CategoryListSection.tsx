@@ -3,9 +3,37 @@ import { categoriesAtom } from "../../atom/store";
 import { NavLink } from "react-router-dom";
 import { CATEGORYPAGE, HOMEPAGE } from "../../constants/route.constants";
 import Cosmetics from "../../assets/cosmetics.png";
+import { useEffect, useRef, useState } from "react";
 
 const CategoryListSection = () => {
   const categories = useAtomValue(categoriesAtom);
+  const [visibleCount, setVisibleCount] = useState(8);
+  const [isLoading, setIsLoading] = useState(false);
+  const loadMoreRef = useRef(null);
+
+  useEffect(() => {
+    if (visibleCount >= categories.length || isLoading) {
+      return;
+    }
+    const observer = new IntersectionObserver(
+      async (entries) => {
+        if (entries[0].isIntersecting && !isLoading) {
+          setIsLoading(true);
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          setVisibleCount((prev) => prev + 8);
+          setIsLoading(false);
+        }
+      },
+      {
+        threshold: 1,
+      }
+    );
+
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+    return () => observer.disconnect();
+  }, [visibleCount, categories.length, isLoading]);
   return (
     <section className="mt-20 mb-35 px-4 lg:px-0">
       <div className="flex flex-row gap-3 items-center">
@@ -24,7 +52,7 @@ const CategoryListSection = () => {
       </div>
 
       <div className="mt-15 grid grid-cols-4 gap-4">
-        {categories.map((category, index) => (
+        {categories.slice(0, visibleCount).map((category, index) => (
           <div
             key={index}
             className="flex flex-col gap-4 border justify-center items-center rounded-sm border-[#0000004D] py-6 px-14 hover:bg-[#DB4444] hover:border-[#DB4444] group cursor-pointer"
@@ -42,6 +70,14 @@ const CategoryListSection = () => {
           </div>
         ))}
       </div>
+
+      {isLoading && (
+        <div className="flex justify-center mt-6">
+          <div className="w-8 h-8 border-4 border-gray-300 border-t-[#DB4444] rounded-full animate-spin"></div>
+        </div>
+      )}
+
+      <div ref={loadMoreRef} className="h-10"></div>
     </section>
   );
 };
