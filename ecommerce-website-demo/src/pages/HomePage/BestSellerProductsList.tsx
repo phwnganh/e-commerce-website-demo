@@ -37,7 +37,7 @@ const BestSellerProductsList = ({ products }: { products: Products[] }) => {
         <PrimaryCustomButton bgColor="#DB4444">View All</PrimaryCustomButton>
       </div>
 
-      <div className="grid grid-cols-4 gap-7 mt-15">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-7 mt-15">
         {products.slice(0, 4).map((product) => (
           <React.Fragment key={product.id}>
             <HomeProductItem

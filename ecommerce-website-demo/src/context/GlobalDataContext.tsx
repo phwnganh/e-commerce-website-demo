@@ -4,7 +4,6 @@ import {
   cartAtom,
   categoriesAtom,
   categoriesNavigationAtom,
-  productDetailAtom,
   productsAtom,
   tempCartAtom,
   userAtom,

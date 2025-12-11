@@ -6,6 +6,7 @@ import {
   ADDRESS_BOOK,
   CANCELLATIONS,
   CART,
+  CATEGORYPAGE,
   CONTACT,
   HOMEPAGE,
   LOGIN,
@@ -20,6 +21,7 @@ import AddressBookSection from "../pages/AccountPage/accounts/AddressBookSection
 import PaymentOptionSection from "../pages/AccountPage/accounts/PaymentOptionSection";
 import ReturnSection from "../pages/AccountPage/accounts/ReturnSection";
 import CancellationSection from "../pages/AccountPage/accounts/CancellationSection";
+import CategoryListPage from "../pages/CategoryListPage/CategoryListPage";
 
 const MainLayout = lazy(() => import("../components/layouts/MainLayout"));
 const LoginPage = lazy(() => import("../pages/PreLoginPage/LoginPage"));
@@ -48,6 +50,7 @@ const AppRoutes = () => {
           <Route path={SIGNUP} element={<SignupPage />} />
           <Route path={WISHLIST} element={<WishlistPage />} />
           <Route path={CART} element={<CartPage />} />
+          <Route path={CATEGORYPAGE} element={<CategoryListPage/>}/>
           <Route path={CONTACT} element={<ContactPage />} />
           <Route path={ABOUT} element={<AboutUsPage />} />
           <Route path={ACCOUNT} element={<AccountPage />}>

@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+import { CATEGORYPAGE } from "../../constants/route.constants";
+
 const CategoriesNavigation = ({ categories }: { categories: string[] }) => {
+  const navigate = useNavigate()
   const displayedCategories = categories.slice(0, 8);
   return (
     <aside className="hidden md:flex md:flex-row gap-4 flex-col">
@@ -8,7 +12,7 @@ const CategoriesNavigation = ({ categories }: { categories: string[] }) => {
             {category}
           </p>
         ))}
-        <button className="border-2 rounded-sm px-6 cursor-pointer">
+        <button className="border-2 rounded-sm px-6 cursor-pointer" onClick={() => navigate(CATEGORYPAGE)}>
           See More
         </button>
       </div>

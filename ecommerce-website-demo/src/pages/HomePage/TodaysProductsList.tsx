@@ -143,7 +143,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
         <div className="overflow-x-hidden">
           <div
             ref={containerRef}
-            className="flex flex-row gap-7.5 transition-transform duration-1000 ease-in-out"
+            className="flex gap-7.5 transition-transform duration-1000 ease-in-out"
             style={{
               width: "max-content",
               transform: `translateX(${translateX}px)`,

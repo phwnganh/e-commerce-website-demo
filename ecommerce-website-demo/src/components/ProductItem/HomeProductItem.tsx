@@ -70,12 +70,6 @@ const HomeProductItem = ({
     setTempCart(updatedCart);
     localStorage.setItem("carts", JSON.stringify(updatedCart));
   };
-  const isNew = (() => {
-    const createdDate = new Date(product.meta.createdAt);
-    const now = new Date();
-    const octoberFirstThisYear = new Date(now.getFullYear(), 9, 1);
-    return createdDate >= octoberFirstThisYear;
-  })();
 
   const isInWishlist = user && wishlists.some((item) => item.id === product.id);
   return (

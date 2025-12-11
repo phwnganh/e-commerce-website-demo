@@ -6,7 +6,7 @@ import HeartIcon from "../../assets/Wishlist.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { LOGIN, ACCOUNT, HOMEPAGE } from "../../constants/route.constants";
+import { LOGIN, HOMEPAGE } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom, wishlistAtom } from "../../atom/store";
 

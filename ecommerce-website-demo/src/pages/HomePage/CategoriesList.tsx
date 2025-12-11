@@ -67,7 +67,7 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
             className="flex flex-col gap-4 border justify-center items-center rounded-sm border-[#0000004D] w-[170px] py-6 px-14 hover:bg-[#DB4444] hover:border-[#DB4444] group cursor-pointer"
             key={index}
           >
-            <div className="w-14 h-14">
+            <div className="flex justify-center items-center">
               <img
                 src={Cosmetics}
                 alt=""

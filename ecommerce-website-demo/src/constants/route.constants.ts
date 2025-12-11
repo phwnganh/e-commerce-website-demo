@@ -1,6 +1,7 @@
 export const LOGIN = "/login";
 export const SIGNUP = "/signup";
 export const HOMEPAGE = "/home";
+export const CATEGORYPAGE = "/categories";
 export const WISHLIST = "/wishlist";
 export const CART = "/cart";
 export const ACCOUNT = "/account";
