@@ -3,10 +3,10 @@ import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import type { Products } from "../../types/ProductTypes";
 
-import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
 import { wishlistAtom } from "../../atom/store";
+import ProductExplorationItem from "../../components/ProductItem/ProductExplorationItem";
 const ProductsExplorationList = ({ products }: { products: Products[] }) => {
   const [itemsPerView, setItemsPerView] = useState(8);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -96,7 +96,7 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-7 mt-15">
         {currentProducts.map((product) => (
           <React.Fragment key={product.id}>
-            <HomeProductItem
+            <ProductExplorationItem
               product={product}
               wishlists={wishlists}
               onAddToWishlist={handleAddToWishlist}

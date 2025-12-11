@@ -1,12 +1,13 @@
-import type { CartItems, Carts, Products } from "../../types/ProductTypes";
-import StarRating from "../../components/ui/StarRating";
 import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
+import type { CartItems, Carts, Products } from "../../types/ProductTypes";
 import { Link, useNavigate } from "react-router-dom";
-import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
 import { cartAtom, tempCartAtom, userAtom } from "../../atom/store";
-const HomeProductItem = ({
+import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
+import StarRating from "../ui/StarRating";
+
+const ProductExplorationItem = ({
   product,
   wishlists,
   onAddToWishlist,
@@ -82,9 +83,11 @@ const HomeProductItem = ({
     <div className="flex flex-col gap-4 w-full">
       <div className="bg-[#F5F5F5] rounded-sm max-w-[270px] w-full relative">
         <div className="relative group/image">
-          <div className="bg-[#DB4444] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
-            -{Math.round(product.discountPercentage)}%
-          </div>
+          {isNew && (
+            <div className="bg-[#00FF66] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
+              NEW
+            </div>
+          )}
           <img
             src={product.images[0]}
             alt="product-imgs"
@@ -139,18 +142,15 @@ const HomeProductItem = ({
         >
           {product.title}
         </Link>
-        <div className="flex flex-col sm:flex-row gap-0 sm:gap-3">
+        <div className="flex flex-row items-center gap-2">
           <p className="font-medium text-[#DB4444] text-xs md:text-base">
             ${(product.price * 0.5).toFixed(2)}
           </p>
-          <p className="font-medium opacity-50 line-through text-xs md:text-base">
-            ${product.price.toFixed(2)}
-          </p>
+          <StarRating rating={product.rating}></StarRating>
         </div>
-        <StarRating rating={product.rating}></StarRating>
       </div>
     </div>
   );
 };
 
-export default HomeProductItem;
+export default ProductExplorationItem;
