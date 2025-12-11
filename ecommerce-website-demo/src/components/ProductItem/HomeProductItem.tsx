@@ -5,7 +5,7 @@ import EyeIcon from "../../assets/Eye-icon.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
-import { cartAtom, userAtom } from "../../atom/store";
+import { cartAtom, tempCartAtom, userAtom } from "../../atom/store";
 const HomeProductItem = ({
   product,
   wishlists,
@@ -18,6 +18,7 @@ const HomeProductItem = ({
   const navigate = useNavigate();
   const user = useAtomValue(userAtom);
   const setCart = useSetAtom(cartAtom);
+  const setTempCart = useSetAtom(tempCartAtom)
   // useEffect(() => {
   //   const savedCarts = localStorage.getItem("carts");
   //   if (savedCarts) {
@@ -72,6 +73,7 @@ const HomeProductItem = ({
       total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
     };
     setCart(updatedCart);
+    setTempCart(updatedCart)
     localStorage.setItem("carts", JSON.stringify(updatedCart));
   };
   const isNew = (() => {

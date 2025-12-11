@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
 import { useSetAtom } from "jotai";
-import { cartAtom } from "../../atom/store";
+import { cartAtom, tempCartAtom } from "../../atom/store";
 
 const RelatedProducts = ({ products }: { products: Products[] }) => {
-
-  const setCarts = useSetAtom(cartAtom)
+  const setCarts = useSetAtom(cartAtom);
+  const setTempCarts = useSetAtom(tempCartAtom);
 
   const handleAddToCart = (product: Products) => {
     const saved = localStorage.getItem("carts");
@@ -50,6 +50,7 @@ const RelatedProducts = ({ products }: { products: Products[] }) => {
       total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
     };
     setCarts(updatedCart);
+    setTempCarts(updatedCart);
     localStorage.setItem("carts", JSON.stringify(updatedCart));
   };
   const navigate = useNavigate();
