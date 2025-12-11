@@ -7,20 +7,14 @@ import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { LOGIN, ACCOUNT } from "../../constants/route.constants";
-import { useEffect, useState } from "react";
-import { useAtomValue } from "jotai";
-import { userAtom } from "../../atom/store";
+import { useAtomValue, useSetAtom } from "jotai";
+import { userAtom, wishlistAtom } from "../../atom/store";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {
-  const [wishlists, setWishlists] = useState<Products[]>([]);
+  const wishlists = useAtomValue(wishlistAtom)
+  const setWishlists = useSetAtom(wishlistAtom)
   const user = useAtomValue(userAtom)
   const navigate = useNavigate();
-  useEffect(() => {
-    const savedWishlist = localStorage.getItem("wishlist");
-    if (savedWishlist) {
-      setWishlists(JSON.parse(savedWishlist));
-    }
-  }, []);
   const handleAddToWishlist = (product: Products) => {
     const saved = localStorage.getItem("wishlist");
     if (saved) {

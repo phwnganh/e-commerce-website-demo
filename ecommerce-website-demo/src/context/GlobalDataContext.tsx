@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { useSetAtom } from "jotai";
 import {
+  cartAtom,
   categoriesAtom,
   categoriesNavigationAtom,
   productsAtom,
+  tempCartAtom,
   userAtom,
+  wishlistAtom,
 } from "../atom/store";
 
 const DataProvider = ({ children }: { children: React.ReactNode }) => {
@@ -12,6 +15,9 @@ const DataProvider = ({ children }: { children: React.ReactNode }) => {
   const setCategories = useSetAtom(categoriesAtom);
   const setCategoriesNavigation = useSetAtom(categoriesNavigationAtom);
   const setUser = useSetAtom(userAtom);
+  const setWishlists = useSetAtom(wishlistAtom);
+  const setCarts = useSetAtom(cartAtom);
+  const setTempCarts = useSetAtom(tempCartAtom);
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
@@ -33,6 +39,22 @@ const DataProvider = ({ children }: { children: React.ReactNode }) => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedCarts = localStorage.getItem("carts");
+    if (savedCarts) {
+      const parsed = JSON.parse(savedCarts);
+      setCarts(parsed);
+      setTempCarts(parsed);
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedWishlist = localStorage.getItem("wishlist");
+    if (savedWishlist) {
+      setWishlists(JSON.parse(savedWishlist));
     }
   }, []);
   return children;

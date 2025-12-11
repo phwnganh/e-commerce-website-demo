@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import type { Carts } from "../../types/ProductTypes";
 import DropUpIcon from "../../assets/drop-up-icon.svg";
 import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
@@ -7,20 +5,14 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { CART, HOMEPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
+import { useAtomValue, useSetAtom } from "jotai";
+import { cartAtom, tempCartAtom } from "../../atom/store";
 const CartSection = () => {
-  const [cart, setCart] = useState<Carts>({
-    id: "1",
-    total: 0,
-    discountTotal: 0,
-    products: []
-  });
-  const navigate = useNavigate()
-  useEffect(() => {
-    const savedCarts = localStorage.getItem("carts");
-    if (savedCarts) {
-      setCart(JSON.parse(savedCarts));
-    }
-  }, []);
+  const cart = useAtomValue(tempCartAtom);
+
+  const setCart = useSetAtom(cartAtom);
+  const setTempCart = useSetAtom(tempCartAtom);
+  const navigate = useNavigate();
 
   const handleIncreaseQuantity = (productId: string) => {
     if (!cart) return;
@@ -40,7 +32,7 @@ const CartSection = () => {
       total: updatedProducts.reduce((sum, p) => sum + p.total, 0),
     };
 
-    setCart(updatedCart);
+    setTempCart(updatedCart);
   };
 
   const handleDecreaseQuantity = (productId: string) => {
@@ -63,11 +55,12 @@ const CartSection = () => {
       total: updatedProducts.reduce((sum, p) => sum + p.total, 0),
     };
 
-    setCart(updatedCart);
+    setTempCart(updatedCart);
   };
 
   const handleUpdateCart = () => {
     if (!cart) return;
+    setCart(cart);
     localStorage.setItem("carts", JSON.stringify(cart));
   };
 
@@ -81,7 +74,7 @@ const CartSection = () => {
       products: updatedProduct,
       total: updatedProduct.reduce((sum, p) => sum + p.total, 0),
     };
-    setCart(updatedCart);
+    setTempCart(updatedCart);
   };
 
   return (
@@ -135,10 +128,12 @@ const CartSection = () => {
 
                   <p className="text-xs md:text-base">{item.title}</p>
                 </div>
-                <p className="text-xs md:text-base">${(item.price).toFixed(2)}</p>
+                <p className="text-xs md:text-base">${item.price.toFixed(2)}</p>
                 <div className="border-[1.5px] border-[#00000066] w-18 rounded-sm">
                   <div className="flex gap-4 items-center justify-center py-1.5 px-3">
-                    <p className="text-sm md:text-base min-w-7 text-center">{item.quantity}</p>
+                    <p className="text-sm md:text-base min-w-7 text-center">
+                      {item.quantity}
+                    </p>
                     <div className="flex flex-col">
                       <button
                         className="w-4 h-4 flex justify-center cursor-pointer"
@@ -155,7 +150,7 @@ const CartSection = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-xs md:text-base">${(item.total).toFixed(2)}</p>
+                <p className="text-xs md:text-base">${item.total.toFixed(2)}</p>
               </div>
             ))}
           </div>
@@ -226,7 +221,9 @@ const CartSection = () => {
         </table> */}
 
         <div className="flex flex-row justify-between mt-6">
-          <SecondaryCustomButton onClick={() => navigate(HOMEPAGE)}>Return To Shop</SecondaryCustomButton>
+          <SecondaryCustomButton onClick={() => navigate(HOMEPAGE)}>
+            Return To Shop
+          </SecondaryCustomButton>
           <SecondaryCustomButton onClick={handleUpdateCart}>
             Update Cart
           </SecondaryCustomButton>
@@ -255,12 +252,12 @@ const CartSection = () => {
                     ${cart?.total?.toFixed(2)}
                   </p>
                 </div>
-                <hr className="border-[#00000066]"/>
+                <hr className="border-[#00000066]" />
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Shipping:</p>
                   <p className="text-sm md:text-base">Free</p>
                 </div>
-                <hr className="border-[#00000066]"/>
+                <hr className="border-[#00000066]" />
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Total:</p>
                   <p className="text-sm md:text-base">

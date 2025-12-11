@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
 import type { CartItems, Carts, Products } from "../../types/ProductTypes";
 import StarRating from "../../components/ui/StarRating";
 import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
-import { useAtomValue } from "jotai";
-import { userAtom } from "../../atom/store";
+import { useAtomValue, useSetAtom } from "jotai";
+import { cartAtom, userAtom } from "../../atom/store";
 const HomeProductItem = ({
   product,
   wishlists,
@@ -18,19 +17,13 @@ const HomeProductItem = ({
 }) => {
   const navigate = useNavigate();
   const user = useAtomValue(userAtom);
-  const [cartsSaved, setCartsSaved] = useState<Carts>({
-    id: "1",
-    total: 0,
-    discountTotal: 0,
-    products: [],
-  });
-
-  useEffect(() => {
-    const savedCarts = localStorage.getItem("carts");
-    if (savedCarts) {
-      setCartsSaved(JSON.parse(savedCarts));
-    }
-  }, []);
+  const setCart = useSetAtom(cartAtom);
+  // useEffect(() => {
+  //   const savedCarts = localStorage.getItem("carts");
+  //   if (savedCarts) {
+  //     setCart(JSON.parse(savedCarts));
+  //   }
+  // }, []);
 
   const requireLogin = () => {
     if (!user) {
@@ -78,7 +71,7 @@ const HomeProductItem = ({
       products: updatedProducts,
       total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
     };
-    setCartsSaved(updatedCart);
+    setCart(updatedCart);
     localStorage.setItem("carts", JSON.stringify(updatedCart));
   };
   const isNew = (() => {

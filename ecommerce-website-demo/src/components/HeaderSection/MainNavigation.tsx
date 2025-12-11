@@ -14,38 +14,18 @@ import Wishlist from "../../assets/Wishlist.svg";
 import UserCircle from "../../assets/user-circle.svg";
 import UserShape from "../../assets/user-shape.svg";
 import { useEffect, useRef, useState } from "react";
-import type { Carts, Products } from "../../types/ProductTypes";
-import { useAtomValue, useSetAtom } from "jotai";
-import { userAtom } from "../../atom/store";
+import { useAtomValue } from "jotai";
+import { cartAtom, userAtom, wishlistAtom } from "../../atom/store";
 import UserDropdown from "../ui/UserDropdown";
 const MainNavigation = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = useAtomValue(userAtom);
-  const [wishlists, setWishlists] = useState<Products[]>([]);
-  const [carts, setCarts] = useState<Carts>({
-    id: "1",
-    total: 0,
-    discountTotal: 0,
-    products: [],
-  });
+  const wishlists = useAtomValue(wishlistAtom);
+  const carts = useAtomValue(cartAtom);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
 
   const isUserActive = isDropdownOpen || location.pathname === ACCOUNT;
-
-  useEffect(() => {
-    const savedWishlist = localStorage.getItem("wishlist");
-    if (savedWishlist) {
-      setWishlists(JSON.parse(savedWishlist));
-    }
-  }, []);
-
-  useEffect(() => {
-    const savedCarts = localStorage.getItem("carts");
-    if (savedCarts) {
-      setCarts(JSON.parse(savedCarts));
-    }
-  }, []);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {

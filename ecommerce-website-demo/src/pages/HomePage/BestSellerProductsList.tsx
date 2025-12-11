@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import { useAtomValue, useSetAtom } from "jotai";
+import { wishlistAtom } from "../../atom/store";
 const BestSellerProductsList = ({ products }: { products: Products[] }) => {
-  const [wishlists, setWishlists] = useState<Products[]>([]);
-  useEffect(() => {
-    const savedWishlist = localStorage.getItem("wishlist");
-    if (savedWishlist) {
-      setWishlists(JSON.parse(savedWishlist));
-    }
-  }, []);
+  const wishlists = useAtomValue(wishlistAtom)
+  const setWishlists = useSetAtom(wishlistAtom)
 
   const handleAddToWishlist = (product: Products) => {
     const exists = wishlists.some((item) => item.id === product.id);

@@ -1,23 +1,12 @@
-import { useEffect, useState } from "react";
 import type { CartItems, Carts, Products } from "../../types/ProductTypes";
 import TrashIcon from "../../assets/icon-delete.svg";
 import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
+import { useAtomValue, useSetAtom } from "jotai";
+import { cartAtom, wishlistAtom } from "../../atom/store";
 const WishlistSection = () => {
-  const [wishlists, setWishlists] = useState<Products[]>([]);
-
-  const [cartsSaved, setCartsSaved] = useState<Carts>({
-    id: "1",
-    total: 0,
-    discountTotal: 0,
-    products: [],
-  });
-
-  useEffect(() => {
-    const savedCarts = localStorage.getItem("carts");
-    if (savedCarts) {
-      setCartsSaved(JSON.parse(savedCarts));
-    }
-  }, []);
+  const wishlists = useAtomValue(wishlistAtom);
+  const setWishlists = useSetAtom(wishlistAtom);
+  const setCarts = useSetAtom(cartAtom);
 
   const handleAddToCart = (product: Products) => {
     const saved = localStorage.getItem("carts");
@@ -57,15 +46,9 @@ const WishlistSection = () => {
       products: updatedProducts,
       total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
     };
-    setCartsSaved(updatedCart);
+    setCarts(updatedCart);
     localStorage.setItem("carts", JSON.stringify(updatedCart));
   };
-  useEffect(() => {
-    const savedWishlist = localStorage.getItem("wishlist");
-    if (savedWishlist) {
-      setWishlists(JSON.parse(savedWishlist));
-    }
-  }, []);
 
   const handleRemoveWishlist = (product: Products) => {
     const updated = wishlists.filter((item) => item.id !== product.id);

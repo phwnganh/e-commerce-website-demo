@@ -1,25 +1,15 @@
-import { useEffect, useState } from "react";
 import type { CartItems, Carts, Products } from "../../types/ProductTypes";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import StarRating from "../../components/ui/StarRating";
 import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
+import { useSetAtom } from "jotai";
+import { cartAtom } from "../../atom/store";
 
 const RelatedProducts = ({ products }: { products: Products[] }) => {
-  const [cartsSaved, setCartsSaved] = useState<Carts>({
-    id: "1",
-    total: 0,
-    discountTotal: 0,
-    products: [],
-  });
 
-  useEffect(() => {
-    const savedCarts = localStorage.getItem("carts");
-    if (savedCarts) {
-      setCartsSaved(JSON.parse(savedCarts));
-    }
-  }, []);
+  const setCarts = useSetAtom(cartAtom)
 
   const handleAddToCart = (product: Products) => {
     const saved = localStorage.getItem("carts");
@@ -59,7 +49,7 @@ const RelatedProducts = ({ products }: { products: Products[] }) => {
       products: updatedProducts,
       total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
     };
-    setCartsSaved(updatedCart);
+    setCarts(updatedCart);
     localStorage.setItem("carts", JSON.stringify(updatedCart));
   };
   const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import type { Products } from "../types/ProductTypes";
+import type { Carts, Products } from "../types/ProductTypes";
 import type { Categories } from "../types/CategoryType";
 import type { User } from "../types/AuthType";
 
@@ -7,3 +7,18 @@ export const productsAtom = atom<Products[]>([]);
 export const categoriesAtom = atom<Categories[]>([]);
 export const categoriesNavigationAtom = atom<string[]>([]);
 export const userAtom = atom<User | null>(null);
+
+export const wishlistAtom = atom<Products[]>([]);
+export const cartAtom = atom<Carts>({
+  id: "1",
+  total: 0,
+  discountTotal: 0,
+  products: [],
+});
+
+export const tempCartAtom = atom<Carts>({
+    id: "1",
+    total: 0,
+    discountTotal: 0,
+    products: []
+})

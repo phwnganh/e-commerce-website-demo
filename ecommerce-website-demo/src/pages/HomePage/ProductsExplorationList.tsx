@@ -5,16 +5,13 @@ import type { Products } from "../../types/ProductTypes";
 
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import { useAtomValue, useSetAtom } from "jotai";
+import { wishlistAtom } from "../../atom/store";
 const ProductsExplorationList = ({ products }: { products: Products[] }) => {
   const [itemsPerView, setItemsPerView] = useState(8);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [wishlists, setWishlists] = useState<Products[]>([]);
-  useEffect(() => {
-    const savedWishlist = localStorage.getItem("wishlist");
-    if (savedWishlist) {
-      setWishlists(JSON.parse(savedWishlist));
-    }
-  }, []);
+  const wishlists = useAtomValue(wishlistAtom);
+  const setWishlists = useSetAtom(wishlistAtom);
 
   useEffect(() => {
     const handleResize = () => {
