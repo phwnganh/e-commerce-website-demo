@@ -4,6 +4,7 @@ import type { Categories } from "../types/CategoryType";
 import type { User } from "../types/AuthType";
 
 export const productsAtom = atom<Products[]>([]);
+export const productDetailAtom = atom<Products | null>(null)
 export const categoriesAtom = atom<Categories[]>([]);
 export const categoriesNavigationAtom = atom<string[]>([]);
 export const userAtom = atom<User | null>(null);

@@ -6,14 +6,14 @@ import HeartIcon from "../../assets/Wishlist.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { LOGIN, ACCOUNT } from "../../constants/route.constants";
+import { LOGIN, ACCOUNT, HOMEPAGE } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom, wishlistAtom } from "../../atom/store";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {
-  const wishlists = useAtomValue(wishlistAtom)
-  const setWishlists = useSetAtom(wishlistAtom)
-  const user = useAtomValue(userAtom)
+  const wishlists = useAtomValue(wishlistAtom);
+  const setWishlists = useSetAtom(wishlistAtom);
+  const user = useAtomValue(userAtom);
   const navigate = useNavigate();
   const handleAddToWishlist = (product: Products) => {
     const saved = localStorage.getItem("wishlist");
@@ -46,13 +46,20 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
   return (
     <section className="mt-20 px-4 lg:px-0">
       <div className="flex flex-row gap-3 items-center">
-        <NavLink to={ACCOUNT} className="opacity-50 text-sm">
-          Account
+        <NavLink to={HOMEPAGE} className="opacity-50 text-sm">
+          Home
         </NavLink>
         <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
         <p className="opacity-50 text-sm">{productData.brand}</p>
         <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
-        <p className="text-sm">{productData.title}</p>
+        <NavLink
+          to={`${HOMEPAGE}/${productData.id}`}
+          className={({ isActive }) =>
+            `${isActive ? "text-sm" : "text-[#00000080] text-sm"}`
+          }
+        >
+          {productData.title}
+        </NavLink>
       </div>
 
       <div className="mt-15 lg:mt-20">
