@@ -42,7 +42,7 @@ const PreLoginNavigation = () => {
           <input
             type="text"
             placeholder="What are you looking for?"
-            className="text-xs w-full outline-none"
+            className="text-xs w-full focus:outline-none"
           />
         </div>
 

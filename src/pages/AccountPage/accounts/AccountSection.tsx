@@ -29,7 +29,7 @@ const AccountSection = () => {
               id="firstName"
               value={firstName || user?.firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] outline-none"
+              className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] focus:outline-none"
             />
           </div>
         </div>
@@ -44,7 +44,7 @@ const AccountSection = () => {
               id="lastName"
               value={lastName || user?.lastName}
               onChange={(e) => setLastName(e.target.value)}
-              className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] outline-none"
+              className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] focus:outline-none"
             />
           </div>
         </div>
@@ -62,7 +62,7 @@ const AccountSection = () => {
               id="email"
               value={email || user?.email}
               onChange={(e) => setEmail(e.target.value)}
-              className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] outline-none"
+              className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] focus:outline-none"
             />
           </div>
         </div>
@@ -77,7 +77,7 @@ const AccountSection = () => {
               id="username"
               value={username || user?.username}
               onChange={(e) => setUsername(e.target.value)}
-              className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] outline-none"
+              className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] focus:outline-none"
             />
           </div>
         </div>
@@ -91,7 +91,7 @@ const AccountSection = () => {
           name="password"
           id="password"
           placeholder="Current Passwod"
-          className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] outline-none"
+          className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] focus:outline-none"
         />
       </div>
       <input
@@ -99,14 +99,14 @@ const AccountSection = () => {
         name="newPassword"
         id="newPassword"
         placeholder="New Passwod"
-        className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] outline-none"
+        className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] focus:outline-none"
       />
       <input
         type="password"
         name="confirmNewPassword"
         id="confirmNewPassword"
         placeholder="Confirm New Passwod"
-        className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] outline-none"
+        className="rounded-sm bg-[#F5F5F5] border-[#F5F5F5] py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-[#00000080] focus:outline-none"
       />
 
       <div className="flex justify-end">

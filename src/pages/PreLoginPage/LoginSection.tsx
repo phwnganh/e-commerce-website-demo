@@ -55,7 +55,7 @@ const LoginSection = () => {
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="border-b-2 opacity-50 pb-2 outline-none"
+          className="border-b-2 opacity-50 pb-2 focus:outline-none"
           placeholder="Username"
         />
         <div className="flex flex-col gap-1">
@@ -65,7 +65,7 @@ const LoginSection = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border-b-2 opacity-50 pb-2 outline-none"
+            className="border-b-2 opacity-50 pb-2 focus:outline-none"
             placeholder="Password"
           />
           <p className="text-[#DB4444]">{error}</p>

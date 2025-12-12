@@ -13,7 +13,7 @@ const SignupSection = () => {
           type="text"
           name="name"
           id="name"
-          className="border-b-2 opacity-50 pb-2 outline-none"
+          className="border-b-2 opacity-50 pb-2 focus:outline-none"
           placeholder="Name"
         />
 
@@ -22,7 +22,7 @@ const SignupSection = () => {
           name="phone"
           id="phone"
           placeholder="Email or Phone Number"
-          className="border-b-2 opacity-50 pb-2 outline-none"
+          className="border-b-2 opacity-50 pb-2 focus:outline-none"
         />
 
         <input
