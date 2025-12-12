@@ -1,0 +1,44 @@
+import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+
+const ContactFormSection = () => {
+  return (
+    <section className="shadow-[0_1px_13px_0_#0000000D] rounded-sm py-10 px-8">
+      <div className="flex flex-col gap-8">
+        <div className="flex gap-4">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Your Name *"
+            className="py-[13px] pl-4 rounded-sm bg-[#F5F5F5]"
+          />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Your Email *"
+            className="py-[13px] pl-4 rounded-sm bg-[#F5F5F5]"
+          />
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="Your Phone *"
+            className="py-[13px] pl-4 rounded-sm bg-[#F5F5F5]"
+          />
+        </div>
+        <textarea
+          name="message"
+          id="message"
+          placeholder="Your Massage"
+          className="py-[13px] pl-4 rounded-sm bg-[#F5F5F5]"
+        ></textarea>
+        <div className="flex justify-end">
+          <PrimaryCustomButton>Send Massage</PrimaryCustomButton>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactFormSection;

@@ -5,7 +5,7 @@ import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 const NotFound = () => {
   const navigate = useNavigate();
   return (
-    <section className="max-w-[1170px] mx-auto mt-20 px-4 lg:px-0">
+    <main className="max-w-[1170px] mx-auto mt-20 px-4 lg:px-0">
       <div className="flex flex-row gap-3 items-center">
         <NavLink to={HOMEPAGE} className="opacity-50 text-sm">
           Home
@@ -30,7 +30,7 @@ const NotFound = () => {
           </PrimaryCustomButton>
         </div>
       </div>
-    </section>
+    </main>
   );
 };
 
