@@ -27,6 +27,7 @@ const UserDropdown = () => {
             <img
               src={WhiteUserIcon}
               alt="user-icon"
+              loading="lazy"
               className="group-hover:brightness-1"
             />
           </div>
@@ -40,6 +41,7 @@ const UserDropdown = () => {
             <img
               src={CancelIcon}
               alt="cancel-icon"
+              loading="lazy"
               className="group-hover:brightness-1"
             />
           </div>
@@ -53,6 +55,7 @@ const UserDropdown = () => {
             <img
               src={ReviewsIcon}
               alt="review-icon"
+              loading="lazy"
               className="group-hover:brightness-1"
             />
           </div>
@@ -67,6 +70,7 @@ const UserDropdown = () => {
             <img
               src={LogoutIcon}
               alt="logout-icon"
+              loading="lazy"
               className="group-hover:brightness-1"
             />
           </div>

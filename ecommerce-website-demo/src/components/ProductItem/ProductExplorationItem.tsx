@@ -91,6 +91,7 @@ const ProductExplorationItem = ({
           <img
             src={product.images[0]}
             alt="product-imgs"
+            loading="lazy"
             className="w-full h-full"
           />
           <button
@@ -123,6 +124,7 @@ const ProductExplorationItem = ({
             <img
               src={HeartIcon1}
               alt="heart-icon"
+              loading="lazy"
               className={`
                 ${isInWishlist ? "brightness-1 invert" : ""}`}
             />
@@ -131,7 +133,7 @@ const ProductExplorationItem = ({
             onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
             className="bg-white hidden md:flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
           >
-            <img src={EyeIcon} alt="eye-icon" />
+            <img src={EyeIcon} alt="eye-icon" loading="lazy"/>
           </button>
         </div>
       </div>

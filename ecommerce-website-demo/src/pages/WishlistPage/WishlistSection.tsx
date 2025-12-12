@@ -117,6 +117,7 @@ const WishlistSection = () => {
                 <img
                   src={product.images[0]}
                   alt="product-imgs"
+                  loading="lazy"
                   className="w-full h-full"
                 />
                 <button
@@ -132,7 +133,7 @@ const WishlistSection = () => {
                   onClick={() => handleRemoveWishlist(product)}
                   className="bg-white flex items-center justify-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
                 >
-                  <img src={TrashIcon} alt="trash-icon" />
+                  <img src={TrashIcon} alt="trash-icon" loading="lazy"/>
                 </button>
               </div>
             </div>

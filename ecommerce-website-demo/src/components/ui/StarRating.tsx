@@ -18,6 +18,7 @@ const StarRating = ({ rating, showNumber = true }: StarRatingProps) => {
           <img
             src={StarFull}
             alt="star-full"
+            loading="lazy"
             key={`full-${i}`}
             className={`w-3 h-3 md:w-4 md:h-4 max-w-none`}
           />
@@ -52,6 +53,7 @@ const StarRating = ({ rating, showNumber = true }: StarRatingProps) => {
         .map((_, i) => (
           <img
             key={`empty-${i}`}
+            loading="lazy"
             src={StarEmpty}
             alt="star-empty"
             className="w-3 h-3 md:w-4 md:h-4"

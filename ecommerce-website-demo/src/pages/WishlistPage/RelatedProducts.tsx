@@ -76,6 +76,7 @@ const RelatedProducts = ({ products }: { products: Products[] }) => {
                 <img
                   src={product.images[0]}
                   alt="product-imgs"
+                  loading="lazy"
                   className="w-full h-full"
                 />
                 <button
@@ -91,7 +92,7 @@ const RelatedProducts = ({ products }: { products: Products[] }) => {
                   onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
                   className="bg-white flex items-center justify-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
                 >
-                  <img src={EyeIcon} alt="eye-icon" />
+                  <img src={EyeIcon} alt="eye-icon" loading="lazy"/>
                 </button>
               </div>
             </div>

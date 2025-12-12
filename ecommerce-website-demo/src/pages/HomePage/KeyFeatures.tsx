@@ -8,7 +8,7 @@ const KeyFeatures = () => {
         <div className="rounded-full bg-[#2F2E304D] p-3 w-20 h-20">
           <div className="rounded-full bg-black p-2">
             <div className="w-10 h-10 flex justify-center items-center">
-              <img src={DeliveryIcon} alt="delivery-icon" />
+              <img src={DeliveryIcon} alt="delivery-icon" loading="lazy" />
             </div>
           </div>
         </div>
@@ -20,7 +20,7 @@ const KeyFeatures = () => {
         <div className="rounded-full bg-[#2F2E304D] p-3 w-20 h-20">
           <div className="rounded-full bg-black p-2">
             <div className="w-10 h-10 flex justify-center items-center">
-              <img src={CustomerServiceIcon} alt="customer-service-icon" />
+              <img src={CustomerServiceIcon} alt="customer-service-icon" loading="lazy" />
             </div>
           </div>
         </div>
@@ -32,7 +32,7 @@ const KeyFeatures = () => {
         <div className="rounded-full bg-[#2F2E304D] p-3 w-20 h-20">
           <div className="rounded-full bg-black p-2">
             <div className="w-10 h-10 flex justify-center items-center">
-              <img src={SecureIcon} alt="secure-icon" />
+              <img src={SecureIcon} alt="secure-icon" loading="lazy"/>
             </div>
           </div>
         </div>

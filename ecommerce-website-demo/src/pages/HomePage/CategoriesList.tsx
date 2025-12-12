@@ -49,13 +49,13 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
             onClick={scrollLeft}
             className="bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer"
           >
-            <img src={LeftArrow1} alt="left-arrow" />
+            <img src={LeftArrow1} alt="left-arrow" loading="lazy" />
           </button>
           <button
             onClick={scrollRight}
             className="bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer"
           >
-            <img src={RightArrow} alt="right-arrow" />
+            <img src={RightArrow} alt="right-arrow" loading="lazy" />
           </button>
         </div>
       </div>
@@ -74,6 +74,7 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
               <img
                 src={Cosmetics}
                 alt=""
+                loading="lazy"
                 className="group-hover:invert group-hover:brightness-0 group-hover:filter"
               />
             </div>

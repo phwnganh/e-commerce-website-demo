@@ -140,7 +140,7 @@ const MainNavigation = () => {
             to={user ? WISHLIST : LOGIN}
             className="rounded-full relative"
           >
-            <img src={Wishlist} alt="heart-icon" />
+            <img src={Wishlist} alt="heart-icon" loading="lazy" />
             {user && (
               <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] flex justify-center items-center text-xs">
                 {wishlists.length}
@@ -166,7 +166,7 @@ const MainNavigation = () => {
             to={user ? CART : LOGIN}
             className="w-8 h-8 flex justify-center relative"
           >
-            <img src={CartIcon} alt="cart-icon" />
+            <img src={CartIcon} alt="cart-icon" loading="lazy"/>
             {user && (
               <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] flex justify-center items-center text-xs">
                 {carts?.products.length || 0}
@@ -188,7 +188,8 @@ const MainNavigation = () => {
                 >
                   <img
                     src={UserCircle}
-                    alt=""
+                    alt="user-circle-icon"
+                    loading="lazy"
                     className={`${
                       isUserActive
                         ? "w-1.5 h-1.5 brightness-0 invert"
@@ -197,7 +198,8 @@ const MainNavigation = () => {
                   />
                   <img
                     src={UserShape}
-                    alt=""
+                    alt="user-shape-icon"
+                    loading="lazy"
                     className={`${
                       isUserActive
                         ? "w-[11px] h-[5px] brightness-0 invert"

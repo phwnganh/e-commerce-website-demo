@@ -90,24 +90,24 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
               <h3 className="font-bold text-xl md:text-3xl">03</h3>
             </div>
             <div className="flex flex-col gap-2">
-              <img src={Circle} alt="circle-icon" />
-              <img src={Circle} alt="circle-icon" />
+              <img src={Circle} alt="circle-icon" loading="lazy"/>
+              <img src={Circle} alt="circle-icon" loading="lazy"/>
             </div>
             <div>
               <p className="text-xs">Hours</p>
               <h3 className="font-bold text-xl md:text-3xl">23</h3>
             </div>
             <div className="flex flex-col gap-2">
-              <img src={Circle} alt="circle-icon" />
-              <img src={Circle} alt="circle-icon" />
+              <img src={Circle} alt="circle-icon" loading="lazy"/>
+              <img src={Circle} alt="circle-icon" loading="lazy"/>
             </div>
             <div>
               <p className="text-xs">Minutes</p>
               <h3 className="font-bold text-xl md:text-3xl">19</h3>
             </div>
             <div className="flex flex-col gap-2">
-              <img src={Circle} alt="circle-icon" />
-              <img src={Circle} alt="circle-icon" />
+              <img src={Circle} alt="circle-icon" loading="lazy"/>
+              <img src={Circle} alt="circle-icon" loading="lazy"/>
             </div>
             <div>
               <p className="text-xs">Seconds</p>
@@ -126,7 +126,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
             onClick={goToPrev}
             disabled={currentIndex === 0}
           >
-            <img src={LeftArrow1} alt="left-arrow" />
+            <img src={LeftArrow1} alt="left-arrow" loading="lazy"/>
           </button>
           <button
             onClick={goToNext}
@@ -137,7 +137,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
                 : "hover:bg-gray-200 cursor-pointer"
             }`}
           >
-            <img src={RightArrow} alt="right-arrow" />
+            <img src={RightArrow} alt="right-arrow" loading="lazy"/>
           </button>
         </div>
       </div>
