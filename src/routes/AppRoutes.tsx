@@ -17,7 +17,7 @@ import {
   USER_PROFILE,
   WISHLIST,
 } from "../constants/route.constants";
-import HomeProductListPage from "../pages/ProductListPage/HomeProductListPage";
+import NotFound from "../pages/NotFoundPage/NotFound";
 
 const MainLayout = lazy(() => import("../components/layouts/MainLayout"));
 const LoginPage = lazy(() => import("../pages/PreLoginPage/LoginPage"));
@@ -52,6 +52,10 @@ const CategoryListPage = lazy(
 const CaategoryProductListPage = lazy(
   () => import("../pages/ProductListPage/CategoryProductListPage")
 );
+
+const HomeProductListPage = lazy(
+  () => import("../pages/ProductListPage/HomeProductListPage")
+);
 const AppRoutes = () => {
   return (
     <Suspense
@@ -68,7 +72,7 @@ const AppRoutes = () => {
           <Route path={WISHLIST} element={<WishlistPage />} />
           <Route path={CART} element={<CartPage />} />
           <Route path={CATEGORYPAGE} element={<CategoryListPage />} />
-          <Route path={PRODUCTPAGE} element={<HomeProductListPage/>}/>
+          <Route path={PRODUCTPAGE} element={<HomeProductListPage />} />
           <Route
             path={`${PRODUCTPAGE}/:slug`}
             element={<CaategoryProductListPage />}
@@ -83,13 +87,13 @@ const AppRoutes = () => {
             <Route path={RETURNS} element={<ReturnSection />} />
             <Route path={CANCELLATIONS} element={<CancellationSection />} />
           </Route>
-
           <Route path={HOMEPAGE} element={<HomePage />} />
           <Route
             path={`${HOMEPAGE}/:productId`}
             element={<ProductDetailPage />}
           />
           <Route index element={<HomePage />} />
+          <Route path="*" element={<NotFound/>}/>
         </Route>
       </Routes>
     </Suspense>

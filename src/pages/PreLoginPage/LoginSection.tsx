@@ -72,7 +72,7 @@ const LoginSection = () => {
         </div>
 
         <div className="flex flex-row gap-21.5 items-center">
-          <PrimaryCustomButton type="submit" bgColor="#DB4444">
+          <PrimaryCustomButton type="submit">
             Log In
           </PrimaryCustomButton>
           <a href="#" className="text-[#DB4444] text-sm md:text-base">

@@ -239,7 +239,7 @@ const CartSection = () => {
               placeholder="Coupon Code"
               className="border rounded-sm text-sm md:text-base py-2 md:py-4 pl-6"
             />
-            <PrimaryCustomButton bgColor="#DB4444">
+            <PrimaryCustomButton>
               Apply Coupon
             </PrimaryCustomButton>
           </div>
@@ -267,7 +267,7 @@ const CartSection = () => {
                 </div>
 
                 <div className="flex justify-center">
-                  <PrimaryCustomButton bgColor="#DB4444">
+                  <PrimaryCustomButton>
                     Procees to checkout
                   </PrimaryCustomButton>
                 </div>

@@ -30,7 +30,7 @@ const LimitedOfferBanner = () => {
             </div>
           </div>
           <div className="mt-2">
-            <PrimaryCustomButton bgColor="#00FF66">Buy Now!</PrimaryCustomButton>
+            <PrimaryCustomButton>Buy Now!</PrimaryCustomButton>
           </div>
         </div>
 

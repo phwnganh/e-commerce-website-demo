@@ -177,7 +177,6 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
       </div>
       <div className="mt-15 flex justify-center">
         <PrimaryCustomButton
-          bgColor="#DB4444"
           onClick={() => navigate(PRODUCTPAGE)}
         >
           View All Products

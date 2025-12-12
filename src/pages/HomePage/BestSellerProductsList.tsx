@@ -37,7 +37,6 @@ const BestSellerProductsList = ({ products }: { products: Products[] }) => {
           </h3>
         </div>
         <PrimaryCustomButton
-          bgColor="#DB4444"
           onClick={() => navigate(PRODUCTPAGE)}
         >
           View All

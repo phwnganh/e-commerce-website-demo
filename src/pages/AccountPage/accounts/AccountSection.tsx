@@ -112,7 +112,7 @@ const AccountSection = () => {
       <div className="flex justify-end">
         <div className="flex gap-8 items-center">
           <p className="text-sm sm:text-base">Cancel</p>
-          <PrimaryCustomButton bgColor="#DB4444" type="submit">
+          <PrimaryCustomButton type="submit">
             Save Changes
           </PrimaryCustomButton>
         </div>
