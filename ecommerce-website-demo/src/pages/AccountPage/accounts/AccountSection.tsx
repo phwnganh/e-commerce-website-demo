@@ -9,9 +9,9 @@ const AccountSection = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [newPassword, setNewPassword] = useState("");
+  // const [confirmNewPassword, setConfirmNewPassword] = useState("");
   return (
     <form className="flex flex-col gap-4 max-w-[710px] mx-auto rounded-sm py-10 px-5 lg:px-0">
       <h3 className="text-[#DB4444] text-base sm:text-xl font-medium">

@@ -1,4 +1,4 @@
-import { useAtomValue, useSetAtom } from "jotai";
+import {  useSetAtom } from "jotai";
 import WhiteUserIcon from "../../assets/white-user-icon.svg";
 import CancelIcon from "../../assets/icon-cancel.svg";
 import ReviewsIcon from "../../assets/Icon-Reviews.svg";

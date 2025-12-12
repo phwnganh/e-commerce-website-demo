@@ -38,6 +38,8 @@ const LoginSection = () => {
       setUser(data);
       navigate(HOMEPAGE);
     } catch (error: any) {
+      console.log(error);
+
       setError(error.message);
     }
   };
@@ -56,16 +58,18 @@ const LoginSection = () => {
           className="border-b-2 opacity-50 pb-2 outline-none"
           placeholder="Username"
         />
-
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="border-b-2 opacity-50 pb-2 outline-none"
-          placeholder="Password"
-        />
+        <div className="flex flex-col gap-1">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="border-b-2 opacity-50 pb-2 outline-none"
+            placeholder="Password"
+          />
+          <p className="text-[#DB4444]">{error}</p>
+        </div>
 
         <div className="flex flex-row gap-21.5 items-center">
           <PrimaryCustomButton type="submit" bgColor="#DB4444">
