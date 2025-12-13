@@ -91,4 +91,6 @@ button:focus-visible {
   --color-black-opacity-40: #00000066;
   --color-black-opacity-70: #000000B3;
   --color-black-opacity-80: #00000080;
+
+  --color-white-opacity-30: #FFFFFF4D;
 }
