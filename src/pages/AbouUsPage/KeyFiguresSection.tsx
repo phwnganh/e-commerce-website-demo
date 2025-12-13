@@ -1,11 +1,8 @@
 import CustomRoundedComponent from "../../components/ui/CustomRoundedComponent";
-import ShopIcon from "../../assets/icon_shop.svg";
-import SaleIcon from "../../assets/Icon-Sale.svg";
 import ShoppingBagIcon from "../../assets/Icon-Shopping bag.svg";
-import MoneyBagIcon from "../../assets/Icon-Moneybag.svg";
 const KeyFiguresSection = () => {
   return (
-    <section className="mt-35 grid grid-cols-4 gap-7.5">
+    <section className="mt-35 grid grid-cols-2 md:grid-cols-4 gap-7.5">
       <div className="border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]">
         <div className="flex flex-col gap-3 items-center py-7.5">
           <div className="mb-3">
@@ -58,8 +55,12 @@ const KeyFiguresSection = () => {
             </CustomRoundedComponent>
           </div>
 
-          <h1 className="font-bold text-3xl group-hover:text-white">10.5k </h1>
-          <p className="group-hover:text-white">Sallers active our site</p>
+          <h1 className="font-bold text-xl md:text-3xl text-center md:text-start group-hover:text-white">
+            10.5k{" "}
+          </h1>
+          <p className="group-hover:text-white text-sm md:text-base">
+            Sallers active our site
+          </p>
         </div>
       </div>
 
@@ -100,8 +101,12 @@ const KeyFiguresSection = () => {
             </CustomRoundedComponent>
           </div>
 
-          <h1 className="font-bold text-3xl group-hover:text-white">33k</h1>
-          <p className="group-hover:text-white">Mopnthly Produduct Sale</p>
+          <h1 className="font-bold text-xl md:text-3xl text-center md:text-start group-hover:text-white">
+            33k
+          </h1>
+          <p className="group-hover:text-white text-sm md:text-base">
+            Mopnthly Produduct Sale
+          </p>
         </div>
       </div>
 
@@ -109,12 +114,20 @@ const KeyFiguresSection = () => {
         <div className="flex flex-col gap-3 items-center py-7.5">
           <div className="mb-3">
             <CustomRoundedComponent>
-              <img src={ShoppingBagIcon} alt="shopping-bag-icon" className=" group-hover:brightness-1" />
+              <img
+                src={ShoppingBagIcon}
+                alt="shopping-bag-icon"
+                className=" group-hover:brightness-1"
+              />
             </CustomRoundedComponent>
           </div>
 
-          <h1 className="font-bold text-3xl group-hover:text-white">45.5k</h1>
-          <p className="group-hover:text-white">Customer active in our site</p>
+          <h1 className="font-bold text-xl md:text-3xl text-center md:text-start group-hover:text-white">
+            45.5k
+          </h1>
+          <p className="group-hover:text-white text-sm md:text-base">
+            Customer active in our site
+          </p>
         </div>
       </div>
 
@@ -142,8 +155,12 @@ const KeyFiguresSection = () => {
             </CustomRoundedComponent>
           </div>
 
-          <h1 className="font-bold text-3xl group-hover:text-white">25k</h1>
-          <p className="group-hover:text-white">Anual gross sale in our site</p>
+          <h1 className="font-bold text-xl md:text-3xl text-center md:text-start group-hover:text-white">
+            25k
+          </h1>
+          <p className="group-hover:text-white text-sm md:text-base">
+            Anual gross sale in our site
+          </p>
         </div>
       </div>
     </section>

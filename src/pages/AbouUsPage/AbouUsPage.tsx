@@ -7,7 +7,7 @@ import OurTeamSection from "./OurTeamSection";
 
 const AbouUsPage = () => {
   return (
-    <main className="max-w-[1170px] mx-auto">
+    <main className="max-w-[1170px] mx-auto px-4 lg:px-0">
       <div className="mt-20 flex flex-row gap-3 items-center">
         <NavLink to={HOMEPAGE} className="text-black-opacity-80 text-sm">
           Home
