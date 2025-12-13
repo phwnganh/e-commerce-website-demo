@@ -17,7 +17,7 @@ const UserDropdown = () => {
   };
   return (
     <div className="absolute top-9 right-0 z-10">
-      <div className="flex flex-col gap-3 bg-[#0000000A] w-56 pt-[18px] pb-2.5 backdrop-blur-[150px] rounded-sm text-[#FAFAFA]">
+      <div className="flex flex-col gap-3 bg-black-opacity-4 w-56 pt-[18px] pb-2.5 backdrop-blur-[150px] rounded-sm text-text-1">
         <div
           role="button"
           onClick={() => navigate(ACCOUNT)}

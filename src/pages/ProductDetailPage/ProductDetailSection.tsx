@@ -53,7 +53,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
         <NavLink
           to={`${PRODUCTPAGE}/${productData.category}`}
           className={({ isActive }) =>
-            `${isActive ? "text-sm" : "text-[#00000080] text-sm"}`
+            `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
           }
         >
           {productData.category}
@@ -62,7 +62,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
         <NavLink
           to={`${HOMEPAGE}/${productData.id}`}
           className={({ isActive }) =>
-            `${isActive ? "text-sm" : "text-[#00000080] text-sm"}`
+            `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
           }
         >
           {productData.title}
@@ -73,7 +73,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-17.5">
           <div className="flex flex-col-reverse lg:flex-row gap-7.5">
             <div className="flex flex-row lg:flex-col gap-4">
-              <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
+              <div className="w-[170px] h-[138px] flex justify-center bg-secondary-2 rounded-sm">
                 <img
                   src={productData.thumbnail}
                   alt={productData.title}
@@ -81,7 +81,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
+              <div className="w-[170px] h-[138px] flex justify-center bg-secondary-2 rounded-sm">
                 <img
                   src={productData.thumbnail}
                   alt={productData.title}
@@ -89,7 +89,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
+              <div className="w-[170px] h-[138px] flex justify-center bg-secondary-2 rounded-sm">
                 <img
                   src={productData.thumbnail}
                   alt={productData.title}
@@ -97,7 +97,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="w-[170px] h-[138px] flex justify-center bg-[#F5F5F5] rounded-sm">
+              <div className="w-[170px] h-[138px] flex justify-center bg-secondary-2 rounded-sm">
                 <img
                   src={productData.thumbnail}
                   alt={productData.title}
@@ -106,7 +106,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                 />
               </div>
             </div>
-            <div className="lg:w-[500px] lg:h-[600px] w-full bg-[#F5F5F5] flex justify-center rounded-sm">
+            <div className="lg:w-[500px] lg:h-[600px] w-full bg-secondary-2 flex justify-center rounded-sm">
               <img src={productData.images[0]} loading="lazy" alt={productData.title} />
             </div>
           </div>
@@ -118,16 +118,16 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
             <div className="flex flex-row gap-4 items-center">
               <StarRating rating={productData.rating} />
               <div className="-rotate-90 border opacity-50 w-4"></div>
-              <p className="opacity-60 text-xs lg:text-sm text-[#00FF66]">
+              <p className="opacity-60 text-xs lg:text-sm text-button-1">
                 {productData.availabilityStatus}
               </p>
             </div>
             <h3 className="text-xl lg:text-2xl">${productData.price}</h3>
             <p className="mt-2 text-xs lg:text-sm">{productData.description}</p>
-            <hr className="mt-2 border-[#00000080]" />
+            <hr className="mt-2 border-black-opacity-80" />
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center mt-2">
-              <div className=" flex flex-row border border-[#00000080] rounded-bl-sm rounded-tl-sm rounded-tr-sm rounded-br-sm">
-                <button className="group flex justify-center items-center py-2.5 px-2 border-r-[#00000080] border-r hover:border-[#DB4444] hover:rounded-tl-sm hover:rounded-bl-sm hover:bg-[#DB4444] cursor-pointer">
+              <div className=" flex flex-row border border-black-opacity-80 rounded-bl-sm rounded-tl-sm rounded-tr-sm rounded-br-sm">
+                <button className="group flex justify-center items-center py-2.5 px-2 border-r-black-opacity-80 border-r hover:border-button-2 hover:rounded-tl-sm hover:rounded-bl-sm hover:bg-button-2 cursor-pointer">
                   <img
                     src={MinusIcon}
                     alt="minus-icon"
@@ -135,10 +135,10 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                     className="group-hover:brightness-0 group-hover:invert"
                   />
                 </button>
-                <div className="py-2 px-[34px] border-r-[#00000080] flex justify-center items-center">
+                <div className="py-2 px-[34px] border-r-black-opacity-80 flex justify-center items-center">
                   <p className="font-medium text-base lg:text-xl">2</p>
                 </div>
-                <button className="group py-2.5 px-2 flex justify-center border-l border-l-[#00000080] items-center hover:bg-[#DB4444] hover:border-[#DB4444] hover:rounded-tr-sm hover:rounded-br-sm cursor-pointer">
+                <button className="group py-2.5 px-2 flex justify-center border-l border-l-black-opacity-80 items-center hover:bg-button-2 hover:border-button-2 hover:rounded-tr-sm hover:rounded-br-sm cursor-pointer">
                   <img
                     src={PlusIcon}
                     alt="plus-icon"
@@ -148,7 +148,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                 </button>
               </div>
 
-              <button className="bg-[#DB4444] text-[#FAFAFA] text-nowrap py-3 px-10 lg:py-2.5 lg:px-12 h-full font-medium rounded-sm text-xs lg:text-base cursor-pointer">
+              <button className="bg-button-2 text-text-1 text-nowrap py-3 px-10 lg:py-2.5 lg:px-12 h-full font-medium rounded-sm text-xs lg:text-base cursor-pointer">
                 Buy Now
               </button>
               <button
@@ -160,9 +160,9 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                 }}
                 className={`${
                   isInWishlist
-                    ? "bg-[#DB4444] border-[#DB4444] hover:bg-[#DB4444] hover:border-[#DB4444] cursor-pointer"
+                    ? "bg-button-2 border-button-2 hover:bg-button-2 hover:border-button-2 cursor-pointer"
                     : "bg-white hover:bg-gray-200 cursor-pointer"
-                } group ml-[3px] border border-[#00000080] hover:bg-[#DB4444] hover:border-gray-200 rounded-sm w-10 h-10 flex justify-center items-center`}
+                } group ml-[3px] border border-black-opacity-80 hover:bg-button-2 hover:border-gray-200 rounded-sm w-10 h-10 flex justify-center items-center`}
               >
                 <img
                   src={HeartIcon}
@@ -175,7 +175,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
               </button>
             </div>
 
-            <div className="flex flex-col rounded-sm border border-[#00000080] mt-6">
+            <div className="flex flex-col rounded-sm border border-black-opacity-80 mt-6">
               <div className="flex flex-row gap-4 items-center pt-4 lg:pt-6 pb-2 lg:pb-4 pl-2 lg:pl-4">
                 <div className="flex justify-center items-center">
                   <img
@@ -194,7 +194,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                   </p>
                 </div>
               </div>
-              <hr className="border-[#00000080]" />
+              <hr className="border-black-opacity-80" />
 
               <div className="flex flex-row gap-4 items-center pt-2 lg:pt-4 pb-4 lg:pb-6 pl-2 lg:pl-4">
                 <div className="flex justify-center items-center">

@@ -76,8 +76,8 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
         <div className="flex flex-col md:flex-row items-start md:items-end gap-6 md:gap-21">
           <div className="flex flex-col gap-4 md:gap-6">
             <div className="flex flex-row gap-4 items-center">
-              <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-              <p className="text-[#DB4444] font-semibold text-sm md:text-base">
+              <div className="bg-button-2 w-5 h-10 rounded-sm"></div>
+              <p className="text-button-2 font-semibold text-sm md:text-base">
                 Today's
               </p>
             </div>
@@ -118,7 +118,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
 
         <div className="flex md:flex-row gap-2">
           <button
-            className={`bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center transition-all  ${
+            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center transition-all  ${
               currentIndex === 0
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-gray-200 cursor-pointer"
@@ -131,7 +131,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
           <button
             onClick={goToNext}
             disabled={currentIndex === totalGroups - 1}
-            className={`bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center ${
+            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center ${
               currentIndex === totalGroups - 1
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-gray-200 cursor-pointer"
@@ -182,7 +182,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
           View All Products
         </PrimaryCustomButton>
       </div>
-      <hr className="mt-15 border-t border-t-[#0000004D]" />{" "}
+      <hr className="mt-15 border-t border-t-black-opacity-30" />{" "}
     </section>
   );
 };

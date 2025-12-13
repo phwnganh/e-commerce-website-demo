@@ -7,14 +7,14 @@ const ContactPage = () => {
   return (
     <main className="max-w-[1170px] mx-auto">
       <div className="mt-20 flex flex-row gap-3 items-center">
-        <NavLink to={HOMEPAGE} className="text-[#00000080] text-sm">
+        <NavLink to={HOMEPAGE} className="text-black-opacity-80 text-sm">
           Home
         </NavLink>
-        <div className="border border-[#00000080] rotate-[117.05deg] w-3 h-0"></div>
+        <div className="border border-black-opacity-80 rotate-[117.05deg] w-3 h-0"></div>
         <NavLink
           to={CONTACT}
           className={({ isActive }) =>
-            `${isActive ? "text-sm" : "text-[#00000080] text-sm"}`
+            `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
           }
         >
           Contact

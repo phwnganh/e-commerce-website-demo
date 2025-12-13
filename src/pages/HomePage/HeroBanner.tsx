@@ -3,7 +3,7 @@ import arrowRight from "../../assets/arrow-right.svg";
 import AppleIcon from "../../assets/apple-icon.png";
 const HeroBanner = () => {
   return (
-    <div className="mt-10 bg-black text-[#FAFAFA] w-full lg:w-auto">
+    <div className="mt-10 bg-black text-text-1 w-full lg:w-auto">
       <div className="flex flex-row items-center">
         <div className="lg:ml-16 ml-6 py-6 lg:py-0">
           <div className="flex flex-row gap-6 items-center">

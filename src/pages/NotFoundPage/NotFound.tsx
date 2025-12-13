@@ -14,7 +14,7 @@ const NotFound = () => {
         <NavLink
           to={"*"}
           className={({ isActive }) =>
-            `${isActive ? "text-sm" : "text-[#00000080] text-sm"}`
+            `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
           }
         >
           404 Error

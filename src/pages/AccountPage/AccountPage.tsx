@@ -11,14 +11,14 @@ const AccountPage = () => {
     <main className="max-w-[1170px] mx-auto mt-20 mb-35 px-4 lg:px-0">
       <div className="flex flex-row justify-between">
         <div className="flex flex-row gap-3 items-center">
-          <NavLink to={HOMEPAGE} className="text-[#00000080] text-sm">
+          <NavLink to={HOMEPAGE} className="text-black-opacity-80 text-sm">
             Home
           </NavLink>
-          <div className="border border-[#00000080] rotate-[117.05deg] w-3 h-0"></div>
+          <div className="border border-black-opacity-80 rotate-[117.05deg] w-3 h-0"></div>
           <NavLink
             to={ACCOUNT}
             className={({ isActive }) =>
-              `${isActive ? "text-sm" : "text-[#00000080] text-sm"}`
+              `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
             }
           >
             My Account
@@ -26,7 +26,7 @@ const AccountPage = () => {
         </div>
 
         <p className="text-sm">
-          Welcome! <span className="text-[#DB4444]">{user?.firstName}</span>
+          Welcome! <span className="text-button-2">{user?.firstName}</span>
         </p>
       </div>
 

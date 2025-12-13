@@ -68,14 +68,14 @@ const LoginSection = () => {
             className="border-b-2 opacity-50 pb-2 focus:outline-none"
             placeholder="Password"
           />
-          <p className="text-[#DB4444]">{error}</p>
+          <p className="text-button-2">{error}</p>
         </div>
 
         <div className="flex flex-row gap-21.5 items-center">
           <PrimaryCustomButton type="submit">
             Log In
           </PrimaryCustomButton>
-          <a href="#" className="text-[#DB4444] text-sm md:text-base">
+          <a href="#" className="text-button-2 text-sm md:text-base">
             Forget Password?
           </a>
         </div>

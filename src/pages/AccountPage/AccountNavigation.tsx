@@ -15,7 +15,7 @@ const AccountNavigation = () => {
         <NavLink
           to={USER_PROFILE}
           className={({ isActive }) =>
-            `${isActive && "text-[#DB4444]"} text-[#00000080]`
+            `${isActive && "text-button-2"} text-black-opacity-80`
           }
         >
           My Profile
@@ -23,7 +23,7 @@ const AccountNavigation = () => {
         <NavLink
           to={ADDRESS_BOOK}
           className={({ isActive }) =>
-            `${isActive && "text-[#DB4444]"} text-[#00000080]`
+            `${isActive && "text-button-2"} text-black-opacity-80`
           }
         >
           Address Book
@@ -31,7 +31,7 @@ const AccountNavigation = () => {
         <NavLink
           to={PAYMENT_OPTION}
           className={({ isActive }) =>
-            `${isActive && "text-[#DB4444]"} text-[#00000080]`
+            `${isActive && "text-button-2"} text-black-opacity-80`
           }
         >
           My Payment Options
@@ -42,7 +42,7 @@ const AccountNavigation = () => {
         <NavLink
           to={RETURNS}
           className={({ isActive }) =>
-            `${isActive && "text-[#DB4444]"} text-[#00000080]`
+            `${isActive && "text-button-2"} text-black-opacity-80`
           }
         >
           My Returns
@@ -50,7 +50,7 @@ const AccountNavigation = () => {
         <NavLink
           to={CANCELLATIONS}
           className={({ isActive }) =>
-            `${isActive && "text-[#DB4444]"} text-[#00000080]`
+            `${isActive && "text-button-2"} text-black-opacity-80`
           }
         >
           My Cancellations

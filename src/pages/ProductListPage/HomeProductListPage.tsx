@@ -60,7 +60,7 @@ const HomeProductListPage = () => {
           <NavLink
             to={PRODUCTPAGE}
             className={({ isActive }) =>
-              `${isActive ? "text-sm" : "text-[#00000080] text-sm"}`
+              `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
             }
           >
             Products
@@ -80,7 +80,7 @@ const HomeProductListPage = () => {
         </div>
         {isLoading && (
           <div className="flex justify-center mt-6">
-            <div className="w-8 h-8 border-4 border-gray-300 border-t-[#DB4444] rounded-full animate-spin"></div>
+            <div className="w-8 h-8 border-4 border-gray-300 border-t-button-2 rounded-full animate-spin"></div>
           </div>
         )}
         <div ref={loadMoreRef} className="h-10"></div>

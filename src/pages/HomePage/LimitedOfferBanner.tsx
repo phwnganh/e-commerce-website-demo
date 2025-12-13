@@ -5,10 +5,10 @@ const LimitedOfferBanner = () => {
     <section className="mt-35 bg-black">
       <div className="flex flex-col md:flex-row gap-7 items-center p-4 md:p-10">
         <div className="flex flex-col gap-6 md:gap-8 basis-[50%] md:basis-[40%] items-start">
-          <p className="text-[#00FF66] font-semibold text-sm md:text-base">
+          <p className="text-button-1 font-semibold text-sm md:text-base">
             Categories
           </p>
-          <h1 className="text-[#FAFAFA] font-semibold text-3xl md:text-5xl">
+          <h1 className="text-text-1 font-semibold text-3xl md:text-5xl">
             Enhance Your Music Experience
           </h1>
           <div className="flex flex-row gap-4 md:gap-6 justify-center md:justify-start">

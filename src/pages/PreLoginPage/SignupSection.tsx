@@ -36,16 +36,16 @@ const SignupSection = () => {
           <PrimaryCustomButton type="submit">
             Create Account
           </PrimaryCustomButton>
-          <button className="flex flex-row gap-4 justify-center border border-[#00000066] rounded-sm py-4">
+          <button className="flex flex-row gap-4 justify-center border border-black-opacity-40 rounded-sm py-4">
             <img src={googleIcon} alt="google-icon" loading="lazy" />
             <span>Sign up with Google</span>
           </button>
           <div className="mt-4 flex flex-row gap-4 justify-center">
-            <p className="text-sm md:text-base text-[#000000B3]">
+            <p className="text-sm md:text-base text-black-opacity-70">
               Already have account?
             </p>
             <a
-              className="text-sm text-[#000000B3] font-medium md:text-base border-b border-transparent hover:border-b-[#00000080]"
+              className="text-sm text-black-opacity-70 font-medium md:text-base border-b border-transparent hover:border-b-black-opacity-80"
               href={LOGIN}
             >
               Login

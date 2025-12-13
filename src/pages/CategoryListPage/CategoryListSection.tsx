@@ -48,7 +48,7 @@ const CategoryListSection = () => {
         <NavLink
           to={CATEGORYPAGE}
           className={({ isActive }) =>
-            `${isActive ? "text-sm" : "text-[#00000080] text-sm"}`
+            `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
           }
         >
           Categories
@@ -60,7 +60,7 @@ const CategoryListSection = () => {
           <div
             onClick={() => navigate(`${PRODUCTPAGE}/${category.slug}`)}
             key={index}
-            className="flex flex-col gap-4 border justify-center items-center rounded-sm border-[#0000004D] py-6 px-14 hover:bg-[#DB4444] hover:border-[#DB4444] group cursor-pointer"
+            className="flex flex-col gap-4 border justify-center items-center rounded-sm border-black-opacity-30 py-6 px-14 hover:bg-button-2 hover:border-button-2 group cursor-pointer"
           >
             <div className="flex justify-center items-center">
               <img
@@ -70,7 +70,7 @@ const CategoryListSection = () => {
                 className="group-hover:invert group-hover:brightness-0 group-hover:filter"
               />
             </div>
-            <p className="text-center text-sm md:text-base group-hover:text-[#FAFAFA]">
+            <p className="text-center text-sm md:text-base group-hover:text-text-1">
               {category.name}
             </p>
           </div>
@@ -79,7 +79,7 @@ const CategoryListSection = () => {
 
       {isLoading && (
         <div className="flex justify-center mt-6">
-          <div className="w-8 h-8 border-4 border-gray-300 border-t-[#DB4444] rounded-full animate-spin"></div>
+          <div className="w-8 h-8 border-4 border-gray-300 border-t-button-2 rounded-full animate-spin"></div>
         </div>
       )}
 

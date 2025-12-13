@@ -8,8 +8,8 @@ const NewProductsAdvertisement = () => {
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-4 md:gap-6">
           <div className="flex flex-row gap-4 items-center">
-            <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-            <p className="text-[#DB4444] text-sm md:text-base font-semibold">
+            <div className="bg-button-2 w-5 h-10 rounded-sm"></div>
+            <p className="text-button-2 text-sm md:text-base font-semibold">
               Featured
             </p>
           </div>
@@ -27,10 +27,10 @@ const NewProductsAdvertisement = () => {
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-8 flex flex-col items-start gap-4 w-[242px]">
-              <h4 className="font-semibold text-xl md:text-2xl text-[#FAFAFA]">
+              <h4 className="font-semibold text-xl md:text-2xl text-text-1">
                 PlayStation 5
               </h4>
-              <p className="text-xs md:text-sm text-[#FAFAFA]">
+              <p className="text-xs md:text-sm text-text-1">
                 Black and White version of the PS5 coming out on sale.
               </p>
               <button className="font-medium border-b text-sm md:text-base cursor-pointer">
@@ -47,10 +47,10 @@ const NewProductsAdvertisement = () => {
             className="w-full rounded-l-sm rounded-r-sm h-full object-cover"
           />
           <div className="absolute left-6 bottom-6 gap-4 flex flex-col items-start w-[255px]">
-            <h4 className="font-semibold text-xl md:text-2xl text-[#FAFAFA]">
+            <h4 className="font-semibold text-xl md:text-2xl text-text-1">
               Women’s Collections
             </h4>
-            <p className="text-xs md:text-sm text-[#FAFAFA]">
+            <p className="text-xs md:text-sm text-text-1">
               Featured woman collections that give you another vibe.
             </p>
             <button className="font-medium border-b text-sm md:text-base cursor-pointer">
@@ -68,10 +68,10 @@ const NewProductsAdvertisement = () => {
             />
           </div>
           <div className="flex flex-col gap-2 absolute left-6 bottom-6 items-start">
-            <h4 className="font-semibold text-xl md:text-2xl text-[#FAFAFA]">
+            <h4 className="font-semibold text-xl md:text-2xl text-text-1">
               Speakers
             </h4>
-            <p className="text-xs md:text-sm text-[#FAFAFA]">
+            <p className="text-xs md:text-sm text-text-1">
               Amazon wireless speakers
             </p>
             <button className="font-medium border-b text-sm md:text-base cursor-pointer">
@@ -89,10 +89,10 @@ const NewProductsAdvertisement = () => {
             />
           </div>
           <div className="flex flex-col gap-2 absolute left-6 bottom-15 items-start">
-            <h4 className="font-semibold text-xl md:text-2xl text-[#FAFAFA]">
+            <h4 className="font-semibold text-xl md:text-2xl text-text-1">
               Perfume
             </h4>
-            <p className="text-xs md:text-sm text-[#FAFAFA]">
+            <p className="text-xs md:text-sm text-text-1">
               GUCCI INTENSE OUD EDP
             </p>
             <button className="font-medium border-b text-sm md:text-base cursor-pointer">

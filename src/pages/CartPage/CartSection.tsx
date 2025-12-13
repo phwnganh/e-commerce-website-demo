@@ -80,14 +80,14 @@ const CartSection = () => {
   return (
     <section className="mt-20 mb-11 md:mb-35 px-4 lg:px-0">
       <div className="flex flex-row gap-3 items-center">
-        <NavLink to={HOMEPAGE} className="text-[#00000080] text-sm">
+        <NavLink to={HOMEPAGE} className="text-black-opacity-80 text-sm">
           Home
         </NavLink>
-        <div className="border border-[#00000080] rotate-[117.05deg] w-3 h-0"></div>
+        <div className="border border-black-opacity-80 rotate-[117.05deg] w-3 h-0"></div>
         <NavLink
           to={CART}
           className={({ isActive }) =>
-            `${isActive ? "text-sm" : "text-[#00000080] text-sm"}`
+            `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
           }
         >
           Cart
@@ -120,7 +120,7 @@ const CartSection = () => {
                     <div className="hidden group-hover:block">
                       <button
                         onClick={() => handleRemoveItemFromCart(item.id)}
-                        className="absolute top-0 -left-1.75 w-4.5 h-4.5 rounded-full bg-[#DB4444] flex justify-center items-center cursor-pointer"
+                        className="absolute top-0 -left-1.75 w-4.5 h-4.5 rounded-full bg-button-2 flex justify-center items-center cursor-pointer"
                       >
                         <img src={XIcon} alt="x-icon" loading="lazy"/>
                       </button>
@@ -130,7 +130,7 @@ const CartSection = () => {
                   <p className="text-xs md:text-base">{item.title}</p>
                 </div>
                 <p className="text-xs md:text-base">${item.price.toFixed(2)}</p>
-                <div className="border-[1.5px] border-[#00000066] w-18 rounded-sm">
+                <div className="border-[1.5px] border-black-opacity-40 w-18 rounded-sm">
                   <div className="flex gap-4 items-center justify-center py-1.5 px-3">
                     <p className="text-sm md:text-base min-w-7 text-center">
                       {item.quantity}
@@ -253,12 +253,12 @@ const CartSection = () => {
                     ${cart?.total?.toFixed(2)}
                   </p>
                 </div>
-                <hr className="border-[#00000066]" />
+                <hr className="border-black-opacity-40" />
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Shipping:</p>
                   <p className="text-sm md:text-base">Free</p>
                 </div>
-                <hr className="border-[#00000066]" />
+                <hr className="border-black-opacity-40" />
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Total:</p>
                   <p className="text-sm md:text-base">

@@ -59,8 +59,8 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-4 md:gap-6">
           <div className="flex flex-row gap-4 items-center">
-            <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-            <p className="text-[#DB4444] font-semibold text-sm md:text-base">
+            <div className="bg-button-2 w-5 h-10 rounded-sm"></div>
+            <p className="text-button-2 font-semibold text-sm md:text-base">
               Our Products
             </p>
           </div>
@@ -73,7 +73,7 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
           <button
             onClick={goToPrev}
             disabled={currentIndex === 0}
-            className={`bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center ${
+            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center ${
               currentIndex === 0
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-gray-200 cursor-pointer"
@@ -84,7 +84,7 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
           <button
             onClick={goToNext}
             disabled={currentIndex === totalGroups - 1}
-            className={`bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center ${
+            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center ${
               currentIndex === totalGroups - 1
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-gray-200 cursor-pointer"

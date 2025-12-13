@@ -15,8 +15,8 @@ const PreLoginNavigation = () => {
           className={({ isActive }) =>
             `${
               isActive
-                ? "border-b-2 border-b-[#00000080]"
-                : "hover:border-b-2 border-b-[#00000080]"
+                ? "border-b-2 border-b-black-opacity-80"
+                : "hover:border-b-2 border-b-black-opacity-80"
             }`
           }
           to={HOMEPAGE}
@@ -29,7 +29,7 @@ const PreLoginNavigation = () => {
           to={LOGIN}
           className={({ isActive }) =>
             `${
-              isActive ? "border-b-2 border-b-[#00000080]" : "hover:border-b-2"
+              isActive ? "border-b-2 border-b-black-opacity-80" : "hover:border-b-2"
             }`
           }
         >
@@ -37,7 +37,7 @@ const PreLoginNavigation = () => {
         </NavLink>
       </div>
 
-      <div className=" bg-[#F5F5F5] py-1.75 hidden sm:flex gap-8.5 pl-5 pr-3 rounded-sm">
+      <div className=" bg-secondary-2 py-1.75 hidden sm:flex gap-8.5 pl-5 pr-3 rounded-sm">
         <div className="min-w-[153px]">
           <input
             type="text"

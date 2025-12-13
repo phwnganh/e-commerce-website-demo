@@ -11,7 +11,7 @@ const PrimaryCustomButton = ({
   return (
     <button
       onClick={onClick}
-      className={`font-medium text-[#FAFAFA] text-xs md:text-base py-3 px-10 md:py-4 md:px-12 rounded-sm bg-[#DB4444] cursor-pointer`}
+      className={`font-medium text-text-1 text-xs md:text-base py-3 px-10 md:py-4 md:px-12 rounded-sm bg-button-2 cursor-pointer`}
     >
       {children}
     </button>

@@ -15,7 +15,7 @@ const CategoriesNavigation = ({ categories }: { categories: string[] }) => {
         ))}
         <SecondaryCustomButton onClick={() => navigate(CATEGORYPAGE)}>See More</SecondaryCustomButton>
       </div>
-      <div className="hidden lg:block border-l border-l-[#0000004D] rotate-180"></div>
+      <div className="hidden lg:block border-l border-l-black-opacity-30 rotate-180"></div>
     </aside>
   );
 };

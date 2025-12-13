@@ -6,7 +6,7 @@ const ContactInfoSection = () => {
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <div className="flex gap-4 items-center">
-              <div className="bg-[#DB4444] rounded-full w-10 h-10 flex justify-center items-center">
+              <div className="bg-button-2 rounded-full w-10 h-10 flex justify-center items-center">
                 <img src={PhoneIcon} alt="phone-icon" className="" />
               </div>
               <p className="font-medium">Call To Us</p>
@@ -16,10 +16,10 @@ const ContactInfoSection = () => {
             </p>
             <p className="text-sm">Phone: +8801611112222</p>
           </div>
-          <hr className="border border-[#0000004D]" />
+          <hr className="border border-black-opacity-30" />
           <div className="flex flex-col gap-4">
             <div className="flex gap-4 items-center">
-              <div className="bg-[#DB4444] rounded-full w-10 h-10 flex justify-center items-center">
+              <div className="bg-button-2 rounded-full w-10 h-10 flex justify-center items-center">
                 <img src={MailIcon} alt="mail-icon" />
               </div>
               <p className="font-medium">Write To US</p>

@@ -34,8 +34,8 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-4 md:gap-6">
           <div className="flex flex-row gap-4 items-center">
-            <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
-            <p className="text-[#DB4444] font-semibold text-sm md:text-base">
+            <div className="bg-button-2 w-5 h-10 rounded-sm"></div>
+            <p className="text-button-2 font-semibold text-sm md:text-base">
               Categories
             </p>
           </div>
@@ -47,13 +47,13 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
         <div className="flex flex-row gap-2">
           <button
             onClick={scrollLeft}
-            className="bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer"
+            className="bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer"
           >
             <img src={LeftArrow1} alt="left-arrow" loading="lazy" />
           </button>
           <button
             onClick={scrollRight}
-            className="bg-[#F5F5F5] rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer"
+            className="bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer"
           >
             <img src={RightArrow} alt="right-arrow" loading="lazy" />
           </button>
@@ -67,7 +67,7 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
         {categories.map((category, index) => (
           <button
             onClick={() => navigate(`${PRODUCTPAGE}/${category.slug}`)}
-            className="flex flex-col gap-4 border justify-center items-center rounded-sm border-[#0000004D] w-[170px] py-6 px-14 hover:bg-[#DB4444] hover:border-[#DB4444] group cursor-pointer"
+            className="flex flex-col gap-4 border justify-center items-center rounded-sm border-black-opacity-30 w-[170px] py-6 px-14 hover:bg-button-2 hover:border-button-2 group cursor-pointer"
             key={index}
           >
             <div className="flex justify-center items-center">
@@ -78,13 +78,13 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
                 className="group-hover:invert group-hover:brightness-0 group-hover:filter"
               />
             </div>
-            <p className="text-center text-sm md:text-base group-hover:text-[#FAFAFA]">
+            <p className="text-center text-sm md:text-base group-hover:text-text-1">
               {category.name}
             </p>
           </button>
         ))}
       </div>
-      <hr className="mt-17.5 border-t border-t-[#0000004D]" />{" "}
+      <hr className="mt-17.5 border-t border-t-black-opacity-30" />{" "}
     </section>
   );
 };

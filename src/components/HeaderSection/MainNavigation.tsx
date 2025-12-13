@@ -58,8 +58,8 @@ const MainNavigation = () => {
         <NavLink
           className={({ isActive }) =>
             `${
-              isActive && "border-b border-b-[#00000080]"
-            } hover:border-b hover:border-b-[#00000080]`
+              isActive && "border-b border-b-black-opacity-80"
+            } hover:border-b hover:border-b-black-opacity-80`
           }
           to={HOMEPAGE}
         >
@@ -69,8 +69,8 @@ const MainNavigation = () => {
           to={CONTACT}
           className={({ isActive }) =>
             `${
-              isActive && "border-b border-b-[#00000080]"
-            } hover:border-b border-b-[#00000080]`
+              isActive && "border-b border-b-black-opacity-80"
+            } hover:border-b border-b-black-opacity-80`
           }
         >
           Contact
@@ -79,8 +79,8 @@ const MainNavigation = () => {
           to={ABOUT}
           className={({ isActive }) =>
             `${
-              isActive && "border-b border-b-[#00000080]"
-            } hover:border-b border-b-[#00000080]`
+              isActive && "border-b border-b-black-opacity-80"
+            } hover:border-b border-b-black-opacity-80`
           }
         >
           About
@@ -90,8 +90,8 @@ const MainNavigation = () => {
             to={LOGIN}
             className={({ isActive }) =>
               `${
-                isActive && "border-b border-b-[#00000080]"
-              } hover:border-b border-b-[#00000080]`
+                isActive && "border-b border-b-black-opacity-80"
+              } hover:border-b border-b-black-opacity-80`
             }
           >
             Login
@@ -100,7 +100,7 @@ const MainNavigation = () => {
       </div>
 
       <div className="flex gap-6 items-center">
-        <div className=" bg-[#F5F5F5] py-1.75 hidden sm:flex gap-8.5 pl-5 pr-3 rounded-sm">
+        <div className=" bg-secondary-2 py-1.75 hidden sm:flex gap-8.5 pl-5 pr-3 rounded-sm">
           <div className="min-w-[153px]">
             <input
               type="text"
@@ -142,7 +142,7 @@ const MainNavigation = () => {
           >
             <img src={Wishlist} alt="heart-icon" loading="lazy" />
             {user && (
-              <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] flex justify-center items-center text-xs">
+              <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-button-2 text-text-1 flex justify-center items-center text-xs">
                 {wishlists.length}
               </div>
             )}
@@ -168,7 +168,7 @@ const MainNavigation = () => {
           >
             <img src={CartIcon} alt="cart-icon" loading="lazy"/>
             {user && (
-              <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-[#DB4444] text-[#FAFAFA] flex justify-center items-center text-xs">
+              <div className="absolute right-0 top-0 bottom-4 rounded-full w-4 h-4 bg-button-2 text-text-1 flex justify-center items-center text-xs">
                 {carts?.products.length || 0}
               </div>
             )}
@@ -178,7 +178,7 @@ const MainNavigation = () => {
               <button
                 onClick={handleUserClick}
                 className={`relative w-8 h-8 flex justify-center cursor-pointer ${
-                  isUserActive ? "bg-[#DB4444] rounded-full" : ""
+                  isUserActive ? "bg-button-2 rounded-full" : ""
                 }`}
               >
                 <div

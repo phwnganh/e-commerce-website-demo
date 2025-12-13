@@ -59,7 +59,7 @@ const RelatedProducts = ({ products }: { products: Products[] }) => {
     <section className="mt-15 mb-15 md:mb-35 px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row gap-4 items-center">
-          <div className="bg-[#DB4444] w-5 h-10 rounded-sm"></div>
+          <div className="bg-button-2 w-5 h-10 rounded-sm"></div>
           <p className="text-base md:text-xl font-semibold">Just For You</p>
         </div>
         <SecondaryCustomButton>See All</SecondaryCustomButton>
@@ -68,9 +68,9 @@ const RelatedProducts = ({ products }: { products: Products[] }) => {
       <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
         {products.slice(0, 4).map((product) => (
           <div className="flex flex-col gap-4 w-full" key={product.id}>
-            <div className="bg-[#F5F5F5] rounded-sm w-full relative">
+            <div className="bg-secondary-2 rounded-sm w-full relative">
               <div className="relative group/image">
-                <div className="bg-[#DB4444] w-[55px] absolute left-3 top-3 text-center text-xs text-[#FAFAFA] rounded-sm py-1 px-3">
+                <div className="bg-button-2 w-[55px] absolute left-3 top-3 text-center text-xs text-text-1 rounded-sm py-1 px-3">
                   {Math.round(product.discountPercentage)}%
                 </div>
                 <img
@@ -101,7 +101,7 @@ const RelatedProducts = ({ products }: { products: Products[] }) => {
                 {product.title}
               </p>
               <div className="flex flex-col sm:flex-row gap-0 sm:gap-3">
-                <p className="font-medium text-[#DB4444] text-xs md:text-base">
+                <p className="font-medium text-button-2 text-xs md:text-base">
                   ${(product.price * 0.5).toFixed(2)}
                 </p>
                 <p className="font-medium opacity-50 line-through text-xs md:text-base">

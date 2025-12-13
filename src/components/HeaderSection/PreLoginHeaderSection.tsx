@@ -10,7 +10,7 @@ const PreLoginHeaderSection = () => {
       <div className="max-w-[1170px] mx-auto mt-10">
         <PreLoginNavigation />
       </div>
-      <hr className="mt-4 border-[0.5px] border-[#0000004D]" />
+      <hr className="mt-4 border-[0.5px] border-black-opacity-30" />
     </header>
   );
 };
