@@ -5,7 +5,7 @@ import { CONTACT, HOMEPAGE } from "../../constants/route.constants";
 
 const ContactPage = () => {
   return (
-    <main className="max-w-[1170px] mx-auto">
+    <main className="max-w-[1170px] mx-auto px-4 lg:px-0">
       <div className="mt-20 flex flex-row gap-3 items-center">
         <NavLink to={HOMEPAGE} className="text-black-opacity-80 text-sm">
           Home
@@ -20,7 +20,7 @@ const ContactPage = () => {
           Contact
         </NavLink>
       </div>
-      <div className="flex gap-[30px] mt-20 mb-35">
+      <div className="flex flex-col-reverse md:flex-row gap-[30px] mt-20 mb-35">
         <ContactInfoSection />
         <ContactFormSection />
       </div>

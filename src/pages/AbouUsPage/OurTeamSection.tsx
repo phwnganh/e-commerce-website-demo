@@ -16,7 +16,9 @@ const OurTeamSection = () => {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <h4 className="font-medium text-xl md:text-3xl truncate">Tom Cruise</h4>
+          <h4 className="font-medium text-xl md:text-3xl truncate">
+            Tom Cruise
+          </h4>
           <p className="text-sm md:text-base truncate">Founder & Chairman</p>
           <div className="mt-4 flex gap-4">
             <img src={TwitterIcon} alt="twitter-icon" />
@@ -36,7 +38,9 @@ const OurTeamSection = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <h4 className="font-medium text-xl md:text-3xl truncate">Emma Watson</h4>
+          <h4 className="font-medium text-xl md:text-3xl truncate">
+            Emma Watson
+          </h4>
           <p className="text-sm md:text-base truncate">Managing Director</p>
           <div className="mt-4 flex gap-4">
             <img src={TwitterIcon} alt="twitter-icon" />
@@ -56,7 +60,9 @@ const OurTeamSection = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <h4 className="font-medium text-xl md:text-3xl truncate">Will Smith</h4>
+          <h4 className="font-medium text-xl md:text-3xl truncate">
+            Will Smith
+          </h4>
           <p className="text-sm md:text-base truncate">Product Designer</p>
           <div className="mt-4 flex gap-4">
             <img src={TwitterIcon} alt="twitter-icon" />
