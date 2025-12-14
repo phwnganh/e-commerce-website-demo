@@ -9,7 +9,7 @@ import send from "../../assets/send.svg";
 import copyRight from "../../assets/icon-copyright.svg";
 const FooterSection = () => {
   return (
-    <footer className="bg-black text-[#FAFAFA] pb-6 lg:pt-20 pt-3">
+    <footer className="bg-black text-text-1 pb-6 lg:pt-20 pt-3">
       <div className="max-w-[1170px] mx-auto lg:flex lg:flex-row sm:grid sm:grid-cols-2 flex flex-col gap-21 mb-15 p-5 sm:p-6 lg:p-0 text-center sm:text-start">
         {/* exclusive */}
         <div className="flex flex-col gap-4 w-full">
@@ -18,14 +18,19 @@ const FooterSection = () => {
             <h5 className="text-xl">Subscribe</h5>
             <p>Get 10% off your first order</p>
           </div>
-          <div className="flex flex-row gap-8 justify-between items-center border-[#FAFAFA] border-[1.5px] rounded-sm p-3">
+          <div className="flex flex-row gap-8 justify-between items-center border-text-1 border-[1.5px] rounded-sm p-3">
             <input
               type="text"
-              className="text-[#FAFAFA66] sm:max-w-[130px] focus:outline-none"
+              className="text-white-opacity-40 sm:max-w-[130px] focus:outline-none"
               placeholder="Enter your email"
             />
-            <button className="w-6 h-6 flex justify-center items-center cursor-pointer">
-              <img src={send} alt="send" loading="lazy" className="w-auto h-auto" />
+            <button className="w-8 flex justify-center items-center cursor-pointer">
+              <img
+                src={send}
+                alt="send"
+                loading="lazy"
+                className="w-auto h-auto"
+              />
             </button>
           </div>
         </div>
@@ -65,19 +70,24 @@ const FooterSection = () => {
           <div className="flex flex-col gap-2">
             <p className="opacity-70 text-xs">Save $3 with App New User Only</p>
             <div className="flex flex-row gap-2 justify-center sm:justify-start">
-              <div className="w-19.5 h-19.5 border-[2.5px]">
-                <img src={qrCode} alt="qrCode" loading="lazy" />
+              <div className="w-20 aspect-square border-[2.5px]">
+                <img
+                  src={qrCode}
+                  alt="qrCode"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex flex-col gap-2.5">
-                <div className="border-[0.6px] border-[#FAFAFA] rounded-sm w-[104px] overflow-hidden">
+                <div className="border-[0.6px] border-text-1 rounded-sm max-w-30 aspect-3/1 overflow-hidden">
                   <img
                     src={ggPlay}
-                    alt="google-play "
+                    alt="google-play"
                     loading="lazy"
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <div className="border-[0.6px] rounded-sm w-[104px] border-[#FAFAFA] overflow-hidden">
+                <div className="border-[0.6px] rounded-sm max-w-30 aspect-3/1  border-text-1 overflow-hidden">
                   <img
                     src={appStore}
                     alt="app-store"
@@ -119,9 +129,14 @@ const FooterSection = () => {
           </div>
         </div>
       </div>
-      <div className="border-t border-t-[#FFFFFF66]">
-        <div className="flex flex-row justify-center gap-1.5 text-center mt-4 text-[#FFFFFF99]">
-          <img src={copyRight} alt="copyright-icon" loading="lazy" className="opacity-60" />
+      <div className="border-t border-t-white-opacity-40">
+        <div className="flex flex-row justify-center gap-1.5 text-center mt-4 text-white-opacity-60">
+          <img
+            src={copyRight}
+            alt="copyright-icon"
+            loading="lazy"
+            className="opacity-60"
+          />
           <span>Copyright Rimel 2022. All right reserved</span>
         </div>
       </div>
