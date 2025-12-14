@@ -17,8 +17,8 @@ import {
   USER_PROFILE,
   WISHLIST,
 } from "../constants/route.constants";
-import NotFound from "../pages/NotFoundPage/NotFound";
 
+const NotFound = lazy(() => import("../pages/NotFoundPage/NotFound"))
 const MainLayout = lazy(() => import("../components/layouts/MainLayout"));
 const LoginPage = lazy(() => import("../pages/PreLoginPage/LoginPage"));
 const SignupPage = lazy(() => import("../pages/PreLoginPage/SignupPage"));

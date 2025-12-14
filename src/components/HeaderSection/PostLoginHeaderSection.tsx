@@ -3,7 +3,7 @@ import MainNavigation from "./MainNavigation";
 
 const PostLoginHeaderSection = () => {
   return (
-    <header>
+    <header className="">
       <div className="bg-black">
         <AdvertisementBanner />
       </div>

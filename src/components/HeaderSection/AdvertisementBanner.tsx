@@ -1,14 +1,14 @@
 const AdvertisementBanner = () => {
   return (
-    <div className="max-w-[1170px] mx-auto text-text-1 flex flex-row justify-between py-3">
+    <div className="max-w-[1170px] mx-auto text-text-1 flex flex-row justify-between py-3.5">
       <div className="hidden lg:block"></div>
-      <div className="flex gap-2 flex-col text-center flex-1 sm:flex-row sm:items-center sm:justify-center">
+      <div className="flex gap-2 flex-col text-center sm:flex-row sm:items-center sm:justify-center">
         <p className="text-xs sm:text-sm font-normal">
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
         </p>
         <p className="text-xs sm:text-sm font-semibold underline">ShopNow</p>
       </div>
-      <div className="hidden sm:flex gap-2 items-center">
+      <div className="hidden sm:flex gap-1 items-center">
         <p className="text-sm">English</p>
         <svg
           className="w-3 h-3 text-white rotate-90"
