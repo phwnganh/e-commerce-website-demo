@@ -1,5 +1,5 @@
 import BlutetoothSpeaker from "../../assets/JBL_BOOMBOX_2_HERO_020_x1 (1) 1.png";
-import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import LimitedBannerCustomButton from "../../components/ui/LimitedBannerCustomButton";
 const LimitedOfferBanner = () => {
   return (
     <section className="mt-35 bg-black">
@@ -30,7 +30,7 @@ const LimitedOfferBanner = () => {
             </div>
           </div>
           <div className="mt-2">
-            <PrimaryCustomButton>Buy Now!</PrimaryCustomButton>
+            <LimitedBannerCustomButton>Buy Now!</LimitedBannerCustomButton>
           </div>
         </div>
 
