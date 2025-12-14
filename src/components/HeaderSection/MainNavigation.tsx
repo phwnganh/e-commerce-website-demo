@@ -19,6 +19,7 @@ import ActiveNavLink from "../ui/ActiveNavLink";
 import IconBadge from "../ui/IconBadge";
 import SearchBar from "../ui/SearchBar";
 import UserAvatarButton from "../ui/UserAvatarButton";
+import MobileMenuModalDialog from "../ui/MobileMenuModalDialog";
 const MainNavigation = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = useAtomValue(userAtom);
@@ -26,6 +27,7 @@ const MainNavigation = () => {
   const carts = useAtomValue(cartAtom);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const isUserActive = isDropdownOpen || location.pathname === ACCOUNT;
 
@@ -48,9 +50,23 @@ const MainNavigation = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <section className="flex flex-row justify-between items-center py-[7px] px-4 lg:px-0">
-      <button className="md:hidden block">
+      <button
+        className="md:hidden block"
+        onClick={() => setMobileMenuOpen(true)}
+      >
         <svg width="24" height="24" stroke="currentColor">
           <path d="M3 6h18M3 12h18M3 18h18" />
         </svg>
@@ -90,6 +106,13 @@ const MainNavigation = () => {
           )}
         </div>
       </div>
+
+      {/* modal open mobile user dropdown */}
+      <MobileMenuModalDialog
+        open={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        user={user}
+      />
     </section>
   );
 };
