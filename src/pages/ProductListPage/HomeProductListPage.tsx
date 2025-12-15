@@ -5,6 +5,7 @@ import type { Products } from "../../types/ProductTypes";
 import { NavLink } from "react-router-dom";
 import { HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
+import BreadCumb from "../../components/ui/BreadCumb";
 
 const HomeProductListPage = () => {
   const products = useAtomValue(productsAtom);
@@ -51,21 +52,13 @@ const HomeProductListPage = () => {
   }, [visibleCount, products.length, isLoading]);
   return (
     <main className="max-w-[1170px] mx-auto">
-      <section className="mt-20 mb-35 px-4 lg:px-0">
-        <div className="flex flex-row gap-3 items-center">
-          <NavLink to={HOMEPAGE} className="opacity-50 text-sm">
-            Home
-          </NavLink>
-          <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
-          <NavLink
-            to={PRODUCTPAGE}
-            className={({ isActive }) =>
-              `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
-            }
-          >
-            Products
-          </NavLink>
-        </div>
+      <section className="mb-35 px-4 lg:px-0">
+        <BreadCumb
+          items={[
+            { label: "Home", to: HOMEPAGE },
+            { label: "Products", to: PRODUCTPAGE },
+          ]}
+        />
 
         <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-4">
           {products.slice(0, visibleCount).map((product) => (

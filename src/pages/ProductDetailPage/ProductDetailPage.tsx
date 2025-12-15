@@ -3,10 +3,12 @@ import ProductDetailSection from "./ProductDetailSection";
 import RelatedItemSection from "./RelatedItemSection";
 import { useEffect, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
+import BreadCumb from "../../components/ui/BreadCumb";
+import { HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
-  const [productData, setProductData] = useState<Products | null>(null)
+  const [productData, setProductData] = useState<Products | null>(null);
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${productId}`)
       .then((res) => res.json())
@@ -18,6 +20,19 @@ const ProductDetailPage = () => {
   }
   return (
     <main className="max-w-[1170px] mx-auto px-4 lg:px-0">
+      <BreadCumb
+        items={[
+          {
+            label: "Home",
+            to: HOMEPAGE,
+          },
+          {
+            label: productData.category,
+            to: `${PRODUCTPAGE}/${productData.category}`,
+          },
+          { label: productData.title, to: `${HOMEPAGE}/${productData.id}` },
+        ]}
+      />
       <ProductDetailSection productData={productData} />
       <RelatedItemSection />
     </main>

@@ -39,21 +39,8 @@ const CategoryListSection = () => {
     return () => observer.disconnect();
   }, [visibleCount, categories.length, isLoading]);
   return (
-    <section className="mt-20 mb-35 px-4 lg:px-0">
-      <div className="flex flex-row gap-3 items-center">
-        <NavLink to={HOMEPAGE} className="opacity-50 text-sm">
-          Home
-        </NavLink>
-        <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
-        <NavLink
-          to={CATEGORYPAGE}
-          className={({ isActive }) =>
-            `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
-          }
-        >
-          Categories
-        </NavLink>
-      </div>
+    <section className="mb-35 px-4 lg:px-0">
+
 
       <div className="mt-15 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {categories.slice(0, visibleCount).map((category, index) => (

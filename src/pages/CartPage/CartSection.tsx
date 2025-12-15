@@ -78,21 +78,7 @@ const CartSection = () => {
   };
 
   return (
-    <section className="mt-20 mb-11 md:mb-35 px-4 lg:px-0">
-      <div className="flex flex-row gap-3 items-center">
-        <NavLink to={HOMEPAGE} className="text-black-opacity-80 text-sm">
-          Home
-        </NavLink>
-        <div className="border border-black-opacity-80 rotate-[117.05deg] w-3 h-0"></div>
-        <NavLink
-          to={CART}
-          className={({ isActive }) =>
-            `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
-          }
-        >
-          Cart
-        </NavLink>
-      </div>
+    <section className="mb-11 md:mb-35 px-4 lg:px-0">
 
       <div className="mt-20">
         <div className="flex flex-col gap-10">

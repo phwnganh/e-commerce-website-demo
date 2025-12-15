@@ -5,8 +5,8 @@ import MinusIcon from "../../assets/icon-minus.svg";
 import HeartIcon from "../../assets/Wishlist.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
-import { NavLink, useNavigate } from "react-router-dom";
-import { LOGIN, HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
+import { useNavigate } from "react-router-dom";
+import { LOGIN } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom, wishlistAtom } from "../../atom/store";
 
@@ -44,30 +44,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
     user && wishlists.some((item) => item.id === productData.id);
 
   return (
-    <section className="mt-20 px-4 lg:px-0">
-      <div className="flex flex-row gap-3 items-center">
-        <NavLink to={HOMEPAGE} className="opacity-50 text-sm">
-          Home
-        </NavLink>
-        <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
-        <NavLink
-          to={`${PRODUCTPAGE}/${productData.category}`}
-          className={({ isActive }) =>
-            `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
-          }
-        >
-          {productData.category}
-        </NavLink>
-        <div className="border opacity-50 rotate-[117.05deg] w-3 h-0"></div>
-        <NavLink
-          to={`${HOMEPAGE}/${productData.id}`}
-          className={({ isActive }) =>
-            `${isActive ? "text-sm" : "text-black-opacity-80 text-sm"}`
-          }
-        >
-          {productData.title}
-        </NavLink>
-      </div>
+    <section className="px-4 lg:px-0">
 
       <div className="mt-15 lg:mt-20">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-17.5">
