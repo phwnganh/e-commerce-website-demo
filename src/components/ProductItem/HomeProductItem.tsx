@@ -75,7 +75,7 @@ const HomeProductItem = ({
   return (
     <div className="flex flex-col gap-4 w-full">
       <div className="bg-secondary-2 rounded-sm w-full relative">
-        <div className="relative group/image">
+        <div className="relative aspect-square group/image">
           <div className="bg-button-2 w-[55px] absolute left-3 top-3 text-center text-xs text-text-1 rounded-sm py-1 px-3">
             -{Math.round(product.discountPercentage)}%
           </div>
@@ -83,7 +83,7 @@ const HomeProductItem = ({
             src={product.images[0]}
             alt="product-imgs"
             loading="lazy"
-            className="w-full h-full"
+            className="w-full h-full object-cover"
           />
           <button
             onClick={() => {

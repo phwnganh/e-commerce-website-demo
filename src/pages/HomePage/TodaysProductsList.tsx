@@ -1,7 +1,7 @@
 import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import Circle from "../../assets/circle.svg";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
@@ -15,7 +15,6 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
   const [itemsPerView, setItemsPerView] = useState(4);
   const wishlists = useAtomValue(wishlistAtom);
   const setWishlists = useSetAtom(wishlistAtom);
-  const [itemWidth, setItemWidth] = useState(0);
   const navigate = useNavigate();
   useEffect(() => {
     const handleResize = () => {
@@ -29,17 +28,6 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      const firstItem = containerRef.current.children[0] as HTMLElement;
-      if (firstItem) {
-        const style = window.getComputedStyle(firstItem);
-        const gap = parseFloat(style.marginRight);
-        setItemWidth(firstItem.offsetWidth + gap);
-      }
-    }
-  }, [products]);
 
   const handleAddToWishlist = (product: Products) => {
     const saved = localStorage.getItem("wishlist");
@@ -68,8 +56,6 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
   const goToPrev = () => {
     setCurrentIndex((prev) => (prev - 1 + totalGroups) % totalGroups);
   };
-  // Tính toán translateX dựa trên currentIndex
-  const translateX = -(currentIndex * itemWidth * itemsPerView); // % của container
   return (
     <section className="mt-15 md:mt-35 p-4 lg:p-0">
       <div className="flex flex-row justify-between items-end">
@@ -90,24 +76,24 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
               <h3 className="font-bold text-xl md:text-3xl">03</h3>
             </div>
             <div className="flex flex-col gap-2">
-              <img src={Circle} alt="circle-icon" loading="lazy"/>
-              <img src={Circle} alt="circle-icon" loading="lazy"/>
+              <img src={Circle} alt="circle-icon" loading="lazy" />
+              <img src={Circle} alt="circle-icon" loading="lazy" />
             </div>
             <div>
               <p className="text-xs">Hours</p>
               <h3 className="font-bold text-xl md:text-3xl">23</h3>
             </div>
             <div className="flex flex-col gap-2">
-              <img src={Circle} alt="circle-icon" loading="lazy"/>
-              <img src={Circle} alt="circle-icon" loading="lazy"/>
+              <img src={Circle} alt="circle-icon" loading="lazy" />
+              <img src={Circle} alt="circle-icon" loading="lazy" />
             </div>
             <div>
               <p className="text-xs">Minutes</p>
               <h3 className="font-bold text-xl md:text-3xl">19</h3>
             </div>
             <div className="flex flex-col gap-2">
-              <img src={Circle} alt="circle-icon" loading="lazy"/>
-              <img src={Circle} alt="circle-icon" loading="lazy"/>
+              <img src={Circle} alt="circle-icon" loading="lazy" />
+              <img src={Circle} alt="circle-icon" loading="lazy" />
             </div>
             <div>
               <p className="text-xs">Seconds</p>
@@ -118,7 +104,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
 
         <div className="flex md:flex-row gap-2">
           <button
-            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center transition-all  ${
+            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center  ${
               currentIndex === 0
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-gray-200 cursor-pointer"
@@ -126,7 +112,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
             onClick={goToPrev}
             disabled={currentIndex === 0}
           >
-            <img src={LeftArrow1} alt="left-arrow" loading="lazy"/>
+            <img src={LeftArrow1} alt="left-arrow" loading="lazy" />
           </button>
           <button
             onClick={goToNext}
@@ -137,7 +123,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
                 : "hover:bg-gray-200 cursor-pointer"
             }`}
           >
-            <img src={RightArrow} alt="right-arrow" loading="lazy"/>
+            <img src={RightArrow} alt="right-arrow" loading="lazy" />
           </button>
         </div>
       </div>
@@ -145,40 +131,28 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
         <div className="overflow-x-hidden">
           <div
             ref={containerRef}
-            className="flex gap-7.5 transition-transform duration-1000 ease-in-out"
+            className="flex gap-7 transition-transform duration-1000 ease-in-out"
             style={{
-              width: "max-content",
-              transform: `translateX(${translateX}px)`,
+              transform: `translateX(${-(currentIndex * 100)}%)`,
             }}
           >
             {products.map((product) => (
-              <React.Fragment key={product.id}>
+              <div
+                className="shrink-0 w-full sm:w-1/2 md:w-1/4"
+                key={product.id}
+              >
                 <HomeProductItem
                   product={product}
                   wishlists={wishlists}
                   onAddToWishlist={handleAddToWishlist}
                 />
-              </React.Fragment>
+              </div>
             ))}
           </div>
         </div>
-
-        {/* <div className="flex md:hidden overflow-x-auto gap-7.5 no-scrollbar">
-          {products.map((product) => (
-            <React.Fragment key={product.id}>
-              <HomeProductItem
-                product={product}
-                wishlists={wishlists}
-                onAddToWishlist={handleAddToWishlist}
-              />
-            </React.Fragment>
-          ))}
-        </div> */}
       </div>
       <div className="mt-15 flex justify-center">
-        <PrimaryCustomButton
-          onClick={() => navigate(PRODUCTPAGE)}
-        >
+        <PrimaryCustomButton onClick={() => navigate(PRODUCTPAGE)}>
           View All Products
         </PrimaryCustomButton>
       </div>
