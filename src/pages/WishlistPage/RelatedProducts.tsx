@@ -17,7 +17,7 @@ const RelatedProducts = ({ products }: { products: Products[] }) => {
 
       <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
         {products.slice(0, 4).map((product) => (
-          <React.Fragment>
+          <React.Fragment key={product.id}>
             <WishlistRelatedProductItem product={product}/>
           </React.Fragment>
         ))}
