@@ -15,13 +15,13 @@ const FooterSection = () => {
         <div className="flex flex-col gap-4 w-full">
           <div className="flex flex-col gap-6">
             <h4 className="font-bold text-2xl">Exclusive</h4>
-            <h5 className="text-xl">Subscribe</h5>
-            <p>Get 10% off your first order</p>
+            <h5 className="text-base md:text-xl">Subscribe</h5>
+            <p className="text-sm md:text-base">Get 10% off your first order</p>
           </div>
           <div className="flex flex-row gap-8 justify-between items-center border-text-1 border-[1.5px] rounded-sm p-3">
             <input
               type="text"
-              className="text-white-opacity-40 sm:max-w-[130px] focus:outline-none"
+              className="text-white-opacity-40 sm:max-w-[130px] focus:outline-none text-sm md:text-base"
               placeholder="Enter your email"
             />
             <button className="w-8 flex justify-center items-center cursor-pointer">
@@ -35,37 +35,37 @@ const FooterSection = () => {
         </div>
         {/* support */}
         <div className="flex flex-col gap-6 w-full">
-          <h5 className="text-xl">Support</h5>
+          <h5 className="text-base md:text-xl">Support</h5>
           <div className="flex flex-col gap-4">
-            <p>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
-            <p>exclusive@gmail.com</p>
-            <p>+88015-88888-9999</p>
+            <p className="text-sm md:text-base">111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
+            <p className="text-sm md:text-base">exclusive@gmail.com</p>
+            <p className="text-sm md:text-base">+88015-88888-9999</p>
           </div>
         </div>
         {/* account */}
         <div className="flex flex-col gap-6 w-full">
-          <h5 className="text-xl">Account</h5>
+          <h5 className="text-base md:text-xl">Account</h5>
           <div className="flex flex-col gap-y-4">
-            <p>My Account</p>
-            <p>Login / Register</p>
-            <p>Cart</p>
-            <p>Wishlist</p>
-            <p>Shop</p>
+            <p className="text-sm md:text-base">My Account</p>
+            <p className="text-sm md:text-base">Login / Register</p>
+            <p className="text-sm md:text-base">Cart</p>
+            <p className="text-sm md:text-base">Wishlist</p>
+            <p className="text-sm md:text-base">Shop</p>
           </div>
         </div>
         {/* quick link */}
         <div className="flex flex-col gap-6 w-full">
-          <h5 className="text-xl">Quick Link</h5>
+          <h5 className="text-base md:text-xl">Quick Link</h5>
           <div className="flex flex-col gap-y-4">
-            <p>Privacy Policy</p>
-            <p>Terms Of Use</p>
-            <p>FAQ</p>
-            <p>Contact</p>
+            <p className="text-sm md:text-base">Privacy Policy</p>
+            <p className="text-sm md:text-base">Terms Of Use</p>
+            <p className="text-sm md:text-base">FAQ</p>
+            <p className="text-sm md:text-base">Contact</p>
           </div>
         </div>
         {/* download app */}
         <div className="flex flex-col gap-6 w-full">
-          <h5 className="text-xl">Download App</h5>
+          <h5 className="text-base md:text-xl">Download App</h5>
           <div className="flex flex-col gap-2">
             <p className="opacity-70 text-xs">Save $3 with App New User Only</p>
             <div className="flex flex-row gap-2 justify-center sm:justify-start">
@@ -129,7 +129,7 @@ const FooterSection = () => {
             alt="copyright-icon"
             className="opacity-60"
           />
-          <span>Copyright Rimel 2022. All right reserved</span>
+          <span className="text-sm md:text-base">Copyright Rimel 2022. All right reserved</span>
         </div>
       </div>
     </footer>

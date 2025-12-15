@@ -4,7 +4,7 @@ import SecureIcon from "../../assets/Icon-secure.svg";
 import CustomRoundedComponent from "../../components/ui/CustomRoundedComponent";
 const KeyFeatures = () => {
   return (
-    <section className="max-w-[1170px] mx-auto flex justify-center gap-12 md:gap-22 my-17 md:my-35 p-4 lg:p-0">
+    <section className="max-w-[1170px] mx-auto flex justify-center gap-12 md:gap-22 my-17 md:my-35 px-5 lg:px-0">
       <div className="flex flex-col gap-2 items-center">
         <CustomRoundedComponent>
           <img src={DeliveryIcon} alt="delivery-icon" />

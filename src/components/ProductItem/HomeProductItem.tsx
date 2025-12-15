@@ -80,7 +80,7 @@ const HomeProductItem = ({
             -{Math.round(product.discountPercentage)}%
           </div>
           <img
-            src={product.images[0]}
+            src={product.thumbnail}
             alt="product-imgs"
             className="w-full h-full object-cover"
           />
