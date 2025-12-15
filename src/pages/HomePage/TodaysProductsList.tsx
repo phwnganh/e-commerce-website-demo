@@ -9,6 +9,7 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
+import Countdown from "../../components/ui/TodayProductsCountdown";
 const TodaysProductsList = ({ products }: { products: Products[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -70,36 +71,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
             <h3 className="font-semibold text-2xl md:text-4xl">Flash Sales</h3>
           </div>
 
-          <div className="flex items-center gap-3 sm:gap-4.5">
-            <div className="">
-              <p className="text-xs">Days</p>
-              <h3 className="font-bold text-xl md:text-3xl">03</h3>
-            </div>
-            <div className="flex flex-col gap-2">
-              <img src={Circle} alt="circle-icon" />
-              <img src={Circle} alt="circle-icon"/>
-            </div>
-            <div>
-              <p className="text-xs">Hours</p>
-              <h3 className="font-bold text-xl md:text-3xl">23</h3>
-            </div>
-            <div className="flex flex-col gap-2">
-              <img src={Circle} alt="circle-icon" />
-              <img src={Circle} alt="circle-icon" />
-            </div>
-            <div>
-              <p className="text-xs">Minutes</p>
-              <h3 className="font-bold text-xl md:text-3xl">19</h3>
-            </div>
-            <div className="flex flex-col gap-2">
-              <img src={Circle} alt="circle-icon"/>
-              <img src={Circle} alt="circle-icon" />
-            </div>
-            <div>
-              <p className="text-xs">Seconds</p>
-              <h3 className="font-bold text-xl md:text-3xl">56</h3>
-            </div>
-          </div>
+          <Countdown/>
         </div>
 
         <div className="flex flex-row gap-2">

@@ -1,5 +1,6 @@
 import BlutetoothSpeaker from "../../assets/JBL_BOOMBOX_2_HERO_020_x1 (1) 1.png";
 import LimitedBannerCustomButton from "../../components/ui/LimitedBannerCustomButton";
+import LimitedOfferBannerCountdown from "../../components/ui/LimitedOfferBannerCountdown";
 const LimitedOfferBanner = () => {
   return (
     <section className="mt-35 bg-black">
@@ -11,31 +12,18 @@ const LimitedOfferBanner = () => {
           <h1 className="text-text-1 font-semibold text-3xl md:text-5xl">
             Enhance Your Music Experience
           </h1>
-          <div className="flex flex-row gap-4 md:gap-6 justify-center md:justify-start">
-            <div className="rounded-full bg-white w-12 h-12 md:w-[62px] md:h-[62px] flex flex-col justify-center items-center">
-              <p className="font-semibold text-xs md:text-base">23</p>
-              <p className="text-[10px] md:text-xs">Hours</p>
-            </div>
-            <div className="rounded-full bg-white w-12 h-12 md:w-[62px] md:h-[62px] flex flex-col justify-center items-center">
-              <p className="font-semibold text-xs md:text-base">05</p>
-              <p className="text-[10px] md:text-xs">Days</p>
-            </div>
-            <div className="rounded-full bg-white w-12 h-12 md:w-[62px] md:h-[62px] flex flex-col justify-center items-center">
-              <p className="font-semibold text-xs md:text-base">59</p>
-              <p className="text-[10px] md:text-xs">Minutes</p>
-            </div>
-            <div className="rounded-full bg-white w-12 h-12 md:w-[62px] md:h-[62px] flex flex-col justify-center items-center">
-              <p className="font-semibold text-xs md:text-base">35</p>
-              <p className="text-[10px] md:text-xs">Seconds</p>
-            </div>
-          </div>
+          <LimitedOfferBannerCountdown />
           <div className="mt-2">
             <LimitedBannerCustomButton>Buy Now!</LimitedBannerCustomButton>
           </div>
         </div>
 
         <div className="basis-[60%] flex justify-center">
-          <img src={BlutetoothSpeaker} alt="bluetooth-speaker-banner" className="w-full h-auto object-contain" />
+          <img
+            src={BlutetoothSpeaker}
+            alt="bluetooth-speaker-banner"
+            className="w-full h-auto object-contain"
+          />
         </div>
       </div>
     </section>
