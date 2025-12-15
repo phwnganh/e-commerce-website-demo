@@ -37,7 +37,7 @@ const CaategoryProductListPage = () => {
           },
         ]}
       />
-      <CategoryProductListSection slug={slug} categoryData={categoryData} />
+      <CategoryProductListSection categoryData={categoryData} />
     </main>
   );
 };

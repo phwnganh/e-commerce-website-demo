@@ -1,8 +1,8 @@
 import DropUpIcon from "../../assets/drop-up-icon.svg";
 import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
-import { NavLink, useNavigate } from "react-router-dom";
-import { CART, HOMEPAGE } from "../../constants/route.constants";
+import {useNavigate } from "react-router-dom";
+import {HOMEPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";

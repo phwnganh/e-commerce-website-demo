@@ -2,10 +2,10 @@ import { useAtomValue, useSetAtom } from "jotai";
 import React, { useEffect, useRef, useState } from "react";
 import { productsAtom, wishlistAtom } from "../../atom/store";
 import type { Products } from "../../types/ProductTypes";
-import { NavLink } from "react-router-dom";
 import { HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import BreadCumb from "../../components/ui/BreadCumb";
+import LoadingSpin from "../../components/ui/LoadingSpin";
 
 const HomeProductListPage = () => {
   const products = useAtomValue(productsAtom);
@@ -72,9 +72,7 @@ const HomeProductListPage = () => {
           ))}
         </div>
         {isLoading && (
-          <div className="flex justify-center mt-6">
-            <div className="w-8 h-8 border-4 border-gray-300 border-t-button-2 rounded-full animate-spin"></div>
-          </div>
+          <LoadingSpin/>
         )}
         <div ref={loadMoreRef} className="h-10"></div>
       </section>

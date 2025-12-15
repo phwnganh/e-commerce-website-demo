@@ -1,21 +1,14 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
-import {
-  CATEGORYPAGE,
-  HOMEPAGE,
-  PRODUCTPAGE,
-} from "../../constants/route.constants";
 import type { CategoryDetail } from "../../types/CategoryType";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import type { Products } from "../../types/ProductTypes";
+import LoadingSpin from "../../components/ui/LoadingSpin";
 
 const CategoryProductListSection = ({
-  slug,
   categoryData,
 }: {
-  slug?: string;
   categoryData: CategoryDetail;
 }) => {
   const [visibleCount, setVisibleCount] = useState(8);
@@ -61,8 +54,6 @@ const CategoryProductListSection = ({
   }, [visibleCount, categoryData.products.length, isLoading]);
   return (
     <section className="mb-35 px-4 lg:px-0">
-
-
       <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-4">
         {categoryData.products.slice(0, visibleCount).map((product) => (
           <React.Fragment key={product.id}>
@@ -74,11 +65,7 @@ const CategoryProductListSection = ({
           </React.Fragment>
         ))}
       </div>
-      {isLoading && (
-        <div className="flex justify-center mt-6">
-          <div className="w-8 h-8 border-4 border-gray-300 border-t-button-2 rounded-full animate-spin"></div>
-        </div>
-      )}
+      {isLoading && <LoadingSpin />}
       <div ref={loadMoreRef} className="h-10"></div>
     </section>
   );

@@ -1,13 +1,10 @@
 import { useAtomValue } from "jotai";
 import { categoriesAtom } from "../../atom/store";
-import { NavLink, useNavigate } from "react-router-dom";
-import {
-  CATEGORYPAGE,
-  HOMEPAGE,
-  PRODUCTPAGE,
-} from "../../constants/route.constants";
+import { useNavigate } from "react-router-dom";
+import { PRODUCTPAGE } from "../../constants/route.constants";
 import Cosmetics from "../../assets/cosmetics.png";
 import { useEffect, useRef, useState } from "react";
+import LoadingSpin from "../../components/ui/LoadingSpin";
 
 const CategoryListSection = () => {
   const categories = useAtomValue(categoriesAtom);
@@ -40,8 +37,6 @@ const CategoryListSection = () => {
   }, [visibleCount, categories.length, isLoading]);
   return (
     <section className="mb-35 px-4 lg:px-0">
-
-
       <div className="mt-15 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {categories.slice(0, visibleCount).map((category, index) => (
           <div
@@ -63,11 +58,7 @@ const CategoryListSection = () => {
         ))}
       </div>
 
-      {isLoading && (
-        <div className="flex justify-center mt-6">
-          <div className="w-8 h-8 border-4 border-gray-300 border-t-button-2 rounded-full animate-spin"></div>
-        </div>
-      )}
+      {isLoading && <LoadingSpin />}
 
       <div ref={loadMoreRef} className="h-10"></div>
     </section>

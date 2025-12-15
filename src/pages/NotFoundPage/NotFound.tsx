@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import BreadCumb from "../../components/ui/BreadCumb";
