@@ -8,7 +8,8 @@ export const productsAtom = atom<Products[]>([]);
 export const categoryDetailAtom = atom<CategoryDetail>()
 export const categoriesAtom = atom<Categories[]>([]);
 export const categoriesNavigationAtom = atom<string[]>([]);
-export const userAtom = atom<User | null>(null);
+export const userAtom = atomWithStorage<User | null>("user", null);
+export const accessTookenAtom = atomWithStorage<string>("token", "")
 
 export const wishlistAtom = atomWithStorage<Products[]>("wishlist", [])
 export const cartAtom = atomWithStorage<Carts>("carts", {

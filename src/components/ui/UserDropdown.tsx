@@ -1,4 +1,4 @@
-import {  useSetAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import WhiteUserIcon from "../../assets/white-user-icon.svg";
 import CancelIcon from "../../assets/icon-cancel.svg";
 import ReviewsIcon from "../../assets/Icon-Reviews.svg";
@@ -11,7 +11,6 @@ const UserDropdown = () => {
   const setUser = useSetAtom(userAtom);
   const navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.removeItem("user");
     setUser(null);
     navigate(LOGIN);
   };

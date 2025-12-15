@@ -5,12 +5,13 @@ import { HOMEPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import PreLoginComponent from "../../components/ui/PreLoginComponent";
 import { useSetAtom } from "jotai";
-import { userAtom } from "../../atom/store";
+import { accessTookenAtom, userAtom } from "../../atom/store";
 const LoginSection = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const setUser = useSetAtom(userAtom);
+  const setToken = useSetAtom(accessTookenAtom);
   const navigate = useNavigate();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,10 +33,8 @@ const LoginSection = () => {
       }
 
       const data: LoginResponse = await res.json();
-
-      localStorage.setItem("user", JSON.stringify(data));
-      localStorage.setItem("token", data.accessToken);
       setUser(data);
+      setToken(data.accessToken);
       navigate(HOMEPAGE);
     } catch (error: any) {
       console.log(error);
@@ -72,9 +71,7 @@ const LoginSection = () => {
         </div>
 
         <div className="flex flex-row gap-21.5 items-center">
-          <PrimaryCustomButton type="submit">
-            Log In
-          </PrimaryCustomButton>
+          <PrimaryCustomButton type="submit">Log In</PrimaryCustomButton>
           <a href="#" className="text-button-2 text-sm md:text-base">
             Forget Password?
           </a>
