@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
@@ -15,7 +15,6 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [itemsPerView, setItemsPerView] = useState(4);
   const wishlists = useAtomValue(wishlistAtom);
-  const setWishlists = useSetAtom(wishlistAtom);
   const navigate = useNavigate();
   useEffect(() => {
     const handleResize = () => {
@@ -29,23 +28,6 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const handleAddToWishlist = (product: Products) => {
-    const saved = localStorage.getItem("wishlist");
-    if (saved) {
-      setWishlists(JSON.parse(saved));
-    }
-    const exists = wishlists.some((item) => item.id === product.id);
-    let updated;
-
-    if (exists) {
-      updated = wishlists.filter((item) => item.id !== product.id);
-    } else {
-      updated = [...wishlists, product];
-    }
-    setWishlists(updated);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
-  };
 
   // Tính toán tổng số nhóm có thể hiển thị
   const totalGroups = Math.ceil(products.length / itemsPerView);
@@ -108,11 +90,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
                 className="shrink-0 w-full sm:w-1/2 md:w-1/4"
                 key={product.id}
               >
-                <HomeProductItem
-                  product={product}
-                  wishlists={wishlists}
-                  onAddToWishlist={handleAddToWishlist}
-                />
+                <HomeProductItem product={product} wishlists={wishlists} />
               </div>
             ))}
           </div>

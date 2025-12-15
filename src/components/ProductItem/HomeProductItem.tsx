@@ -6,20 +6,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
 import { cartAtom, tempCartAtom, userAtom } from "../../atom/store";
+import { toggleWishlistAtom } from "../../atom/actionStore";
 const HomeProductItem = ({
   product,
   wishlists,
-  onAddToWishlist,
 }: {
   product: Products;
   wishlists: Products[];
-  onAddToWishlist: (product: Products) => void;
 }) => {
   const navigate = useNavigate();
   const user = useAtomValue(userAtom);
   const setCart = useSetAtom(cartAtom);
   const setTempCart = useSetAtom(tempCartAtom);
-
+  const onAddToWishlist = useSetAtom(toggleWishlistAtom)
   const requireLogin = () => {
     if (!user) {
       navigate(LOGIN);

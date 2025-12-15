@@ -2,27 +2,14 @@ import React from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";
 const BestSellerProductsList = ({ products }: { products: Products[] }) => {
   const wishlists = useAtomValue(wishlistAtom);
-  const setWishlists = useSetAtom(wishlistAtom);
   const navigate = useNavigate();
-  const handleAddToWishlist = (product: Products) => {
-    const exists = wishlists.some((item) => item.id === product.id);
-    let updated;
-
-    if (exists) {
-      updated = wishlists.filter((item) => item.id !== product.id);
-    } else {
-      updated = [...wishlists, product];
-    }
-    setWishlists(updated);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
-  };
   return (
     <section className="mt-10 md:mt-17 p-4 lg:p-0">
       <div className="flex flex-row items-end justify-between">
@@ -45,7 +32,6 @@ const BestSellerProductsList = ({ products }: { products: Products[] }) => {
             <HomeProductItem
               product={product}
               wishlists={wishlists}
-              onAddToWishlist={handleAddToWishlist}
             />
           </React.Fragment>
         ))}

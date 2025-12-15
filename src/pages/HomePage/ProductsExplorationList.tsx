@@ -4,7 +4,7 @@ import RightArrow from "../../assets/icon-arrow-right.svg";
 import type { Products } from "../../types/ProductTypes";
 
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import ProductExplorationItem from "../../components/ProductItem/ProductExplorationItem";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,6 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
   const [itemsPerView, setItemsPerView] = useState(8);
   const [currentIndex, setCurrentIndex] = useState(0);
   const wishlists = useAtomValue(wishlistAtom);
-  const setWishlists = useSetAtom(wishlistAtom);
   const navigate = useNavigate();
   useEffect(() => {
     const handleResize = () => {
@@ -30,18 +29,6 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleAddToWishlist = (product: Products) => {
-    const exists = wishlists.some((item) => item.id === product.id);
-    let updated;
-
-    if (exists) {
-      updated = wishlists.filter((item) => item.id !== product.id);
-    } else {
-      updated = [...wishlists, product];
-    }
-    setWishlists(updated);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
-  };
   const totalGroups = Math.ceil(products.length / itemsPerView);
 
   const goToNext = () => {
@@ -97,7 +84,6 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
             <ProductExplorationItem
               product={product}
               wishlists={wishlists}
-              onAddToWishlist={handleAddToWishlist}
             />
           </React.Fragment>
         ))}

@@ -9,28 +9,13 @@ import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom, wishlistAtom } from "../../atom/store";
+import { toggleWishlistAtom } from "../../atom/actionStore";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {
   const wishlists = useAtomValue(wishlistAtom);
-  const setWishlists = useSetAtom(wishlistAtom);
   const user = useAtomValue(userAtom);
   const navigate = useNavigate();
-  const handleAddToWishlist = (product: Products) => {
-    const saved = localStorage.getItem("wishlist");
-    if (saved) {
-      setWishlists(JSON.parse(saved));
-    }
-    const exists = wishlists.some((item) => item.id === product.id);
-    let updated;
-
-    if (exists) {
-      updated = wishlists.filter((item) => item.id !== product.id);
-    } else {
-      updated = [...wishlists, product];
-    }
-    setWishlists(updated);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
-  };
+  const handleAddToWishlist = useSetAtom(toggleWishlistAtom)
 
   const requireLogin = () => {
     if (!user) {

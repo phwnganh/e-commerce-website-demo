@@ -1,7 +1,6 @@
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import React, { useEffect, useRef, useState } from "react";
 import { productsAtom, wishlistAtom } from "../../atom/store";
-import type { Products } from "../../types/ProductTypes";
 import { HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import BreadCumb from "../../components/ui/BreadCumb";
@@ -13,20 +12,7 @@ const HomeProductListPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const loadMoreRef = useRef(null);
   const wishlists = useAtomValue(wishlistAtom);
-  const setWishlists = useSetAtom(wishlistAtom);
 
-  const handleAddToWishlist = (product: Products) => {
-    const exists = wishlists.some((item) => item.id === product.id);
-    let updated;
-
-    if (exists) {
-      updated = wishlists.filter((item) => item.id !== product.id);
-    } else {
-      updated = [...wishlists, product];
-    }
-    setWishlists(updated);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
-  };
   useEffect(() => {
     if (visibleCount >= products.length || isLoading) {
       return;
@@ -66,7 +52,6 @@ const HomeProductListPage = () => {
               <HomeProductItem
                 product={product}
                 wishlists={wishlists}
-                onAddToWishlist={handleAddToWishlist}
               />
             </React.Fragment>
           ))}

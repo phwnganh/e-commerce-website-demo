@@ -1,27 +1,12 @@
 import React from "react";
-import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import { productsAtom, wishlistAtom } from "../../atom/store";
 import SectionHeader from "../../components/ui/SectionHeader";
 
 const RelatedItemSection = () => {
   const wishlists = useAtomValue(wishlistAtom);
-  const setWishlists = useSetAtom(wishlistAtom);
   const products = useAtomValue(productsAtom);
-
-  const handleAddToWishlist = (product: Products) => {
-    const exists = wishlists.some((item) => item.id === product.id);
-    let updated;
-
-    if (exists) {
-      updated = wishlists.filter((item) => item.id !== product.id);
-    } else {
-      updated = [...wishlists, product];
-    }
-    setWishlists(updated);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
-  };
   return (
     <section className="my-15 lg:my-35">
       <div className="flex flex-row justify-between items-center">
@@ -31,11 +16,7 @@ const RelatedItemSection = () => {
       <div className="mt-10 lg:mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
         {products.slice(0, 4).map((product) => (
           <React.Fragment key={product.id}>
-            <HomeProductItem
-              product={product}
-              wishlists={wishlists}
-              onAddToWishlist={handleAddToWishlist}
-            />
+            <HomeProductItem product={product} wishlists={wishlists} />
           </React.Fragment>
         ))}
       </div>

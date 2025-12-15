@@ -11,7 +11,7 @@ export const categoriesNavigationAtom = atom<string[]>([]);
 export const userAtom = atom<User | null>(null);
 
 export const wishlistAtom = atomWithStorage<Products[]>("wishlist", [])
-export const cartAtom = atom<Carts>({
+export const cartAtom = atomWithStorage<Carts>("carts", {
   id: "1",
   total: 0,
   discountTotal: 0,

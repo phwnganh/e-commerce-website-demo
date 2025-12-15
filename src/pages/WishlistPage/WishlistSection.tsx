@@ -1,20 +1,17 @@
-import type { CartItems, Carts, Products } from "../../types/ProductTypes";
+import type { CartItems, Carts } from "../../types/ProductTypes";
 import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
 import { cartAtom, tempCartAtom, wishlistAtom } from "../../atom/store";
 import React from "react";
 import WishlistProductItem from "../../components/ProductItem/WishlistProductItem";
+import { removeWishlistAtom } from "../../atom/actionStore";
 const WishlistSection = () => {
   const wishlists = useAtomValue(wishlistAtom);
   const setWishlists = useSetAtom(wishlistAtom);
   const setCarts = useSetAtom(cartAtom);
   const setTempCarts = useSetAtom(tempCartAtom);
 
-  const handleRemoveWishlist = (product: Products) => {
-    const updated = wishlists.filter((item) => item.id !== product.id);
-    setWishlists(updated);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
-  };
+  const handleRemoveWishlist = useSetAtom(removeWishlistAtom)
 
   const handleMoveAllToBag = () => {
     const saved = localStorage.getItem("carts");
