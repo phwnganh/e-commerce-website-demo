@@ -7,7 +7,7 @@ import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom, wishlistAtom } from "../../atom/store";
-import { toggleWishlistAtom } from "../../atom/actionStore";
+import { toggleWishlistAtom } from "../../atom/wishlistActionStore";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {

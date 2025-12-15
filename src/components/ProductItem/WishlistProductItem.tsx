@@ -1,7 +1,7 @@
 import type { Products } from "../../types/ProductTypes";
 import { useSetAtom } from "jotai";
 import TrashIcon from "../../assets/icon-delete.svg";
-import { addToCartAtom } from "../../atom/actionStore";
+import { addToCartAtom } from "../../atom/cartActionStore";
 
 const WishlistProductItem = ({
   product,

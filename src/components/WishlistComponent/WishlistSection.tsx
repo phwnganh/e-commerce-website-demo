@@ -3,7 +3,8 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import React from "react";
 import WishlistProductItem from "../../components/ProductItem/WishlistProductItem";
-import { moveAllProductsToBagAtom, removeWishlistAtom } from "../../atom/actionStore";
+import { moveAllProductsToBagAtom } from "../../atom/cartActionStore";
+import { removeWishlistAtom } from "../../atom/wishlistActionStore";
 const WishlistSection = () => {
   const wishlists = useAtomValue(wishlistAtom);
 

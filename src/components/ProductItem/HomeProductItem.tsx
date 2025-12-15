@@ -6,7 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom } from "../../atom/store";
-import { addToCartAtom, toggleWishlistAtom } from "../../atom/actionStore";
+import { addToCartAtom } from "../../atom/cartActionStore";
+import { toggleWishlistAtom } from "../../atom/wishlistActionStore";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
 const HomeProductItem = ({
   product,

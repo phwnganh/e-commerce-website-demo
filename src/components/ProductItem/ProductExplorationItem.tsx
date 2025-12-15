@@ -6,7 +6,8 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom } from "../../atom/store";
 import { HOMEPAGE } from "../../constants/route.constants";
 import StarRating from "../ui/StarRating";
-import { addToCartAtom, toggleWishlistAtom } from "../../atom/actionStore";
+import { addToCartAtom } from "../../atom/cartActionStore";
+import { toggleWishlistAtom } from "../../atom/wishlistActionStore";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
 
 const ProductExplorationItem = ({

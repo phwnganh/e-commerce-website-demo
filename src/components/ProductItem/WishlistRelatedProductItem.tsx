@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import StarRating from "../ui/StarRating";
-import { addToCartAtom } from "../../atom/actionStore";
+import { addToCartAtom } from "../../atom/cartActionStore";
 
 const WishlistRelatedProductItem = ({ product }: { product: Products }) => {
   const navigate = useNavigate();

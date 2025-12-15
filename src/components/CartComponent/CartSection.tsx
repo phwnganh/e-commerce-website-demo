@@ -13,7 +13,7 @@ import {
   increaseQuantityItemAtom,
   initialTempCartAtom,
   removeItemFromCartAtom,
-} from "../../atom/actionStore";
+} from "../../atom/cartActionStore";
 import { useEffect } from "react";
 const CartSection = () => {
   const cart = useAtomValue(tempCartAtom);
