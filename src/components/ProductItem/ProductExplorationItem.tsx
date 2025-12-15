@@ -129,7 +129,7 @@ const ProductExplorationItem = ({
           </button>
           <button
             onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
-            className="bg-white hidden md:flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
+            className="bg-white flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
           >
             <img src={EyeIcon} alt="eye-icon" className="w-4 h-4 sm:w-6 sm:h-6"/>
           </button>

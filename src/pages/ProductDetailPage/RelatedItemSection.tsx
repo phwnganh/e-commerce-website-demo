@@ -32,7 +32,7 @@ const RelatedItemSection = () => {
         </div>
       </div>
 
-      <div className="mt-10 lg:mt-15 grid grid-cols-4 gap-7">
+      <div className="mt-10 lg:mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
         {products.slice(0, 4).map((product) => (
           <React.Fragment key={product.id}>
             <HomeProductItem
