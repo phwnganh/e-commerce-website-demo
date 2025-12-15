@@ -4,9 +4,10 @@ import type { Products } from "../../types/ProductTypes";
 import { Link, useNavigate } from "react-router-dom";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom } from "../../atom/store";
-import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
+import { HOMEPAGE } from "../../constants/route.constants";
 import StarRating from "../ui/StarRating";
 import { addToCartAtom, toggleWishlistAtom } from "../../atom/actionStore";
+import { useLoginRequired } from "../../hooks/useLoginRequired";
 
 const ProductExplorationItem = ({
   product,
@@ -19,13 +20,7 @@ const ProductExplorationItem = ({
   const user = useAtomValue(userAtom);
   const onAddToWishlist = useSetAtom(toggleWishlistAtom)
   const handleAddToCart = useSetAtom(addToCartAtom)
-  const requireLogin = () => {
-    if (!user) {
-      navigate(LOGIN);
-      return false;
-    }
-    return true;
-  };
+  const requireLogin = useLoginRequired()
   const isNew = (() => {
     const createdDate = new Date(product.meta.createdAt);
     const now = new Date();

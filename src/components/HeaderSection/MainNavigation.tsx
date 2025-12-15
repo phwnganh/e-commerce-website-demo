@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   ABOUT,
   CART,
@@ -71,7 +71,7 @@ const MainNavigation = () => {
           <path d="M3 6h18M3 12h18M3 18h18" />
         </svg>
       </button>
-      <h3 className="font-bold text-2xl">Exclusive</h3>
+      <Link to={HOMEPAGE} className="font-bold text-2xl">Exclusive</Link>
       <div className="hidden lg:flex gap-12 items-center">
         <ActiveNavLink to={HOMEPAGE}>Home</ActiveNavLink>
         <ActiveNavLink to={CONTACT}>Contact</ActiveNavLink>

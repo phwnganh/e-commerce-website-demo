@@ -3,10 +3,11 @@ import StarRating from "../../components/ui/StarRating";
 import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
+import { HOMEPAGE } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom } from "../../atom/store";
 import { addToCartAtom, toggleWishlistAtom } from "../../atom/actionStore";
+import { useLoginRequired } from "../../hooks/useLoginRequired";
 const HomeProductItem = ({
   product,
   wishlists,
@@ -18,13 +19,7 @@ const HomeProductItem = ({
   const user = useAtomValue(userAtom);
   const onAddToWishlist = useSetAtom(toggleWishlistAtom)
   const handleAddToCart = useSetAtom(addToCartAtom)
-  const requireLogin = () => {
-    if (!user) {
-      navigate(LOGIN);
-      return false;
-    }
-    return true;
-  };
+  const requireLogin = useLoginRequired()
 
   const isInWishlist = user && wishlists.some((item) => item.id === product.id);
   return (

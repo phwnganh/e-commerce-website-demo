@@ -7,6 +7,8 @@ import instagram from "../../assets/instagram.svg";
 import linkedln from "../../assets/linkedlin.svg";
 import send from "../../assets/send.svg";
 import copyRight from "../../assets/icon-copyright.svg";
+import { Link } from "react-router-dom";
+import { HOMEPAGE } from "../../constants/route.constants";
 const FooterSection = () => {
   return (
     <footer className="bg-black text-text-1 pb-6 lg:pt-20 pt-3">
@@ -14,7 +16,7 @@ const FooterSection = () => {
         {/* exclusive */}
         <div className="flex flex-col gap-4 w-full">
           <div className="flex flex-col gap-6">
-            <h4 className="font-bold text-2xl">Exclusive</h4>
+            <Link to={HOMEPAGE} className="font-bold text-2xl">Exclusive</Link>
             <h5 className="text-base md:text-xl">Subscribe</h5>
             <p className="text-sm md:text-base">Get 10% off your first order</p>
           </div>

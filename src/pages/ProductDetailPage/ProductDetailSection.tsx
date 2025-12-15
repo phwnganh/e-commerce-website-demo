@@ -5,25 +5,17 @@ import MinusIcon from "../../assets/icon-minus.svg";
 import HeartIcon from "../../assets/Wishlist.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
-import { useNavigate } from "react-router-dom";
-import { LOGIN } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom, wishlistAtom } from "../../atom/store";
 import { toggleWishlistAtom } from "../../atom/actionStore";
+import { useLoginRequired } from "../../hooks/useLoginRequired";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const user = useAtomValue(userAtom);
-  const navigate = useNavigate();
   const handleAddToWishlist = useSetAtom(toggleWishlistAtom)
 
-  const requireLogin = () => {
-    if (!user) {
-      navigate(LOGIN);
-      return false;
-    }
-    return true;
-  };
+  const requireLogin = useLoginRequired()
 
   const isInWishlist =
     user && wishlists.some((item) => item.id === productData.id);
