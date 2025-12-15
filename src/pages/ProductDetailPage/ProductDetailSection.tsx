@@ -77,7 +77,6 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                 <img
                   src={productData.thumbnail}
                   alt={productData.title}
-                  loading="lazy"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -85,7 +84,6 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                 <img
                   src={productData.thumbnail}
                   alt={productData.title}
-                  loading="lazy"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -93,7 +91,6 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                 <img
                   src={productData.thumbnail}
                   alt={productData.title}
-                  loading="lazy"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -101,13 +98,12 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                 <img
                   src={productData.thumbnail}
                   alt={productData.title}
-                  loading="lazy"
                   className="w-full h-full object-contain"
                 />
               </div>
             </div>
             <div className="lg:w-[500px] lg:h-[600px] w-full bg-secondary-2 flex justify-center rounded-sm">
-              <img src={productData.images[0]} loading="lazy" alt={productData.title} />
+              <img src={productData.images[0]} loading="lazy" alt={productData.title} className="w-full h-full object-contain"/>
             </div>
           </div>
 

@@ -1,14 +1,12 @@
 import { useParams } from "react-router-dom";
 import ProductDetailSection from "./ProductDetailSection";
 import RelatedItemSection from "./RelatedItemSection";
-import { useEffect } from "react";
-import { useAtomValue, useSetAtom } from "jotai";
-import { productDetailAtom } from "../../atom/store";
+import { useEffect, useState } from "react";
+import type { Products } from "../../types/ProductTypes";
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
-  const productData = useAtomValue(productDetailAtom)
-  const setProductData = useSetAtom(productDetailAtom)
+  const [productData, setProductData] = useState<Products | null>(null)
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${productId}`)
       .then((res) => res.json())
@@ -19,7 +17,7 @@ const ProductDetailPage = () => {
     return;
   }
   return (
-    <main className="max-w-[1170px] mx-auto">
+    <main className="max-w-[1170px] mx-auto px-4 lg:px-0">
       <ProductDetailSection productData={productData} />
       <RelatedItemSection />
     </main>
