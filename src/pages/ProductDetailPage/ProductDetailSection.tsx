@@ -45,7 +45,6 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
 
   return (
     <section className="px-4 lg:px-0">
-
       <div className="mt-15 lg:mt-20">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-17.5">
           <div className="flex flex-col-reverse lg:flex-row gap-7.5">
@@ -107,7 +106,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                 </button>
               </div>
 
-              <button className="bg-button-2 text-text-1 whitespace-nowrap py-3 px-10 lg:py-2.5 lg:px-12 h-full font-medium rounded-sm text-xs lg:text-base cursor-pointer">
+              <button className="bg-button-2 hover:bg-hover-button-1 text-text-1 whitespace-nowrap py-3 px-10 lg:py-2.5 lg:px-12 h-full font-medium rounded-sm text-xs lg:text-base cursor-pointer">
                 Buy Now
               </button>
               <button
@@ -118,16 +117,15 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                   handleAddToWishlist(productData);
                 }}
                 className={`${
-                  isInWishlist
-                    ? "bg-button-2 border-button-2 hover:bg-button-2 hover:border-button-2 cursor-pointer"
-                    : "bg-white hover:bg-gray-200 cursor-pointer"
-                } group ml-[3px] border border-black-opacity-80 hover:bg-button-2 hover:border-gray-200 rounded-sm w-10 h-10 flex justify-center items-center`}
+                  isInWishlist &&
+                  "bg-button-2 border-button-2 hover:bg-hover-button-1 hover:border-hover-button-1 cursor-pointer"
+                }bg-white cursor-pointer group ml-[3px] border border-black-opacity-80 hover:bg-button-2 hover:border-button-2 rounded-sm w-10 h-10 flex justify-center items-center`}
               >
                 <img
                   src={HeartIcon}
                   alt="heart-icon"
                   className={`${
-                    isInWishlist ? "brightness-1 invert" : ""
+                    isInWishlist && "brightness-1 invert"
                   } group-hover:brightness-0 group-hover:invert`}
                 />
               </button>

@@ -106,7 +106,7 @@ const ProductExplorationItem = ({
           </button>
         </div>
 
-        <div className="flex flex-col gap-1 md:gap-2 absolute top-1 right-2 md:top-3 md:right-3 ">
+        <div className="flex flex-col gap-1 md:gap-2 absolute top-1 right-2 md:top-3 md:right-3 group">
           <button
             onClick={() => {
               if (!requireLogin()) {
@@ -116,22 +116,28 @@ const ProductExplorationItem = ({
             }}
             className={`${
               isInWishlist
-                ? "bg-button-2 hover:bg-[#b42424] cursor-pointer"
-                : "bg-white hover:bg-gray-200 cursor-pointer"
-            }  flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px]`}
+                ? "bg-button-2 hover:bg-hover-button-1 cursor-pointer"
+                : "bg-white"
+            } group-hover:bg-button-2 cursor-pointer flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px]`}
           >
             <img
               src={HeartIcon1}
               alt="heart-icon"
               className={`
-                ${isInWishlist && "brightness-1 invert"} w-4 h-4 sm:w-6 sm:h-6`}
+                ${
+                  isInWishlist && "brightness-1 invert"
+                } group-hover:brightness-1 group-hover:invert w-4 h-4 sm:w-6 sm:h-6`}
             />
           </button>
           <button
             onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
             className="bg-white flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
           >
-            <img src={EyeIcon} alt="eye-icon" className="w-4 h-4 sm:w-6 sm:h-6"/>
+            <img
+              src={EyeIcon}
+              alt="eye-icon"
+              className="w-4 h-4 sm:w-6 sm:h-6"
+            />
           </button>
         </div>
       </div>
