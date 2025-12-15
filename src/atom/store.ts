@@ -18,10 +18,5 @@ export const cartAtom = atomWithStorage<Carts>("carts", {
   products: [],
 });
 
-export const tempCartAtom = atom<Carts>({
-    id: "1",
-    total: 0,
-    discountTotal: 0,
-    products: []
-})
+export const tempCartAtom = atom<Carts | null>(null)
 

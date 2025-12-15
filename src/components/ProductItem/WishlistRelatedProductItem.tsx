@@ -1,57 +1,14 @@
 import { useSetAtom } from "jotai";
-import type { CartItems, Carts, Products } from "../../types/ProductTypes";
-import { cartAtom, tempCartAtom } from "../../atom/store";
+import type {Products } from "../../types/ProductTypes";
 import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import StarRating from "../ui/StarRating";
+import { addToCartAtom } from "../../atom/actionStore";
 
 const WishlistRelatedProductItem = ({ product }: { product: Products }) => {
-  const setCart = useSetAtom(cartAtom);
-  const setTempCart = useSetAtom(tempCartAtom);
   const navigate = useNavigate();
-  const handleAddToCart = (product: Products) => {
-    const saved = localStorage.getItem("carts");
-    let currentCarts: Carts = saved
-      ? JSON.parse(saved)
-      : { id: "1", total: 0, products: [] };
-
-    const existingItem = currentCarts.products.find(
-      (item) => item.id === product.id
-    );
-
-    let updatedProducts;
-    if (existingItem) {
-      updatedProducts = currentCarts.products.map((item) =>
-        item.id === product.id
-          ? {
-              ...item,
-              quantity: item.quantity + 1,
-              total: item.price * (item.quantity + 1),
-            }
-          : item
-      );
-    } else {
-      const newItem: CartItems = {
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        quantity: 1,
-        total: product.price,
-        thumbnail: product.thumbnail,
-      };
-      updatedProducts = [...currentCarts.products, newItem];
-    }
-
-    const updatedCart = {
-      ...currentCarts,
-      products: updatedProducts,
-      total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
-    };
-    setCart(updatedCart);
-    setTempCart(updatedCart);
-    localStorage.setItem("carts", JSON.stringify(updatedCart));
-  };
+  const handleAddToCart = useSetAtom(addToCartAtom);
   return (
     <div className="flex flex-col gap-4 w-full">
       <div className="bg-secondary-2 rounded-sm w-full relative">
@@ -77,7 +34,11 @@ const WishlistRelatedProductItem = ({ product }: { product: Products }) => {
             onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
             className="bg-white flex items-center justify-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
           >
-            <img src={EyeIcon} alt="eye-icon" className="w-4 h-4 sm:w-6 sm:h-6"/>
+            <img
+              src={EyeIcon}
+              alt="eye-icon"
+              className="w-4 h-4 sm:w-6 sm:h-6"
+            />
           </button>
         </div>
       </div>

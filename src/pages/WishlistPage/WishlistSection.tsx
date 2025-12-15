@@ -1,59 +1,15 @@
-import type { CartItems, Carts } from "../../types/ProductTypes";
 import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
-import { cartAtom, tempCartAtom, wishlistAtom } from "../../atom/store";
+import { wishlistAtom } from "../../atom/store";
 import React from "react";
 import WishlistProductItem from "../../components/ProductItem/WishlistProductItem";
-import { removeWishlistAtom } from "../../atom/actionStore";
+import { moveAllProductsToBagAtom, removeWishlistAtom } from "../../atom/actionStore";
 const WishlistSection = () => {
   const wishlists = useAtomValue(wishlistAtom);
-  const setWishlists = useSetAtom(wishlistAtom);
-  const setCarts = useSetAtom(cartAtom);
-  const setTempCarts = useSetAtom(tempCartAtom);
 
   const handleRemoveWishlist = useSetAtom(removeWishlistAtom)
 
-  const handleMoveAllToBag = () => {
-    const saved = localStorage.getItem("carts");
-    const currentCarts: Carts = saved
-      ? JSON.parse(saved)
-      : { id: "1", total: 0, products: [] };
-
-    let updatedProducts = [...currentCarts.products];
-    wishlists.forEach((product) => {
-      const existingItem = updatedProducts.find(
-        (item) => item.id === product.id
-      );
-
-      if (existingItem) {
-        existingItem.quantity += 1;
-        existingItem.total = existingItem.quantity * existingItem.price;
-      } else {
-        const newItem: CartItems = {
-          id: product.id,
-          title: product.title,
-          price: product.price,
-          quantity: 1,
-          total: product.price,
-          thumbnail: product.thumbnail,
-        };
-        updatedProducts.push(newItem);
-      }
-    });
-
-    const updatedCart = {
-      ...currentCarts,
-      products: updatedProducts,
-      total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
-    };
-
-    setCarts(updatedCart);
-    setTempCarts(updatedCart);
-    localStorage.setItem("carts", JSON.stringify(updatedCart));
-
-    setWishlists([]);
-    localStorage.setItem("wishlist", JSON.stringify([]));
-  };
+  const handleMoveAllToBag = useSetAtom(moveAllProductsToBagAtom)
   return (
     <section className="mt-20 px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">

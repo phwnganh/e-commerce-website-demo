@@ -51,5 +51,121 @@ export const addToCartAtom = atom(null, (get, set, product: Products) => {
     total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
   };
   set(cartAtom, updatedCarts);
-  set(tempCartAtom, updatedCarts);
+});
+
+export const moveAllProductsToBagAtom = atom(null, (get, set) => {
+  const carts = get(cartAtom);
+  const wishlist = get(wishlistAtom);
+  let updatedProducts = [...carts.products];
+  wishlist.forEach((product) => {
+    const exists = updatedProducts.some((item) => item.id === product.id);
+    if (exists) {
+      updatedProducts = updatedProducts.map((item) =>
+        item.id === product.id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+              total: (item.quantity + 1) * item.price,
+            }
+          : item
+      );
+    } else {
+      const newItem: CartItems = {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        quantity: 1,
+        total: product.price,
+        thumbnail: product.thumbnail,
+      };
+      updatedProducts = [...updatedProducts, newItem];
+    }
+  });
+
+  const updatedCarts = {
+    ...carts,
+    products: updatedProducts,
+    total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
+  };
+  set(cartAtom, updatedCarts);
+  set(wishlistAtom, []);
+});
+
+// gọi temporary cart từ cart -> handle logic inc/dec/remove tạm thời
+export const initialTempCartAtom = atom(null, (get, set) => {
+  const cart = get(cartAtom);
+  set(tempCartAtom, cart);
+});
+
+export const increaseQuantityItemAtom = atom(
+  null,
+  (get, set, productId: string) => {
+    const cart = get(tempCartAtom);
+    if (!cart) return;
+
+    const updatedProducts = cart.products.map((item) =>
+      item.id === productId
+        ? {
+            ...item,
+            quantity: item.quantity + 1,
+            total: item.price * (item.quantity + 1),
+          }
+        : item
+    );
+    const updatedCart = {
+      ...cart,
+      products: updatedProducts,
+      total: updatedProducts.reduce((sum, product) => sum + product.total, 0),
+    };
+    set(tempCartAtom, updatedCart);
+  }
+);
+
+export const decreaseQuantityItemAtom = atom(
+  null,
+  (get, set, productId: string) => {
+    const cart = get(tempCartAtom);
+    if (!cart) return;
+    const updatedProducts = cart.products.map((item) => {
+      if (item.id === productId) {
+        const newQuantity = Math.max(1, item.quantity - 1);
+        return {
+          ...item,
+          quantity: newQuantity,
+          total: newQuantity * item.price,
+        };
+      }
+      return item;
+    });
+
+    const updatedCart = {
+      ...cart,
+      products: updatedProducts,
+      total: updatedProducts.reduce((sum, product) => sum + product.total, 0),
+    };
+    set(tempCartAtom, updatedCart);
+  }
+);
+
+export const removeItemFromCartAtom = atom(
+  null,
+  (get, set, productId: string) => {
+    const cart = get(tempCartAtom);
+    if (!cart) return;
+    const updatedProducts = cart.products.filter(
+      (item) => item.id !== productId
+    );
+    const updatedCart = {
+      ...cart,
+      products: updatedProducts,
+      total: updatedProducts.reduce((sum, product) => sum + product.total, 0),
+    };
+    set(tempCartAtom, updatedCart);
+  }
+);
+
+export const commitedCartAtom = atom(null, (get, set) => {
+  const tempCart = get(tempCartAtom);
+  if (!tempCart) return;
+  set(cartAtom, tempCart);
 });

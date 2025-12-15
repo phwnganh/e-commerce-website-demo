@@ -1,12 +1,12 @@
-import type { CartItems, Carts, Products } from "../../types/ProductTypes";
+import type {Products } from "../../types/ProductTypes";
 import StarRating from "../../components/ui/StarRating";
 import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { HOMEPAGE, LOGIN } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
-import { cartAtom, tempCartAtom, userAtom } from "../../atom/store";
-import { toggleWishlistAtom } from "../../atom/actionStore";
+import { userAtom } from "../../atom/store";
+import { addToCartAtom, toggleWishlistAtom } from "../../atom/actionStore";
 const HomeProductItem = ({
   product,
   wishlists,
@@ -16,58 +16,14 @@ const HomeProductItem = ({
 }) => {
   const navigate = useNavigate();
   const user = useAtomValue(userAtom);
-  const setCart = useSetAtom(cartAtom);
-  const setTempCart = useSetAtom(tempCartAtom);
   const onAddToWishlist = useSetAtom(toggleWishlistAtom)
+  const handleAddToCart = useSetAtom(addToCartAtom)
   const requireLogin = () => {
     if (!user) {
       navigate(LOGIN);
       return false;
     }
     return true;
-  };
-
-  const handleAddToCart = (product: Products) => {
-    const saved = localStorage.getItem("carts");
-    let currentCarts: Carts = saved
-      ? JSON.parse(saved)
-      : { id: "1", total: 0, products: [] };
-
-    const existingItem = currentCarts.products.find(
-      (item) => item.id === product.id
-    );
-
-    let updatedProducts;
-    if (existingItem) {
-      updatedProducts = currentCarts.products.map((item) =>
-        item.id === product.id
-          ? {
-              ...item,
-              quantity: item.quantity + 1,
-              total: item.price * (item.quantity + 1),
-            }
-          : item
-      );
-    } else {
-      const newItem: CartItems = {
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        quantity: 1,
-        total: product.price,
-        thumbnail: product.thumbnail,
-      };
-      updatedProducts = [...currentCarts.products, newItem];
-    }
-
-    const updatedCart = {
-      ...currentCarts,
-      products: updatedProducts,
-      total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
-    };
-    setCart(updatedCart);
-    setTempCart(updatedCart);
-    localStorage.setItem("carts", JSON.stringify(updatedCart));
   };
 
   const isInWishlist = user && wishlists.some((item) => item.id === product.id);

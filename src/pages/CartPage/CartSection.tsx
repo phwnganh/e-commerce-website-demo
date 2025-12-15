@@ -1,85 +1,39 @@
 import DropUpIcon from "../../assets/drop-up-icon.svg";
 import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
-import {useNavigate } from "react-router-dom";
-import {HOMEPAGE } from "../../constants/route.constants";
+import { useNavigate } from "react-router-dom";
+import { HOMEPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
-import { cartAtom, tempCartAtom } from "../../atom/store";
+import { tempCartAtom } from "../../atom/store";
+import {
+  commitedCartAtom,
+  decreaseQuantityItemAtom,
+  increaseQuantityItemAtom,
+  initialTempCartAtom,
+  removeItemFromCartAtom,
+} from "../../atom/actionStore";
+import { useEffect } from "react";
 const CartSection = () => {
   const cart = useAtomValue(tempCartAtom);
-
-  const setCart = useSetAtom(cartAtom);
-  const setTempCart = useSetAtom(tempCartAtom);
+  const initialTempCart = useSetAtom(initialTempCartAtom);
+  const handleIncreaseQuantity = useSetAtom(increaseQuantityItemAtom);
+  const handleDecreaseQuantity = useSetAtom(decreaseQuantityItemAtom);
+  const handleRemoveItemFromCart = useSetAtom(removeItemFromCartAtom);
+  const commitedCart = useSetAtom(commitedCartAtom);
   const navigate = useNavigate();
 
-  const handleIncreaseQuantity = (productId: string) => {
-    if (!cart) return;
-    const updatedProducts = cart.products.map((item) =>
-      item.id === productId
-        ? {
-            ...item,
-            quantity: item.quantity + 1,
-            total: item.price * (item.quantity + 1),
-          }
-        : item
-    );
-
-    const updatedCart = {
-      ...cart,
-      products: updatedProducts,
-      total: updatedProducts.reduce((sum, p) => sum + p.total, 0),
-    };
-
-    setTempCart(updatedCart);
-  };
-
-  const handleDecreaseQuantity = (productId: string) => {
-    if (!cart) return;
-    const updatedProducts = cart.products.map((item) => {
-      if (item.id === productId) {
-        const newQuantity = Math.max(1, item.quantity - 1);
-        return {
-          ...item,
-          quantity: newQuantity,
-          total: newQuantity * item.price,
-        };
-      }
-      return item;
-    });
-
-    const updatedCart = {
-      ...cart,
-      products: updatedProducts,
-      total: updatedProducts.reduce((sum, p) => sum + p.total, 0),
-    };
-
-    setTempCart(updatedCart);
-  };
-
   const handleUpdateCart = () => {
-    if (!cart) return;
-    setCart(cart);
-    localStorage.setItem("carts", JSON.stringify(cart));
+    commitedCart();
   };
 
-  const handleRemoveItemFromCart = (productId: string) => {
-    if (!cart) return;
-    const updatedProduct = cart.products.filter(
-      (item) => item.id !== productId
-    );
-    const updatedCart = {
-      ...cart,
-      products: updatedProduct,
-      total: updatedProduct.reduce((sum, p) => sum + p.total, 0),
-    };
-    setTempCart(updatedCart);
-  };
+  useEffect(() => {
+    initialTempCart();
+  }, []);
 
   return (
     <section className="mb-11 md:mb-35 px-4 lg:px-0">
-
       <div className="mt-20">
         <div className="flex flex-col gap-10">
           <div className="grid grid-cols-4 pl-10 py-3 md:py-6 rounded-sm shadow-[0px_1px_13px_0px_#0000000D]">
@@ -107,7 +61,7 @@ const CartSection = () => {
                         onClick={() => handleRemoveItemFromCart(item.id)}
                         className="absolute top-0 -left-1.75 w-4.5 h-4.5 rounded-full bg-button-2 flex justify-center items-center cursor-pointer"
                       >
-                        <img src={XIcon} alt="x-icon"/>
+                        <img src={XIcon} alt="x-icon" />
                       </button>
                     </div>
                   </div>
@@ -125,13 +79,13 @@ const CartSection = () => {
                         className="w-4 h-4 flex justify-center cursor-pointer"
                         onClick={() => handleIncreaseQuantity(item.id)}
                       >
-                        <img src={DropUpIcon} alt="drop-up-icon"/>
+                        <img src={DropUpIcon} alt="drop-up-icon" />
                       </button>
                       <button
                         className="w-4 h-4 flex justify-center cursor-pointer"
                         onClick={() => handleDecreaseQuantity(item.id)}
                       >
-                        <img src={DropDownIcon} alt="drop-down-icon"/>
+                        <img src={DropDownIcon} alt="drop-down-icon" />
                       </button>
                     </div>
                   </div>
@@ -224,9 +178,7 @@ const CartSection = () => {
               placeholder="Coupon Code"
               className="border rounded-sm text-sm md:text-base py-2 md:py-4 pl-6"
             />
-            <PrimaryCustomButton>
-              Apply Coupon
-            </PrimaryCustomButton>
+            <PrimaryCustomButton>Apply Coupon</PrimaryCustomButton>
           </div>
           <div className="border-[1.5px] rounded-sm w-full sm:w-[470px] py-5 md:py-8 px-6">
             <div className="flex flex-col">
@@ -252,9 +204,7 @@ const CartSection = () => {
                 </div>
 
                 <div className="flex justify-center">
-                  <PrimaryCustomButton>
-                    Procees to checkout
-                  </PrimaryCustomButton>
+                  <PrimaryCustomButton>Procees to checkout</PrimaryCustomButton>
                 </div>
               </div>
             </div>
