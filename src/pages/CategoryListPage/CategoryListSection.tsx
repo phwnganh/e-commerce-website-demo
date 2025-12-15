@@ -66,7 +66,6 @@ const CategoryListSection = () => {
               <img
                 src={Cosmetics}
                 alt=""
-                loading="lazy"
                 className="group-hover:invert group-hover:brightness-0 group-hover:filter"
               />
             </div>

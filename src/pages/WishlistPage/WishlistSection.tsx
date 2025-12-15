@@ -103,7 +103,9 @@ const WishlistSection = () => {
     <section className="mt-20 px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">
         <p className="text-base md:text-xl">Wishlist ({wishlists.length})</p>
-        <SecondaryCustomButton onClick={handleMoveAllToBag}>Move All To Bag</SecondaryCustomButton>
+        <SecondaryCustomButton onClick={handleMoveAllToBag}>
+          Move All To Bag
+        </SecondaryCustomButton>
       </div>
 
       <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
@@ -117,7 +119,6 @@ const WishlistSection = () => {
                 <img
                   src={product.images[0]}
                   alt="product-imgs"
-                  loading="lazy"
                   className="w-full h-full"
                 />
                 <button
@@ -133,7 +134,7 @@ const WishlistSection = () => {
                   onClick={() => handleRemoveWishlist(product)}
                   className="bg-white flex items-center justify-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
                 >
-                  <img src={TrashIcon} alt="trash-icon" loading="lazy"/>
+                  <img src={TrashIcon} alt="trash-icon" />
                 </button>
               </div>
             </div>

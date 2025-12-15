@@ -37,7 +37,7 @@ const SignupSection = () => {
             Create Account
           </PrimaryCustomButton>
           <button className="flex flex-row gap-4 justify-center border border-black-opacity-40 rounded-sm py-4">
-            <img src={googleIcon} alt="google-icon" loading="lazy" />
+            <img src={googleIcon} alt="google-icon"/>
             <span>Sign up with Google</span>
           </button>
           <div className="mt-4 flex flex-row gap-4 justify-center">

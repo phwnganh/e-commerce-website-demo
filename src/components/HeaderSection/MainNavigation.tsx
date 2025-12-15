@@ -87,11 +87,11 @@ const MainNavigation = () => {
             to={user ? WISHLIST : LOGIN}
             className="rounded-full relative"
           >
-            <img src={Wishlist} alt="heart-icon" loading="lazy" />
+            <img src={Wishlist} alt="heart-icon" />
             {user && <IconBadge count={wishlists.length} hideIfZero />}
           </NavLink>
           <NavLink to={user ? CART : LOGIN} className="rounded-full relative">
-            <img src={CartIcon} alt="cart-icon" loading="lazy" />
+            <img src={CartIcon} alt="cart-icon" />
             {user && <IconBadge count={carts.products.length} hideIfZero />}
           </NavLink>
           {user && (

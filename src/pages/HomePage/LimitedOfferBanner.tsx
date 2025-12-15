@@ -35,7 +35,7 @@ const LimitedOfferBanner = () => {
         </div>
 
         <div className="basis-[60%] flex justify-center">
-          <img src={BlutetoothSpeaker} alt="bluetooth-speaker-banner" loading="lazy" className="w-full h-auto object-contain" />
+          <img src={BlutetoothSpeaker} alt="bluetooth-speaker-banner" className="w-full h-auto object-contain" />
         </div>
       </div>
     </section>

@@ -28,7 +28,6 @@ const FooterSection = () => {
               <img
                 src={send}
                 alt="send"
-                loading="lazy"
                 className="w-auto h-auto"
               />
             </button>
@@ -74,7 +73,6 @@ const FooterSection = () => {
                 <img
                   src={qrCode}
                   alt="qrCode"
-                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -83,7 +81,6 @@ const FooterSection = () => {
                   <img
                     src={ggPlay}
                     alt="google-play"
-                    loading="lazy"
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -91,7 +88,6 @@ const FooterSection = () => {
                   <img
                     src={appStore}
                     alt="app-store"
-                    loading="lazy"
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -103,7 +99,6 @@ const FooterSection = () => {
               <img
                 src={facebook}
                 alt="facebook-icon"
-                loading="lazy"
                 className="w-auto h-auto"
               />
             </button>
@@ -113,7 +108,6 @@ const FooterSection = () => {
             <button className="w-6 h-6 flex justify-center items-center cursor-pointer">
               <img
                 src={instagram}
-                loading="lazy"
                 alt="instagram-icon"
                 className="w-auto h-auto"
               />
@@ -122,7 +116,6 @@ const FooterSection = () => {
               <img
                 src={linkedln}
                 alt="linkedln-icon"
-                loading="lazy"
                 className="w-auto h-auto"
               />
             </button>
@@ -134,7 +127,6 @@ const FooterSection = () => {
           <img
             src={copyRight}
             alt="copyright-icon"
-            loading="lazy"
             className="opacity-60"
           />
           <span>Copyright Rimel 2022. All right reserved</span>

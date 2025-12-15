@@ -7,7 +7,7 @@ const KeyFeatures = () => {
     <section className="max-w-[1170px] mx-auto flex justify-center gap-12 md:gap-22 my-17 md:my-35 p-4 lg:p-0">
       <div className="flex flex-col gap-2 items-center">
         <CustomRoundedComponent>
-          <img src={DeliveryIcon} alt="delivery-icon" loading="lazy" />
+          <img src={DeliveryIcon} alt="delivery-icon" />
         </CustomRoundedComponent>
         <div className="text-base md:text-xl font-semibold mt-4 text-center lg:text-start">
           FREE AND FAST DELIVERY
@@ -22,7 +22,6 @@ const KeyFeatures = () => {
           <img
             src={CustomerServiceIcon}
             alt="customer-service-icon"
-            loading="lazy"
           />
         </CustomRoundedComponent>
         <div className="text-base md:text-xl font-semibold mt-4 text-center lg:text-start">
@@ -35,7 +34,7 @@ const KeyFeatures = () => {
 
       <div className="flex flex-col gap-2 items-center">
         <CustomRoundedComponent>
-          <img src={SecureIcon} alt="secure-icon" loading="lazy" />
+          <img src={SecureIcon} alt="secure-icon" />
         </CustomRoundedComponent>
         <div className="text-base md:text-xl font-semibold mt-4 text-center lg:text-start">
           MONEY BACK GUARANTEE

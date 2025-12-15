@@ -79,7 +79,7 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
                 : "hover:bg-gray-200 cursor-pointer"
             }`}
           >
-            <img src={LeftArrow1} alt="left-arrow" loading="lazy"/>
+            <img src={LeftArrow1} alt="left-arrow"/>
           </button>
           <button
             onClick={goToNext}
@@ -90,7 +90,7 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
                 : "hover:bg-gray-200 cursor-pointer"
             }`}
           >
-            <img src={RightArrow} alt="right-arrow" loading="lazy"/>
+            <img src={RightArrow} alt="right-arrow"/>
           </button>
         </div>
       </div>

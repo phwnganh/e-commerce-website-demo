@@ -23,7 +23,6 @@ const OurStorySection = () => {
         <img
           src={OurStoryBanner}
           alt="our-story-banner"
-          loading="lazy"
           className="w-full h-full object-cover rounded-sm"
         />
       </div>

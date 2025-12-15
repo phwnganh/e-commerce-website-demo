@@ -114,7 +114,6 @@ const CartSection = () => {
                     <img
                       src={item.thumbnail}
                       alt={item.title}
-                      loading="lazy"
                       className="w-full h-full object-contain md:object-cover"
                     />
                     <div className="hidden group-hover:block">
@@ -122,7 +121,7 @@ const CartSection = () => {
                         onClick={() => handleRemoveItemFromCart(item.id)}
                         className="absolute top-0 -left-1.75 w-4.5 h-4.5 rounded-full bg-button-2 flex justify-center items-center cursor-pointer"
                       >
-                        <img src={XIcon} alt="x-icon" loading="lazy"/>
+                        <img src={XIcon} alt="x-icon"/>
                       </button>
                     </div>
                   </div>
@@ -140,13 +139,13 @@ const CartSection = () => {
                         className="w-4 h-4 flex justify-center cursor-pointer"
                         onClick={() => handleIncreaseQuantity(item.id)}
                       >
-                        <img src={DropUpIcon} alt="drop-up-icon" loading="lazy"/>
+                        <img src={DropUpIcon} alt="drop-up-icon"/>
                       </button>
                       <button
                         className="w-4 h-4 flex justify-center cursor-pointer"
                         onClick={() => handleDecreaseQuantity(item.id)}
                       >
-                        <img src={DropDownIcon} alt="drop-down-icon" loading="lazy"/>
+                        <img src={DropDownIcon} alt="drop-down-icon"/>
                       </button>
                     </div>
                   </div>

@@ -23,7 +23,6 @@ const NewProductsAdvertisement = () => {
             <img
               src={PlayStation5}
               alt="play-station-5"
-              loading="lazy"
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-8 flex flex-col items-start gap-4 w-[242px]">
@@ -43,7 +42,6 @@ const NewProductsAdvertisement = () => {
           <img
             src={WomenCollection}
             alt="women-collection"
-            loading="lazy"
             className="w-full rounded-l-sm rounded-r-sm h-full object-cover"
           />
           <div className="absolute left-6 bottom-6 gap-4 flex flex-col items-start w-[255px]">
@@ -63,7 +61,6 @@ const NewProductsAdvertisement = () => {
             <img
               src={AmazonSpeaker}
               alt="amazon-speaker"
-              loading="lazy"
               className="w-full h-full object-cover"
             />
           </div>
@@ -84,7 +81,6 @@ const NewProductsAdvertisement = () => {
             <img
               src={GucciPerfume}
               alt="gucci-perfume"
-              loading="lazy"
               className="w-full h-full object-cover"
             />
           </div>

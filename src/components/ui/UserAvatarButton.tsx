@@ -22,7 +22,6 @@ const UserAvatarButton = ({
         <img
           src={UserCircle}
           alt="user-circle-icon"
-          loading="lazy"
           className={`${
             isActive ? "w-1.5 h-1.5 brightness-0 invert" : "w-3 h-3"
           }`}
@@ -30,7 +29,6 @@ const UserAvatarButton = ({
         <img
           src={UserShape}
           alt="user-shape-icon"
-          loading="lazy"
           className={`${
             isActive ? "w-[11px] h-[5px] brightness-0 invert" : "w-[17px] h-2"
           }`}
