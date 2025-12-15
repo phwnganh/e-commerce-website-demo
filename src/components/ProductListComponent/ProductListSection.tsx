@@ -2,8 +2,8 @@ import { useAtomValue } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import React, { useEffect, useRef, useState } from "react";
 import type { CategoryDetail } from "../../types/CategoryType";
-import HomeProductItem from "../../components/ProductItem/HomeProductItem";
-import LoadingSpin from "../../components/ui/LoadingSpin";
+import HomeProductItem from "../ProductItem/HomeProductItem";
+import LoadingSpin from "../ui/LoadingSpin";
 
 const CategoryProductListSection = ({
   categoryData,

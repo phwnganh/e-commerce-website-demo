@@ -1,6 +1,6 @@
 import BreadCumb from "../../components/ui/BreadCumb";
 import { CART, HOMEPAGE } from "../../constants/route.constants";
-import CartSection from "./CartSection";
+import CartSection from "../../components/CartComponent/CartSection";
 
 const CartPage = () => {
   return (

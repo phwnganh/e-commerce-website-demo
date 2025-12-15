@@ -1,8 +1,8 @@
 import { HOMEPAGE } from "../../constants/route.constants";
-import KeyFeatures from "../HomePage/KeyFeatures";
-import KeyFiguresSection from "./KeyFiguresSection";
-import OurStorySection from "./OurStorySection";
-import OurTeamSection from "./OurTeamSection";
+import KeyFeatures from "../../components/HomeComponent/KeyFeatures";
+import KeyFiguresSection from "../../components/AboutUsComponent/KeyFiguresSection";
+import OurStorySection from "../../components/AboutUsComponent/OurStorySection";
+import OurTeamSection from "../../components/AboutUsComponent/OurTeamSection";
 import BreadCumb from "../../components/ui/BreadCumb";
 
 const AbouUsPage = () => {

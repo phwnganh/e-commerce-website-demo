@@ -32,19 +32,19 @@ const ContactPage = lazy(() => import("../pages/ContactPage/ContactPage"));
 const AboutUsPage = lazy(() => import("../pages/AbouUsPage/AbouUsPage"));
 const AccountPage = lazy(() => import("../pages/AccountPage/AccountPage"));
 const AccountSection = lazy(
-  () => import("../pages/AccountPage/accounts/AccountSection")
+  () => import("../components/AccountComponent/accounts/AccountSection")
 );
 const AddressBookSection = lazy(
-  () => import("../pages/AccountPage/accounts/AddressBookSection")
+  () => import("../components/AccountComponent/accounts/AddressBookSection")
 );
 const PaymentOptionSection = lazy(
-  () => import("../pages/AccountPage/accounts/PaymentOptionSection")
+  () => import("../components/AccountComponent/accounts/PaymentOptionSection")
 );
 const ReturnSection = lazy(
-  () => import("../pages/AccountPage/accounts/ReturnSection")
+  () => import("../components/AccountComponent/accounts/ReturnSection")
 );
 const CancellationSection = lazy(
-  () => import("../pages/AccountPage/accounts/CancellationSection")
+  () => import("../components/AccountComponent/accounts/CancellationSection")
 );
 const CategoryListPage = lazy(
   () => import("../pages/CategoryListPage/CategoryListPage")

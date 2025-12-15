@@ -1,6 +1,6 @@
 import BreadCumb from "../../components/ui/BreadCumb";
 import { CATEGORYPAGE, HOMEPAGE } from "../../constants/route.constants";
-import CategoryListSection from "./CategoryListSection";
+import CategoryListSection from "../../components/CategoryListComponent/CategoryListSection";
 
 const CategoryListPage = () => {
   return (

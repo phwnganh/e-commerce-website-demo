@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useAtomValue, useSetAtom } from "jotai";
 import { categoryDetailAtom } from "../../atom/store";
 import { useEffect } from "react";
-import CategoryProductListSection from "./ProductListSection";
+import CategoryProductListSection from "../../components/ProductListComponent/ProductListSection";
 import BreadCumb from "../../components/ui/BreadCumb";
 import {
   CATEGORYPAGE,

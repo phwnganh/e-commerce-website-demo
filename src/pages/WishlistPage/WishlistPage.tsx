@@ -1,5 +1,5 @@
-import RelatedProducts from "./RelatedProducts";
-import WishlistSection from "./WishlistSection";
+import RelatedProducts from "../../components/WishlistComponent/RelatedProducts";
+import WishlistSection from "../../components/WishlistComponent/WishlistSection";
 import { useAtomValue } from "jotai";
 import { productsAtom } from "../../atom/store";
 

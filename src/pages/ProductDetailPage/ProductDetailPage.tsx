@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import ProductDetailSection from "./ProductDetailSection";
-import RelatedItemSection from "./RelatedItemSection";
+import ProductDetailSection from "../../components/ProductDetailComponent/ProductDetailSection";
+import RelatedItemSection from "../../components/ProductDetailComponent/RelatedItemSection";
 import { useEffect, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import BreadCumb from "../../components/ui/BreadCumb";

@@ -1,11 +1,11 @@
-import Banner from "./Banner";
-import BestSellerProductsList from "./BestSellerProductsList";
-import CategoriesList from "./CategoriesList";
-import KeyFeatures from "./KeyFeatures";
-import LimitedOfferBanner from "./LimitedOfferBanner";
-import NewProductsAdvertisement from "./NewProductsAdvertisement";
-import ProductsExplorationList from "./ProductsExplorationList";
-import TodaysProductsList from "./TodaysProductsList";
+import Banner from "../../components/HomeComponent/Banner";
+import BestSellerProductsList from "../../components/HomeComponent/BestSellerProductsList";
+import CategoriesList from "../../components/HomeComponent/CategoriesList";
+import KeyFeatures from "../../components/HomeComponent/KeyFeatures";
+import LimitedOfferBanner from "../../components/HomeComponent/LimitedOfferBanner";
+import NewProductsAdvertisement from "../../components/HomeComponent/NewProductsAdvertisement";
+import ProductsExplorationList from "../../components/HomeComponent/ProductsExplorationList";
+import TodaysProductsList from "../../components/HomeComponent/TodaysProductsList";
 import { useAtomValue } from "jotai";
 import { categoriesAtom, productsAtom } from "../../atom/store";
 

@@ -1,6 +1,6 @@
 import { useAtomValue } from "jotai";
 import { userAtom } from "../../../atom/store";
-import PrimaryCustomButton from "../../../components/ui/PrimaryCustomButton";
+import PrimaryCustomButton from "../../ui/PrimaryCustomButton";
 import { useState } from "react";
 
 const AccountSection = () => {

@@ -1,5 +1,5 @@
-import ContactFormSection from "./ContactFormSection";
-import ContactInfoSection from "./ContactInfoSection";
+import ContactFormSection from "../../components/ContactComponent/ContactFormSection";
+import ContactInfoSection from "../../components/ContactComponent/ContactInfoSection";
 import { CONTACT, HOMEPAGE } from "../../constants/route.constants";
 import BreadCumb from "../../components/ui/BreadCumb";
 

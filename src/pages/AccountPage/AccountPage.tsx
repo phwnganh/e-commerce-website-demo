@@ -1,7 +1,7 @@
 import { HOMEPAGE, ACCOUNT } from "../../constants/route.constants";
 import { useAtomValue } from "jotai";
 import { userAtom } from "../../atom/store";
-import AccountNavigation from "./AccountNavigation";
+import AccountNavigation from "../../components/AccountComponent/AccountNavigation";
 import AccountSectionLayout from "../../components/layouts/AccountSectionLayout";
 import BreadCumb from "../../components/ui/BreadCumb";
 

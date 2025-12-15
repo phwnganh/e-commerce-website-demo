@@ -3,8 +3,8 @@ import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
 import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
-import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
-import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
+import PrimaryCustomButton from "../ui/PrimaryCustomButton";
+import SecondaryCustomButton from "../ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
 import { tempCartAtom } from "../../atom/store";
 import {

@@ -1,4 +1,4 @@
-import CustomRoundedComponent from "../../components/ui/CustomRoundedComponent";
+import CustomRoundedComponent from "../ui/CustomRoundedComponent";
 import ShoppingBagIcon from "../../assets/Icon-Shopping bag.svg";
 const KeyFiguresSection = () => {
   return (

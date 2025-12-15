@@ -1,4 +1,4 @@
-import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import PrimaryCustomButton from "../ui/PrimaryCustomButton";
 
 const ContactFormSection = () => {
   return (

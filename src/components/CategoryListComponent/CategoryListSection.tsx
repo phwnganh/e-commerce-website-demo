@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import Cosmetics from "../../assets/cosmetics.png";
 import { useEffect, useRef, useState } from "react";
-import LoadingSpin from "../../components/ui/LoadingSpin";
+import LoadingSpin from "../ui/LoadingSpin";
 
 const CategoryListSection = () => {
   const categories = useAtomValue(categoriesAtom);
