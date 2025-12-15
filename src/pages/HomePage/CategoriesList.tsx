@@ -5,6 +5,7 @@ import { useRef } from "react";
 import type { Categories } from "../../types/CategoryType";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
+import SectionHeader from "../../components/ui/SectionHeader";
 const CategoriesList = ({ categories }: { categories: Categories[] }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
@@ -33,12 +34,7 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
     <section className="mt-10 md:mt-20 p-4 lg:p-0">
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-4 md:gap-6">
-          <div className="flex flex-row gap-4 items-center">
-            <div className="bg-button-2 w-5 h-10 rounded-sm"></div>
-            <p className="text-button-2 font-semibold text-sm md:text-base">
-              Categories
-            </p>
-          </div>
+          <SectionHeader title="Categories"/>
           <h3 className="font-semibold text-2xl md:text-4xl">
             Browse By Category
           </h3>

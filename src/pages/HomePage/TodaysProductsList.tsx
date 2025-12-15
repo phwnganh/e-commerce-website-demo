@@ -1,6 +1,5 @@
 import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
-import Circle from "../../assets/circle.svg";
 import { useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
@@ -10,6 +9,7 @@ import { wishlistAtom } from "../../atom/store";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import Countdown from "../../components/ui/TodayProductsCountdown";
+import SectionHeader from "../../components/ui/SectionHeader";
 const TodaysProductsList = ({ products }: { products: Products[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -62,16 +62,11 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-5 sm:gap-0">
         <div className="flex flex-col md:flex-row items-start md:items-end gap-6 md:gap-21">
           <div className="flex flex-col gap-4 md:gap-6">
-            <div className="flex flex-row gap-4 items-center">
-              <div className="bg-button-2 w-5 h-10 rounded-sm"></div>
-              <p className="text-button-2 font-semibold text-sm md:text-base">
-                Today's
-              </p>
-            </div>
+            <SectionHeader title="Today's" />
             <h3 className="font-semibold text-2xl md:text-4xl">Flash Sales</h3>
           </div>
 
-          <Countdown/>
+          <Countdown />
         </div>
 
         <div className="flex flex-row gap-2">
@@ -84,7 +79,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
             onClick={goToPrev}
             disabled={currentIndex === 0}
           >
-            <img src={LeftArrow1} alt="left-arrow"/>
+            <img src={LeftArrow1} alt="left-arrow" />
           </button>
           <button
             onClick={goToNext}
@@ -95,7 +90,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
                 : "hover:bg-gray-200 cursor-pointer"
             }`}
           >
-            <img src={RightArrow} alt="right-arrow"/>
+            <img src={RightArrow} alt="right-arrow" />
           </button>
         </div>
       </div>

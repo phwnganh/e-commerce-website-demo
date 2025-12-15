@@ -2,17 +2,13 @@ import PlayStation5 from "../../assets/play-station-5.png";
 import WomenCollection from "../../assets/attractive-woman-wearing-hat-posing-black-background1.png";
 import AmazonSpeaker from "../../assets/69-694768_amazon-echo-png-clipart-transparent-amazon-echo-png 1.png";
 import GucciPerfume from "../../assets/perfume.png";
+import SectionHeader from "../../components/ui/SectionHeader";
 const NewProductsAdvertisement = () => {
   return (
     <section className="mt-17 md:mt-35 p-4 lg:p-0">
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-4 md:gap-6">
-          <div className="flex flex-row gap-4 items-center">
-            <div className="bg-button-2 w-5 h-10 rounded-sm"></div>
-            <p className="text-button-2 text-sm md:text-base font-semibold">
-              Featured
-            </p>
-          </div>
+          <SectionHeader title="Featured" />
           <h3 className="font-semibold text-2xl md:text-4xl">New Arrival</h3>
         </div>
       </div>

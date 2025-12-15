@@ -9,6 +9,7 @@ import { wishlistAtom } from "../../atom/store";
 import ProductExplorationItem from "../../components/ProductItem/ProductExplorationItem";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
+import SectionHeader from "../../components/ui/SectionHeader";
 const ProductsExplorationList = ({ products }: { products: Products[] }) => {
   const [itemsPerView, setItemsPerView] = useState(8);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -58,12 +59,7 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
     <section className="mt-17 p-4 lg:p-0">
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-4 md:gap-6">
-          <div className="flex flex-row gap-4 items-center">
-            <div className="bg-button-2 w-5 h-10 rounded-sm"></div>
-            <p className="text-button-2 font-semibold text-sm md:text-base">
-              Our Products
-            </p>
-          </div>
+          <SectionHeader title="Our Products"/>
           <h3 className="font-semibold text-2xl md:text-4xl">
             Explore Our Products
           </h3>

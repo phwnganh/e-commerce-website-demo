@@ -4,16 +4,14 @@ import React from "react";
 import WishlistRelatedProductItem from "../../components/ProductItem/WishlistRelatedProductItem";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
+import SectionHeader from "../../components/ui/SectionHeader";
 
 const RelatedProducts = ({ products }: { products: Products[] }) => {
   const navigate = useNavigate();
   return (
     <section className="mt-15 mb-15 md:mb-35 px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">
-        <div className="flex flex-row gap-4 items-center">
-          <div className="bg-button-2 w-5 h-10 rounded-sm"></div>
-          <p className="text-base md:text-xl font-semibold">Just For You</p>
-        </div>
+        <SectionHeader title="Just For You" />
         <SecondaryCustomButton onClick={() => navigate(PRODUCTPAGE)}>
           See All
         </SecondaryCustomButton>

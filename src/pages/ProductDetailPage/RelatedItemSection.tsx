@@ -3,6 +3,7 @@ import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import { useAtomValue, useSetAtom } from "jotai";
 import { productsAtom, wishlistAtom } from "../../atom/store";
+import SectionHeader from "../../components/ui/SectionHeader";
 
 const RelatedItemSection = () => {
   const wishlists = useAtomValue(wishlistAtom);
@@ -24,12 +25,7 @@ const RelatedItemSection = () => {
   return (
     <section className="my-15 lg:my-35">
       <div className="flex flex-row justify-between items-center">
-        <div className="flex flex-row gap-4 items-center">
-          <div className="bg-button-2 w-5 h-10 rounded-sm"></div>
-          <p className="font-semibold text-button-2 text-sm lg:text-base">
-            Related Item
-          </p>
-        </div>
+        <SectionHeader title="Related Item" />
       </div>
 
       <div className="mt-10 lg:mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
