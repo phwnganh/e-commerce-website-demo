@@ -44,7 +44,7 @@ const NewProductsAdvertisement = () => {
             alt="women-collection"
             className="w-full rounded-l-sm rounded-r-sm h-full object-cover"
           />
-          <div className="absolute left-6 bottom-6 gap-4 flex flex-col items-start w-[255px]">
+          <div className="absolute left-3 sm:left-6 bottom-6 gap-4 flex flex-col items-start sm:w-[255px]">
             <h4 className="font-semibold text-xl md:text-2xl text-text-1">
               Women’s Collections
             </h4>

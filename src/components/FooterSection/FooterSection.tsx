@@ -25,11 +25,7 @@ const FooterSection = () => {
               placeholder="Enter your email"
             />
             <button className="w-8 flex justify-center items-center cursor-pointer">
-              <img
-                src={send}
-                alt="send"
-                className="w-auto h-auto"
-              />
+              <img src={send} alt="send" className="w-auto h-auto" />
             </button>
           </div>
         </div>
@@ -37,7 +33,9 @@ const FooterSection = () => {
         <div className="flex flex-col gap-6 w-full">
           <h5 className="text-base md:text-xl">Support</h5>
           <div className="flex flex-col gap-4">
-            <p className="text-sm md:text-base">111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
+            <p className="text-sm md:text-base">
+              111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.
+            </p>
             <p className="text-sm md:text-base">exclusive@gmail.com</p>
             <p className="text-sm md:text-base">+88015-88888-9999</p>
           </div>
@@ -123,13 +121,11 @@ const FooterSection = () => {
         </div>
       </div>
       <div className="border-t border-t-white-opacity-40">
-        <div className="flex flex-row justify-center gap-1.5 text-center mt-4 text-white-opacity-60">
-          <img
-            src={copyRight}
-            alt="copyright-icon"
-            className="opacity-60"
-          />
-          <span className="text-sm md:text-base">Copyright Rimel 2022. All right reserved</span>
+        <div className="flex flex-row items-start justify-center gap-1.5 text-center mt-4 text-white-opacity-60 px-4 lg:px-0">
+          <img src={copyRight} alt="copyright-icon" className="opacity-60" />
+          <span className="text-sm md:text-base">
+            Copyright Rimel 2022. All right reserved
+          </span>
         </div>
       </div>
     </footer>

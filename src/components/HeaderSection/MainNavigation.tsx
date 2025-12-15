@@ -62,7 +62,7 @@ const MainNavigation = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <section className="flex flex-row justify-between items-center py-[7px] px-4 lg:px-0">
+    <section className="flex flex-row justify-between items-center py-[7px]">
       <button
         className="md:hidden block"
         onClick={() => setMobileMenuOpen(true)}

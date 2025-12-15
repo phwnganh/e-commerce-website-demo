@@ -84,7 +84,7 @@ const ProductExplorationItem = ({
       <div className="bg-secondary-2 rounded-sm relative">
         <div className="relative group/image">
           {isNew && (
-            <div className="bg-button-1 w-[55px] absolute left-3 top-3 text-center text-xs text-text-1 rounded-sm py-1 px-3">
+            <div className="bg-button-1 w-10 sm:w-[55px] absolute left-3 top-3 flex justify-center text-center text-[10px] sm:text-xs text-text-1 rounded-sm py-1 px-3">
               NEW
             </div>
           )}
@@ -124,14 +124,14 @@ const ProductExplorationItem = ({
               src={HeartIcon1}
               alt="heart-icon"
               className={`
-                ${isInWishlist ? "brightness-1 invert" : ""}`}
+                ${isInWishlist && "brightness-1 invert"} w-4 h-4 sm:w-6 sm:h-6`}
             />
           </button>
           <button
             onClick={() => navigate(`${HOMEPAGE}/${product.id}`)}
             className="bg-white hidden md:flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
           >
-            <img src={EyeIcon} alt="eye-icon"/>
+            <img src={EyeIcon} alt="eye-icon" className="w-4 h-4 sm:w-6 sm:h-6"/>
           </button>
         </div>
       </div>

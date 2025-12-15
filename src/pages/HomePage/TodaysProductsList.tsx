@@ -58,7 +58,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
   };
   return (
     <section className="mt-15 md:mt-35 p-4 lg:p-0">
-      <div className="flex flex-row justify-between items-end">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-5 sm:gap-0">
         <div className="flex flex-col md:flex-row items-start md:items-end gap-6 md:gap-21">
           <div className="flex flex-col gap-4 md:gap-6">
             <div className="flex flex-row gap-4 items-center">
@@ -70,7 +70,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
             <h3 className="font-semibold text-2xl md:text-4xl">Flash Sales</h3>
           </div>
 
-          <div className="flex items-center gap-4.5">
+          <div className="flex items-center gap-3 sm:gap-4.5">
             <div className="">
               <p className="text-xs">Days</p>
               <h3 className="font-bold text-xl md:text-3xl">03</h3>
@@ -102,7 +102,7 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
           </div>
         </div>
 
-        <div className="flex md:flex-row gap-2">
+        <div className="flex flex-row gap-2">
           <button
             className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center  ${
               currentIndex === 0
