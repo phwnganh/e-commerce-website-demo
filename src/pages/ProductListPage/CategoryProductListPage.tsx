@@ -1,7 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useAtomValue, useSetAtom } from "jotai";
-import { categoryDetailAtom } from "../../atom/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CategoryProductListSection from "../../components/ProductListComponent/ProductListSection";
 import BreadCumb from "../../components/ui/BreadCumb";
 import {
@@ -9,11 +7,11 @@ import {
   HOMEPAGE,
   PRODUCTPAGE,
 } from "../../constants/route.constants";
+import type {CategoryDetail } from "../../types/CategoryType";
 
 const CaategoryProductListPage = () => {
   const { slug } = useParams();
-  const categoryData = useAtomValue(categoryDetailAtom);
-  const setCategoryData = useSetAtom(categoryDetailAtom);
+  const [categoryData, setCategoryData] = useState<CategoryDetail | null>(null)
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/category/${slug}`)

@@ -1,11 +1,10 @@
 import { atom } from "jotai";
 import type { Carts, Products } from "../types/ProductTypes";
-import type { Categories, CategoryDetail } from "../types/CategoryType";
+import type { Categories } from "../types/CategoryType";
 import type { User } from "../types/AuthType";
 import { atomWithStorage } from "jotai/utils";
 
 export const productsAtom = atom<Products[]>([]);
-export const categoryDetailAtom = atom<CategoryDetail>()
 export const categoriesAtom = atom<Categories[]>([]);
 export const categoriesNavigationAtom = atom<string[]>([]);
 export const userAtom = atomWithStorage<User | null>("user", null);
