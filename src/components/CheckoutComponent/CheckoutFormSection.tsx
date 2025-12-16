@@ -14,7 +14,7 @@ const CheckoutFormSection = () => {
             htmlFor="firstName"
             className="text-black-opacity-40 text-sm md:text-base"
           >
-            First Name*
+            First Name<span className="text-button-2">*</span>
           </label>
           <input
             type="text"
@@ -44,7 +44,7 @@ const CheckoutFormSection = () => {
             htmlFor="streetAddress"
             className="text-black-opacity-40 text-sm md:text-base"
           >
-            Street Address*
+            Street Address<span className="text-button-2">*</span>
           </label>
           <input
             type="text"
@@ -74,7 +74,7 @@ const CheckoutFormSection = () => {
             htmlFor="city"
             className="text-black-opacity-40 text-sm md:text-base"
           >
-            Town/City*
+            Town/City<span className="text-button-2">*</span>
           </label>
           <input
             type="text"
@@ -89,7 +89,7 @@ const CheckoutFormSection = () => {
             htmlFor="phoneNum"
             className="text-black-opacity-40 text-sm md:text-base"
           >
-            Phone Number*
+            Phone Number<span className="text-button-2">*</span>
           </label>
           <input
             type="text"
@@ -104,7 +104,7 @@ const CheckoutFormSection = () => {
             htmlFor="email"
             className="text-black-opacity-40 text-sm md:text-base"
           >
-            Email Address*
+            Email Address<span className="text-button-2">*</span>
           </label>
           <input
             type="text"
