@@ -2,7 +2,7 @@ import DropUpIcon from "../../assets/drop-up-icon.svg";
 import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
 import { useNavigate } from "react-router-dom";
-import {PRODUCTPAGE } from "../../constants/route.constants";
+import { PRODUCTPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../ui/PrimaryCustomButton";
 import SecondaryCustomButton from "../ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
@@ -88,10 +88,10 @@ const CartSection = () => {
   };
 
   return (
-    <section className="mb-11 md:mb-35 px-4 lg:px-0">
+    <section className="mb-11 md:mb-35">
       <div className="mt-20">
         <div className="flex flex-col gap-10">
-          <div className="grid grid-cols-4 pl-10 py-3 md:py-6 rounded-sm shadow-[0px_1px_13px_0px_#0000000D]">
+          <div className="grid grid-cols-4 md:pl-10 py-3 md:py-6 rounded-sm shadow-[0px_1px_13px_0px_#0000000D]">
             <div className="text-sm md:text-base">Products</div>
             <div className="text-sm md:text-base">Price</div>
             <div className="text-sm md:text-base">Quantity</div>
@@ -102,10 +102,10 @@ const CartSection = () => {
             {tempCart?.products.map((item) => (
               <div
                 key={item.id}
-                className="grid grid-cols-4 pl-10 py-3 md:py-6 items-center rounded-sm shadow-[0px_1px_13px_0px_#0000000D]"
+                className="grid grid-cols-4 md:pl-10 py-3 md:py-6 items-center rounded-sm shadow-[0px_1px_13px_0px_#0000000D]"
               >
-                <div className="flex flex-row items-center gap-2 md:gap-5">
-                  <div className="w-13.5 h-13.5 flex justify-center relative group">
+                <div className="flex flex-row items-center gap-1 md:gap-5">
+                  <div className="w-10 h-10 md:w-13.5 md:h-13.5 hidden sm:flex justify-center relative group aspect-square">
                     <img
                       src={item.thumbnail}
                       alt={item.title}
@@ -124,8 +124,8 @@ const CartSection = () => {
                   <p className="text-xs md:text-base">{item.title}</p>
                 </div>
                 <p className="text-xs md:text-base">${item.price.toFixed(2)}</p>
-                <div className="border-[1.5px] border-black-opacity-40 w-18 rounded-sm">
-                  <div className="flex gap-4 items-center justify-center py-1.5 px-3">
+                <div className="border-[1.5px] border-black-opacity-40 w-14 sm:w-18 rounded-sm">
+                  <div className="flex gap-2 sm:gap-4 items-center justify-center py-1.5 px-3">
                     <p className="text-sm md:text-base min-w-7 text-center">
                       {item.quantity}
                     </p>
@@ -215,7 +215,7 @@ const CartSection = () => {
           </tbody>
         </table> */}
 
-        <div className="flex flex-row justify-between mt-6">
+        <div className="flex flex-row justify-between mt-6 flex-wrap gap-4 md:gap-0">
           <SecondaryCustomButton onClick={() => navigate(PRODUCTPAGE)}>
             Return To Shop
           </SecondaryCustomButton>

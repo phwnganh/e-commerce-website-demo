@@ -1,4 +1,4 @@
-import OurStoryBanner from "../../assets/portrait-two-african-females-holding-shopping-bags-while-reacting-something-their-smartphone 1.png";
+import OurStoryBanner from "../../assets/aboutus-banner.png";
 const OurStorySection = () => {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-18 items-center mt-10">
