@@ -71,7 +71,9 @@ const MainNavigation = () => {
           <path d="M3 6h18M3 12h18M3 18h18" />
         </svg>
       </button>
-      <Link to={HOMEPAGE} className="font-bold text-2xl">Exclusive</Link>
+      <Link to={HOMEPAGE} className="font-bold text-2xl">
+        Exclusive
+      </Link>
       <div className="hidden lg:flex gap-12 items-center">
         <ActiveNavLink to={HOMEPAGE}>Home</ActiveNavLink>
         <ActiveNavLink to={CONTACT}>Contact</ActiveNavLink>

@@ -6,57 +6,64 @@ import {
   RETURNS,
   USER_PROFILE,
 } from "../../constants/route.constants";
+import React from "react";
 
 const AccountNavigation = () => {
+  const ACCOUNT_NAV = [
+    {
+      title: "Manage My Account",
+      links: [
+        {
+          label: "My Profile",
+          to: USER_PROFILE,
+        },
+        {
+          label: "Address Book",
+          to: ADDRESS_BOOK,
+        },
+        {
+          label: "My Payment Options",
+          to: PAYMENT_OPTION,
+        },
+      ],
+    },
+    {
+      title: "My Orders",
+      links: [
+        {
+          label: "My Returns",
+          to: RETURNS,
+        },
+        {
+          label: "My Cancellations",
+          to: CANCELLATIONS,
+        },
+      ],
+    },
+    {
+      title: "My WishList",
+    },
+  ];
   return (
     <section className="hidden lg:flex lg:flex-col gap-4">
-      <h3 className="font-medium">Manage My Account</h3>
-      <div className="flex flex-col indent-8.5 gap-2">
-        <NavLink
-          to={USER_PROFILE}
-          className={({ isActive }) =>
-            `${isActive && "text-button-2"} text-black-opacity-80`
-          }
-        >
-          My Profile
-        </NavLink>
-        <NavLink
-          to={ADDRESS_BOOK}
-          className={({ isActive }) =>
-            `${isActive && "text-button-2"} text-black-opacity-80`
-          }
-        >
-          Address Book
-        </NavLink>
-        <NavLink
-          to={PAYMENT_OPTION}
-          className={({ isActive }) =>
-            `${isActive && "text-button-2"} text-black-opacity-80`
-          }
-        >
-          My Payment Options
-        </NavLink>
-      </div>
-      <p className="font-medium mt-2">My Orders</p>
-      <div className="flex flex-col indent-8.5 gap-2">
-        <NavLink
-          to={RETURNS}
-          className={({ isActive }) =>
-            `${isActive && "text-button-2"} text-black-opacity-80`
-          }
-        >
-          My Returns
-        </NavLink>
-        <NavLink
-          to={CANCELLATIONS}
-          className={({ isActive }) =>
-            `${isActive && "text-button-2"} text-black-opacity-80`
-          }
-        >
-          My Cancellations
-        </NavLink>
-      </div>
-      <p className="font-medium mt-2">My WishList</p>
+      {ACCOUNT_NAV.map((nav, index) => (
+        <React.Fragment key={index}>
+          <h3 className="font-medium">{nav.title}</h3>
+          <div className="flex flex-col indent-8.5 gap-2">
+            {nav.links?.map((item, itemIndex) => (
+              <NavLink
+                key={itemIndex}
+                to={item.to}
+                className={({ isActive }) =>
+                  `${isActive && "text-button-2"} text-black-opacity-80`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
+        </React.Fragment>
+      ))}
     </section>
   );
 };

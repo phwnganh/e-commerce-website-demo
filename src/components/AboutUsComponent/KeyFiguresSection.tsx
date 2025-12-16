@@ -1,168 +1,58 @@
 import CustomRoundedComponent from "../ui/CustomRoundedComponent";
 import ShoppingBagIcon from "../../assets/Icon-Shopping bag.svg";
+import ShopIcon from "../icons/ShopIcon";
+import SalesIcon from "../icons/SalesIcon";
+import MoneyBagIcon from "../icons/MoneyBagIcon";
 const KeyFiguresSection = () => {
+  const KEY_FIGURES = [
+    {
+      value: "10.5k",
+      label: "Sallers active our site",
+      icon: <ShopIcon />,
+    },
+    {
+      value: "33k",
+      label: "Mopnthly Produduct Sale",
+      icon: <SalesIcon />,
+    },
+    {
+      value: "45.5k",
+      label: "Customer active in our site",
+      icon: (
+        <img
+          src={ShoppingBagIcon}
+          alt="shopping-bag-icon"
+          className=" group-hover:brightness-1"
+        />
+      ),
+    },
+    {
+      value: "25k",
+      label: "Anual gross sale in our site",
+      icon: <MoneyBagIcon />,
+    },
+  ];
   return (
     <section className="mt-35 grid grid-cols-2 md:grid-cols-4 gap-7.5">
-      <div className="border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]">
-        <div className="flex flex-col gap-3 items-center px-2 sm:px-0 py-7.5">
-          <div className="mb-3">
-            <CustomRoundedComponent>
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                className="text-white group-hover:text-black"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M34.1416 5H27.4883L28.3216 13.3333C28.3216 13.3333 29.9883 15 32.4883 15C33.8006 15.0017 35.0684 14.524 36.0533 13.6567C36.1574 13.5594 36.235 13.4372 36.2787 13.3016C36.3224 13.166 36.3309 13.0214 36.3033 12.8817L35.1266 5.83333C35.0873 5.60049 34.9668 5.38909 34.7865 5.23656C34.6062 5.08404 34.3778 5.00024 34.1416 5V5Z"
-                  // stroke="white"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <path
-                  d="M27.4883 5L28.3216 13.3333C28.3216 13.3333 26.6549 15 24.1549 15C21.6549 15 19.9883 13.3333 19.9883 13.3333V5H27.4883Z"
-                  // stroke="#FAFAFA"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <path
-                  d="M19.9886 5V13.3333C19.9886 13.3333 18.3219 15 15.8219 15C13.3219 15 11.6553 13.3333 11.6553 13.3333L12.4886 5H19.9886Z"
-                  // stroke="#FAFAFA"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <path
-                  d="M12.4883 5H5.8366C5.59993 4.99991 5.37089 5.08377 5.19023 5.23666C5.00957 5.38955 4.88899 5.60157 4.84994 5.835L3.67494 12.8833C3.64747 13.0231 3.65601 13.1676 3.69974 13.3032C3.74348 13.4387 3.82097 13.5609 3.92494 13.6583C4.4716 14.1417 5.69327 15.0017 7.48827 15.0017C9.98827 15.0017 11.6549 13.335 11.6549 13.335L12.4883 5.00167V5Z"
-                  // stroke="#FAFAFA"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <path
-                  d="M5 15V31.6667C5 32.5507 5.35119 33.3986 5.97631 34.0237C6.60143 34.6488 7.44928 35 8.33333 35H31.6667C32.5507 35 33.3986 34.6488 34.0237 34.0237C34.6488 33.3986 35 32.5507 35 31.6667V15"
-                  // stroke="#FAFAFA"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <path
-                  d="M24.7217 35V25C24.7217 24.1159 24.3705 23.2681 23.7454 22.6429C23.1202 22.0178 22.2724 21.6666 21.3883 21.6666H18.055C17.171 21.6666 16.3231 22.0178 15.698 22.6429C15.0729 23.2681 14.7217 24.1159 14.7217 25V35"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-miterlimit="16"
-                />
-              </svg>
-            </CustomRoundedComponent>
+      {KEY_FIGURES.map((figure, index) => (
+        <div
+          key={index}
+          className="border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]"
+        >
+          <div className="flex flex-col gap-3 items-center px-2 sm:px-0 py-7.5">
+            <div className="mb-3">
+              <CustomRoundedComponent>{figure.icon}</CustomRoundedComponent>
+            </div>
+
+            <h1 className="font-bold text-xl md:text-3xl text-center md:text-start group-hover:text-white">
+              {figure.value}
+            </h1>
+            <p className="group-hover:text-white text-sm md:text-base">
+              {figure.label}
+            </p>
           </div>
-
-          <h1 className="font-bold text-xl md:text-3xl text-center md:text-start group-hover:text-white">
-            10.5k{" "}
-          </h1>
-          <p className="group-hover:text-white text-sm md:text-base">
-            Sallers active our site
-          </p>
         </div>
-      </div>
-
-      <div className="border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]">
-        <div className="flex flex-col gap-3 items-center py-7.5 px-2 sm:px-0">
-          <div className="mb-3">
-            <CustomRoundedComponent>
-              <svg
-                width="44"
-                height="44"
-                viewBox="0 0 44 44"
-                className="text-white group-hover:text-black"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22 3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41Z"
-                  stroke="currentColor"
-                  stroke-width="2.75"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M27.6 16.0017C27.2377 15.3734 26.7113 14.8554 26.0772 14.5032C25.443 14.151 24.725 13.9779 24 14.0023H20C18.9391 14.0023 17.9217 14.4236 17.1716 15.1735C16.4214 15.9234 16 16.9406 16 18.0011C16 19.0617 16.4214 20.0788 17.1716 20.8288C17.9217 21.5787 18.9391 22 20 22H24C25.0609 22 26.0783 22.4213 26.8284 23.1712C27.5786 23.9212 28 24.9383 28 25.9989C28 27.0594 27.5786 28.0766 26.8284 28.8265C26.0783 29.5764 25.0609 29.9977 24 29.9977H20C19.275 30.0221 18.557 29.849 17.9228 29.4968C17.2887 29.1446 16.7623 28.6266 16.4 27.9983"
-                  stroke="currentColor"
-                  stroke-width="2.75"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M22 9V13.3333M22 30.6667V35"
-                  stroke="currentColor"
-                  stroke-width="2.75"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </CustomRoundedComponent>
-          </div>
-
-          <h1 className="font-bold text-xl md:text-3xl text-center md:text-start group-hover:text-white">
-            33k
-          </h1>
-          <p className="group-hover:text-white text-sm md:text-base">
-            Mopnthly Produduct Sale
-          </p>
-        </div>
-      </div>
-
-      <div className="border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]">
-        <div className="flex flex-col gap-3 items-center py-7.5 px-2 sm:px-0">
-          <div className="mb-3">
-            <CustomRoundedComponent>
-              <img
-                src={ShoppingBagIcon}
-                alt="shopping-bag-icon"
-                className=" group-hover:brightness-1"
-              />
-            </CustomRoundedComponent>
-          </div>
-
-          <h1 className="font-bold text-xl md:text-3xl text-center md:text-start group-hover:text-white">
-            45.5k
-          </h1>
-          <p className="group-hover:text-white text-sm md:text-base">
-            Customer active in our site
-          </p>
-        </div>
-      </div>
-
-      <div className="border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]">
-        <div className="flex flex-col gap-3 items-center py-7.5 px-2 sm:px-0">
-          <div className="mb-3">
-            <CustomRoundedComponent>
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                fill="none"
-                className="text-white group-hover:text-black"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M20.4277 29.7731H20.9277C21.5521 29.7731 22.1512 29.5251 22.5928 29.0836C23.0343 28.6421 23.2821 28.0429 23.2822 27.4186C23.2822 26.7942 23.0343 26.1951 22.5928 25.7535C22.1512 25.312 21.5522 25.0641 20.9277 25.0641H20.4277V29.7731ZM19.0732 19.5006C18.4488 19.5006 17.8497 19.7485 17.4082 20.1901C16.9668 20.6316 16.7188 21.2308 16.7188 21.8551C16.7189 22.4793 16.9669 23.0777 17.4082 23.5192C17.8497 23.9607 18.4488 24.2096 19.0732 24.2096H19.5732V19.5006H19.0732ZM19.5732 25.0641H19.0732C18.2222 25.0641 17.4055 24.7255 16.8037 24.1237C16.2022 23.522 15.8644 22.7059 15.8643 21.8551C15.8643 21.0041 16.202 20.1874 16.8037 19.5856C17.4055 18.9838 18.2222 18.6461 19.0732 18.6461H19.5732V17.7184H20.4277V18.6461H20.9277C21.5915 18.6461 22.2393 18.8518 22.7812 19.235C23.2552 19.5702 23.6282 20.0265 23.8623 20.5543L23.9541 20.7858C23.9726 20.8384 23.9805 20.8941 23.9775 20.9498C23.9746 21.0059 23.9607 21.0613 23.9365 21.1119C23.9123 21.1625 23.8786 21.2083 23.8369 21.2457C23.7952 21.2832 23.7462 21.312 23.6934 21.3307C23.6405 21.3494 23.5843 21.3571 23.5283 21.3541C23.4724 21.3511 23.4177 21.3372 23.3672 21.3131C23.265 21.2643 23.1862 21.1767 23.1484 21.0699C22.9861 20.6109 22.6847 20.2133 22.2871 19.9323C21.8895 19.6512 21.4147 19.5005 20.9277 19.5006H20.4277V24.2096H20.9277C21.7788 24.2096 22.5955 24.5472 23.1973 25.149C23.799 25.7509 24.1367 26.5675 24.1367 27.4186C24.1366 28.2694 23.7988 29.0854 23.1973 29.6871C22.5955 30.2889 21.7788 30.6276 20.9277 30.6276H20.4277V31.5543H19.5732V30.6276H19.0732C18.4095 30.6275 17.7617 30.4219 17.2197 30.0387C16.6779 29.6556 16.2682 29.1135 16.0469 28.4879L16.042 28.4742C16.0215 28.421 16.0119 28.3642 16.0137 28.3073C16.0155 28.2502 16.0289 28.194 16.0527 28.1422C16.0766 28.0903 16.1111 28.044 16.1533 28.0055C16.1955 27.967 16.245 27.9366 16.2988 27.9176C16.3526 27.8987 16.4099 27.8907 16.4668 27.8942C16.5237 27.8976 16.5797 27.9128 16.6309 27.9381C16.6819 27.9634 16.7275 27.9985 16.7646 28.0416C16.8019 28.0849 16.8302 28.1357 16.8477 28.1901L16.8496 28.1969L16.8525 28.2037C17.177 29.1184 18.0483 29.773 19.0732 29.7731H19.5732V25.0641Z"
-                  stroke="currentColor"
-                />
-                <path
-                  d="M20.0361 3.80945C23.9382 3.80945 27.4978 5.04277 29.7168 6.12L29.8447 6.1825C30.284 6.39987 30.6638 6.60847 30.9766 6.7948L27.8457 11.3729L27.6143 11.7108L27.9014 12.0048C29.8396 13.9864 31.6698 16.5169 32.9805 19.1923C34.2934 21.8724 35.0683 24.6627 34.9414 27.1737C34.8155 29.6638 33.8056 31.8866 31.5166 33.5038C29.2054 35.1366 25.538 36.1884 20.0361 36.1884C14.5332 36.1883 10.8546 35.1548 8.52832 33.5438C6.22488 31.9487 5.19876 29.7545 5.05762 27.286C4.9153 24.7955 5.67566 22.0153 6.9834 19.3202C8.28876 16.63 10.1227 14.0594 12.0811 11.9989L12.3594 11.7069L12.1328 11.3739L9.02246 6.79675C9.17967 6.70416 9.35379 6.60749 9.54297 6.50671L9.54492 6.50574C9.7354 6.40331 9.94076 6.29779 10.1611 6.19031L10.2197 6.16199C12.4563 5.07592 16.0841 3.8095 20.0361 3.80945ZM26.957 12.6981C22.6083 14.3798 17.3703 14.38 13.0215 12.7001L12.8418 13.1659L12.4756 12.826C10.6577 14.7855 8.96568 17.1901 7.75098 19.6932C6.55983 22.149 5.86865 24.6147 5.89551 26.8036L5.91016 27.2372C6.0376 29.4718 6.94935 31.4116 9.0127 32.8417C11.1392 34.3136 14.6197 35.3338 20.0352 35.3339C25.4465 35.3339 28.9126 34.2956 31.0215 32.8055C33.0713 31.3568 33.9725 29.3909 34.0869 27.1298C34.2038 24.8131 33.4877 22.1697 32.2119 19.5673L32.2109 19.5653L31.9766 19.1044C30.7861 16.8113 29.2793 14.6958 27.5 12.8202L27.2695 12.577L26.957 12.6981ZM28.7627 7.08093C26.4933 7.24436 23.8596 7.72976 21.2637 8.4198L20.1553 8.72742C18.2952 9.26476 16.2165 9.22705 14.2295 8.90027L13.834 8.83093C13.3047 8.7328 12.7788 8.6166 12.2578 8.48132L10.9727 8.14734L11.7188 9.24597L13.499 11.8671L13.5908 12.0028L13.7451 12.0575C17.6692 13.4545 22.2998 13.4545 26.2246 12.0594L26.0566 11.5878L26.4697 11.87L29.2119 7.86218L29.7969 7.00671L28.7627 7.08093ZM20.0352 4.66394C16.7535 4.66399 13.7063 5.5779 11.5801 6.48035L11.7754 6.94031L11.6328 7.4198C12.3895 7.64493 13.1819 7.84098 13.9873 7.99011H13.9883C16.0232 8.3649 18.1082 8.43009 19.917 7.90613L19.918 7.90515C21.8862 7.33179 23.8882 6.88147 25.9121 6.55554L25.9766 5.58289C24.2351 5.05858 22.1902 4.66394 20.0352 4.66394Z"
-                  stroke="currentColor"
-                />
-              </svg>
-            </CustomRoundedComponent>
-          </div>
-
-          <h1 className="font-bold text-xl md:text-3xl text-center md:text-start group-hover:text-white">
-            25k
-          </h1>
-          <p className="group-hover:text-white text-sm md:text-base">
-            Anual gross sale in our site
-          </p>
-        </div>
-      </div>
+      ))}
     </section>
   );
 };
