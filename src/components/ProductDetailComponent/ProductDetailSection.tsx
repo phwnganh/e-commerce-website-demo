@@ -6,16 +6,49 @@ import HeartIcon from "../../assets/Wishlist.svg";
 import DeliveryIcon from "../../assets/icon-delivery.svg";
 import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
 import { useAtomValue, useSetAtom } from "jotai";
-import { userAtom, wishlistAtom } from "../../atom/store";
+import { tempCartAtom, userAtom, wishlistAtom } from "../../atom/store";
 import { toggleWishlistAtom } from "../../atom/wishlistActionStore";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { CHECKOUT } from "../../constants/route.constants";
 
 const ProductDetailSection = ({ productData }: { productData: Products }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const user = useAtomValue(userAtom);
-  const handleAddToWishlist = useSetAtom(toggleWishlistAtom)
+  const handleAddToWishlist = useSetAtom(toggleWishlistAtom);
+  const [quantity, setQuantity] = useState(1);
+  const setTempCart = useSetAtom(tempCartAtom);
+  const navigate = useNavigate();
+  const handleIncreaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
 
-  const requireLogin = useLoginRequired()
+  const handleDecreaseQuantity = () => {
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  };
+
+  const handleBuyNow = () => {
+    const total = productData.price * quantity;
+    setTempCart({
+      id: productData.id,
+      total: total,
+      discountTotal: 0,
+      products: [
+        {
+          id: productData.id,
+          title: productData.title,
+          price: productData.price,
+          quantity: quantity,
+          total: total,
+          thumbnail: productData.thumbnail,
+        },
+      ],
+    });
+    navigate(CHECKOUT);
+  };
+
+  const requireLogin = useLoginRequired();
 
   const isInWishlist =
     user && wishlists.some((item) => item.id === productData.id);
@@ -64,7 +97,10 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
             <hr className="mt-2 border-black-opacity-80" />
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center mt-2">
               <div className="flex flex-row border border-black-opacity-80 rounded-bl-sm rounded-tl-sm rounded-tr-sm rounded-br-sm">
-                <button className="group flex justify-center items-center py-2.5 px-2 border-r-black-opacity-80 border-r hover:border-button-2 hover:rounded-tl-sm hover:rounded-bl-sm hover:bg-button-2 cursor-pointer">
+                <button
+                  onClick={handleDecreaseQuantity}
+                  className="group flex justify-center items-center py-2.5 px-2 border-r-black-opacity-80 border-r hover:border-button-2 hover:rounded-tl-sm hover:rounded-bl-sm hover:bg-button-2 cursor-pointer"
+                >
                   <img
                     src={MinusIcon}
                     alt="minus-icon"
@@ -72,9 +108,12 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                   />
                 </button>
                 <div className="py-2 px-[34px] border-r-black-opacity-80 flex justify-center items-center">
-                  <p className="font-medium text-base lg:text-xl">2</p>
+                  <p className="font-medium text-base lg:text-xl">{quantity}</p>
                 </div>
-                <button className="group py-2.5 px-2 flex justify-center border-l border-l-black-opacity-80 items-center hover:bg-button-2 hover:border-button-2 hover:rounded-tr-sm hover:rounded-br-sm cursor-pointer">
+                <button
+                  onClick={handleIncreaseQuantity}
+                  className="group py-2.5 px-2 flex justify-center border-l border-l-black-opacity-80 items-center hover:bg-button-2 hover:border-button-2 hover:rounded-tr-sm hover:rounded-br-sm cursor-pointer"
+                >
                   <img
                     src={PlusIcon}
                     alt="plus-icon"
@@ -83,7 +122,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                 </button>
               </div>
 
-              <button className="bg-button-2 hover:bg-hover-button-1 text-text-1 whitespace-nowrap py-3 px-10 lg:py-2.5 lg:px-12 h-full font-medium rounded-sm text-xs lg:text-base cursor-pointer">
+              <button onClick={handleBuyNow} className="bg-button-2 hover:bg-hover-button-1 text-text-1 whitespace-nowrap py-3 px-10 lg:py-2.5 lg:px-12 h-full font-medium rounded-sm text-xs lg:text-base cursor-pointer">
                 Buy Now
               </button>
               <button

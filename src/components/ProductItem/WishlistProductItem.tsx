@@ -2,8 +2,7 @@ import type { Products } from "../../types/ProductTypes";
 import { useSetAtom } from "jotai";
 import TrashIcon from "../../assets/icon-delete.svg";
 import { addToCartAtom } from "../../atom/cartActionStore";
-import { use } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 
 const WishlistProductItem = ({
@@ -14,7 +13,6 @@ const WishlistProductItem = ({
   onRemoveWishlist: (product: Products) => void;
 }) => {
   const handleAddToCart = useSetAtom(addToCartAtom);
-  const navigate = useNavigate();
   return (
     <div className="flex flex-col gap-4 w-full">
       <div className="bg-secondary-2 rounded-sm w-full relative">
