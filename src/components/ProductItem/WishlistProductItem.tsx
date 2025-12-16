@@ -2,6 +2,9 @@ import type { Products } from "../../types/ProductTypes";
 import { useSetAtom } from "jotai";
 import TrashIcon from "../../assets/icon-delete.svg";
 import { addToCartAtom } from "../../atom/cartActionStore";
+import { use } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { HOMEPAGE } from "../../constants/route.constants";
 
 const WishlistProductItem = ({
   product,
@@ -10,7 +13,8 @@ const WishlistProductItem = ({
   product: Products;
   onRemoveWishlist: (product: Products) => void;
 }) => {
-  const handleAddToCart = useSetAtom(addToCartAtom)
+  const handleAddToCart = useSetAtom(addToCartAtom);
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col gap-4 w-full">
       <div className="bg-secondary-2 rounded-sm w-full relative">
@@ -36,14 +40,21 @@ const WishlistProductItem = ({
             onClick={() => onRemoveWishlist(product)}
             className="bg-white flex items-center justify-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px] hover:bg-gray-200 cursor-pointer"
           >
-            <img src={TrashIcon} alt="trash-icon" className="w-4 h-4 sm:w-6 sm:h-6"/>
+            <img
+              src={TrashIcon}
+              alt="trash-icon"
+              className="w-4 h-4 sm:w-6 sm:h-6"
+            />
           </button>
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <p className="font-medium text-xs md:text-base line-clamp-1">
+        <Link
+          to={`${HOMEPAGE}/${product.id}`}
+          className="font-medium text-xs md:text-base line-clamp-1"
+        >
           {product.title}
-        </p>
+        </Link>
         <div className="flex flex-col sm:flex-row gap-0 sm:gap-3">
           <p className="font-medium text-button-2 text-xs md:text-base">
             ${(product.price * 0.5).toFixed(2)}

@@ -2,7 +2,7 @@ import DropUpIcon from "../../assets/drop-up-icon.svg";
 import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
 import { useNavigate } from "react-router-dom";
-import { PRODUCTPAGE } from "../../constants/route.constants";
+import { CHECKOUT, PRODUCTPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../ui/PrimaryCustomButton";
 import SecondaryCustomButton from "../ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
@@ -259,7 +259,7 @@ const CartSection = () => {
                 </div>
 
                 <div className="flex justify-center">
-                  <PrimaryCustomButton>Procees to checkout</PrimaryCustomButton>
+                  <PrimaryCustomButton onClick={() => navigate(CHECKOUT)}>Procees to checkout</PrimaryCustomButton>
                 </div>
               </div>
             </div>

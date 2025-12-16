@@ -1,6 +1,6 @@
 import { useSetAtom } from "jotai";
-import type {Products } from "../../types/ProductTypes";
-import { useNavigate } from "react-router-dom";
+import type { Products } from "../../types/ProductTypes";
+import { Link, useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import StarRating from "../ui/StarRating";
@@ -43,9 +43,12 @@ const WishlistRelatedProductItem = ({ product }: { product: Products }) => {
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <p className="font-medium text-xs md:text-base line-clamp-1">
+        <Link
+          to={`${HOMEPAGE}/${product.id}`}
+          className="font-medium text-xs md:text-base line-clamp-1"
+        >
           {product.title}
-        </p>
+        </Link>
         <div className="flex flex-col sm:flex-row gap-0 sm:gap-3">
           <p className="font-medium text-button-2 text-xs md:text-base">
             ${(product.price * 0.5).toFixed(2)}
