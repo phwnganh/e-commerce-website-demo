@@ -4,7 +4,7 @@ const KeyFiguresSection = () => {
   return (
     <section className="mt-35 grid grid-cols-2 md:grid-cols-4 gap-7.5">
       <div className="border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]">
-        <div className="flex flex-col gap-3 items-center py-7.5">
+        <div className="flex flex-col gap-3 items-center px-2 sm:px-0 py-7.5">
           <div className="mb-3">
             <CustomRoundedComponent>
               <svg
@@ -65,7 +65,7 @@ const KeyFiguresSection = () => {
       </div>
 
       <div className="border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]">
-        <div className="flex flex-col gap-3 items-center py-7.5">
+        <div className="flex flex-col gap-3 items-center py-7.5 px-2 sm:px-0">
           <div className="mb-3">
             <CustomRoundedComponent>
               <svg
@@ -111,7 +111,7 @@ const KeyFiguresSection = () => {
       </div>
 
       <div className="border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]">
-        <div className="flex flex-col gap-3 items-center py-7.5">
+        <div className="flex flex-col gap-3 items-center py-7.5 px-2 sm:px-0">
           <div className="mb-3">
             <CustomRoundedComponent>
               <img
@@ -132,7 +132,7 @@ const KeyFiguresSection = () => {
       </div>
 
       <div className="border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]">
-        <div className="flex flex-col gap-3 items-center py-7.5">
+        <div className="flex flex-col gap-3 items-center py-7.5 px-2 sm:px-0">
           <div className="mb-3">
             <CustomRoundedComponent>
               <svg
