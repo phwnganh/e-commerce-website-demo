@@ -1,7 +1,7 @@
 import { useAtomValue } from "jotai";
 import { userAtom } from "../../../atom/store";
 import PrimaryCustomButton from "../../ui/PrimaryCustomButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AccountSection = () => {
   const user = useAtomValue(userAtom);
@@ -12,6 +12,15 @@ const AccountSection = () => {
   // const [password, setPassword] = useState("");
   // const [newPassword, setNewPassword] = useState("");
   // const [confirmNewPassword, setConfirmNewPassword] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      setFirstName(user.firstName);
+      setLastName(user.lastName);
+      setEmail(user.email);
+      setUsername(user.username);
+    }
+  }, [user]);
   return (
     <form className="flex flex-col gap-4 max-w-[710px] mx-auto rounded-sm py-10 px-5 lg:px-0">
       <h3 className="text-button-2 text-base sm:text-xl font-medium">
@@ -27,7 +36,7 @@ const AccountSection = () => {
               type="text"
               name="firstName"
               id="firstName"
-              value={firstName || user?.firstName}
+              value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               className="rounded-sm bg-secondary-2 border-secondary-2 py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-black-opacity-80 focus:outline-none"
             />
@@ -42,7 +51,7 @@ const AccountSection = () => {
               type="text"
               name="lastName"
               id="lastName"
-              value={lastName || user?.lastName}
+              value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               className="rounded-sm bg-secondary-2 border-secondary-2 py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-black-opacity-80 focus:outline-none"
             />
@@ -60,7 +69,7 @@ const AccountSection = () => {
               type="email"
               name="email"
               id="email"
-              value={email || user?.email}
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="rounded-sm bg-secondary-2 border-secondary-2 py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-black-opacity-80 focus:outline-none"
             />
@@ -75,7 +84,7 @@ const AccountSection = () => {
               type="text"
               name="username"
               id="username"
-              value={username || user?.username}
+              value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="rounded-sm bg-secondary-2 border-secondary-2 py-1 pl-2 sm:py-3 sm:pl-4 text-sm sm:text-base text-black-opacity-80 focus:outline-none"
             />
