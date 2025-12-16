@@ -231,7 +231,7 @@ const CartSection = () => {
               name="code"
               id="code"
               placeholder="Coupon Code"
-              className="border rounded-sm text-sm md:text-base py-2 md:py-4 pl-6 focus:outline-none"
+              className="border rounded-sm text-sm md:text-base py-2 md:py-4 px-6 focus:outline-none"
             />
             <PrimaryCustomButton>Apply Coupon</PrimaryCustomButton>
           </div>
