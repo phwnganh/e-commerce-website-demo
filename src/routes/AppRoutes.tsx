@@ -7,6 +7,7 @@ import {
   CANCELLATIONS,
   CART,
   CATEGORYPAGE,
+  CHECKOUT,
   CONTACT,
   HOMEPAGE,
   LOGIN,
@@ -56,6 +57,8 @@ const CaategoryProductListPage = lazy(
 const HomeProductListPage = lazy(
   () => import("../pages/ProductListPage/HomeProductListPage")
 );
+
+const CheckoutPage = lazy(() => import("../pages/CheckoutPage/CheckoutPage"));
 const AppRoutes = () => {
   return (
     <Suspense
@@ -79,6 +82,7 @@ const AppRoutes = () => {
           />
           <Route path={CONTACT} element={<ContactPage />} />
           <Route path={ABOUT} element={<AboutUsPage />} />
+          <Route path={CHECKOUT} element={<CheckoutPage />} />
           <Route path={ACCOUNT} element={<AccountPage />}>
             <Route index element={<AccountSection />} />
             <Route path={USER_PROFILE} element={<AccountSection />} />

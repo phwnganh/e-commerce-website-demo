@@ -1,6 +1,6 @@
 const AdvertisementBanner = () => {
   return (
-    <div className="max-w-[1170px] mx-auto text-text-1 flex flex-row justify-between py-3.5">
+    <section className="max-w-[1170px] mx-auto text-text-1 flex flex-row justify-between py-3.5">
       <div className="hidden lg:block"></div>
       <div className="flex gap-2 flex-col text-center sm:flex-row sm:items-center sm:justify-center">
         <p className="text-xs sm:text-sm font-normal">
@@ -25,7 +25,7 @@ const AdvertisementBanner = () => {
           />
         </svg>
       </div>
-    </div>
+    </section>
   );
 };
 

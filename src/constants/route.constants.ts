@@ -13,3 +13,4 @@ export const RETURNS = "my-returns";
 export const CANCELLATIONS = "my-cancellations";
 export const CONTACT = "/contact";
 export const ABOUT = "/about";
+export const CHECKOUT = "/checkout";

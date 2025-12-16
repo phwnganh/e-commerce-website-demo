@@ -1,6 +1,6 @@
 import PlayStation5 from "../../assets/play-station-5.png";
-import WomenCollection from "../../assets/attractive-woman-wearing-hat-posing-black-background1.png";
-import AmazonSpeaker from "../../assets/69-694768_amazon-echo-png-clipart-transparent-amazon-echo-png 1.png";
+import WomenCollection from "../../assets/woman-newproducts-advertisements.png";
+import AmazonSpeaker from "../../assets/amazon-echo.png";
 import GucciPerfume from "../../assets/perfume.png";
 import SectionHeader from "../../components/ui/SectionHeader";
 const NewProductsAdvertisement = () => {

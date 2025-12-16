@@ -2,7 +2,7 @@ import DropUpIcon from "../../assets/drop-up-icon.svg";
 import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
 import { useNavigate } from "react-router-dom";
-import { HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
+import {PRODUCTPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../ui/PrimaryCustomButton";
 import SecondaryCustomButton from "../ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
@@ -231,7 +231,7 @@ const CartSection = () => {
               name="code"
               id="code"
               placeholder="Coupon Code"
-              className="border rounded-sm text-sm md:text-base py-2 md:py-4 pl-6"
+              className="border rounded-sm text-sm md:text-base py-2 md:py-4 pl-6 focus:outline-none"
             />
             <PrimaryCustomButton>Apply Coupon</PrimaryCustomButton>
           </div>
