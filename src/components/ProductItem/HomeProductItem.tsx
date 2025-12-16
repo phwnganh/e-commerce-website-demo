@@ -48,7 +48,7 @@ const HomeProductItem = ({
           </button>
         </div>
 
-        <div className="flex flex-col gap-1 md:gap-2 absolute top-1 right-2 md:top-3 md:right-3 group">
+        <div className="flex flex-col gap-1 md:gap-2 absolute top-1 right-2 md:top-3 md:right-3">
           <button
             onClick={() => {
               if (!requireLogin()) {
@@ -56,10 +56,10 @@ const HomeProductItem = ({
               }
               onAddToWishlist(product);
             }}
-            className={`${
+            className={`group ${
               isInWishlist ?
               "bg-button-2 hover:bg-hover-button-1 cursor-pointer" : "bg-white"
-            } group-hover:bg-button-2 cursor-pointer flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px]`}
+            } hover:bg-button-2 cursor-pointer flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px]`}
           >
             <img
               src={HeartIcon1}
