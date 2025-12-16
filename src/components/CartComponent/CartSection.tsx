@@ -6,31 +6,86 @@ import { HOMEPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../ui/PrimaryCustomButton";
 import SecondaryCustomButton from "../ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
-import { tempCartAtom } from "../../atom/store";
-import {
-  commitedCartAtom,
-  decreaseQuantityItemAtom,
-  increaseQuantityItemAtom,
-  initialTempCartAtom,
-  removeItemFromCartAtom,
-} from "../../atom/cartActionStore";
-import { useEffect } from "react";
+import { cartAtom } from "../../atom/store";
+import { useEffect, useState } from "react";
+import type { Carts } from "../../types/ProductTypes";
 const CartSection = () => {
-  const cart = useAtomValue(tempCartAtom);
-  const initialTempCart = useSetAtom(initialTempCartAtom);
-  const handleIncreaseQuantity = useSetAtom(increaseQuantityItemAtom);
-  const handleDecreaseQuantity = useSetAtom(decreaseQuantityItemAtom);
-  const handleRemoveItemFromCart = useSetAtom(removeItemFromCartAtom);
-  const commitedCart = useSetAtom(commitedCartAtom);
+  const cart = useAtomValue(cartAtom);
+  const setCart = useSetAtom(cartAtom);
+  const [tempCart, setTempCart] = useState<Carts | null>(null);
   const navigate = useNavigate();
 
-  const handleUpdateCart = () => {
-    commitedCart();
+  useEffect(() => {
+    setTempCart({
+      ...cart,
+      products: cart?.products.map((item) => ({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        quantity: item.quantity,
+        total: item.total,
+        thumbnail: item.thumbnail,
+      })),
+    });
+  }, [cart]);
+
+  const handleIncreaseQuantity = (productId: string) => {
+    if (!tempCart) return;
+    const updatedProducts = tempCart.products.map((item) =>
+      item.id === productId
+        ? {
+            ...item,
+            quantity: item.quantity + 1,
+            total: item.price * (item.quantity + 1),
+          }
+        : item
+    );
+    const updatedCart = {
+      ...cart,
+      products: updatedProducts,
+      total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
+    };
+    setTempCart(updatedCart);
   };
 
-  useEffect(() => {
-    initialTempCart();
-  }, []);
+  const handleDecreaseQuantity = (productId: string) => {
+    if (!tempCart) return;
+    const updatedProducts = tempCart.products.map((item) => {
+      if (item.id === productId) {
+        const newQuantity = Math.max(1, item.quantity - 1);
+        return {
+          ...item,
+          quantity: newQuantity,
+          total: newQuantity * item.price,
+        };
+      }
+      return item;
+    });
+    const updatedCart = {
+      ...cart,
+      products: updatedProducts,
+      total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
+    };
+    setTempCart(updatedCart);
+  };
+
+  const handleRemoveItemFromCart = (productId: string) => {
+    if (!tempCart) return;
+    const updatedProducts = tempCart.products.filter(
+      (item) => item.id !== productId
+    );
+    const updatedCart = {
+      ...cart,
+      products: updatedProducts,
+      total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
+    };
+    setTempCart(updatedCart);
+  };
+
+  const handleUpdateCart = () => {
+    if (!tempCart) return;
+    setCart(tempCart);
+  };
 
   return (
     <section className="mb-11 md:mb-35 px-4 lg:px-0">
@@ -44,7 +99,7 @@ const CartSection = () => {
           </div>
 
           <div className="flex flex-col gap-10">
-            {cart?.products.map((item) => (
+            {tempCart?.products.map((item) => (
               <div
                 key={item.id}
                 className="grid grid-cols-4 pl-10 py-3 md:py-6 items-center rounded-sm shadow-[0px_1px_13px_0px_#0000000D]"
@@ -187,7 +242,7 @@ const CartSection = () => {
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Subtotal:</p>
                   <p className="text-sm md:text-base">
-                    ${cart?.total?.toFixed(2)}
+                    ${tempCart?.total?.toFixed(2)}
                   </p>
                 </div>
                 <hr className="border-black-opacity-40" />
@@ -199,7 +254,7 @@ const CartSection = () => {
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Total:</p>
                   <p className="text-sm md:text-base">
-                    ${cart?.total?.toFixed(2)}
+                    ${tempCart?.total?.toFixed(2)}
                   </p>
                 </div>
 
