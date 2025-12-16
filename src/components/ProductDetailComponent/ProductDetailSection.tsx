@@ -107,7 +107,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
                     className="group-hover:brightness-0 group-hover:invert"
                   />
                 </button>
-                <div className="py-2 px-[34px] border-r-black-opacity-80 flex justify-center items-center">
+                <div className="py-2 w-20 border-r-black-opacity-80 flex justify-center items-center">
                   <p className="font-medium text-base lg:text-xl">{quantity}</p>
                 </div>
                 <button
