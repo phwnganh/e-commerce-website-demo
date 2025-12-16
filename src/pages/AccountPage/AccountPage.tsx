@@ -9,7 +9,7 @@ const AccountPage = () => {
   const user = useAtomValue(userAtom);
   return (
     <main className="max-w-[1170px] mx-auto mb-35 px-4 lg:px-0">
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-col sm:flex-row gap-4 justify-between">
         <BreadCumb
           items={[
             {
@@ -20,7 +20,7 @@ const AccountPage = () => {
           ]}
         />
 
-        <p className="text-sm mt-20">
+        <p className="text-sm sm:mt-20">
           Welcome! <span className="text-button-2">{user?.firstName}</span>
         </p>
       </div>

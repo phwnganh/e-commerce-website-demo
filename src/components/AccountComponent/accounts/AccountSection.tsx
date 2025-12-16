@@ -17,7 +17,7 @@ const AccountSection = () => {
       <h3 className="text-button-2 text-base sm:text-xl font-medium">
         Edit Your Profile
       </h3>
-      <div className="flex gap-[50px]">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-[50px]">
         <div className="w-full">
           <div className="flex flex-col gap-2 ">
             <label htmlFor="firstName" className="text-sm sm:text-base">
@@ -50,7 +50,7 @@ const AccountSection = () => {
         </div>
       </div>
 
-      <div className="flex gap-[50px] mt-2">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-[50px] sm:mt-2">
         <div className="w-full">
           <div className="flex flex-col gap-2">
             <label htmlFor="email" className="text-sm sm:text-base">
@@ -112,9 +112,7 @@ const AccountSection = () => {
       <div className="flex justify-end">
         <div className="flex gap-8 items-center">
           <p className="text-sm sm:text-base">Cancel</p>
-          <PrimaryCustomButton type="submit">
-            Save Changes
-          </PrimaryCustomButton>
+          <PrimaryCustomButton type="submit">Save Changes</PrimaryCustomButton>
         </div>
       </div>
     </form>

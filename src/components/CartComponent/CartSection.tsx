@@ -2,7 +2,7 @@ import DropUpIcon from "../../assets/drop-up-icon.svg";
 import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
 import { useNavigate } from "react-router-dom";
-import { HOMEPAGE } from "../../constants/route.constants";
+import { HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
 import PrimaryCustomButton from "../ui/PrimaryCustomButton";
 import SecondaryCustomButton from "../ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
@@ -216,7 +216,7 @@ const CartSection = () => {
         </table> */}
 
         <div className="flex flex-row justify-between mt-6">
-          <SecondaryCustomButton onClick={() => navigate(HOMEPAGE)}>
+          <SecondaryCustomButton onClick={() => navigate(PRODUCTPAGE)}>
             Return To Shop
           </SecondaryCustomButton>
           <SecondaryCustomButton onClick={handleUpdateCart}>
