@@ -16,11 +16,14 @@ const UserDropdown = () => {
   };
   return (
     <div className="absolute top-9 right-0 z-10">
-      <div className="flex flex-col gap-3 bg-black-opacity-4 w-56 pt-[18px] pb-2.5 backdrop-blur-[150px] rounded-sm text-text-1">
+      <div
+        className="flex flex-col gap-3 bg-[rgba(0,0,0,0.08)]
+ w-56 pt-[18px] pb-2.5 backdrop-blur-xl border border-black-opacity-4 shadow-[0_8px_32px_rgba(0,0,0,0.25)] rounded-sm text-text-1"
+      >
         <div
           role="button"
           onClick={() => navigate(ACCOUNT)}
-          className={`flex flex-row items-center gap-4 py-0.5 group hover:bg-gray-300`}
+          className={`flex flex-row items-center gap-4 py-0.5 group hover:bg-black/10`}
         >
           <div className="w-6 h-6 flex justify-center items-center">
             <img
