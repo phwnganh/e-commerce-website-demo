@@ -1,4 +1,4 @@
-import type {Products } from "../../types/ProductTypes";
+import type { Products } from "../../types/ProductTypes";
 import StarRating from "../../components/ui/StarRating";
 import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
@@ -18,9 +18,10 @@ const HomeProductItem = ({
 }) => {
   const navigate = useNavigate();
   const user = useAtomValue(userAtom);
-  const onAddToWishlist = useSetAtom(toggleWishlistAtom)
-  const handleAddToCart = useSetAtom(addToCartAtom)
-  const requireLogin = useLoginRequired()
+  const onAddToWishlist = useSetAtom(toggleWishlistAtom);
+  const handleAddToCart = useSetAtom(addToCartAtom);
+
+  const requireLogin = useLoginRequired();
 
   const isInWishlist = user && wishlists.some((item) => item.id === product.id);
   return (
@@ -57,8 +58,9 @@ const HomeProductItem = ({
               onAddToWishlist(product);
             }}
             className={`group ${
-              isInWishlist ?
-              "bg-button-2 hover:bg-hover-button-1 cursor-pointer" : "bg-white"
+              isInWishlist
+                ? "bg-button-2 hover:bg-hover-button-1 cursor-pointer"
+                : "bg-white"
             } hover:bg-button-2 cursor-pointer flex justify-center items-center rounded-full w-6 h-6 md:w-[34px] md:h-[34px]`}
           >
             <img

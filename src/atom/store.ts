@@ -5,8 +5,11 @@ import type { User } from "../types/AuthType";
 import { atomWithStorage } from "jotai/utils";
 
 export const productsAtom = atom<Products[]>([]);
+export const productsLoadingAtom = atom<boolean>(true);
 export const categoriesAtom = atom<Categories[]>([]);
+export const categoriesLoadingAtom = atom<boolean>(true);
 export const categoriesNavigationAtom = atom<string[]>([]);
+export const categoriesNavigationLoadingAtom = atom<boolean>(true);
 export const userAtom = atomWithStorage<User | null>("user", null);
 export const accessTookenAtom = atomWithStorage<string>("token", "")
 

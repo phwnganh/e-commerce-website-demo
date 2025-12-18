@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 import {
   ABOUT,
   ACCOUNT,
@@ -61,13 +61,7 @@ const HomeProductListPage = lazy(
 const CheckoutPage = lazy(() => import("../pages/CheckoutPage/CheckoutPage"));
 const AppRoutes = () => {
   return (
-    <Suspense
-      fallback={
-        <>
-          <svg className="size-10 animate-spin" viewBox="0 0 24 24"></svg>
-        </>
-      }
-    >
+
       <Routes>
         <Route element={<MainLayout />}>
           <Route path={LOGIN} element={<LoginPage />} />
@@ -100,7 +94,6 @@ const AppRoutes = () => {
           <Route path="*" element={<NotFound/>}/>
         </Route>
       </Routes>
-    </Suspense>
   );
 };
 
