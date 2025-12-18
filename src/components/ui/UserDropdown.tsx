@@ -6,8 +6,29 @@ import LogoutIcon from "../../assets/Icon-logout.svg";
 import { userAtom } from "../../atom/store";
 import { LOGIN, ACCOUNT } from "../../constants/route.constants";
 import { useNavigate } from "react-router-dom";
+import UserDropdownItem from "../UserDropdown/UserDropdownItem";
 
 const UserDropdown = () => {
+  const USER_MENU_ITEMS = [
+    {
+      label: "Manage My Account",
+      icon: WhiteUserIcon,
+      to: ACCOUNT,
+    },
+    {
+      label: "My Cancellations",
+      icon: CancelIcon,
+    },
+    {
+      label: "My Reviews",
+      icon: ReviewsIcon,
+    },
+    {
+      label: "Logout",
+      icon: LogoutIcon,
+      action: "logout",
+    },
+  ];
   const setUser = useSetAtom(userAtom);
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -20,60 +41,20 @@ const UserDropdown = () => {
         className="flex flex-col gap-3 bg-[rgba(0,0,0,0.08)]
  w-56 pt-[18px] pb-2.5 backdrop-blur-xl border border-black-opacity-4 shadow-[0_8px_32px_rgba(0,0,0,0.25)] rounded-sm text-text-1"
       >
-        <div
-          role="button"
-          onClick={() => navigate(ACCOUNT)}
-          className={`flex flex-row items-center gap-4 py-0.5 group hover:bg-black/10`}
-        >
-          <div className="w-6 h-6 flex justify-center items-center">
-            <img
-              src={WhiteUserIcon}
-              alt="user-icon"
-              className="group-hover:brightness-1"
-            />
-          </div>
-          <p className="text-sm group-hover:text-black">Manage My Account</p>
-        </div>
-        <div
-          role="button"
-          className="flex flex-row items-center gap-4 py-0.5 group hover:bg-gray-300"
-        >
-          <div className="w-6 h-6 flex justify-center items-center">
-            <img
-              src={CancelIcon}
-              alt="cancel-icon"
-              className="group-hover:brightness-1"
-            />
-          </div>
-          <p className="text-sm group-hover:text-black">My Cancellations</p>
-        </div>
-        <div
-          role="button"
-          className="flex flex-row items-center gap-4 py-0.5 hover:bg-gray-300 group"
-        >
-          <div className="w-6 h-6 flex justify-center items-center">
-            <img
-              src={ReviewsIcon}
-              alt="review-icon"
-              className="group-hover:brightness-1"
-            />
-          </div>
-          <p className="text-sm group-hover:text-black">My Reviews</p>
-        </div>
-        <div
-          role="button"
-          onClick={handleLogout}
-          className="flex flex-row items-center gap-4 py-0.5 hover:bg-gray-300 group"
-        >
-          <div className="w-6 h-6 flex justify-center items-center">
-            <img
-              src={LogoutIcon}
-              alt="logout-icon"
-              className="group-hover:brightness-1"
-            />
-          </div>
-          <p className="text-sm group-hover:text-black">Logout</p>
-        </div>
+        {USER_MENU_ITEMS.map((item, index) => (
+          <UserDropdownItem
+            key={index}
+            icon={item.icon}
+            label={item.label}
+            onClick={() => {
+              if (item.action === "logout") {
+                handleLogout();
+              } else if (item.to) {
+                navigate(item.to);
+              }
+            }}
+          />
+        ))}
       </div>
     </div>
   );
