@@ -37,7 +37,7 @@ const WishlistRelatedProductItem = ({ product }: { product: Products }) => {
             <img
               src={EyeIcon}
               alt="eye-icon"
-              className="w-4 h-4 sm:w-6 sm:h-6"
+              className="w-4 h-4 md:w-6 md:h-6"
             />
           </button>
         </div>

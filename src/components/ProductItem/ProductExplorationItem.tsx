@@ -77,7 +77,7 @@ const ProductExplorationItem = ({
               className={`
                 ${
                   isInWishlist && "brightness-1 invert"
-                } group-hover:brightness-1 group-hover:invert w-4 h-4 sm:w-6 sm:h-6`}
+                } group-hover:brightness-1 group-hover:invert w-4 h-4 md:w-6 md:h-6`}
             />
           </button>
           <button
@@ -87,7 +87,7 @@ const ProductExplorationItem = ({
             <img
               src={EyeIcon}
               alt="eye-icon"
-              className="w-4 h-4 sm:w-6 sm:h-6"
+              className="w-4 h-4 md:w-6 md:h-6"
             />
           </button>
         </div>
