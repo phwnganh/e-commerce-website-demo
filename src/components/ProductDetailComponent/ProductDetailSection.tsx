@@ -9,7 +9,7 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { tempCartAtom, userAtom, wishlistAtom } from "../../atom/store";
 import { toggleWishlistAtom } from "../../atom/wishlistActionStore";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CHECKOUT } from "../../constants/route.constants";
 
@@ -19,7 +19,12 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
   const handleAddToWishlist = useSetAtom(toggleWishlistAtom);
   const [quantity, setQuantity] = useState(1);
   const setTempCart = useSetAtom(tempCartAtom);
+  const [isImageSelected, setIsImageSelected] = useState(productData.thumbnail);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setIsImageSelected(productData.thumbnail);
+  }, [productData.id])
   const handleIncreaseQuantity = () => {
     setQuantity((prev) => prev + 1);
   };
@@ -62,7 +67,8 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
               {productData.images.map((img, index) => (
                 <div
                   key={index}
-                  className="lg:w-[170px] aspect-square flex justify-center bg-secondary-2 rounded-sm"
+                  className={`lg:w-[170px] aspect-square flex justify-center bg-secondary-2 rounded-sm cursor-pointer ${isImageSelected === img && "ring ring-black-opacity-80"}`}
+                  onClick={() => setIsImageSelected(img)}
                 >
                   <img
                     src={img}
@@ -74,7 +80,7 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
             </div>
             <div className="lg:w-[500px] aspect-square w-full bg-secondary-2 flex justify-center rounded-sm">
               <img
-                src={productData.thumbnail}
+                src={isImageSelected}
                 alt={productData.title}
                 className="w-full h-full object-contain"
               />
