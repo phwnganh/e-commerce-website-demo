@@ -1,6 +1,5 @@
 import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
-import {useEffect, useRef, useState } from "react";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
@@ -10,18 +9,19 @@ import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import Countdown from "../../components/ui/TodayProductsCountdown";
 import SectionHeader from "../../components/ui/SectionHeader";
+import { useEffect, useState } from "react";
 const TodaysProductsList = ({ products }: { products: Products[] }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [itemsPerView, setItemsPerView] = useState(4);
   const wishlists = useAtomValue(wishlistAtom);
   const navigate = useNavigate();
+  const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setItemsPerView(4);
+      if (window.innerWidth >= 768) {
+        setItemsPerPage(4);
       } else {
-        setItemsPerView(2);
+        setItemsPerPage(2);
       }
     };
     handleResize();
@@ -29,16 +29,19 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Tính toán tổng số nhóm có thể hiển thị
-  const totalGroups = Math.ceil(products.length / itemsPerView);
+  const totalGroups = Math.ceil(products.length / itemsPerPage);
 
-  const goToNext = () => {
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalGroups) % totalGroups);
+  };
+
+  const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % totalGroups);
   };
 
-  const goToPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalGroups) % totalGroups);
-  };
+  const startIndex = currentIndex * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentProducts = products.slice(startIndex, endIndex);
   return (
     <section className="mt-15 md:mt-35 p-4 lg:p-0">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-5 sm:gap-0">
@@ -53,18 +56,18 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
 
         <div className="flex flex-row gap-2">
           <button
-            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center  ${
+            onClick={handlePrev}
+            disabled={currentIndex === 0}
+            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center ${
               currentIndex === 0
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-gray-200 cursor-pointer"
             }`}
-            onClick={goToPrev}
-            disabled={currentIndex === 0}
           >
             <img src={LeftArrow1} alt="left-arrow" />
           </button>
           <button
-            onClick={goToNext}
+            onClick={handleNext}
             disabled={currentIndex === totalGroups - 1}
             className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center ${
               currentIndex === totalGroups - 1
@@ -78,18 +81,9 @@ const TodaysProductsList = ({ products }: { products: Products[] }) => {
       </div>
       <div className="mt-10">
         <div className="overflow-x-hidden">
-          <div
-            ref={containerRef}
-            className="flex gap-7 transition-transform duration-1000 ease-in-out"
-            style={{
-              transform: `translateX(${-(currentIndex * 100)}%)`,
-            }}
-          >
-            {products.map((product) => (
-              <div
-                className="shrink-0 w-full sm:w-1/2 md:w-1/4"
-                key={product.id}
-              >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-7">
+            {currentProducts.map((product) => (
+              <div className="" key={product.id}>
                 <HomeProductItem product={product} wishlists={wishlists} />
               </div>
             ))}

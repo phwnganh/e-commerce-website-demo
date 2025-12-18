@@ -21,7 +21,7 @@ const KeyFeatures = () => {
     },
   ];
   return (
-    <section className="max-w-[1170px] mx-auto flex flex-col sm:flex-row justify-center gap-12 md:gap-22 my-17 md:my-35 px-4 lg:px-0">
+    <section className="flex flex-col sm:flex-row justify-center gap-12 md:gap-22 my-17 md:my-35 px-4 lg:px-0">
       {KEY_FEATURES.map((feature, index) => (
         <div className="flex flex-col gap-2 items-center" key={index}>
           <CustomRoundedComponent>

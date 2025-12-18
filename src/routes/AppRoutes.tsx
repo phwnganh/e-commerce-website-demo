@@ -19,19 +19,19 @@ import {
   WISHLIST,
 } from "../constants/route.constants";
 
-const NotFound = lazy(() => import("../pages/NotFoundPage/NotFound"))
+const NotFound = lazy(() => import("../pages/NotFoundPage"))
 const MainLayout = lazy(() => import("../components/layouts/MainLayout"));
 const LoginPage = lazy(() => import("../pages/PreLoginPage/LoginPage"));
 const SignupPage = lazy(() => import("../pages/PreLoginPage/SignupPage"));
-const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
-const WishlistPage = lazy(() => import("../pages/WishlistPage/WishlistPage"));
-const CartPage = lazy(() => import("../pages/CartPage/CartPage"));
+const HomePage = lazy(() => import("../pages/HomePage"));
+const WishlistPage = lazy(() => import("../pages/WishlistPage"));
+const CartPage = lazy(() => import("../pages/CartPage"));
 const ProductDetailPage = lazy(
-  () => import("../pages/ProductDetailPage/ProductDetailPage")
+  () => import("../pages/ProductDetailPage")
 );
-const ContactPage = lazy(() => import("../pages/ContactPage/ContactPage"));
-const AboutUsPage = lazy(() => import("../pages/AbouUsPage/AbouUsPage"));
-const AccountPage = lazy(() => import("../pages/AccountPage/AccountPage"));
+const ContactPage = lazy(() => import("../pages/ContactPage"));
+const AboutUsPage = lazy(() => import("../pages/AbouUsPage"));
+const AccountPage = lazy(() => import("../pages/AccountPage"));
 const AccountSection = lazy(
   () => import("../components/AccountComponent/accounts/AccountSection")
 );
@@ -48,7 +48,7 @@ const CancellationSection = lazy(
   () => import("../components/AccountComponent/accounts/CancellationSection")
 );
 const CategoryListPage = lazy(
-  () => import("../pages/CategoryListPage/CategoryListPage")
+  () => import("../pages/CategoryListPage")
 );
 const CaategoryProductListPage = lazy(
   () => import("../pages/ProductListPage/CategoryProductListPage")
@@ -58,7 +58,7 @@ const HomeProductListPage = lazy(
   () => import("../pages/ProductListPage/HomeProductListPage")
 );
 
-const CheckoutPage = lazy(() => import("../pages/CheckoutPage/CheckoutPage"));
+const CheckoutPage = lazy(() => import("../pages/CheckoutPage"));
 const AppRoutes = () => {
   return (
 

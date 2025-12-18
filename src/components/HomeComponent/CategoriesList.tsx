@@ -1,40 +1,45 @@
 import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/icon-arrow-right.svg";
 import Cosmetics from "../../assets/cosmetics.png";
-import { useRef } from "react";
 import type { Categories } from "../../types/CategoryType";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";
+import { useEffect, useState } from "react";
 const CategoriesList = ({ categories }: { categories: Categories[] }) => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const itemsToShow = 6;
-  const itemWidth = 198;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
 
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -itemWidth * itemsToShow, // Cuộn sang trái nhiều item cùng lúc
-        behavior: "smooth",
-      });
-    }
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setItemsPerPage(6);
+      } else if (window.innerWidth >= 768) {
+        setItemsPerPage(4);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const totalGroups = Math.ceil(categories.length / itemsPerPage);
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalGroups) % totalGroups);
+  };
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalGroups);
   };
 
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: itemWidth * itemsToShow,
-        behavior: "smooth",
-      });
-    }
-  };
-
+  const startIndex = currentIndex * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentCategories = categories.slice(startIndex, endIndex);
   return (
     <section className="mt-10 md:mt-20 p-4 lg:p-0">
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-4 md:gap-6">
-          <SectionHeader title="Categories"/>
+          <SectionHeader title="Categories" />
           <h3 className="font-semibold text-2xl md:text-4xl">
             Browse By Category
           </h3>
@@ -42,35 +47,41 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
 
         <div className="flex flex-row gap-2">
           <button
-            onClick={scrollLeft}
-            className="bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer"
+            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer ${
+              currentIndex === 0
+                ? "opacity-50 cursor-not-allowed"
+                : "hover: bg-gray-200 cursor-pointer"
+            }`}
+            disabled={currentIndex === 0}
+            onClick={handlePrev}
           >
-            <img src={LeftArrow1} alt="left-arrow"/>
+            <img src={LeftArrow1} alt="left-arrow" />
           </button>
           <button
-            onClick={scrollRight}
-            className="bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer"
+            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer ${
+              currentIndex === totalGroups - 1
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-gray-200 cursor-pointer"
+            }`}
+            disabled={currentIndex === totalGroups - 1}
+            onClick={handleNext}
           >
             <img src={RightArrow} alt="right-arrow" />
           </button>
         </div>
       </div>
-      <div
-        ref={scrollContainerRef}
-        className="mt-15 flex flex-row gap-7 overflow-x-hidden scrollbar-hide snap-x snap-mandatory"
-        style={{ scrollBehavior: "smooth" }}
-      >
-        {categories.map((category, index) => (
+      <div className="mt-15 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-7">
+        {currentCategories.map((category, index) => (
           <button
             onClick={() => navigate(`${PRODUCTPAGE}/${category.slug}`)}
-            className="flex flex-col gap-4 border justify-center items-center rounded-sm border-black-opacity-30 w-[170px] py-6 px-14 hover:bg-button-2 hover:border-button-2 group cursor-pointer"
+            className="flex flex-col gap-4 border justify-center items-center rounded-sm border-black-opacity-30 py-6 px-14 hover:bg-button-2 hover:border-button-2 group cursor-pointer"
             key={index}
           >
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center aspect-square">
               <img
                 src={Cosmetics}
                 alt=""
-                className="group-hover:invert group-hover:brightness-0 group-hover:filter"
+                className="w-full h-full object-cover group-hover:invert group-hover:brightness-0 group-hover:filter"
               />
             </div>
             <p className="text-center text-sm md:text-base group-hover:text-text-1">
