@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import { useAtomValue } from "jotai";
-import { productsAtom, wishlistAtom } from "../../atom/store";
+import { wishlistAtom } from "../../atom/store";
 import SectionHeader from "../../components/ui/SectionHeader";
+import type { CategoryDetail } from "../../types/CategoryType";
+import type { Products } from "../../types/ProductTypes";
 
-const RelatedItemSection = () => {
+const RelatedItemSection = ({ productData }: { productData: Products }) => {
   const wishlists = useAtomValue(wishlistAtom);
-  const products = useAtomValue(productsAtom);
+  const [categoryData, setCategoryData] = useState<CategoryDetail | null>(null);
+
+  useEffect(() => {
+    fetch(`https://dummyjson.com/products/category/${productData.category}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setCategoryData(res);
+      });
+  }, []);
   return (
     <section className="my-15 lg:my-35">
       <div className="flex flex-row justify-between items-center">
@@ -14,7 +24,7 @@ const RelatedItemSection = () => {
       </div>
 
       <div className="mt-10 lg:mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
-        {products.slice(0, 4).map((product) => (
+        {categoryData?.products.slice(0, 4).map((product) => (
           <React.Fragment key={product.id}>
             <HomeProductItem product={product} wishlists={wishlists} />
           </React.Fragment>

@@ -1,6 +1,6 @@
-import DeliveryIcon from "../../assets/icon-delivery.svg";
-import CustomerServiceIcon from "../../assets/Icon-Customer service.svg";
-import SecureIcon from "../../assets/Icon-secure.svg";
+import DeliveryIcon from "../../assets/delivery-icon.svg";
+import CustomerServiceIcon from "../../assets/customer-service-icon.svg";
+import SecureIcon from "../../assets/secure-icon.svg";
 import CustomRoundedComponent from "../../components/ui/CustomRoundedComponent";
 const KeyFeatures = () => {
   const KEY_FEATURES = [

@@ -6,7 +6,7 @@ import twitter from "../../assets/twitter.svg";
 import instagram from "../../assets/instagram.svg";
 import linkedln from "../../assets/linkedlin.svg";
 import send from "../../assets/send.svg";
-import copyRight from "../../assets/icon-copyright.svg";
+import copyRight from "../../assets/copyright-icon.svg";
 import { Link } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 const FooterSection = () => {

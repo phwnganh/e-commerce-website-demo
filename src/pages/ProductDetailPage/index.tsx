@@ -34,7 +34,7 @@ const ProductDetailPage = () => {
         ]}
       />
       <ProductDetailSection productData={productData} />
-      <RelatedItemSection />
+      <RelatedItemSection productData={productData} />
     </main>
   );
 };

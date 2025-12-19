@@ -1,8 +1,8 @@
 import { useSetAtom } from "jotai";
 import WhiteUserIcon from "../../assets/white-user-icon.svg";
-import CancelIcon from "../../assets/icon-cancel.svg";
-import ReviewsIcon from "../../assets/Icon-Reviews.svg";
-import LogoutIcon from "../../assets/Icon-logout.svg";
+import CancelIcon from "../../assets/cancel-icon.svg";
+import ReviewsIcon from "../../assets/reviews-icon.svg";
+import LogoutIcon from "../../assets/logout-icon.svg";
 import { userAtom } from "../../atom/store";
 import { LOGIN, ACCOUNT } from "../../constants/route.constants";
 import { useNavigate } from "react-router-dom";

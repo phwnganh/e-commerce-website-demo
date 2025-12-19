@@ -1,6 +1,6 @@
 import type { Products } from "../../types/ProductTypes";
 import { useSetAtom } from "jotai";
-import TrashIcon from "../../assets/icon-delete.svg";
+import TrashIcon from "../../assets/delete-icon.svg";
 import { addToCartAtom } from "../../atom/cartActionStore";
 import { Link } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";

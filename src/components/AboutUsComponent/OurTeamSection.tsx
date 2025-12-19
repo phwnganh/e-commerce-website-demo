@@ -1,9 +1,9 @@
 import TomCruise from "../../assets/tom-cruise.png";
 import EmmaWatson from "../../assets/emma-watson.png";
 import WillSmith from "../../assets/will-smith.png";
-import TwitterIcon from "../../assets/Icon-Twitter-black.svg";
-import InstagramIcon from "../../assets/icon-instagram-black.svg";
-import LinkdlinIcon from "../../assets/Icon-Linkedin-black.svg";
+import TwitterIcon from "../../assets/twitter-black-icon.svg";
+import InstagramIcon from "../../assets/instagram-black-icon.svg";
+import LinkdlinIcon from "../../assets/linkedin-black-icon.svg";
 const OurTeamSection = () => {
   const TEAM_MEMBERS = [
     {

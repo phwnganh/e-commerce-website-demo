@@ -1,6 +1,6 @@
 import PreLoginComponent from "../../components/ui/PreLoginComponent";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
-import googleIcon from "../../assets/Icon-Google.svg";
+import googleIcon from "../../assets/google-icon.svg";
 import { LOGIN } from "../../constants/route.constants";
 
 const SignupPage = () => {

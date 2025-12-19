@@ -1,5 +1,5 @@
 import LeftArrow1 from "../../assets/arrow-left-1.svg";
-import RightArrow from "../../assets/icon-arrow-right.svg";
+import RightArrow from "../../assets/arrow-right-icon.svg";
 import Cosmetics from "../../assets/cosmetics.png";
 import type { Categories } from "../../types/CategoryType";
 import { useNavigate } from "react-router-dom";

@@ -1,10 +1,10 @@
 import type { Products } from "../../types/ProductTypes";
 import StarRating from "../../components/ui/StarRating";
-import PlusIcon from "../../assets/icon-plus.svg";
-import MinusIcon from "../../assets/icon-minus.svg";
+import PlusIcon from "../../assets/plus-icon.svg";
+import MinusIcon from "../../assets/minus-icon.svg";
 import HeartIcon from "../../assets/Wishlist.svg";
-import DeliveryIcon from "../../assets/icon-delivery.svg";
-import ReturnDeliveryIcon from "../../assets/Icon-return.svg";
+import DeliveryIcon from "../../assets/delivery-icon.svg";
+import ReturnDeliveryIcon from "../../assets/return-icon.svg";
 import { useAtomValue, useSetAtom } from "jotai";
 import { tempCartAtom, userAtom, wishlistAtom } from "../../atom/store";
 import { toggleWishlistAtom } from "../../atom/wishlistActionStore";

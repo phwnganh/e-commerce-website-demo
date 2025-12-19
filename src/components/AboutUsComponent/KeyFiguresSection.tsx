@@ -1,5 +1,5 @@
 import CustomRoundedComponent from "../ui/CustomRoundedComponent";
-import ShoppingBagIcon from "../../assets/Icon-Shopping bag.svg";
+import ShoppingBagIcon from "../../assets/shopping-bag-icon.svg";
 import ShopIcon from "../icons/ShopIcon";
 import SalesIcon from "../icons/SalesIcon";
 import MoneyBagIcon from "../icons/MoneyBagIcon";

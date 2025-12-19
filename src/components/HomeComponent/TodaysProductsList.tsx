@@ -1,5 +1,5 @@
 import LeftArrow1 from "../../assets/arrow-left-1.svg";
-import RightArrow from "../../assets/icon-arrow-right.svg";
+import RightArrow from "../../assets/arrow-right-icon.svg";
 import type { Products } from "../../types/ProductTypes";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
