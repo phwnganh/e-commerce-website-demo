@@ -21,6 +21,9 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
       } else if (window.innerWidth >= 768) {
         setItemsPerPage(4);
         setCurrentIndex(0);
+      } else if (window.innerWidth >= 576) {
+        setItemsPerPage(2);
+        setCurrentIndex(0);
       }
     };
     handleResize();
