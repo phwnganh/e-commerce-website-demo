@@ -2,10 +2,11 @@ import { useState, type FormEvent } from "react";
 import { useSetAtom } from "jotai";
 import { accessTookenAtom, userAtom } from "../../atom/store";
 import { useNavigate } from "react-router-dom";
-import type { LoginResponse } from "../../types/AuthType";
+import type { LoginResponse } from "../../types/auth.type";
 import { HOMEPAGE } from "../../constants/route.constants";
 import PreLoginComponent from "../../components/ui/PreLoginComponent";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import { API_AUTH_LOGIN_URL } from "../../constants/api.constants";
 
 const LoginPage = () => {
   const [username, setUsername] = useState<string>("");
@@ -17,7 +18,7 @@ const LoginPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await fetch("https://dummyjson.com/auth/login", {
+      const res = await fetch(API_AUTH_LOGIN_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

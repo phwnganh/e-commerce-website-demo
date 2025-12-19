@@ -1,7 +1,7 @@
 import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/arrow-right-icon.svg";
 import Cosmetics from "../../assets/cosmetics.png";
-import type { Categories } from "../../types/CategoryType";
+import type { Categories } from "../../types/category.type";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";

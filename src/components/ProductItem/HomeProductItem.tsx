@@ -1,4 +1,4 @@
-import type { Products } from "../../types/ProductTypes";
+import type { Products } from "../../types/product.type";
 import StarRating from "../../components/ui/StarRating";
 import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
@@ -6,8 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom } from "../../atom/store";
-import { addToCartAtom } from "../../atom/cartActionStore";
-import { toggleWishlistAtom } from "../../atom/wishlistActionStore";
+import { addToCartAtom } from "../../atom/cartAction.store";
+import { toggleWishlistAtom } from "../../atom/wishlistAction.store";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
 const HomeProductItem = ({
   product,

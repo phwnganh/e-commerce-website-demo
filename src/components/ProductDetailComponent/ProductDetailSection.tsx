@@ -1,4 +1,4 @@
-import type { Products } from "../../types/ProductTypes";
+import type { Products } from "../../types/product.type";
 import StarRating from "../../components/ui/StarRating";
 import PlusIcon from "../../assets/plus-icon.svg";
 import MinusIcon from "../../assets/minus-icon.svg";
@@ -7,7 +7,7 @@ import DeliveryIcon from "../../assets/delivery-icon.svg";
 import ReturnDeliveryIcon from "../../assets/return-icon.svg";
 import { useAtomValue, useSetAtom } from "jotai";
 import { tempCartAtom, userAtom, wishlistAtom } from "../../atom/store";
-import { toggleWishlistAtom } from "../../atom/wishlistActionStore";
+import { toggleWishlistAtom } from "../../atom/wishlistAction.store";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";

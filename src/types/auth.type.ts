@@ -1,5 +1,5 @@
-import type { Categories } from "./CategoryType";
-import type { Products } from "./ProductTypes";
+import type { Categories } from "./category.type";
+import type { Products } from "./product.type";
 
 export type LoginResponse = {
   id: string;

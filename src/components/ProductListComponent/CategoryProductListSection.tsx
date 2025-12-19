@@ -1,7 +1,7 @@
 import { useAtomValue } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import React, { useEffect, useRef, useState } from "react";
-import type { CategoryDetail } from "../../types/CategoryType";
+import type { CategoryDetail } from "../../types/category.type";
 import HomeProductItem from "../ProductItem/HomeProductItem";
 import LoadingSpin from "../ui/LoadingSpin";
 

@@ -7,14 +7,15 @@ import {
   HOMEPAGE,
   PRODUCTPAGE,
 } from "../../constants/route.constants";
-import type {CategoryDetail } from "../../types/CategoryType";
+import type { CategoryDetail } from "../../types/category.type";
+import { API_CATEGORY_PRODUCTS_URL } from "../../constants/api.constants";
 
 const CaategoryProductListPage = () => {
   const { slug } = useParams();
-  const [categoryData, setCategoryData] = useState<CategoryDetail | null>(null)
+  const [categoryData, setCategoryData] = useState<CategoryDetail | null>(null);
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/products/category/${slug}`)
+    fetch(`${API_CATEGORY_PRODUCTS_URL}${slug}`)
       .then((res) => res.json())
       .then((res) => setCategoryData(res));
   }, [slug]);

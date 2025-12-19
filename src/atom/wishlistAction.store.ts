@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 import { wishlistAtom } from "./store";
-import type { Products } from "../types/ProductTypes";
+import type { Products } from "../types/product.type";
 
 export const toggleWishlistAtom = atom(null, (get, set, product: Products) => {
   const wishlists = get(wishlistAtom);

@@ -1,4 +1,4 @@
-import type { Products } from "./ProductTypes";
+import type { Products } from "./product.type";
 
 export type Categories = {
   slug: string;

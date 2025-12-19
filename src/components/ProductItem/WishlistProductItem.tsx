@@ -1,7 +1,7 @@
-import type { Products } from "../../types/ProductTypes";
+import type { Products } from "../../types/product.type";
 import { useSetAtom } from "jotai";
 import TrashIcon from "../../assets/delete-icon.svg";
-import { addToCartAtom } from "../../atom/cartActionStore";
+import { addToCartAtom } from "../../atom/cartAction.store";
 import { Link } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 

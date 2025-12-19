@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LeftArrow1 from "../../assets/arrow-left-1.svg";
 import RightArrow from "../../assets/arrow-right-icon.svg";
-import type { Products } from "../../types/ProductTypes";
+import type {ProductsResponse } from "../../types/product.type";
 
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import { useAtomValue } from "jotai";
@@ -10,7 +10,7 @@ import ProductExplorationItem from "../../components/ProductItem/ProductExplorat
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";
-const ProductsExplorationList = ({ products }: { products: Products[] }) => {
+const ProductsExplorationList = ({ products }: { products: ProductsResponse }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,7 +32,7 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
     handleResize();
   }, []);
 
-  const totalGroups = Math.ceil(products.length / itemsPerPage);
+  const totalGroups = Math.ceil(products.products.length / itemsPerPage);
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + totalGroups) % totalGroups);
   };
@@ -43,7 +43,7 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
   const startIndex = currentIndex * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const currentProducts = products.slice(startIndex, endIndex);
+  const currentProducts = products.products.slice(startIndex, endIndex);
   return (
     <section className="mt-17 p-4 lg:p-0">
       <div className="flex flex-row items-end justify-between">

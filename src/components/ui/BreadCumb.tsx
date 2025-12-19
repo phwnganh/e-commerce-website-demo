@@ -1,4 +1,4 @@
-import type { BreadCumpItems } from "../../types/BreadCumbTypes";
+import type { BreadCumpItems } from "../../types/breadcrumb.type";
 import { NavLink } from "react-router-dom";
 
 const BreadCumb = ({

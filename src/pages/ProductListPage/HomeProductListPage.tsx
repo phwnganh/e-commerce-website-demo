@@ -1,4 +1,4 @@
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import React, { useEffect, useRef, useState } from "react";
 import { productsAtom, wishlistAtom } from "../../atom/store";
 import { HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
@@ -12,17 +12,9 @@ const HomeProductListPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const loadMoreRef = useRef(null);
   const wishlists = useAtomValue(wishlistAtom);
-  const setProducts = useSetAtom(productsAtom);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((res) => {
-        setProducts(res.products);
-      });
-  }, []);
-  useEffect(() => {
-    if (visibleCount >= products.length || isLoading) {
+    if (visibleCount >= products.products.length || isLoading) {
       return;
     }
     const observer = new IntersectionObserver(
@@ -43,7 +35,7 @@ const HomeProductListPage = () => {
       observer.observe(loadMoreRef.current);
     }
     return () => observer.disconnect();
-  }, [visibleCount, products.length, isLoading]);
+  }, [visibleCount, products.products.length, isLoading]);
   return (
     <main className="max-w-[1170px] mx-auto">
       <section className="mb-35 px-4 lg:px-0">
@@ -55,7 +47,7 @@ const HomeProductListPage = () => {
         />
 
         <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-4">
-          {products.slice(0, visibleCount).map((product) => (
+          {products.products.slice(0, visibleCount).map((product) => (
             <React.Fragment key={product.id}>
               <HomeProductItem product={product} wishlists={wishlists} />
             </React.Fragment>

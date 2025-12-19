@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 import { cartAtom, tempCartAtom, wishlistAtom } from "./store";
-import type { CartItems, Products } from "../types/ProductTypes";
+import type { CartItems, Products } from "../types/product.type";
 
 export const addToCartAtom = atom(null, (get, set, product: Products) => {
   const carts = get(cartAtom);

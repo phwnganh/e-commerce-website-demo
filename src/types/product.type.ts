@@ -17,6 +17,10 @@ export type Products = {
   };
 };
 
+export type ProductsResponse = {
+  products: Products[]
+}
+
 export type CartItems = {
   id: string;
   title: string;

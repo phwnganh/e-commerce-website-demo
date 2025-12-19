@@ -1,13 +1,13 @@
 import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
-import type { Products } from "../../types/ProductTypes";
+import type { Products } from "../../types/product.type";
 import { Link, useNavigate } from "react-router-dom";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom } from "../../atom/store";
 import { HOMEPAGE } from "../../constants/route.constants";
 import StarRating from "../ui/StarRating";
-import { addToCartAtom } from "../../atom/cartActionStore";
-import { toggleWishlistAtom } from "../../atom/wishlistActionStore";
+import { addToCartAtom } from "../../atom/cartAction.store";
+import { toggleWishlistAtom } from "../../atom/wishlistAction.store";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
 
 const ProductExplorationItem = ({

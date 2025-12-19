@@ -6,31 +6,12 @@ import LimitedOfferBanner from "../../components/HomeComponent/LimitedOfferBanne
 import NewProductsAdvertisement from "../../components/HomeComponent/NewProductsAdvertisement";
 import ProductsExplorationList from "../../components/HomeComponent/ProductsExplorationList";
 import TodaysProductsList from "../../components/HomeComponent/TodaysProductsList";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import { categoriesAtom, productsAtom } from "../../atom/store";
-import { useEffect } from "react";
 
 const HomePage = () => {
   const products = useAtomValue(productsAtom)
   const categories = useAtomValue(categoriesAtom)
-  const setProducts = useSetAtom(productsAtom)
-  const setCategories = useSetAtom(categoriesAtom)
-
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((res) => {
-        setProducts(res.products);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch("https://dummyjson.com/products/categories")
-      .then((res) => res.json())
-      .then((res) => {
-        setCategories(res);
-      });
-  }, []);
   return (
     <main className="max-w-[1170px] mx-auto">
       <Banner />
