@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import CategoryProductListSection from "../../components/ProductListComponent/ProductListSection";
+import CategoryProductListSection from "../../components/ProductListComponent/CategoryProductListSection";
 import BreadCumb from "../../components/ui/BreadCumb";
 import {
   CATEGORYPAGE,

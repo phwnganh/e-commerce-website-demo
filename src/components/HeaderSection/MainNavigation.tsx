@@ -14,12 +14,12 @@ import Wishlist from "../../assets/Wishlist.svg";
 import { useEffect, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 import { cartAtom, userAtom, wishlistAtom } from "../../atom/store";
-import UserDropdown from "../ui/UserDropdown";
+import UserDropdown from "../UserDropdown";
 import ActiveNavLink from "../ui/ActiveNavLink";
 import IconBadge from "../ui/IconBadge";
 import SearchBar from "../ui/SearchBar";
 import UserAvatarButton from "../ui/UserAvatarButton";
-import MobileMenuModalDialog from "../ui/MobileMenuModalDialog";
+import MobileMenuModalDialog from "./MobileMenuModalDialog";
 const MainNavigation = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = useAtomValue(userAtom);

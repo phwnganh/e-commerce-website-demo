@@ -1,4 +1,4 @@
-import ActiveNavLink from "./ActiveNavLink";
+import ActiveNavLink from "../ui/ActiveNavLink";
 import {
   ABOUT,
   CONTACT,

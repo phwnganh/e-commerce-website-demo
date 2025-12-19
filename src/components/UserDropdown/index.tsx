@@ -6,7 +6,7 @@ import LogoutIcon from "../../assets/logout-icon.svg";
 import { userAtom } from "../../atom/store";
 import { LOGIN, ACCOUNT } from "../../constants/route.constants";
 import { useNavigate } from "react-router-dom";
-import UserDropdownItem from "../UserDropdown/UserDropdownItem";
+import UserDropdownItem from "./UserDropdownItem";
 
 const UserDropdown = () => {
   const USER_MENU_ITEMS = [
