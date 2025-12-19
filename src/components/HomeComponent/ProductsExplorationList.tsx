@@ -16,12 +16,17 @@ const ProductsExplorationList = ({ products }: { products: Products[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(8);
 
+  // lí do sử dụng handleresize là để lắng nghe sự thay đổi viewport khi người dùng resize hoặc chuyển sang mobile. khi viewpoint thay đổi, cập nhật lại state itemsperpage để số lượng item hiển thị trên mỗi trang luôn phù hợp với kích thước màn hình, đảm bảo pagination và layout responsive đúng theo design
+  // thay vì chọn fix cứng itemsperpage -> dùng handleresize - linh hoạt giữa viewpoint desktop và mobile
+  // chọn cách fix cứng itemsperpage -> dẫn đến pagination không được cập nhật khi viewport thay đổi
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setItemsPerPage(8);
+        setCurrentIndex(0);
       } else {
         setItemsPerPage(4);
+        setCurrentIndex(0);
       }
     };
     handleResize();
