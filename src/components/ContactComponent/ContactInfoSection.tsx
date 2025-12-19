@@ -2,7 +2,7 @@ import PhoneIcon from "../../assets/phone-icon.svg";
 import MailIcon from "../../assets/mail-icon.svg";
 const ContactInfoSection = () => {
   return (
-    <section className="shadow-[0_1px_13px_0_#0000000D] rounded-sm px-[35px] pt-10 pb-[51px]">
+    <section className="shadow-[0_1px_13px_0_#0000000D] rounded-sm px-4 md:px-[35px] pt-5 md:pt-10 pb-8 md:pb-[51px]">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <div className="flex gap-4 items-center">

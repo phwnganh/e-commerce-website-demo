@@ -7,7 +7,7 @@ const ActiveNavLink = ({
   children,
 }: {
   to: string;
-  onClick?: () => void
+  onClick?: () => void;
   children: React.ReactNode;
 }) => {
   return (
@@ -15,9 +15,11 @@ const ActiveNavLink = ({
       to={to}
       onClick={onClick}
       className={({ isActive }) =>
-        `${
-          isActive && "border-b border-b-black-opacity-80"
-        } hover:border-b hover:border-b-black-opacity-80`
+        `
+  border-b border-b-transparent
+  hover:border-b-black-opacity-80
+  ${isActive ? "border-b-black-opacity-80" : ""}
+  `
       }
     >
       {children}

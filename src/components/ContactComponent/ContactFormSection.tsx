@@ -2,7 +2,7 @@ import PrimaryCustomButton from "../ui/PrimaryCustomButton";
 
 const ContactFormSection = () => {
   return (
-    <section className="shadow-[0_1px_13px_0_#0000000D] rounded-sm py-10 px-8">
+    <section className="shadow-[0_1px_13px_0_#0000000D] rounded-sm pt-5 md:py-10 px-2 md:px-8">
       <div className="flex flex-col gap-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <input
