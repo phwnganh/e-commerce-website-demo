@@ -16,10 +16,10 @@ export const fetchAllProducts = async (): Promise<ProductsResponse> => {
 };
 
 export const fetchProductsByCategory = async (
-  category: CategoryDetail
+  slug: string
 ): Promise<CategoryDetail> => {
   try {
-    const res = await fetch(`${API_CATEGORY_PRODUCTS_URL}/${category}`);
+    const res = await fetch(`${API_CATEGORY_PRODUCTS_URL}${slug}`);
     return res.json();
   } catch (error) {
     console.error("Error fetching products by category:", error);

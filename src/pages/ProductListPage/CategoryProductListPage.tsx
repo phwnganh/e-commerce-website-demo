@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import CategoryProductListSection from "../../components/ProductListComponent/CategoryProductListSection";
 import BreadCumb from "../../components/ui/BreadCumb";
 import {
@@ -7,20 +6,13 @@ import {
   HOMEPAGE,
   PRODUCTPAGE,
 } from "../../constants/route.constants";
-import type { CategoryDetail } from "../../types/category.type";
-import { API_CATEGORY_PRODUCTS_URL } from "../../constants/api.constants";
+import { useAtomValue } from "jotai";
+import { productsByCategoryAtom } from "../../atom/store";
 
 const CaategoryProductListPage = () => {
   const { slug } = useParams();
-  const [categoryData, setCategoryData] = useState<CategoryDetail | null>(null);
-
-  useEffect(() => {
-    fetch(`${API_CATEGORY_PRODUCTS_URL}${slug}`)
-      .then((res) => res.json())
-      .then((res) => setCategoryData(res));
-  }, [slug]);
-  if (!slug) return;
-  if (!categoryData) return;
+  if (!slug) return null;
+  const categoryData = useAtomValue(productsByCategoryAtom(slug));
   return (
     <main className="max-w-[1170px] mx-auto">
       <BreadCumb
