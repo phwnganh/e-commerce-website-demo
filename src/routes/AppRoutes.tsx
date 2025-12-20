@@ -18,9 +18,16 @@ import {
   USER_PROFILE,
   WISHLIST,
 } from "../constants/route.constants";
+import MainLayout from "../components/layouts/MainLayout";
+import HomeLayout from "../components/layouts/HomeLayout";
+
+// nguyên nhân tại sao khi chạy đến product detail load lại 2 lần
+// là do: product detail đc wrap bên trong component parent Homelayout
+// trong khi homelayout lại có cả index route "/" và "/home"
+// nên khi reload lại url product detail -> react router phải resolve từ route cha index và /home trước khi match chính xác route /:productId
+// trong quá trình resolve, các page được suspense lazy làm cho suspense fallback bị trigger nhiều hơn 1 lần
 
 const NotFound = lazy(() => import("../pages/NotFoundPage"));
-const MainLayout = lazy(() => import("../components/layouts/MainLayout"));
 const LoginPage = lazy(() => import("../pages/PreLoginPage/LoginPage"));
 const SignupPage = lazy(() => import("../pages/PreLoginPage/SignupPage"));
 const HomePage = lazy(() => import("../pages/HomePage"));
@@ -82,12 +89,17 @@ const AppRoutes = () => {
           <Route path={RETURNS} element={<ReturnSection />} />
           <Route path={CANCELLATIONS} element={<CancellationSection />} />
         </Route>
-        <Route path={HOMEPAGE} element={<HomePage />} />
-        <Route
-          path={`${HOMEPAGE}/:productId`}
-          element={<ProductDetailPage />}
-        />
-        <Route index element={<HomePage />} />
+        <Route element={<HomeLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path={`:productId`} element={<ProductDetailPage />} />
+
+          <Route path={HOMEPAGE}>
+            <Route index element={<HomePage />} />
+            <Route path={`:productId`} element={<ProductDetailPage />} />
+          </Route>
+        </Route>
+
+        <Route index element={<HomeLayout />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

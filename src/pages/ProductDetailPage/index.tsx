@@ -6,6 +6,7 @@ import type { Products } from "../../types/product.type";
 import BreadCumb from "../../components/ui/BreadCumb";
 import { HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
 import { API_PRODUCTS_URL } from "../../constants/api.constants";
+import LoadingSpin from "../../components/ui/LoadingSpin";
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
@@ -17,7 +18,9 @@ const ProductDetailPage = () => {
   }, [productId]);
 
   if (!productData) {
-    return;
+    return <div className="min-h-[60vh] flex items-center justify-center">
+      <LoadingSpin />
+    </div>
   }
   return (
     <main className="max-w-[1170px] mx-auto px-4 lg:px-0">
