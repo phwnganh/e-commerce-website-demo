@@ -58,11 +58,11 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
           handleNext={handleNext}
         />
       </div>
-      <div className="mt-15 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-7">
+      <div className="mt-10 md:mt-15 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-7">
         {currentCategories.map((category, index) => (
           <button
             onClick={() => navigate(`${PRODUCTPAGE}/${category.slug}`)}
-            className="flex flex-col gap-4 border justify-center items-center rounded-sm border-black-opacity-30 py-6 px-14 hover:bg-button-2 hover:border-button-2 group cursor-pointer"
+            className="flex flex-col gap-4 border justify-center items-center rounded-sm border-black-opacity-30 py-2 sm:py-4 md:py-6 px-4 sm:px-8 md:px-14 hover:bg-button-2 hover:border-button-2 group cursor-pointer"
             key={index}
           >
             <div className="flex justify-center items-center aspect-square">
