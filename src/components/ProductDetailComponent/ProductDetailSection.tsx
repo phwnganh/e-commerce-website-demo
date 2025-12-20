@@ -19,11 +19,11 @@ const ProductDetailSection = ({ productData }: { productData: Products }) => {
   const handleAddToWishlist = useSetAtom(toggleWishlistAtom);
   const [quantity, setQuantity] = useState(1);
   const setTempCart = useSetAtom(tempCartAtom);
-  const [isImageSelected, setIsImageSelected] = useState(productData.thumbnail);
+  const [isImageSelected, setIsImageSelected] = useState(productData.images[0]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setIsImageSelected(productData.thumbnail);
+    setIsImageSelected(productData.images[0]);
   }, [productData.id])
   const handleIncreaseQuantity = () => {
     setQuantity((prev) => prev + 1);
