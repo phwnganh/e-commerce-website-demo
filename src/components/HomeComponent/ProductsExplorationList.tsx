@@ -24,7 +24,7 @@ const ProductsExplorationList = ({
   // chọn cách fix cứng itemsperpage -> dẫn đến pagination không được cập nhật khi viewport thay đổi
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 768) {
         setItemsPerPage(8);
       } else {
         setItemsPerPage(4);
@@ -32,6 +32,8 @@ const ProductsExplorationList = ({
       setCurrentIndex(0);
     };
     handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const totalGroups = Math.ceil(products.products.length / itemsPerPage);
