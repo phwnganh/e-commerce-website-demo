@@ -34,11 +34,11 @@ const OurTeamSection = () => {
           />
         </div>
         <div className="flex flex-col gap-1 md:gap-2">
-          <h4 className="font-medium text-xl md:text-3xl truncate">
+          <h4 className="font-medium text-base md:text-3xl line-clamp-1">
             {member.name}
           </h4>
-          <p className="text-sm md:text-base truncate">{member.role}</p>
-          <div className="mt-1 md:mt-4 flex gap-4">
+          <p className="text-xs md:text-base line-clamp-1">{member.role}</p>
+          <div className="mt-1 md:mt-4 flex gap-2 md:gap-4">
             <img src={TwitterIcon} alt="twitter-icon" className="w-4 h-4 md:w-6 md:h-6"/>
             <img src={InstagramIcon} alt="instagram-icon" className="w-4 h-4 md:w-6 md:h-6"/>
             <img src={LinkdlinIcon} alt="linkdlin-icon" className="w-4 h-4 md:w-6 md:h-6" />

@@ -37,9 +37,9 @@ const KeyFiguresSection = () => {
       {KEY_FIGURES.map((figure, index) => (
         <div
           key={index}
-          className="border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]"
+          className=" border border-black-opacity-30 flex justify-center items-center rounded-sm group hover:bg-button-2 hover:border-button-2 hover:shadow-[0_2px_10px_2px_#00000033]"
         >
-          <div className="flex flex-col gap-3 items-center px-2 sm:px-0 py-7.5">
+          <div className="flex flex-col gap-3 items-center px-2 py-4 sm:px-0 sm:py-7.5">
             <div className="mb-3">
               <CustomRoundedComponent>{figure.icon}</CustomRoundedComponent>
             </div>
@@ -47,7 +47,7 @@ const KeyFiguresSection = () => {
             <h1 className="font-bold text-xl md:text-3xl text-center md:text-start group-hover:text-white">
               {figure.value}
             </h1>
-            <p className="group-hover:text-white text-sm md:text-base">
+            <p className="group-hover:text-white text-sm md:text-base text-center">
               {figure.label}
             </p>
           </div>
