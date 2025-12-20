@@ -22,11 +22,10 @@ const TodaysProductsList = ({ products }: { products: ProductsResponse }) => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
         setItemsPerPage(4);
-        setCurrentIndex(0);
       } else {
         setItemsPerPage(2);
-        setCurrentIndex(0);
       }
+      setCurrentIndex(0);
     };
     handleResize();
     window.addEventListener("resize", handleResize);

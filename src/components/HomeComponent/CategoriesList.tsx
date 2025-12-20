@@ -16,14 +16,12 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setItemsPerPage(6);
-        setCurrentIndex(0);
       } else if (window.innerWidth >= 768) {
         setItemsPerPage(4);
-        setCurrentIndex(0);
-      } else if (window.innerWidth >= 576) {
+      } else {
         setItemsPerPage(2);
-        setCurrentIndex(0);
       }
+      setCurrentIndex(0);
     };
     handleResize();
     window.addEventListener("resize", handleResize);

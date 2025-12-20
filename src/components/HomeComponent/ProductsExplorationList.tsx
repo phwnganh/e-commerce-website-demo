@@ -26,11 +26,10 @@ const ProductsExplorationList = ({
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setItemsPerPage(8);
-        setCurrentIndex(0);
       } else {
         setItemsPerPage(4);
-        setCurrentIndex(0);
       }
+      setCurrentIndex(0);
     };
     handleResize();
   }, []);
