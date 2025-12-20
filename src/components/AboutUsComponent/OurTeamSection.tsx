@@ -23,7 +23,7 @@ const OurTeamSection = () => {
     }
   ]
   return (
-    <section className="mt-35 grid grid-cols-3 gap-7.5">
+    <section className="mt-15 md:mt-35 grid grid-cols-3 gap-7.5">
       {TEAM_MEMBERS.map((member, index) => (
       <div className="flex flex-col gap-2 md:gap-8" key={index}>
         <div className="rounded-sm bg-secondary-2 aspect-3/4 overflow-hidden pt-2 md:pt-9.5">

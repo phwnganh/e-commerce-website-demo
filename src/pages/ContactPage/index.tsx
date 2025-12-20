@@ -12,7 +12,7 @@ const ContactPage = () => {
           { label: "Contact", to: CONTACT },
         ]}
       />
-      <div className="flex flex-col-reverse md:flex-row gap-[30px] mt-20 mb-35">
+      <div className="flex flex-col-reverse md:flex-row gap-[30px] mt-11 md:mt-20 mb:15 md:mb-35">
         <ContactInfoSection />
         <ContactFormSection />
       </div>

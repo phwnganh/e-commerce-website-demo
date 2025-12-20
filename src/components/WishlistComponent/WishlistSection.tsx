@@ -12,7 +12,7 @@ const WishlistSection = () => {
 
   const handleMoveAllToBag = useSetAtom(moveAllProductsToBagAtom)
   return (
-    <section className="mt-20 px-4 lg:px-0">
+    <section className="mt-10 md:mt-20 px-4 lg:px-0">
       <div className="flex flex-row justify-between items-center">
         <p className="text-base md:text-xl">Wishlist ({wishlists.length})</p>
         <SecondaryCustomButton onClick={handleMoveAllToBag}>
@@ -20,7 +20,7 @@ const WishlistSection = () => {
         </SecondaryCustomButton>
       </div>
 
-      <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
+      <div className="mt-9 md:mt-15 grid grid-cols-2 md:grid-cols-4 gap-7">
         {wishlists.slice(0, 4).map((product) => (
           <React.Fragment key={product.id}>
             <WishlistProductItem

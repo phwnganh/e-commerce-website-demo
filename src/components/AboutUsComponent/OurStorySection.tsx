@@ -27,7 +27,7 @@ const OurStorySection = () => {
     //     />
     //   </div>
     // </section>
-    <section className="relative mt-10">
+    <section className="relative mt-5 md:mt-10">
       <div className="lg:min-h-screen max-w-[1170px] flex items-start lg:items-center justify-center lg:justify-start mx-auto relative">
         <div className="flex flex-col gap-4 md:gap-6 max-w-lg">
           <h1 className="mt-4 text-4xl md:text-[54px] font-semibold text-justify">

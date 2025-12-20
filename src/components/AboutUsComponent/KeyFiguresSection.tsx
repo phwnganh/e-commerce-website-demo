@@ -33,7 +33,7 @@ const KeyFiguresSection = () => {
     },
   ];
   return (
-    <section className="mt-35 grid grid-cols-2 md:grid-cols-4 gap-7.5">
+    <section className="mt-15 md:mt-35 grid grid-cols-2 md:grid-cols-4 gap-7.5">
       {KEY_FIGURES.map((figure, index) => (
         <div
           key={index}

@@ -8,7 +8,7 @@ import BreadCumb from "../../components/ui/BreadCumb";
 const AccountPage = () => {
   const user = useAtomValue(userAtom);
   return (
-    <main className="max-w-[1170px] mx-auto mb-35 px-4 lg:px-0">
+    <main className="max-w-[1170px] mx-auto mb-15 md:mb-35 px-4 lg:px-0">
       <div className="flex flex-col sm:flex-row gap-4 justify-between">
         <BreadCumb
           items={[
@@ -25,7 +25,7 @@ const AccountPage = () => {
         </p>
       </div>
 
-      <div className="flex flex-row gap-25 mt-20 justify-between">
+      <div className="flex flex-row gap-25 mt-11 md:mt-20 justify-between">
         <AccountNavigation />
         <AccountSectionLayout />
       </div>

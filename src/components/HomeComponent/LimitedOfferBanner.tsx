@@ -3,7 +3,7 @@ import LimitedBannerCustomButton from "../../components/ui/LimitedBannerCustomBu
 import LimitedOfferBannerCountdown from "../../components/ui/LimitedOfferBannerCountdown";
 const LimitedOfferBanner = () => {
   return (
-    <section className="mt-35 bg-black">
+    <section className="mt-15 md:mt-35 bg-black">
       <div className="flex flex-col md:flex-row gap-7 items-center p-4 md:p-10">
         <div className="flex flex-col gap-6 md:gap-8 basis-[50%] md:basis-[40%] items-start">
           <p className="text-button-1 font-semibold text-sm md:text-base">

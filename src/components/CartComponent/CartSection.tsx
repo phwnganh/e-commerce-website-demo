@@ -88,8 +88,8 @@ const CartSection = () => {
   };
 
   return (
-    <section className="mb-11 md:mb-35">
-      <div className="mt-20">
+    <section className="mb-15 md:mb-35">
+      <div className="mt-10 md:mt-20">
         <div className="flex flex-col gap-10">
           <div className="grid grid-cols-4 md:pl-10 py-3 md:py-6 rounded-sm shadow-[0px_1px_13px_0px_#0000000D]">
             <div className="text-sm md:text-base">Products</div>
