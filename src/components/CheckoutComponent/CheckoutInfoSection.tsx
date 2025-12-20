@@ -1,9 +1,9 @@
 import { useAtomValue } from "jotai";
 import { cartAtom, tempCartAtom } from "../../atom/store";
-import Bkash from "../../assets/Bkash.svg";
-import Visa from "../../assets/Visa.svg";
-import MasterCard from "../../assets/Mastercard.svg";
-import Nagad from "../../assets/Nagad.svg";
+import Bkash from "../../assets/bkash.svg";
+import Visa from "../../assets/visa.svg";
+import MasterCard from "../../assets/mastercard.svg";
+import Nagad from "../../assets/nagad.svg";
 import PrimaryCustomButton from "../ui/PrimaryCustomButton";
 const CheckoutInfoSection = () => {
   const cart = useAtomValue(cartAtom);
