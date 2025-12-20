@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LeftArrow1 from "../../assets/arrow-left-1.svg";
-import RightArrow from "../../assets/arrow-right-icon.svg";
-import type {ProductsResponse } from "../../types/product.type";
+import type { ProductsResponse } from "../../types/product.type";
 
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import { useAtomValue } from "jotai";
@@ -10,7 +8,12 @@ import ProductExplorationItem from "../../components/ProductItem/ProductExplorat
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";
-const ProductsExplorationList = ({ products }: { products: ProductsResponse }) => {
+import ArrowButtonsComponent from "../ui/ArrowButtonsComponent";
+const ProductsExplorationList = ({
+  products,
+}: {
+  products: ProductsResponse;
+}) => {
   const wishlists = useAtomValue(wishlistAtom);
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -54,30 +57,12 @@ const ProductsExplorationList = ({ products }: { products: ProductsResponse }) =
           </h3>
         </div>
 
-        <div className="flex flex-row gap-2">
-          <button
-            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center ${
-              currentIndex === 0
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-200 cursor-pointer"
-            }`}
-            disabled={currentIndex === 0}
-            onClick={handlePrev}
-          >
-            <img src={LeftArrow1} alt="left-arrow" />
-          </button>
-          <button
-            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center ${
-              currentIndex === totalGroups - 1
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-200 cursor-pointer"
-            }`}
-            disabled={currentIndex === totalGroups - 1}
-            onClick={handleNext}
-          >
-            <img src={RightArrow} alt="right-arrow" />
-          </button>
-        </div>
+        <ArrowButtonsComponent
+          handlePrev={handlePrev}
+          currentIndex={currentIndex}
+          totalGroups={totalGroups}
+          handleNext={handleNext}
+        />
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-7 mt-15">

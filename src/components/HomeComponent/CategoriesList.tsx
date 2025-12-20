@@ -1,11 +1,10 @@
-import LeftArrow1 from "../../assets/arrow-left-1.svg";
-import RightArrow from "../../assets/arrow-right-icon.svg";
 import Cosmetics from "../../assets/cosmetics.png";
 import type { Categories } from "../../types/category.type";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";
 import { useEffect, useState } from "react";
+import ArrowButtonsComponent from "../ui/ArrowButtonsComponent";
 const CategoriesList = ({ categories }: { categories: Categories[] }) => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -52,30 +51,12 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
           </h3>
         </div>
 
-        <div className="flex flex-row gap-2">
-          <button
-            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer ${
-              currentIndex === 0
-                ? "opacity-50 cursor-not-allowed"
-                : "hover: bg-gray-200 cursor-pointer"
-            }`}
-            disabled={currentIndex === 0}
-            onClick={handlePrev}
-          >
-            <img src={LeftArrow1} alt="left-arrow" />
-          </button>
-          <button
-            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center hover:bg-gray-200 transition-colors cursor-pointer ${
-              currentIndex === totalGroups - 1
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-200 cursor-pointer"
-            }`}
-            disabled={currentIndex === totalGroups - 1}
-            onClick={handleNext}
-          >
-            <img src={RightArrow} alt="right-arrow" />
-          </button>
-        </div>
+        <ArrowButtonsComponent
+          handlePrev={handlePrev}
+          currentIndex={currentIndex}
+          totalGroups={totalGroups}
+          handleNext={handleNext}
+        />
       </div>
       <div className="mt-15 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-7">
         {currentCategories.map((category, index) => (

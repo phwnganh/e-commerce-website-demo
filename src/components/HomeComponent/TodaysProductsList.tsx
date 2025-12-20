@@ -1,5 +1,3 @@
-import LeftArrow1 from "../../assets/arrow-left-1.svg";
-import RightArrow from "../../assets/arrow-right-icon.svg";
 import type { ProductsResponse } from "../../types/product.type";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
@@ -10,13 +8,14 @@ import { PRODUCTPAGE } from "../../constants/route.constants";
 import Countdown from "../../components/ui/TodayProductsCountdown";
 import SectionHeader from "../../components/ui/SectionHeader";
 import { useEffect, useState } from "react";
+import ArrowButtonsComponent from "../ui/ArrowButtonsComponent";
 const TodaysProductsList = ({ products }: { products: ProductsResponse }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const navigate = useNavigate();
   // const itemsPerPage = 4;
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [currentIndex, setCurrentIndex] = useState(0);
- // lí do sử dụng handleresize là để lắng nghe sự thay đổi viewport khi người dùng resize hoặc chuyển sang mobile. khi viewpoint thay đổi, cập nhật lại state itemsperpage để số lượng item hiển thị trên mỗi trang luôn phù hợp với kích thước màn hình, đảm bảo pagination và layout responsive đúng theo design
+  // lí do sử dụng handleresize là để lắng nghe sự thay đổi viewport khi người dùng resize hoặc chuyển sang mobile. khi viewpoint thay đổi, cập nhật lại state itemsperpage để số lượng item hiển thị trên mỗi trang luôn phù hợp với kích thước màn hình, đảm bảo pagination và layout responsive đúng theo design
   // thay vì chọn fix cứng itemsperpage -> dùng handleresize - linh hoạt giữa viewpoint desktop và mobile
   // chọn cách fix cứng itemsperpage -> dẫn đến pagination không được cập nhật khi viewport thay đổi
   useEffect(() => {
@@ -59,30 +58,12 @@ const TodaysProductsList = ({ products }: { products: ProductsResponse }) => {
           <Countdown />
         </div>
 
-        <div className="flex flex-row gap-2">
-          <button
-            onClick={handlePrev}
-            disabled={currentIndex === 0}
-            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center ${
-              currentIndex === 0
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-200 cursor-pointer"
-            }`}
-          >
-            <img src={LeftArrow1} alt="left-arrow" />
-          </button>
-          <button
-            onClick={handleNext}
-            disabled={currentIndex === totalGroups - 1}
-            className={`bg-secondary-2 rounded-full w-12 h-12 flex justify-center items-center ${
-              currentIndex === totalGroups - 1
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-200 cursor-pointer"
-            }`}
-          >
-            <img src={RightArrow} alt="right-arrow" />
-          </button>
-        </div>
+        <ArrowButtonsComponent
+          handlePrev={handlePrev}
+          currentIndex={currentIndex}
+          totalGroups={totalGroups}
+          handleNext={handleNext}
+        />
       </div>
       <div className="mt-10">
         <div className="overflow-x-hidden">
