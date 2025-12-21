@@ -1,7 +1,7 @@
 import { CART, LOGIN, WISHLIST } from "./route.constants";
-import CartIcon from "../assets/cart1.svg";
+import CartIcon from "../assets/cart-icon.svg";
 
-import Wishlist from "../assets/wishlist.svg";
+import Wishlist from "../assets/wishlist-icon.svg";
 import type { NavIcon } from "../types/navigation.type";
 export const navIcons = ({
   wishlistCount,

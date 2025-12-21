@@ -2,7 +2,7 @@ import type { Products } from "../../types/product.type";
 import StarRating from "../../components/ui/StarRating";
 import PlusIcon from "../../assets/plus-icon.svg";
 import MinusIcon from "../../assets/minus-icon.svg";
-import HeartIcon from "../../assets/Wishlist.svg";
+import HeartIcon from "../../assets/wishlist-icon.svg";
 import DeliveryIcon from "../../assets/delivery-icon.svg";
 import ReturnDeliveryIcon from "../../assets/return-icon.svg";
 import { useAtomValue, useSetAtom } from "jotai";
