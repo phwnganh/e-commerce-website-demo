@@ -2,20 +2,17 @@ import ActiveNavLink from "../ui/ActiveNavLink";
 import {
   ABOUT,
   ACCOUNT,
-  CART,
   CONTACT,
   HOMEPAGE,
   LOGIN,
-  WISHLIST,
 } from "../../constants/route.constants";
 import { NavLink } from "react-router-dom";
-import IconBadge from "../ui/IconBadge";
-import CartIcon from "../../assets/Cart1.svg";
-import Wishlist from "../../assets/Wishlist.svg";
 import type { Carts, Products } from "../../types/product.type";
 import UserAvatarButton from "../ui/UserAvatarButton";
 import { useLogout } from "../../hooks/useLogout";
 import LogoutIcon from "../icons/LogoutIcon";
+import { navIcons } from "../../constants/navIcons.constants";
+import NavIconButton from "./NavIconButton";
 
 const MobileMenuModalDialog = ({
   open,
@@ -32,6 +29,10 @@ const MobileMenuModalDialog = ({
 }) => {
   const isUserActive = location.pathname === ACCOUNT;
   const handleLogout = useLogout();
+  const navIconNotifications = navIcons({
+    wishlistCount: wishlist.length,
+    cartCount: carts.products.length,
+  });
   if (!open) return null;
   return (
     <div
@@ -52,22 +53,17 @@ const MobileMenuModalDialog = ({
           <h3 className="text-base font-bold">Exclusive</h3>
           {user && (
             <div className="flex items-center gap-4">
-              <NavLink
-                to={WISHLIST}
-                onClick={onClose}
-                className="rounded-full relative"
-              >
-                <img src={Wishlist} alt="heart-icon" />
-                {user && <IconBadge count={wishlist.length} hideIfZero />}
-              </NavLink>
-              <NavLink
-                to={CART}
-                onClick={onClose}
-                className="rounded-full relative"
-              >
-                <img src={CartIcon} alt="cart-icon" />
-                <IconBadge count={carts.products.length} hideIfZero />
-              </NavLink>
+              {navIconNotifications.map((item, index) => (
+                <NavIconButton
+                  key={index}
+                  to={item.getTo(true)}
+                  onClick={onClose}
+                  icon={item.icon}
+                  alt={item.alt}
+                  showBadge={true}
+                  badgeCount={item.getCount?.()}
+                />
+              ))}
             </div>
           )}
 

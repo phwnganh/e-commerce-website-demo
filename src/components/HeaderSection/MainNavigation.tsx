@@ -1,26 +1,23 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   ABOUT,
-  CART,
   CONTACT,
   HOMEPAGE,
   LOGIN,
   ACCOUNT,
-  WISHLIST,
 } from "../../constants/route.constants";
-import CartIcon from "../../assets/Cart1.svg";
 
-import Wishlist from "../../assets/Wishlist.svg";
 import { useEffect, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 import { cartAtom, userAtom, wishlistAtom } from "../../atom/store";
 import UserDropdown from "../UserDropdown";
 import ActiveNavLink from "../ui/ActiveNavLink";
-import IconBadge from "../ui/IconBadge";
 import SearchBar from "../ui/SearchBar";
 import UserAvatarButton from "../ui/UserAvatarButton";
 import MobileMenuModalDialog from "./MobileMenuModalDialog";
 import HamburgerIcon from "../icons/HamburgerIcon";
+import NavIconButton from "./NavIconButton";
+import { navIcons } from "../../constants/navIcons.constants";
 const MainNavigation = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = useAtomValue(userAtom);
@@ -31,6 +28,12 @@ const MainNavigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const isUserActive = isDropdownOpen || location.pathname === ACCOUNT;
+  const isLoggedIn = Boolean(user);
+
+  const navIconNotifications = navIcons({
+    wishlistCount: wishlists.length,
+    cartCount: carts.products.length,
+  });
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -83,18 +86,18 @@ const MainNavigation = () => {
           <HamburgerIcon />
         </button>
         <div className="hidden sm:flex gap-4">
-          <NavLink
-            to={user ? WISHLIST : LOGIN}
-            className="rounded-full relative"
-          >
-            <img src={Wishlist} alt="heart-icon" />
-            {user && <IconBadge count={wishlists.length} hideIfZero />}
-          </NavLink>
-          <NavLink to={user ? CART : LOGIN} className="rounded-full relative">
-            <img src={CartIcon} alt="cart-icon" />
-            {user && <IconBadge count={carts.products.length} hideIfZero />}
-          </NavLink>
-          {user && (
+          {navIconNotifications.map((item, index) => (
+            <NavIconButton
+              key={index}
+              to={item.getTo(isLoggedIn)}
+              icon={item.icon}
+              alt={item.alt}
+              showBadge={isLoggedIn && Boolean(item.getCount)}
+              badgeCount={item.getCount?.()}
+            />
+          ))}
+
+          {isLoggedIn && (
             <div ref={dropdownRef} className="relative">
               <UserAvatarButton
                 onClick={handleUserClick}
