@@ -70,7 +70,7 @@ const CategoriesList = ({ categories }: { categories: Categories[] }) => {
                 className="w-full h-full object-cover group-hover:invert group-hover:brightness-0 group-hover:filter"
               />
             </div>
-            <p className="text-center text-sm md:text-base group-hover:text-text-1">
+            <p className="text-center text-sm md:text-base group-hover:text-text-1 line-clamp-1">
               {category.name}
             </p>
           </button>
