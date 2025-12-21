@@ -1,12 +1,11 @@
-import { useSetAtom } from "jotai";
 import WhiteUserIcon from "../../assets/white-user-icon.svg";
 import CancelIcon from "../../assets/cancel-icon.svg";
 import ReviewsIcon from "../../assets/reviews-icon.svg";
 import LogoutIcon from "../../assets/logout-icon.svg";
-import { userAtom } from "../../atom/store";
-import { LOGIN, ACCOUNT } from "../../constants/route.constants";
+import { ACCOUNT } from "../../constants/route.constants";
 import { useNavigate } from "react-router-dom";
 import UserDropdownItem from "./UserDropdownItem";
+import { useLogout } from "../../hooks/useLogout";
 
 const UserDropdown = () => {
   const USER_MENU_ITEMS = [
@@ -29,12 +28,8 @@ const UserDropdown = () => {
       action: "logout",
     },
   ];
-  const setUser = useSetAtom(userAtom);
   const navigate = useNavigate();
-  const handleLogout = () => {
-    setUser(null);
-    navigate(LOGIN);
-  };
+  const handleLogout = useLogout()
   return (
     <div className="absolute top-9 right-0 z-10">
       <div

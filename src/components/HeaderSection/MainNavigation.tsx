@@ -20,6 +20,7 @@ import IconBadge from "../ui/IconBadge";
 import SearchBar from "../ui/SearchBar";
 import UserAvatarButton from "../ui/UserAvatarButton";
 import MobileMenuModalDialog from "./MobileMenuModalDialog";
+import HamburgerIcon from "../icons/HamburgerIcon";
 const MainNavigation = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = useAtomValue(userAtom);
@@ -62,16 +63,8 @@ const MainNavigation = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <section className="flex flex-row justify-between items-center py-[7px]">
-      <button
-        className="md:hidden block"
-        onClick={() => setMobileMenuOpen(true)}
-      >
-        <svg width="24" height="24" stroke="currentColor">
-          <path d="M3 6h18M3 12h18M3 18h18" />
-        </svg>
-      </button>
-      <Link to={HOMEPAGE} className="font-bold text-2xl">
+    <section className="flex flex-row justify-between items-center p-[7px]">
+      <Link to={HOMEPAGE} className="font-bold text-base sm:text-2xl">
         Exclusive
       </Link>
       <div className="hidden lg:flex gap-12 items-center">
@@ -83,8 +76,13 @@ const MainNavigation = () => {
 
       <div className="flex gap-6 items-center">
         <SearchBar />
-
-        <div className="flex gap-4">
+        <button
+          className="sm:hidden block"
+          onClick={() => setMobileMenuOpen(true)}
+        >
+          <HamburgerIcon />
+        </button>
+        <div className="hidden sm:flex gap-4">
           <NavLink
             to={user ? WISHLIST : LOGIN}
             className="rounded-full relative"
@@ -114,6 +112,8 @@ const MainNavigation = () => {
         open={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
         user={user}
+        wishlist={wishlists}
+        carts={carts}
       />
     </section>
   );

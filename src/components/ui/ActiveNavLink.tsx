@@ -16,9 +16,9 @@ const ActiveNavLink = ({
       onClick={onClick}
       className={({ isActive }) =>
         `
-  border-b border-b-transparent
+  border-b 
   hover:border-b-black-opacity-80
-  ${isActive ? "border-b-black-opacity-80" : ""}
+  ${isActive ? " border-b-black-opacity-80" : "border-b-transparent"}
   `
       }
     >

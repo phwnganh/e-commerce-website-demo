@@ -1,20 +1,37 @@
 import ActiveNavLink from "../ui/ActiveNavLink";
 import {
   ABOUT,
+  ACCOUNT,
+  CART,
   CONTACT,
   HOMEPAGE,
   LOGIN,
+  WISHLIST,
 } from "../../constants/route.constants";
+import { NavLink } from "react-router-dom";
+import IconBadge from "../ui/IconBadge";
+import CartIcon from "../../assets/Cart1.svg";
+import Wishlist from "../../assets/Wishlist.svg";
+import type { Carts, Products } from "../../types/product.type";
+import UserAvatarButton from "../ui/UserAvatarButton";
+import { useLogout } from "../../hooks/useLogout";
+import LogoutIcon from "../icons/LogoutIcon";
 
 const MobileMenuModalDialog = ({
   open,
   onClose,
   user,
+  wishlist,
+  carts,
 }: {
   open: boolean;
   onClose: () => void;
   user: any;
+  wishlist: Products[];
+  carts: Carts;
 }) => {
+  const isUserActive = location.pathname === ACCOUNT;
+  const handleLogout = useLogout();
   if (!open) return null;
   return (
     <div
@@ -28,11 +45,32 @@ const MobileMenuModalDialog = ({
       ></div>
 
       <div
-        className="relative z-10 w-full max-w-md bg-white rounded-md"
+        className="absolute z-10 w-full inset-0 bg-white rounded-md flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-4 py-3 border-b">
-          <h3 className="text-2xl font-bold">Exclusive</h3>
+          <h3 className="text-base font-bold">Exclusive</h3>
+          {user && (
+            <div className="flex items-center gap-4">
+              <NavLink
+                to={WISHLIST}
+                onClick={onClose}
+                className="rounded-full relative"
+              >
+                <img src={Wishlist} alt="heart-icon" />
+                {user && <IconBadge count={wishlist.length} hideIfZero />}
+              </NavLink>
+              <NavLink
+                to={CART}
+                onClick={onClose}
+                className="rounded-full relative"
+              >
+                <img src={CartIcon} alt="cart-icon" />
+                <IconBadge count={carts.products.length} hideIfZero />
+              </NavLink>
+            </div>
+          )}
+
           <button onClick={onClose} className="text-xl leading-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -47,23 +85,56 @@ const MobileMenuModalDialog = ({
             </svg>
           </button>
         </div>
-
-        <nav className="flex flex-col gap-4 px-4 py-6">
-          <ActiveNavLink to={HOMEPAGE} onClick={onClose}>
-            Home
-          </ActiveNavLink>
-          <ActiveNavLink to={CONTACT} onClick={onClose}>
-            Contact
-          </ActiveNavLink>
-          <ActiveNavLink to={ABOUT} onClick={onClose}>
-            About
-          </ActiveNavLink>
-          {!user && (
-            <ActiveNavLink to={LOGIN} onClick={onClose}>
-              Login
+        <div className="flex flex-col flex-1">
+          <nav className="flex flex-col gap-4 px-4 py-6">
+            <ActiveNavLink to={HOMEPAGE} onClick={onClose}>
+              Home
             </ActiveNavLink>
-          )}
-        </nav>
+            <ActiveNavLink to={CONTACT} onClick={onClose}>
+              Contact
+            </ActiveNavLink>
+            <ActiveNavLink to={ABOUT} onClick={onClose}>
+              About
+            </ActiveNavLink>
+          </nav>
+          {/* mt-auto - đẩy content còn lại xuống đáy */}
+          <div className="mt-auto">
+            <hr className="border-t border-t-black-opacity-30" />
+            {!user ? (
+              <div className="px-4 py-2 flex flex-col">
+                {" "}
+                <ActiveNavLink to={LOGIN} onClick={onClose}>
+                  Login
+                </ActiveNavLink>
+              </div>
+            ) : (
+              <div className="px-4 py-2 flex flex-col gap-2">
+                <NavLink
+                  to={ACCOUNT}
+                  onClick={onClose}
+                  className="flex justify-start items-center gap-4"
+                >
+                  <UserAvatarButton isActive={isUserActive} />
+                  <p>Manage My Account</p>
+                </NavLink>
+                <button
+                  aria-label="logout-btn"
+                  onClick={() => {
+                    handleLogout();
+                    onClose();
+                  }}
+                  className="flex justify-start items-center ml-1 gap-5"
+                >
+                  <div className="flex justify-center items-center">
+                    <LogoutIcon />
+                  </div>
+
+                  <p>Logout</p>
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -7,8 +7,8 @@ const UserAvatarButton = ({
   children
 }: {
   isActive: boolean;
-  onClick: () => void;
-  children: React.ReactNode
+  onClick?: () => void;
+  children?: React.ReactNode
 }) => {
   return (
     <button
