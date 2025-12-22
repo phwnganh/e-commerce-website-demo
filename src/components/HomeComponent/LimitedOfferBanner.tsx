@@ -1,6 +1,6 @@
 import BlutetoothSpeaker from "../../assets/bluetooth-speaker.png";
 import LimitedBannerCustomButton from "../../components/ui/LimitedBannerCustomButton";
-import LimitedOfferBannerCountdown from "../../components/ui/LimitedOfferBannerCountdown";
+import LimitedOfferBannerCountdown from "../TimeCountdownComponent/LimitedOfferBannerCountdown";
 const LimitedOfferBanner = () => {
   return (
     <section className="mt-15 md:mt-35 bg-black">

@@ -4,7 +4,7 @@ import { accessTookenAtom, userAtom } from "../../atom/store";
 import { useNavigate } from "react-router-dom";
 import type { LoginResponse } from "../../types/auth.type";
 import { HOMEPAGE } from "../../constants/route.constants";
-import PreLoginComponent from "../../components/ui/PreLoginComponent";
+import PreLoginComponent from "../../components/PreLoginComponent";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import { API_AUTH_LOGIN_URL } from "../../constants/api.constants";
 

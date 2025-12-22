@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";
 import { useEffect, useState } from "react";
-import ArrowButtonsComponent from "../ui/ArrowButtonsComponent";
+import ArrowButtonsComponent from "../ArrowButtonComponent";
 const CategoriesList = ({ categories }: { categories: Categories[] }) => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -8,7 +8,7 @@ import ProductExplorationItem from "../../components/ProductItem/ProductExplorat
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";
-import ArrowButtonsComponent from "../ui/ArrowButtonsComponent";
+import ArrowButtonsComponent from "../ArrowButtonComponent";
 const ProductsExplorationList = ({
   products,
 }: {

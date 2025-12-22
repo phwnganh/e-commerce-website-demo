@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTimeLef } from "../../utils/getTimeLeft";
-import TimeCircle from "./TimeCircle";
+import TimeCircle from "../ui/TimeCircle";
 
 const TodayProductsCountdown = () => {
   const targetDate = new Date("2025-12-31T23:59:59");

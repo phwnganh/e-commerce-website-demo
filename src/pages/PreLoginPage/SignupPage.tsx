@@ -1,4 +1,4 @@
-import PreLoginComponent from "../../components/ui/PreLoginComponent";
+import PreLoginComponent from "../../components/PreLoginComponent";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
 import googleIcon from "../../assets/google-icon.svg";
 import { LOGIN } from "../../constants/route.constants";

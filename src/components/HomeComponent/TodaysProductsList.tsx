@@ -5,10 +5,10 @@ import { useAtomValue } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
-import Countdown from "../../components/ui/TodayProductsCountdown";
+import Countdown from "../../components/TimeCountdownComponent/TodayProductsCountdown";
 import SectionHeader from "../../components/ui/SectionHeader";
 import { useEffect, useState } from "react";
-import ArrowButtonsComponent from "../ui/ArrowButtonsComponent";
+import ArrowButtonsComponent from "../ArrowButtonComponent";
 const TodaysProductsList = ({ products }: { products: ProductsResponse }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const navigate = useNavigate();
