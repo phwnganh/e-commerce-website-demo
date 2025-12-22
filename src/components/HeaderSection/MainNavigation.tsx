@@ -1,7 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import {
-  ABOUT,
-  CONTACT,
   HOMEPAGE,
   LOGIN,
   ACCOUNT,
@@ -18,6 +16,7 @@ import MobileMenuModalDialog from "./MobileMenuModalDialog";
 import HamburgerIcon from "../icons/HamburgerIcon";
 import NavIconButton from "./NavIconButton";
 import { navIcons } from "../../constants/navIcons.constants";
+import { mainNavLinks } from "../../constants/mainNavLinks.constants";
 const MainNavigation = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = useAtomValue(userAtom);
@@ -71,9 +70,11 @@ const MainNavigation = () => {
         Exclusive
       </Link>
       <div className="hidden lg:flex gap-12 items-center">
-        <ActiveNavLink to={HOMEPAGE}>Home</ActiveNavLink>
-        <ActiveNavLink to={CONTACT}>Contact</ActiveNavLink>
-        <ActiveNavLink to={ABOUT}>About</ActiveNavLink>
+        {mainNavLinks.map((link, index) => (
+          <ActiveNavLink key={index} to={link.to}>
+            {link.item}
+          </ActiveNavLink>
+        ))}
         {!user && <ActiveNavLink to={LOGIN}>Login</ActiveNavLink>}
       </div>
 
