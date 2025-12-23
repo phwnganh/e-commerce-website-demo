@@ -2,11 +2,10 @@ import { useState, type FormEvent } from "react";
 import { useSetAtom } from "jotai";
 import { accessTookenAtom, userAtom } from "../../atom/store";
 import { useNavigate } from "react-router-dom";
-import type { LoginResponse } from "../../types/auth.type";
 import { HOMEPAGE } from "../../constants/route.constants";
 import PreLoginComponent from "../../components/PreLoginComponent";
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
-import { API_AUTH_LOGIN_URL } from "../../constants/api.constants";
+import { login } from "../../services/auth.service";
 
 const LoginPage = () => {
   const [username, setUsername] = useState<string>("");
@@ -18,29 +17,11 @@ const LoginPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await fetch(API_AUTH_LOGIN_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-          expiresInMins: 30, // optional, defaults to 60
-        }),
-        // credentials: "include",
-      });
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.message);
-      }
-
-      const data: LoginResponse = await res.json();
-      setUser(data);
-      setToken(data.accessToken);
+      const userData = await login({ username, password });
+      setUser(userData);
+      setToken(userData.accessToken);
       navigate(HOMEPAGE);
     } catch (error: any) {
-      console.log(error);
-
       setError(error.message);
     }
   };

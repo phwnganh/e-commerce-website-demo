@@ -3,7 +3,7 @@ import {
   API_PRODUCTS_URL,
 } from "../constants/api.constants";
 import type { CategoryDetail } from "../types/category.type";
-import type { ProductsResponse } from "../types/product.type";
+import type { Product, ProductsResponse } from "../types/product.type";
 
 export const fetchAllProducts = async (): Promise<ProductsResponse> => {
   try {
@@ -23,6 +23,16 @@ export const fetchProductsByCategory = async (
     return res.json();
   } catch (error) {
     console.error("Error fetching products by category:", error);
+    throw error;
+  }
+};
+
+export const getProductDetail = async (productId: string): Promise<Product> => {
+  try {
+    const res = await fetch(`${API_PRODUCTS_URL}/${productId}`);
+    return res.json();
+  } catch (error) {
+    console.error("Error get product detail", error);
     throw error;
   }
 };

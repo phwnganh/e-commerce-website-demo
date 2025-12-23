@@ -5,22 +5,28 @@ import { useEffect, useState } from "react";
 import type { Product } from "../../types/product.type";
 import BreadCumb from "../../components/ui/BreadCumb";
 import { HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
-import { API_PRODUCTS_URL } from "../../constants/api.constants";
 import LoadingSpin from "../../components/ui/LoadingSpin";
+import { getProductDetail } from "../../services/products.service";
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
   const [productData, setProductData] = useState<Product | null>(null);
+
   useEffect(() => {
-    fetch(`${API_PRODUCTS_URL}/${productId}`)
-      .then((res) => res.json())
-      .then((res) => setProductData(res));
+    const fetchProductDetail = async () => {
+      if (!productId) return;
+      const res = await getProductDetail(productId);
+      setProductData(res);
+    };
+    fetchProductDetail();
   }, [productId]);
 
   if (!productData) {
-    return <div className="min-h-[60vh] flex items-center justify-center">
-      <LoadingSpin />
-    </div>
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <LoadingSpin />
+      </div>
+    );
   }
   return (
     <main className="max-w-[1170px] mx-auto px-4 lg:px-0">

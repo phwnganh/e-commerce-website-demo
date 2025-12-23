@@ -13,6 +13,11 @@ export type LoginResponse = {
   refreshToken: string;
 };
 
+export type LoginPayload = {
+  username: string;
+  password: string
+}
+
 export type User = {
   id: string;
   username: string;
