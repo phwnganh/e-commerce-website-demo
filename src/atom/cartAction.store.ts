@@ -74,11 +74,6 @@ export const moveAllProductsToBagAtom = atom(null, (get, set) => {
   set(wishlistAtom, []);
 });
 
-// gọi temporary cart từ cart -> handle logic inc/dec/remove tạm thời
-export const initialTempCartAtom = atom(null, (get, set) => {
-  const cart = get(cartAtom);
-  set(tempCartAtom, cart);
-});
 
 export const increaseQuantityItemAtom = atom(
   null,
@@ -146,9 +141,3 @@ export const removeItemFromCartAtom = atom(
     set(tempCartAtom, updatedCart);
   }
 );
-
-export const commitedCartAtom = atom(null, (get, set) => {
-  const tempCart = get(tempCartAtom);
-  if (!tempCart) return;
-  set(cartAtom, tempCart);
-});

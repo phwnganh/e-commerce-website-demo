@@ -31,7 +31,7 @@ const ProductExplorationItem = ({
 
   const isInWishlist = user && wishlists.some((item) => item.id === product.id);
   return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className="flex flex-col gap-4 w-full mt-15">
       <div className="bg-secondary-2 rounded-sm relative">
         <div className="relative group/image">
           {isNew && (

@@ -36,9 +36,7 @@ const ProductDetailSection = ({ productData }: { productData: Product }) => {
   const handleBuyNow = () => {
     const total = productData.price * quantity;
     setTempCart({
-      id: productData.id,
       total: total,
-      discountTotal: 0,
       products: [
         {
           id: productData.id,

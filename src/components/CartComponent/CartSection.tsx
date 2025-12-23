@@ -7,31 +7,13 @@ import PrimaryCustomButton from "../ui/PrimaryCustomButton";
 import SecondaryCustomButton from "../ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
 import { cartAtom } from "../../atom/store";
-import { useEffect, useState } from "react";
-import type { Cart } from "../../types/product.type";
 const CartSection = () => {
   const cart = useAtomValue(cartAtom);
   const setCart = useSetAtom(cartAtom);
-  const [tempCart, setTempCart] = useState<Cart | null>(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setTempCart({
-      ...cart,
-      products: cart?.products.map((item) => ({
-        id: item.id,
-        title: item.title,
-        price: item.price,
-        quantity: item.quantity,
-        total: item.total,
-        thumbnail: item.thumbnail,
-      })),
-    });
-  }, [cart]);
-
   const handleIncreaseQuantity = (productId: string) => {
-    if (!tempCart) return;
-    const updatedProducts = tempCart.products.map((item) =>
+    const updatedProducts = cart.products.map((item) =>
       item.id === productId
         ? {
             ...item,
@@ -45,12 +27,11 @@ const CartSection = () => {
       products: updatedProducts,
       total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
     };
-    setTempCart(updatedCart);
+    setCart(updatedCart);
   };
 
   const handleDecreaseQuantity = (productId: string) => {
-    if (!tempCart) return;
-    const updatedProducts = tempCart.products.map((item) => {
+    const updatedProducts = cart.products.map((item) => {
       if (item.id === productId) {
         const newQuantity = Math.max(1, item.quantity - 1);
         return {
@@ -66,12 +47,11 @@ const CartSection = () => {
       products: updatedProducts,
       total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
     };
-    setTempCart(updatedCart);
+    setCart(updatedCart);
   };
 
   const handleRemoveItemFromCart = (productId: string) => {
-    if (!tempCart) return;
-    const updatedProducts = tempCart.products.filter(
+    const updatedProducts = cart.products.filter(
       (item) => item.id !== productId
     );
     const updatedCart = {
@@ -79,12 +59,7 @@ const CartSection = () => {
       products: updatedProducts,
       total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
     };
-    setTempCart(updatedCart);
-  };
-
-  const handleUpdateCart = () => {
-    if (!tempCart) return;
-    setCart(tempCart);
+    setCart(updatedCart);
   };
 
   return (
@@ -99,7 +74,7 @@ const CartSection = () => {
           </div>
 
           <div className="flex flex-col gap-10">
-            {tempCart?.products.map((item) => (
+            {cart?.products.map((item) => (
               <div
                 key={item.id}
                 className="grid grid-cols-4 md:pl-10 py-3 md:py-6 items-center rounded-sm shadow-[0px_1px_13px_0px_#0000000D]"
@@ -219,9 +194,6 @@ const CartSection = () => {
           <SecondaryCustomButton onClick={() => navigate(PRODUCTPAGE)}>
             Return To Shop
           </SecondaryCustomButton>
-          <SecondaryCustomButton onClick={handleUpdateCart}>
-            Update Cart
-          </SecondaryCustomButton>
         </div>
 
         <div className="mt-11 md:mt-20 flex flex-col md:flex-row justify-between items-start gap-4 md:gap-0">
@@ -242,7 +214,7 @@ const CartSection = () => {
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Subtotal:</p>
                   <p className="text-sm md:text-base">
-                    ${tempCart?.total?.toFixed(2)}
+                    ${cart?.total?.toFixed(2)}
                   </p>
                 </div>
                 <hr className="border-black-opacity-40" />
@@ -254,12 +226,14 @@ const CartSection = () => {
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Total:</p>
                   <p className="text-sm md:text-base">
-                    ${tempCart?.total?.toFixed(2)}
+                    ${cart?.total?.toFixed(2)}
                   </p>
                 </div>
 
                 <div className="flex justify-center">
-                  <PrimaryCustomButton onClick={() => navigate(CHECKOUT)}>Procees to checkout</PrimaryCustomButton>
+                  <PrimaryCustomButton onClick={() => navigate(CHECKOUT)}>
+                    Procees to checkout
+                  </PrimaryCustomButton>
                 </div>
               </div>
             </div>

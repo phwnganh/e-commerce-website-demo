@@ -1,9 +1,9 @@
 import { useAtomValue } from "jotai";
 import { cartAtom, tempCartAtom } from "../../atom/store";
-import Bkash from "../../assets/Bkash.svg";
-import Visa from "../../assets/Visa.svg";
-import MasterCard from "../../assets/Mastercard.svg";
-import Nagad from "../../assets/Nagad.svg";
+import Bkash from "../../assets/bkash-icon.svg";
+import Visa from "../../assets/visa-icon.svg";
+import MasterCard from "../../assets/mastercard-icon.svg";
+import Nagad from "../../assets/nagad-icon.svg";
 import PrimaryCustomButton from "../ui/PrimaryCustomButton";
 const CheckoutInfoSection = () => {
   const cart = useAtomValue(cartAtom);
@@ -31,7 +31,9 @@ const CheckoutInfoSection = () => {
       <div className="flex flex-col gap-4">
         <div className="flex justify-between">
           <p className="text-sm md:text-base">Subtotal:</p>
-          <p className="text-sm md:text-base">${checkoutItem.total.toFixed(2)}</p>
+          <p className="text-sm md:text-base">
+            ${checkoutItem.total.toFixed(2)}
+          </p>
         </div>
         <hr className="border-t-black-opacity-40" />
         <div className="flex justify-between">
@@ -41,7 +43,9 @@ const CheckoutInfoSection = () => {
         <hr className="border-t-black-opacity-40" />
         <div className="flex justify-between">
           <p className="text-sm md:text-base">Total:</p>
-          <p className="text-sm md:text-base">${checkoutItem.total.toFixed(2)}</p>
+          <p className="text-sm md:text-base">
+            ${checkoutItem.total.toFixed(2)}
+          </p>
         </div>
       </div>
 

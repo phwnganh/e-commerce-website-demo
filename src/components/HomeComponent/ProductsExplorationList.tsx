@@ -29,7 +29,7 @@ const ProductsExplorationList = ({
     return result;
   }, [products.products]);
   return (
-    <section className="mt-17 px-4 lg:px-0">
+    <section className="mt-10 md:mt-17 px-4 lg:px-0">
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-4 md:gap-6">
           <SectionHeader title="Our Products" />
@@ -39,7 +39,6 @@ const ProductsExplorationList = ({
         </div>
         <CarouselControls />
       </div>
-      <div className="mt-15">
         <CarouselViewport>
           <CarouselTrack>
             {columns.map((col, index) => (
@@ -59,7 +58,6 @@ const ProductsExplorationList = ({
             ))}
           </CarouselTrack>
         </CarouselViewport>
-      </div>
       <div className="mt-15 flex justify-center">
         <PrimaryCustomButton onClick={() => navigate(PRODUCTPAGE)}>
           View All Products

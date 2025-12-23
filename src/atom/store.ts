@@ -25,9 +25,7 @@ export const accessTookenAtom = atomWithStorage<string>("token", "");
 
 export const wishlistAtom = atomWithStorage<Product[]>("wishlist", []);
 export const cartAtom = atomWithStorage<Cart>("carts", {
-  id: "1",
   total: 0,
-  discountTotal: 0,
   products: [],
 });
 
