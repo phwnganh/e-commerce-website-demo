@@ -7,44 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import Countdown from "../../components/TimeCountdownComponent/TodayProductsCountdown";
 import SectionHeader from "../../components/ui/SectionHeader";
-import { useEffect, useState } from "react";
-import ArrowButtonsComponent from "../ArrowButtonComponent";
+import CarouselControls from "../CarouselComponent/CarouselControls";
+import CarouselViewport from "../CarouselComponent/CarouselViewport";
+import CarouselTrack from "../CarouselComponent/CarouselTrack";
+import CarouselItem from "../CarouselComponent/CarouselItem";
 const TodaysProductsList = ({ products }: { products: ProductsResponse }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const navigate = useNavigate();
-  // const itemsPerPage = 4;
-  const [itemsPerPage, setItemsPerPage] = useState(4);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  // lí do sử dụng handleresize là để lắng nghe sự thay đổi viewport khi người dùng resize hoặc chuyển sang mobile. khi viewpoint thay đổi, cập nhật lại state itemsperpage để số lượng item hiển thị trên mỗi trang luôn phù hợp với kích thước màn hình, đảm bảo pagination và layout responsive đúng theo design
-  // thay vì chọn fix cứng itemsperpage -> dùng handleresize - linh hoạt giữa viewpoint desktop và mobile
-  // chọn cách fix cứng itemsperpage -> dẫn đến pagination không được cập nhật khi viewport thay đổi
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setItemsPerPage(4);
-      } else {
-        setItemsPerPage(2);
-      }
-      setCurrentIndex(0);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const totalGroups = Math.ceil(products.products.length / itemsPerPage);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalGroups) % totalGroups);
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalGroups);
-  };
-
-  const startIndex = currentIndex * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentProducts = products.products.slice(startIndex, endIndex);
   return (
     <section className="mt-15 md:mt-35 p-4 lg:p-0">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-5 sm:gap-0">
@@ -53,34 +22,30 @@ const TodaysProductsList = ({ products }: { products: ProductsResponse }) => {
             <SectionHeader title="Today's" />
             <h3 className="font-semibold text-2xl md:text-4xl">Flash Sales</h3>
           </div>
-
           <Countdown />
         </div>
-
-        <ArrowButtonsComponent
-          handlePrev={handlePrev}
-          currentIndex={currentIndex}
-          totalGroups={totalGroups}
-          handleNext={handleNext}
-        />
+        <CarouselControls />
       </div>
       <div className="mt-10">
-        <div className="overflow-x-hidden">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-7">
-            {currentProducts.map((product) => (
-              <div className="" key={product.id}>
+        <CarouselViewport>
+          <CarouselTrack>
+            {products.products.map((product) => (
+              <CarouselItem
+                className="md:basis-[calc(25%-21px)] basis-[calc(50%-14px)]"
+                key={product.id}
+              >
                 <HomeProductItem product={product} wishlists={wishlists} />
-              </div>
+              </CarouselItem>
             ))}
-          </div>
-        </div>
+          </CarouselTrack>
+        </CarouselViewport>
       </div>
       <div className="mt-15 flex justify-center">
         <PrimaryCustomButton onClick={() => navigate(PRODUCTPAGE)}>
           View All Products
         </PrimaryCustomButton>
       </div>
-      <hr className="mt-15 border-t border-t-black-opacity-30" />{" "}
+      <hr className="mt-15 border-t border-t-black-opacity-30" />
     </section>
   );
 };

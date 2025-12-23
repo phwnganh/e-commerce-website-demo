@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import type { ProductsResponse } from "../../types/product.type";
 
 import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
@@ -8,7 +8,10 @@ import ProductExplorationItem from "../../components/ProductItem/ProductExplorat
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";
-import ArrowButtonsComponent from "../ArrowButtonComponent";
+import CarouselControls from "../CarouselComponent/CarouselControls";
+import CarouselViewport from "../CarouselComponent/CarouselViewport";
+import CarouselTrack from "../CarouselComponent/CarouselTrack";
+import CarouselItem from "../CarouselComponent/CarouselItem";
 const ProductsExplorationList = ({
   products,
 }: {
@@ -16,38 +19,15 @@ const ProductsExplorationList = ({
 }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const navigate = useNavigate();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(8);
 
-  // lí do sử dụng handleresize là để lắng nghe sự thay đổi viewport khi người dùng resize hoặc chuyển sang mobile. khi viewpoint thay đổi, cập nhật lại state itemsperpage để số lượng item hiển thị trên mỗi trang luôn phù hợp với kích thước màn hình, đảm bảo pagination và layout responsive đúng theo design
-  // thay vì chọn fix cứng itemsperpage -> dùng handleresize - linh hoạt giữa viewpoint desktop và mobile
-  // chọn cách fix cứng itemsperpage -> dẫn đến pagination không được cập nhật khi viewport thay đổi
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setItemsPerPage(8);
-      } else {
-        setItemsPerPage(4);
-      }
-      setCurrentIndex(0);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const totalGroups = Math.ceil(products.products.length / itemsPerPage);
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalGroups) % totalGroups);
-  };
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalGroups);
-  };
-
-  const startIndex = currentIndex * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
-  const currentProducts = products.products.slice(startIndex, endIndex);
+  // mỗi cột có 2 item (tức là 2 hàng n cột)
+  const columns = useMemo(() => {
+    const result = [];
+    for (let i = 0; i < products.products.length; i += 2) {
+      result.push(products.products.slice(i, i + 2));
+    }
+    return result;
+  }, [products.products]);
   return (
     <section className="mt-17 p-4 lg:p-0">
       <div className="flex flex-row items-end justify-between">
@@ -57,23 +37,29 @@ const ProductsExplorationList = ({
             Explore Our Products
           </h3>
         </div>
-
-        <ArrowButtonsComponent
-          handlePrev={handlePrev}
-          currentIndex={currentIndex}
-          totalGroups={totalGroups}
-          handleNext={handleNext}
-        />
+        <CarouselControls />
       </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-7 mt-15">
-        {currentProducts.map((product) => (
-          <React.Fragment key={product.id}>
-            <ProductExplorationItem product={product} wishlists={wishlists} />
-          </React.Fragment>
-        ))}
+      <div className="mt-15">
+        <CarouselViewport>
+          <CarouselTrack>
+            {columns.map((col, index) => (
+              <CarouselItem
+                key={index}
+                className="basis-[calc(50%-14px)] md:basis-[calc(25%-21px)]"
+              >
+                {col.map((product) => (
+                  <React.Fragment key={product.id}>
+                    <ProductExplorationItem
+                      product={product}
+                      wishlists={wishlists}
+                    />
+                  </React.Fragment>
+                ))}
+              </CarouselItem>
+            ))}
+          </CarouselTrack>
+        </CarouselViewport>
       </div>
-
       <div className="mt-15 flex justify-center">
         <PrimaryCustomButton onClick={() => navigate(PRODUCTPAGE)}>
           View All Products
