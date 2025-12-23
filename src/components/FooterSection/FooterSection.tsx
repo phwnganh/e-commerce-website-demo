@@ -12,11 +12,13 @@ import { HOMEPAGE } from "../../constants/route.constants";
 const FooterSection = () => {
   return (
     <footer className="bg-black text-text-1 pb-6 lg:pt-20 pt-3">
-      <div className="max-w-[1170px] mx-auto lg:flex lg:flex-row sm:grid sm:grid-cols-2 flex flex-col gap-21 mb-15 p-5 sm:p-6 lg:p-0 text-center sm:text-start">
+      <div className="max-w-[1170px] mx-auto lg:flex lg:flex-row sm:grid sm:grid-cols-2 flex flex-col gap-10 md:gap-21 mb-10 md:mb-15 p-5 sm:p-6 lg:p-0 text-center sm:text-start">
         {/* exclusive */}
         <div className="flex flex-col gap-4 w-full">
-          <div className="flex flex-col gap-6">
-            <Link to={HOMEPAGE} className="font-bold text-2xl">Exclusive</Link>
+          <div className="flex flex-col gap-4 md:gap-6">
+            <Link to={HOMEPAGE} className="font-bold text-2xl">
+              Exclusive
+            </Link>
             <h5 className="text-base md:text-xl">Subscribe</h5>
             <p className="text-sm md:text-base">Get 10% off your first order</p>
           </div>
@@ -32,7 +34,7 @@ const FooterSection = () => {
           </div>
         </div>
         {/* support */}
-        <div className="flex flex-col gap-6 w-full">
+        <div className="flex flex-col gap-4 md:gap-6 w-full">
           <h5 className="text-base md:text-xl">Support</h5>
           <div className="flex flex-col gap-4">
             <p className="text-sm md:text-base">
@@ -43,7 +45,7 @@ const FooterSection = () => {
           </div>
         </div>
         {/* account */}
-        <div className="flex flex-col gap-6 w-full">
+        <div className="flex flex-col gap-4 md:gap-6 w-full">
           <h5 className="text-base md:text-xl">Account</h5>
           <div className="flex flex-col gap-y-4">
             <p className="text-sm md:text-base">My Account</p>
@@ -54,7 +56,7 @@ const FooterSection = () => {
           </div>
         </div>
         {/* quick link */}
-        <div className="flex flex-col gap-6 w-full">
+        <div className="flex flex-col gap-4 md:gap-6 w-full">
           <h5 className="text-base md:text-xl">Quick Link</h5>
           <div className="flex flex-col gap-y-4">
             <p className="text-sm md:text-base">Privacy Policy</p>
@@ -64,7 +66,7 @@ const FooterSection = () => {
           </div>
         </div>
         {/* download app */}
-        <div className="flex flex-col gap-6 w-full">
+        <div className="flex flex-col gap-4 md:gap-6 w-full">
           <h5 className="text-base md:text-xl">Download App</h5>
           <div className="flex flex-col gap-2">
             <p className="opacity-70 text-xs">Save $3 with App New User Only</p>
@@ -94,7 +96,7 @@ const FooterSection = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-row gap-6 justify-center sm:justify-start">
+          <div className="flex flex-row gap-4 md:gap-6 justify-center sm:justify-start">
             <button className="w-6 h-6 flex justify-center items-center cursor-pointer">
               <img
                 src={facebook}

@@ -65,7 +65,7 @@ const MainNavigation = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <section className="flex flex-row justify-between items-center p-[7px]">
+    <section className="flex flex-row justify-between items-center px-4 lg:px-0">
       <Link to={HOMEPAGE} className="font-bold text-base sm:text-2xl">
         Exclusive
       </Link>

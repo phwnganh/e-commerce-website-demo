@@ -10,7 +10,7 @@ import CarouselItem from "../CarouselComponent/CarouselItem";
 const CategoriesList = ({ categories }: { categories: Category[] }) => {
   const navigate = useNavigate();
   return (
-    <section className="mt-10 md:mt-20 p-4 lg:p-0">
+    <section className="mt-10 md:mt-20 px-4 lg:px-0">
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-4 md:gap-6">
           <SectionHeader title="Categories" />

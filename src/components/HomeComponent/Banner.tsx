@@ -6,7 +6,7 @@ import { categoriesNavigationAtom } from "../../atom/store";
 const Banner = () => {
   const categoriesNavigation = useAtomValue(categoriesNavigationAtom);
   return (
-    <section className="flex lg:flex-row md:flex-col flex-col gap-11 p-4 lg:p-0">
+    <section className="flex lg:flex-row md:flex-col flex-col gap-11 px-4 lg:px-0">
       <CategoriesNavigation categories={categoriesNavigation} />
         <HeroBanner />
     </section>

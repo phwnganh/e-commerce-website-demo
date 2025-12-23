@@ -9,7 +9,7 @@ const BreadCumb = ({
   className?: string;
 }) => {
   return (
-    <nav className={`mt-11 md:mt-20 flex gap-3 items-center ${className}`}>
+    <nav className={`mt-11 md:mt-20 flex gap-3 items-center ${className} px-4 lg:px-0`}>
       {items.map((item, index) => {
         const isLast = index === items.length - 1;
         return (

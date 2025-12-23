@@ -36,22 +36,22 @@ const CategoryListSection = () => {
     return () => observer.disconnect();
   }, [visibleCount, categories.length, isLoading]);
   return (
-    <section className="mb-35 px-4 lg:px-0">
-      <div className="mt-15 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    <section className="mb-15 md:mb-35 px-4 lg:px-0">
+      <div className="mt-10 md:mt-15 grid grid-cols-2 md:grid-cols-4 gap-4">
         {categories.slice(0, visibleCount).map((category, index) => (
           <div
             onClick={() => navigate(`${PRODUCTPAGE}/${category.slug}`)}
             key={index}
-            className="flex flex-col gap-4 border justify-center items-center rounded-sm border-black-opacity-30 py-6 px-14 hover:bg-button-2 hover:border-button-2 group cursor-pointer"
+            className="flex flex-col gap-4 border justify-center items-center rounded-sm border-black-opacity-30 py-4 px-8 md:py-6 md:px-14 hover:bg-button-2 hover:border-button-2 group cursor-pointer"
           >
-            <div className="flex justify-center items-center">
+            <div className="aspect-square">
               <img
                 src={Cosmetics}
                 alt=""
-                className="group-hover:invert group-hover:brightness-0 group-hover:filter"
+                className="w-full h-full object-contain scale-75 group-hover:invert group-hover:brightness-0 group-hover:filter"
               />
             </div>
-            <p className="text-center text-sm md:text-base group-hover:text-text-1">
+            <p className="text-center text-sm md:text-base group-hover:text-text-1 line-clamp-1">
               {category.name}
             </p>
           </div>

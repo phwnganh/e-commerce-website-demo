@@ -38,7 +38,7 @@ const HomeProductListPage = () => {
   }, [visibleCount, products.products.length, isLoading]);
   return (
     <main className="max-w-[1170px] mx-auto">
-      <section className="mb-35 px-4 lg:px-0">
+      <section className="mb-15 md:mb-35 px-4 lg:px-0">
         <BreadCumb
           items={[
             { label: "Home", to: HOMEPAGE },
@@ -46,7 +46,7 @@ const HomeProductListPage = () => {
           ]}
         />
 
-        <div className="mt-15 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="mt-10 md:mt-15 grid grid-cols-2 md:grid-cols-4 gap-4">
           {products.products.slice(0, visibleCount).map((product) => (
             <React.Fragment key={product.id}>
               <HomeProductItem product={product} wishlists={wishlists} />

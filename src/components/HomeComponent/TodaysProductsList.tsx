@@ -15,7 +15,7 @@ const TodaysProductsList = ({ products }: { products: ProductsResponse }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const navigate = useNavigate();
   return (
-    <section className="mt-15 md:mt-35 p-4 lg:p-0">
+    <section className="mt-15 md:mt-35 px-4 lg:px-0">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-5 sm:gap-0">
         <div className="flex flex-col md:flex-row items-start md:items-end gap-6 md:gap-21">
           <div className="flex flex-col gap-4 md:gap-6">
@@ -40,7 +40,7 @@ const TodaysProductsList = ({ products }: { products: ProductsResponse }) => {
           </CarouselTrack>
         </CarouselViewport>
       </div>
-      <div className="mt-15 flex justify-center">
+      <div className="mt-10 md:mt-15 flex justify-center">
         <PrimaryCustomButton onClick={() => navigate(PRODUCTPAGE)}>
           View All Products
         </PrimaryCustomButton>

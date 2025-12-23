@@ -5,7 +5,7 @@ import GucciPerfume from "../../assets/perfume.png";
 import SectionHeader from "../../components/ui/SectionHeader";
 const NewProductsAdvertisement = () => {
   return (
-    <section className="mt-17 md:mt-35 p-4 lg:p-0">
+    <section className="mt-15 md:mt-35 px-4 lg:px-0">
       <div className="flex flex-row items-end justify-between">
         <div className="flex flex-col gap-4 md:gap-6">
           <SectionHeader title="Featured" />
@@ -13,7 +13,7 @@ const NewProductsAdvertisement = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-15">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-10 md:mt-15">
         <div className="lg:col-start-1 lg:row-start-1 lg:col-span-2 lg:row-span-2 bg-black text-white rounded-sm">
           <div className="pt-22 px-3 md:px-7 relative">
             <img
