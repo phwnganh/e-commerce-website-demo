@@ -4,7 +4,7 @@ import CategoryListSection from "../../components/CategoryListComponent/Category
 
 const CategoryListPage = () => {
   return (
-    <main className="max-w-[1170px] mx-auto">
+    <main className="max-w-[1170px] mx-auto px-4 lg:px-0">
       <BreadCumb
         items={[
           { label: "Home", to: HOMEPAGE },

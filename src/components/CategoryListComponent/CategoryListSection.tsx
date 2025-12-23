@@ -36,7 +36,7 @@ const CategoryListSection = () => {
     return () => observer.disconnect();
   }, [visibleCount, categories.length, isLoading]);
   return (
-    <section className="mb-15 md:mb-35 px-4 lg:px-0">
+    <section className="mb-15 md:mb-35">
       <div className="mt-10 md:mt-15 grid grid-cols-2 md:grid-cols-4 gap-4">
         {categories.slice(0, visibleCount).map((category, index) => (
           <div

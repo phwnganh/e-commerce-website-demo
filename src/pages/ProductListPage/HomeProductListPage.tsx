@@ -37,8 +37,8 @@ const HomeProductListPage = () => {
     return () => observer.disconnect();
   }, [visibleCount, products.products.length, isLoading]);
   return (
-    <main className="max-w-[1170px] mx-auto">
-      <section className="mb-15 md:mb-35 px-4 lg:px-0">
+    <main className="max-w-[1170px] mx-auto px-4 lg:px-0">
+      <section className="mb-15 md:mb-35">
         <BreadCumb
           items={[
             { label: "Home", to: HOMEPAGE },

@@ -14,7 +14,7 @@ const CaategoryProductListPage = () => {
   if (!slug) return null;
   const categoryData = useAtomValue(productsByCategoryAtom(slug));
   return (
-    <main className="max-w-[1170px] mx-auto">
+    <main className="max-w-[1170px] mx-auto px-4 lg:px-0">
       <BreadCumb
         items={[
           {

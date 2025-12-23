@@ -8,7 +8,7 @@ import BreadCumb from "../../components/ui/BreadCumb";
 const AbouUsPage = () => {
   return (
     <main className="px-4 lg:px-0">
-      <div className="max-w-[1170px] mx-auto ">
+      <div className="max-w-[1170px] mx-auto">
         <BreadCumb
           items={[{ label: "Home", to: HOMEPAGE }, { label: "About" }]}
         />

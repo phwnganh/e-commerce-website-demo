@@ -38,7 +38,7 @@ const CategoryProductListSection = ({
     return () => observer.disconnect();
   }, [visibleCount, categoryData.products.length, isLoading]);
   return (
-    <section className="mb-15 md:mb-35 px-4 lg:px-0">
+    <section className="mb-15 md:mb-35">
       <div className="mt-10 md:mt-15 grid grid-cols-2 md:grid-cols-4 gap-4">
         {categoryData.products.slice(0, visibleCount).map((product) => (
           <React.Fragment key={product.id}>
