@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import type { Carts, Products } from "../types/product.type";
+import type { Cart, Product } from "../types/product.type";
 import type { User } from "../types/auth.type";
 import { atomWithStorage } from "jotai/utils";
 import {
@@ -23,12 +23,12 @@ export const categoriesNavigationAtom = atom(fetchAllCategoriesNavigation);
 export const userAtom = atomWithStorage<User | null>("user", null);
 export const accessTookenAtom = atomWithStorage<string>("token", "");
 
-export const wishlistAtom = atomWithStorage<Products[]>("wishlist", []);
-export const cartAtom = atomWithStorage<Carts>("carts", {
+export const wishlistAtom = atomWithStorage<Product[]>("wishlist", []);
+export const cartAtom = atomWithStorage<Cart>("carts", {
   id: "1",
   total: 0,
   discountTotal: 0,
   products: [],
 });
 
-export const tempCartAtom = atom<Carts | null>(null);
+export const tempCartAtom = atom<Cart | null>(null);

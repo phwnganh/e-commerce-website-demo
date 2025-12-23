@@ -3,9 +3,9 @@ import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import { useAtomValue } from "jotai";
 import { productsByCategoryAtom, wishlistAtom } from "../../atom/store";
 import SectionHeader from "../../components/ui/SectionHeader";
-import type { Products } from "../../types/product.type";
+import type { Product } from "../../types/product.type";
 
-const RelatedItemSection = ({ productData }: { productData: Products }) => {
+const RelatedItemSection = ({ productData }: { productData: Product }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const categoryData = useAtomValue(
     productsByCategoryAtom(productData.category)

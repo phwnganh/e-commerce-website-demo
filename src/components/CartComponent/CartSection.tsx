@@ -8,11 +8,11 @@ import SecondaryCustomButton from "../ui/SecondaryCustomButton";
 import { useAtomValue, useSetAtom } from "jotai";
 import { cartAtom } from "../../atom/store";
 import { useEffect, useState } from "react";
-import type { Carts } from "../../types/product.type";
+import type { Cart } from "../../types/product.type";
 const CartSection = () => {
   const cart = useAtomValue(cartAtom);
   const setCart = useSetAtom(cartAtom);
-  const [tempCart, setTempCart] = useState<Carts | null>(null);
+  const [tempCart, setTempCart] = useState<Cart | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {

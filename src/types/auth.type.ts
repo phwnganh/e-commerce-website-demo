@@ -1,5 +1,5 @@
-import type { Categories } from "./category.type";
-import type { Products } from "./product.type";
+import type { Category } from "./category.type";
+import type { Product } from "./product.type";
 
 export type LoginResponse = {
   id: string;
@@ -24,8 +24,8 @@ export type User = {
 };
 
 export type GlobalContext = {
-  products: Products[];
-  categories: Categories[];
+  products: Product[];
+  categories: Category[];
   categoriesNavigation: string[];
   user: User | null;
   setUser: () => void;

@@ -1,4 +1,4 @@
-export type Products = {
+export type Product = {
   id: string;
   title: string;
   description: string;
@@ -18,10 +18,10 @@ export type Products = {
 };
 
 export type ProductsResponse = {
-  products: Products[]
+  products: Product[]
 }
 
-export type CartItems = {
+export type CartItem = {
   id: string;
   title: string;
   price: number;
@@ -30,9 +30,9 @@ export type CartItems = {
   thumbnail: string;
 };
 
-export type Carts = {
+export type Cart = {
   id: string;
   total: number;
   discountTotal: number;
-  products: CartItems[];
+  products: CartItem[];
 };

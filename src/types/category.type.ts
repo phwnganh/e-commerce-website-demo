@@ -1,10 +1,10 @@
-import type { Products } from "./product.type";
+import type { Product } from "./product.type";
 
-export type Categories = {
+export type Category = {
   slug: string;
   name: string;
 };
 
 export type CategoryDetail = {
-  products: Products[]
+  products: Product[]
 }

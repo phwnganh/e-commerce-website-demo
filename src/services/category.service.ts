@@ -2,9 +2,9 @@ import {
   API_CATEGORIES_NAVIGATION_URL,
   API_CATEGORIES_URL,
 } from "../constants/api.constants";
-import type { Categories } from "../types/category.type";
+import type { Category } from "../types/category.type";
 
-export const fetchAllCategories = async (): Promise<Categories[]> => {
+export const fetchAllCategories = async (): Promise<Category[]> => {
   try {
     const res = await fetch(API_CATEGORIES_URL);
     return res.json();

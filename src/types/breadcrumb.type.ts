@@ -1,4 +1,4 @@
-export type BreadCumpItems = {
+export type BreadCrumbItem = {
     label: string
     to?: string
 }

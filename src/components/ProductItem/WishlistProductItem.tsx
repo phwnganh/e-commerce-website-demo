@@ -1,4 +1,4 @@
-import type { Products } from "../../types/product.type";
+import type { Product } from "../../types/product.type";
 import { useSetAtom } from "jotai";
 import TrashIcon from "../../assets/delete-icon.svg";
 import { addToCartAtom } from "../../atom/cartAction.store";
@@ -9,8 +9,8 @@ const WishlistProductItem = ({
   product,
   onRemoveWishlist,
 }: {
-  product: Products;
-  onRemoveWishlist: (product: Products) => void;
+  product: Product;
+  onRemoveWishlist: (product: Product) => void;
 }) => {
   const handleAddToCart = useSetAtom(addToCartAtom);
   return (

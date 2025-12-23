@@ -1,4 +1,4 @@
-import type { Products } from "../../types/product.type";
+import type { Product } from "../../types/product.type";
 import StarRating from "../../components/ui/StarRating";
 import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
@@ -13,8 +13,8 @@ const HomeProductItem = ({
   product,
   wishlists,
 }: {
-  product: Products;
-  wishlists: Products[];
+  product: Product;
+  wishlists: Product[];
 }) => {
   const navigate = useNavigate();
   const user = useAtomValue(userAtom);

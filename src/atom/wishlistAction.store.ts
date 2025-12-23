@@ -1,8 +1,8 @@
 import { atom } from "jotai";
 import { wishlistAtom } from "./store";
-import type { Products } from "../types/product.type";
+import type { Product } from "../types/product.type";
 
-export const toggleWishlistAtom = atom(null, (get, set, product: Products) => {
+export const toggleWishlistAtom = atom(null, (get, set, product: Product) => {
   const wishlists = get(wishlistAtom);
   const exists = wishlists.some((item) => item.id === product.id);
 
@@ -13,7 +13,7 @@ export const toggleWishlistAtom = atom(null, (get, set, product: Products) => {
   set(wishlistAtom, updated);
 });
 
-export const removeWishlistAtom = atom(null, (get, set, product: Products) => {
+export const removeWishlistAtom = atom(null, (get, set, product: Product) => {
   const wishlists = get(wishlistAtom);
   const updated = wishlists.filter((item) => item.id !== product.id);
   set(wishlistAtom, updated);

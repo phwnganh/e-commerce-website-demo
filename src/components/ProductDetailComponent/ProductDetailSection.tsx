@@ -1,4 +1,4 @@
-import type { Products } from "../../types/product.type";
+import type { Product } from "../../types/product.type";
 import StarRating from "../../components/ui/StarRating";
 import PlusIcon from "../../assets/plus-icon.svg";
 import MinusIcon from "../../assets/minus-icon.svg";
@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CHECKOUT } from "../../constants/route.constants";
 
-const ProductDetailSection = ({ productData }: { productData: Products }) => {
+const ProductDetailSection = ({ productData }: { productData: Product }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const user = useAtomValue(userAtom);
   const handleAddToWishlist = useSetAtom(toggleWishlistAtom);

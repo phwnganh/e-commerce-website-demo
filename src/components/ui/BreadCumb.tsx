@@ -1,11 +1,11 @@
-import type { BreadCumpItems } from "../../types/breadcrumb.type";
+import type { BreadCrumbItem } from "../../types/breadcrumb.type";
 import { NavLink } from "react-router-dom";
 
 const BreadCumb = ({
   items,
   className = "",
 }: {
-  items: BreadCumpItems[];
+  items: BreadCrumbItem[];
   className?: string;
 }) => {
   return (

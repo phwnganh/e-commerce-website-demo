@@ -1,12 +1,12 @@
 import { useSetAtom } from "jotai";
-import type { Products } from "../../types/product.type";
+import type { Product } from "../../types/product.type";
 import { Link, useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import EyeIcon from "../../assets/Eye-icon.svg";
 import StarRating from "../ui/StarRating";
 import { addToCartAtom } from "../../atom/cartAction.store";
 
-const WishlistRelatedProductItem = ({ product }: { product: Products }) => {
+const WishlistRelatedProductItem = ({ product }: { product: Product }) => {
   const navigate = useNavigate();
   const handleAddToCart = useSetAtom(addToCartAtom);
   return (

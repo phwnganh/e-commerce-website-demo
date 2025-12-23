@@ -1,7 +1,7 @@
 import ActiveNavLink from "../ui/ActiveNavLink";
 import { ACCOUNT, LOGIN } from "../../constants/route.constants";
 import { NavLink } from "react-router-dom";
-import type { Carts, Products } from "../../types/product.type";
+import type { Cart, Product } from "../../types/product.type";
 import UserAvatarButton from "../ui/UserAvatarButton";
 import { useLogout } from "../../hooks/useLogout";
 import LogoutIcon from "../icons/LogoutIcon";
@@ -20,8 +20,8 @@ const MobileMenuModalDialog = ({
   open: boolean;
   onClose: () => void;
   user: any;
-  wishlist: Products[];
-  carts: Carts;
+  wishlist: Product[];
+  carts: Cart;
 }) => {
   const isUserActive = location.pathname === ACCOUNT;
   const handleLogout = useLogout();

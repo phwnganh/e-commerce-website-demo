@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import ProductDetailSection from "../../components/ProductDetailComponent/ProductDetailSection";
 import RelatedItemSection from "../../components/ProductDetailComponent/RelatedItemSection";
 import { useEffect, useState } from "react";
-import type { Products } from "../../types/product.type";
+import type { Product } from "../../types/product.type";
 import BreadCumb from "../../components/ui/BreadCumb";
 import { HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
 import { API_PRODUCTS_URL } from "../../constants/api.constants";
@@ -10,7 +10,7 @@ import LoadingSpin from "../../components/ui/LoadingSpin";
 
 const ProductDetailPage = () => {
   const { productId } = useParams();
-  const [productData, setProductData] = useState<Products | null>(null);
+  const [productData, setProductData] = useState<Product | null>(null);
   useEffect(() => {
     fetch(`${API_PRODUCTS_URL}/${productId}`)
       .then((res) => res.json())

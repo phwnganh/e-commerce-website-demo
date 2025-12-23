@@ -1,6 +1,6 @@
 import HeartIcon1 from "../../assets/heart-small.svg";
 import EyeIcon from "../../assets/Eye-icon.svg";
-import type { Products } from "../../types/product.type";
+import type { Product } from "../../types/product.type";
 import { Link, useNavigate } from "react-router-dom";
 import { useAtomValue, useSetAtom } from "jotai";
 import { userAtom } from "../../atom/store";
@@ -14,8 +14,8 @@ const ProductExplorationItem = ({
   product,
   wishlists,
 }: {
-  product: Products;
-  wishlists: Products[];
+  product: Product;
+  wishlists: Product[];
 }) => {
   const navigate = useNavigate();
   const user = useAtomValue(userAtom);

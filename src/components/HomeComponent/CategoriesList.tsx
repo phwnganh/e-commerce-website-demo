@@ -1,5 +1,5 @@
 import Cosmetics from "../../assets/cosmetics.png";
-import type { Categories } from "../../types/category.type";
+import type { Category } from "../../types/category.type";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";
@@ -7,7 +7,7 @@ import CarouselControls from "../CarouselComponent/CarouselControls";
 import CarouselViewport from "../CarouselComponent/CarouselViewport";
 import CarouselTrack from "../CarouselComponent/CarouselTrack";
 import CarouselItem from "../CarouselComponent/CarouselItem";
-const CategoriesList = ({ categories }: { categories: Categories[] }) => {
+const CategoriesList = ({ categories }: { categories: Category[] }) => {
   const navigate = useNavigate();
   return (
     <section className="mt-10 md:mt-20 p-4 lg:p-0">

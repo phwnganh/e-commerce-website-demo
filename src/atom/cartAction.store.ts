@@ -1,8 +1,8 @@
 import { atom } from "jotai";
 import { cartAtom, tempCartAtom, wishlistAtom } from "./store";
-import type { CartItems, Products } from "../types/product.type";
+import type { CartItem, Product } from "../types/product.type";
 
-export const addToCartAtom = atom(null, (get, set, product: Products) => {
+export const addToCartAtom = atom(null, (get, set, product: Product) => {
   const carts = get(cartAtom);
   const existingItem = carts.products.find((item) => item.id === product.id);
   let updatedProducts;
@@ -17,7 +17,7 @@ export const addToCartAtom = atom(null, (get, set, product: Products) => {
         : item
     );
   } else {
-    const newItem: CartItems = {
+    const newItem: CartItem = {
       id: product.id,
       title: product.title,
       price: product.price,
@@ -53,7 +53,7 @@ export const moveAllProductsToBagAtom = atom(null, (get, set) => {
           : item
       );
     } else {
-      const newItem: CartItems = {
+      const newItem: CartItem = {
         id: product.id,
         title: product.title,
         price: product.price,
