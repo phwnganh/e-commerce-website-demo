@@ -38,7 +38,7 @@ const HomeProductListPage = () => {
   }, [visibleCount, products.products.length, isLoading]);
   return (
     <main className="max-w-[1170px] mx-auto px-4 lg:px-0">
-      <section className="mb-15 md:mb-35">
+      <section className="mb-15 lg:mb-35">
         <BreadCumb
           items={[
             { label: "Home", to: HOMEPAGE },
@@ -54,7 +54,7 @@ const HomeProductListPage = () => {
           ))}
         </div>
         {isLoading && <LoadingSpin />}
-        <div ref={loadMoreRef} className="h-10"></div>
+        <div ref={loadMoreRef}></div>
       </section>
     </main>
   );

@@ -36,7 +36,7 @@ const CategoryListSection = () => {
     return () => observer.disconnect();
   }, [visibleCount, categories.length, isLoading]);
   return (
-    <section className="mb-15 md:mb-35">
+    <section className="mb-15 lg:mb-35">
       <div className="mt-10 md:mt-15 grid grid-cols-2 md:grid-cols-4 gap-4">
         {categories.slice(0, visibleCount).map((category, index) => (
           <div
@@ -60,7 +60,7 @@ const CategoryListSection = () => {
 
       {isLoading && <LoadingSpin />}
 
-      <div ref={loadMoreRef} className="h-10"></div>
+      <div ref={loadMoreRef}></div>
     </section>
   );
 };

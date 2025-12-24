@@ -38,7 +38,7 @@ const CategoryProductListSection = ({
     return () => observer.disconnect();
   }, [visibleCount, categoryData.products.length, isLoading]);
   return (
-    <section className="mb-15 md:mb-35">
+    <section className="mb-15 lg:mb-35">
       <div className="mt-10 md:mt-15 grid grid-cols-2 md:grid-cols-4 gap-4">
         {categoryData.products.slice(0, visibleCount).map((product) => (
           <React.Fragment key={product.id}>
@@ -47,7 +47,7 @@ const CategoryProductListSection = ({
         ))}
       </div>
       {isLoading && <LoadingSpin />}
-      <div ref={loadMoreRef} className="h-10"></div>
+      <div ref={loadMoreRef}></div>
     </section>
   );
 };
