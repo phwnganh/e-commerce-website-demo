@@ -29,4 +29,4 @@ export const cartAtom = atomWithStorage<Cart>("carts", {
   products: [],
 });
 
-export const tempCartAtom = atom<Cart | null>(null);
+export const tempCheckoutItemAtom = atom<Cart | null>(null);

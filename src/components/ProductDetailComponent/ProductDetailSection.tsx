@@ -6,7 +6,7 @@ import HeartIcon from "../../assets/wishlist-icon.svg";
 import DeliveryIcon from "../../assets/delivery-icon.svg";
 import ReturnDeliveryIcon from "../../assets/return-icon.svg";
 import { useAtomValue, useSetAtom } from "jotai";
-import { tempCartAtom, userAtom, wishlistAtom } from "../../atom/store";
+import {  tempCheckoutItemAtom, userAtom, wishlistAtom } from "../../atom/store";
 import { toggleWishlistAtom } from "../../atom/wishlistAction.store";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ const ProductDetailSection = ({ productData }: { productData: Product }) => {
   const user = useAtomValue(userAtom);
   const handleAddToWishlist = useSetAtom(toggleWishlistAtom);
   const [quantity, setQuantity] = useState(1);
-  const setTempCart = useSetAtom(tempCartAtom);
+  const setTempCheckoutItem = useSetAtom(tempCheckoutItemAtom);
   const [isImageSelected, setIsImageSelected] = useState(productData.images[0]);
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ const ProductDetailSection = ({ productData }: { productData: Product }) => {
 
   const handleBuyNow = () => {
     const total = productData.price * quantity;
-    setTempCart({
+    setTempCheckoutItem({
       total: total,
       products: [
         {

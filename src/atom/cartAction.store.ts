@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import { cartAtom, tempCartAtom, wishlistAtom } from "./store";
+import { cartAtom, tempCheckoutItemAtom, wishlistAtom } from "./store";
 import type { CartItem, Product } from "../types/product.type";
 
 export const addToCartAtom = atom(null, (get, set, product: Product) => {
@@ -78,7 +78,7 @@ export const moveAllProductsToBagAtom = atom(null, (get, set) => {
 export const increaseQuantityItemAtom = atom(
   null,
   (get, set, productId: string) => {
-    const cart = get(tempCartAtom);
+    const cart = get(tempCheckoutItemAtom);
     if (!cart) return;
 
     const updatedProducts = cart.products.map((item) =>
@@ -95,14 +95,14 @@ export const increaseQuantityItemAtom = atom(
       products: updatedProducts,
       total: updatedProducts.reduce((sum, product) => sum + product.total, 0),
     };
-    set(tempCartAtom, updatedCart);
+    set(tempCheckoutItemAtom, updatedCart);
   }
 );
 
 export const decreaseQuantityItemAtom = atom(
   null,
   (get, set, productId: string) => {
-    const cart = get(tempCartAtom);
+    const cart = get(tempCheckoutItemAtom);
     if (!cart) return;
     const updatedProducts = cart.products.map((item) => {
       if (item.id === productId) {
@@ -121,14 +121,14 @@ export const decreaseQuantityItemAtom = atom(
       products: updatedProducts,
       total: updatedProducts.reduce((sum, product) => sum + product.total, 0),
     };
-    set(tempCartAtom, updatedCart);
+    set(tempCheckoutItemAtom, updatedCart);
   }
 );
 
 export const removeItemFromCartAtom = atom(
   null,
   (get, set, productId: string) => {
-    const cart = get(tempCartAtom);
+    const cart = get(tempCheckoutItemAtom);
     if (!cart) return;
     const updatedProducts = cart.products.filter(
       (item) => item.id !== productId
@@ -138,6 +138,6 @@ export const removeItemFromCartAtom = atom(
       products: updatedProducts,
       total: updatedProducts.reduce((sum, product) => sum + product.total, 0),
     };
-    set(tempCartAtom, updatedCart);
+    set(tempCheckoutItemAtom, updatedCart);
   }
 );

@@ -1,5 +1,5 @@
 import { useAtomValue } from "jotai";
-import { cartAtom, tempCartAtom } from "../../atom/store";
+import { cartAtom, tempCheckoutItemAtom } from "../../atom/store";
 import Bkash from "../../assets/bkash-icon.svg";
 import Visa from "../../assets/visa-icon.svg";
 import MasterCard from "../../assets/mastercard-icon.svg";
@@ -7,11 +7,11 @@ import Nagad from "../../assets/nagad-icon.svg";
 import PrimaryCustomButton from "../ui/PrimaryCustomButton";
 const CheckoutInfoSection = () => {
   const cart = useAtomValue(cartAtom);
-  const tempCart = useAtomValue(tempCartAtom);
-  const checkoutItem = tempCart || cart;
+  const tempCheckout = useAtomValue(tempCheckoutItemAtom);
+  const finalCheckoutItems = tempCheckout || cart;
   return (
     <section className="flex flex-col gap-8 mt-8">
-      {checkoutItem.products.map((item) => (
+      {finalCheckoutItems.products.map((item) => (
         <div key={item.id}>
           <div className="flex items-center gap-6">
             <div className="w-10 h-10 md:w-13.5 md:h-13.5 flex justify-center aspect-square">
@@ -32,7 +32,7 @@ const CheckoutInfoSection = () => {
         <div className="flex justify-between">
           <p className="text-sm md:text-base">Subtotal:</p>
           <p className="text-sm md:text-base">
-            ${checkoutItem.total.toFixed(2)}
+            ${finalCheckoutItems.total.toFixed(2)}
           </p>
         </div>
         <hr className="border-t-black-opacity-40" />
@@ -44,7 +44,7 @@ const CheckoutInfoSection = () => {
         <div className="flex justify-between">
           <p className="text-sm md:text-base">Total:</p>
           <p className="text-sm md:text-base">
-            ${checkoutItem.total.toFixed(2)}
+            ${finalCheckoutItems.total.toFixed(2)}
           </p>
         </div>
       </div>
