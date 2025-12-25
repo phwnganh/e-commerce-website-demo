@@ -10,11 +10,11 @@ export const useCarouselKeyboard = ({
 }: UseCarouselKeyboardProps) => {
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "arrow-left") {
+      if (e.key === "left-arrow") {
         e.preventDefault();
         onPrev();
       }
-      if (e.key === "arrow-right") {
+      if (e.key === "right-arrow") {
         e.preventDefault();
         onNext();
       }

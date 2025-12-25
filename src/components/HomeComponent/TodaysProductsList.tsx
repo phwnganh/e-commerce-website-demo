@@ -13,27 +13,20 @@ import CarouselItem from "../CarouselComponent/CarouselItem";
 import { useEmblaScrollCarousels } from "../../hooks/useEmblaScrollCarousels";
 import ArrowButtonsComponent from "../ArrowButtonComponent";
 import { useCarouselKeyboard } from "../../hooks/useCarouselKeyboard";
-import type {
-  EmblaOptionsType,
-} from "embla-carousel";
+import type { EmblaOptionsType } from "embla-carousel";
 const TodaysProductsList = ({ products }: { products: ProductsResponse }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const navigate = useNavigate();
   const emblaOptions: EmblaOptionsType = {
     align: "start",
-    containScroll: "trimSnaps",
+    containScroll: "trimSnaps", // remove snap point mà chỉ có < n item( tránh thừa khoảng trắng)
   };
-  const {
-    canScrollNext,
-    canScrollPrev,
-    emblaRef,
-    scrollNext,
-    scrollPrev,
-  } = useEmblaScrollCarousels({
-    emblaOptions: emblaOptions,
-    orientation: "horizontal",
-    resetOnReInit: true,
-  });
+  const { canScrollNext, canScrollPrev, emblaRef, scrollNext, scrollPrev } =
+    useEmblaScrollCarousels({
+      emblaOptions: emblaOptions,
+      orientation: "horizontal",
+      resetOnReInit: true,
+    });
   const { onKeyDown } = useCarouselKeyboard({
     onPrev: scrollPrev,
     onNext: scrollNext,
