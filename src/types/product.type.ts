@@ -26,11 +26,9 @@ export type CartItem = {
   title: string;
   price: number;
   quantity: number;
-  total: number;
   thumbnail: string;
 };
 
 export type Cart = {
-  total: number;
-  products: CartItem[];
+  items: CartItem[]
 };

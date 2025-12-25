@@ -34,16 +34,13 @@ const ProductDetailSection = ({ productData }: { productData: Product }) => {
   };
 
   const handleBuyNow = () => {
-    const total = productData.price * quantity;
     setTempCheckoutItem({
-      total: total,
-      products: [
+      items: [
         {
           id: productData.id,
           title: productData.title,
           price: productData.price,
           quantity: quantity,
-          total: total,
           thumbnail: productData.thumbnail,
         },
       ],

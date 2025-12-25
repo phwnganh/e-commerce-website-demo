@@ -4,15 +4,14 @@ import type { CartItem, Product } from "../types/product.type";
 
 export const addToCartAtom = atom(null, (get, set, product: Product) => {
   const carts = get(cartAtom);
-  const existingItem = carts.products.find((item) => item.id === product.id);
+  const existingItem = carts.items.find((item) => item.id === product.id);
   let updatedProducts;
   if (existingItem) {
-    updatedProducts = carts.products.map((item) =>
+    updatedProducts = carts.items.map((item) =>
       item.id === product.id
         ? {
             ...item,
             quantity: item.quantity + 1,
-            total: item.price * (item.quantity + 1),
           }
         : item
     );
@@ -22,24 +21,18 @@ export const addToCartAtom = atom(null, (get, set, product: Product) => {
       title: product.title,
       price: product.price,
       quantity: 1,
-      total: product.price,
       thumbnail: product.thumbnail,
     };
-    updatedProducts = [...carts.products, newItem];
+    updatedProducts = [...carts.items, newItem];
   }
 
-  const updatedCarts = {
-    ...carts,
-    products: updatedProducts,
-    total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
-  };
-  set(cartAtom, updatedCarts);
+  set(cartAtom, { items: updatedProducts });
 });
 
 export const moveAllProductsToBagAtom = atom(null, (get, set) => {
   const carts = get(cartAtom);
   const wishlist = get(wishlistAtom);
-  let updatedProducts = [...carts.products];
+  let updatedProducts = [...carts.items];
   wishlist.forEach((product) => {
     const exists = updatedProducts.some((item) => item.id === product.id);
     if (exists) {
@@ -48,7 +41,6 @@ export const moveAllProductsToBagAtom = atom(null, (get, set) => {
           ? {
               ...item,
               quantity: item.quantity + 1,
-              total: (item.quantity + 1) * item.price,
             }
           : item
       );
@@ -58,22 +50,14 @@ export const moveAllProductsToBagAtom = atom(null, (get, set) => {
         title: product.title,
         price: product.price,
         quantity: 1,
-        total: product.price,
         thumbnail: product.thumbnail,
       };
       updatedProducts = [...updatedProducts, newItem];
     }
   });
-
-  const updatedCarts = {
-    ...carts,
-    products: updatedProducts,
-    total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
-  };
-  set(cartAtom, updatedCarts);
+  set(cartAtom, { items: updatedProducts });
   set(wishlistAtom, []);
 });
-
 
 export const increaseQuantityItemAtom = atom(
   null,
@@ -81,21 +65,18 @@ export const increaseQuantityItemAtom = atom(
     const cart = get(tempCheckoutItemAtom);
     if (!cart) return;
 
-    const updatedProducts = cart.products.map((item) =>
+    const updatedProducts = cart.items.map((item) =>
       item.id === productId
         ? {
             ...item,
             quantity: item.quantity + 1,
-            total: item.price * (item.quantity + 1),
           }
         : item
     );
-    const updatedCart = {
+    set(tempCheckoutItemAtom, {
       ...cart,
-      products: updatedProducts,
-      total: updatedProducts.reduce((sum, product) => sum + product.total, 0),
-    };
-    set(tempCheckoutItemAtom, updatedCart);
+      items: updatedProducts,
+    });
   }
 );
 
@@ -104,24 +85,20 @@ export const decreaseQuantityItemAtom = atom(
   (get, set, productId: string) => {
     const cart = get(tempCheckoutItemAtom);
     if (!cart) return;
-    const updatedProducts = cart.products.map((item) => {
+    const updatedProducts = cart.items.map((item) => {
       if (item.id === productId) {
         const newQuantity = Math.max(1, item.quantity - 1);
         return {
           ...item,
           quantity: newQuantity,
-          total: newQuantity * item.price,
         };
       }
       return item;
     });
-
-    const updatedCart = {
+    set(tempCheckoutItemAtom, {
       ...cart,
-      products: updatedProducts,
-      total: updatedProducts.reduce((sum, product) => sum + product.total, 0),
-    };
-    set(tempCheckoutItemAtom, updatedCart);
+      items: updatedProducts,
+    });
   }
 );
 
@@ -130,14 +107,10 @@ export const removeItemFromCartAtom = atom(
   (get, set, productId: string) => {
     const cart = get(tempCheckoutItemAtom);
     if (!cart) return;
-    const updatedProducts = cart.products.filter(
-      (item) => item.id !== productId
-    );
-    const updatedCart = {
+    const updatedProducts = cart.items.filter((item) => item.id !== productId);
+    set(tempCheckoutItemAtom, {
       ...cart,
-      products: updatedProducts,
-      total: updatedProducts.reduce((sum, product) => sum + product.total, 0),
-    };
-    set(tempCheckoutItemAtom, updatedCart);
+      items: updatedProducts,
+    });
   }
 );

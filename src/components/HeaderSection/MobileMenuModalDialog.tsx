@@ -27,7 +27,7 @@ const MobileMenuModalDialog = ({
   const handleLogout = useLogout();
   const navIconNotifications = navIcons({
     wishlistCount: wishlist.length,
-    cartCount: carts.products.length,
+    cartCount: carts?.items.length,
   });
   if (!open) return null;
   return (

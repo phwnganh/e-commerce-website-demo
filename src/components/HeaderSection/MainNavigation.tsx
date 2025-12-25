@@ -31,7 +31,7 @@ const MainNavigation = () => {
 
   const navIconNotifications = navIcons({
     wishlistCount: wishlists.length,
-    cartCount: carts.products.length,
+    cartCount: carts?.items.length,
   });
 
   useEffect(() => {

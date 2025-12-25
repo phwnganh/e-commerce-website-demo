@@ -13,54 +13,47 @@ const CartSection = () => {
   const navigate = useNavigate();
 
   const handleIncreaseQuantity = (productId: string) => {
-    const updatedProducts = cart.products.map((item) =>
+    const updatedProducts = cart.items.map((item) =>
       item.id === productId
         ? {
             ...item,
             quantity: item.quantity + 1,
-            total: item.price * (item.quantity + 1),
           }
         : item
     );
-    const updatedCart = {
+    setCart({
       ...cart,
-      products: updatedProducts,
-      total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
-    };
-    setCart(updatedCart);
+      items: updatedProducts,
+    });
   };
 
   const handleDecreaseQuantity = (productId: string) => {
-    const updatedProducts = cart.products.map((item) => {
+    const updatedProducts = cart.items.map((item) => {
       if (item.id === productId) {
         const newQuantity = Math.max(1, item.quantity - 1);
         return {
           ...item,
           quantity: newQuantity,
-          total: newQuantity * item.price,
         };
       }
       return item;
     });
-    const updatedCart = {
+    setCart({ 
       ...cart,
-      products: updatedProducts,
-      total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
-    };
-    setCart(updatedCart);
+      items: updatedProducts });
   };
 
   const handleRemoveItemFromCart = (productId: string) => {
-    const updatedProducts = cart.products.filter(
-      (item) => item.id !== productId
-    );
-    const updatedCart = {
+    const updatedProducts = cart.items.filter((item) => item.id !== productId);
+    setCart({ 
       ...cart,
-      products: updatedProducts,
-      total: updatedProducts.reduce((sum, item) => sum + item.total, 0),
-    };
-    setCart(updatedCart);
+      items: updatedProducts });
   };
+
+  const cartTotal = cart.items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   return (
     <section className="mb-15 md:mb-35">
@@ -74,7 +67,7 @@ const CartSection = () => {
           </div>
 
           <div className="flex flex-col gap-10">
-            {cart?.products.map((item) => (
+            {cart?.items.map((item) => (
               <div
                 key={item.id}
                 className="grid grid-cols-4 md:pl-10 py-3 md:py-6 items-center rounded-sm shadow-[0px_1px_13px_0px_#0000000D]"
@@ -120,7 +113,9 @@ const CartSection = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-xs md:text-base">${item.total.toFixed(2)}</p>
+                <p className="text-xs md:text-base">
+                  ${(item.price * item.quantity).toFixed(2)}
+                </p>
               </div>
             ))}
           </div>
@@ -214,7 +209,7 @@ const CartSection = () => {
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Subtotal:</p>
                   <p className="text-sm md:text-base">
-                    ${cart?.total?.toFixed(2)}
+                    ${cartTotal?.toFixed(2)}
                   </p>
                 </div>
                 <hr className="border-black-opacity-40" />
@@ -226,7 +221,7 @@ const CartSection = () => {
                 <div className="flex justify-between">
                   <p className="text-sm md:text-base">Total:</p>
                   <p className="text-sm md:text-base">
-                    ${cart?.total?.toFixed(2)}
+                    ${cartTotal?.toFixed(2)}
                   </p>
                 </div>
 

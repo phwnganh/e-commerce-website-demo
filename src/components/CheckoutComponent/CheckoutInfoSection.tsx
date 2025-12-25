@@ -9,9 +9,11 @@ const CheckoutInfoSection = () => {
   const cart = useAtomValue(cartAtom);
   const tempCheckout = useAtomValue(tempCheckoutItemAtom);
   const finalCheckoutItems = tempCheckout || cart;
+
+  const finalCheckoutItemTotal = finalCheckoutItems.items.reduce((sum, item) => sum + (item.price * item.quantity), 0)
   return (
     <section className="flex flex-col gap-8 mt-8">
-      {finalCheckoutItems.products.map((item) => (
+      {finalCheckoutItems.items.map((item) => (
         <div key={item.id}>
           <div className="flex items-center gap-6">
             <div className="w-10 h-10 md:w-13.5 md:h-13.5 flex justify-center aspect-square">
@@ -32,7 +34,7 @@ const CheckoutInfoSection = () => {
         <div className="flex justify-between">
           <p className="text-sm md:text-base">Subtotal:</p>
           <p className="text-sm md:text-base">
-            ${finalCheckoutItems.total.toFixed(2)}
+            ${finalCheckoutItemTotal.toFixed(2)}
           </p>
         </div>
         <hr className="border-t-black-opacity-40" />
@@ -44,7 +46,7 @@ const CheckoutInfoSection = () => {
         <div className="flex justify-between">
           <p className="text-sm md:text-base">Total:</p>
           <p className="text-sm md:text-base">
-            ${finalCheckoutItems.total.toFixed(2)}
+            ${finalCheckoutItemTotal.toFixed(2)}
           </p>
         </div>
       </div>
