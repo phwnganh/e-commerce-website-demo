@@ -8,10 +8,13 @@ import ProductExplorationItem from "../../components/ProductItem/ProductExplorat
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";
-import CarouselControls from "../CarouselComponent/CarouselControls";
 import CarouselViewport from "../CarouselComponent/CarouselViewport";
 import CarouselTrack from "../CarouselComponent/CarouselTrack";
 import CarouselItem from "../CarouselComponent/CarouselItem";
+import ArrowButtonsComponent from "../ArrowButtonComponent";
+import type { EmblaOptionsType } from "embla-carousel";
+import { useEmblaScrollCarousels } from "../../hooks/useEmblaScrollCarousels";
+import { useCarouselKeyboard } from "../../hooks/useCarouselKeyboard";
 const ProductsExplorationList = ({
   products,
 }: {
@@ -19,6 +22,20 @@ const ProductsExplorationList = ({
 }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const navigate = useNavigate();
+  const emblaOptions: EmblaOptionsType = {
+    align: "start",
+    containScroll: "trimSnaps",
+  };
+  const { canScrollNext, canScrollPrev, emblaRef, scrollNext, scrollPrev } =
+    useEmblaScrollCarousels({
+      emblaOptions: emblaOptions,
+      orientation: "horizontal",
+      resetOnReInit: true,
+    });
+  const { onKeyDown } = useCarouselKeyboard({
+    onPrev: scrollPrev,
+    onNext: scrollNext,
+  });
 
   // mỗi cột có 2 item (tức là 2 hàng n cột)
   const columns = useMemo(() => {
@@ -37,27 +54,32 @@ const ProductsExplorationList = ({
             Explore Our Products
           </h3>
         </div>
-        <CarouselControls />
+        <ArrowButtonsComponent
+          handlePrev={scrollPrev}
+          handleNext={scrollNext}
+          canScrollNext={canScrollNext}
+          canScrollPrev={canScrollPrev}
+        ></ArrowButtonsComponent>
       </div>
-        <CarouselViewport>
-          <CarouselTrack>
-            {columns.map((col, index) => (
-              <CarouselItem
-                key={index}
-                className="basis-[calc(50%-14px)] md:basis-[calc(25%-21px)]"
-              >
-                {col.map((product) => (
-                  <React.Fragment key={product.id}>
-                    <ProductExplorationItem
-                      product={product}
-                      wishlists={wishlists}
-                    />
-                  </React.Fragment>
-                ))}
-              </CarouselItem>
-            ))}
-          </CarouselTrack>
-        </CarouselViewport>
+      <CarouselViewport carouselRef={emblaRef} onKeydown={onKeyDown}>
+        <CarouselTrack>
+          {columns.map((col, index) => (
+            <CarouselItem
+              key={index}
+              className="basis-[calc(50%-14px)] md:basis-[calc(25%-21px)]"
+            >
+              {col.map((product) => (
+                <React.Fragment key={product.id}>
+                  <ProductExplorationItem
+                    product={product}
+                    wishlists={wishlists}
+                  />
+                </React.Fragment>
+              ))}
+            </CarouselItem>
+          ))}
+        </CarouselTrack>
+      </CarouselViewport>
       <div className="mt-15 flex justify-center">
         <PrimaryCustomButton onClick={() => navigate(PRODUCTPAGE)}>
           View All Products

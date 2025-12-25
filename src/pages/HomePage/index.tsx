@@ -8,7 +8,6 @@ import NewProductsAdvertisement from "../../components/HomeComponent/NewProducts
 import KeyFeatures from "../../components/HomeComponent/KeyFeatures";
 import { useAtomValue } from "jotai";
 import { categoriesAtom, productsAtom } from "../../atom/store";
-import { Carousel } from "../../context/CarouselContext";
 
 const HomePage = () => {
   const products = useAtomValue(productsAtom);
@@ -16,17 +15,11 @@ const HomePage = () => {
   return (
     <main>
       <Banner />
-      <Carousel orientation="horizontal">
-        <TodaysProductsList products={products} />
-      </Carousel>
-      <Carousel orientation="horizontal">
-        <CategoriesList categories={categories} />
-      </Carousel>
+      <TodaysProductsList products={products} />
+      <CategoriesList categories={categories} />
       <BestSellerProductsList products={products} />
       <LimitedOfferBanner />
-      <Carousel orientation="horizontal">
-        <ProductsExplorationList products={products} />
-      </Carousel>
+      <ProductsExplorationList products={products} />
       <NewProductsAdvertisement />
       <KeyFeatures />
     </main>

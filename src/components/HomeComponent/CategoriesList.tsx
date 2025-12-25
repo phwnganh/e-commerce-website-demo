@@ -3,12 +3,34 @@ import type { Category } from "../../types/category.type";
 import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import SectionHeader from "../../components/ui/SectionHeader";
-import CarouselControls from "../CarouselComponent/CarouselControls";
 import CarouselViewport from "../CarouselComponent/CarouselViewport";
 import CarouselTrack from "../CarouselComponent/CarouselTrack";
 import CarouselItem from "../CarouselComponent/CarouselItem";
+import ArrowButtonsComponent from "../ArrowButtonComponent";
+import type { EmblaOptionsType } from "embla-carousel";
+import { useEmblaScrollCarousels } from "../../hooks/useEmblaScrollCarousels";
+import { useCarouselKeyboard } from "../../hooks/useCarouselKeyboard";
 const CategoriesList = ({ categories }: { categories: Category[] }) => {
   const navigate = useNavigate();
+    const emblaOptions: EmblaOptionsType = {
+      align: "start",
+      containScroll: "trimSnaps",
+    };
+    const {
+      canScrollNext,
+      canScrollPrev,
+      emblaRef,
+      scrollNext,
+      scrollPrev,
+    } = useEmblaScrollCarousels({
+      emblaOptions: emblaOptions,
+      orientation: "horizontal",
+      resetOnReInit: true,
+    });
+    const { onKeyDown } = useCarouselKeyboard({
+      onPrev: scrollPrev,
+      onNext: scrollNext,
+    });
   return (
     <section className="mt-10 md:mt-20 px-4 lg:px-0">
       <div className="flex flex-row items-end justify-between">
@@ -19,10 +41,15 @@ const CategoriesList = ({ categories }: { categories: Category[] }) => {
           </h3>
         </div>
 
-        <CarouselControls />
+        <ArrowButtonsComponent
+          handlePrev={scrollPrev}
+          handleNext={scrollNext}
+          canScrollNext={canScrollNext}
+          canScrollPrev={canScrollPrev}
+        ></ArrowButtonsComponent>
       </div>
       <div className="mt-10 md:mt-15">
-        <CarouselViewport>
+        <CarouselViewport carouselRef={emblaRef} onKeydown={onKeyDown}>
           <CarouselTrack>
             {categories.map((category, index) => (
               <CarouselItem

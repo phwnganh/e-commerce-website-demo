@@ -7,13 +7,37 @@ import { useNavigate } from "react-router-dom";
 import { PRODUCTPAGE } from "../../constants/route.constants";
 import Countdown from "../../components/TimeCountdownComponent/TodayProductsCountdown";
 import SectionHeader from "../../components/ui/SectionHeader";
-import CarouselControls from "../CarouselComponent/CarouselControls";
 import CarouselViewport from "../CarouselComponent/CarouselViewport";
 import CarouselTrack from "../CarouselComponent/CarouselTrack";
 import CarouselItem from "../CarouselComponent/CarouselItem";
+import { useEmblaScrollCarousels } from "../../hooks/useEmblaScrollCarousels";
+import ArrowButtonsComponent from "../ArrowButtonComponent";
+import { useCarouselKeyboard } from "../../hooks/useCarouselKeyboard";
+import type {
+  EmblaOptionsType,
+} from "embla-carousel";
 const TodaysProductsList = ({ products }: { products: ProductsResponse }) => {
   const wishlists = useAtomValue(wishlistAtom);
   const navigate = useNavigate();
+  const emblaOptions: EmblaOptionsType = {
+    align: "start",
+    containScroll: "trimSnaps",
+  };
+  const {
+    canScrollNext,
+    canScrollPrev,
+    emblaRef,
+    scrollNext,
+    scrollPrev,
+  } = useEmblaScrollCarousels({
+    emblaOptions: emblaOptions,
+    orientation: "horizontal",
+    resetOnReInit: true,
+  });
+  const { onKeyDown } = useCarouselKeyboard({
+    onPrev: scrollPrev,
+    onNext: scrollNext,
+  });
   return (
     <section className="mt-15 md:mt-35 px-4 lg:px-0">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-5 sm:gap-0">
@@ -24,10 +48,15 @@ const TodaysProductsList = ({ products }: { products: ProductsResponse }) => {
           </div>
           <Countdown />
         </div>
-        <CarouselControls />
+        <ArrowButtonsComponent
+          handlePrev={scrollPrev}
+          handleNext={scrollNext}
+          canScrollNext={canScrollNext}
+          canScrollPrev={canScrollPrev}
+        ></ArrowButtonsComponent>
       </div>
       <div className="mt-10">
-        <CarouselViewport>
+        <CarouselViewport carouselRef={emblaRef} onKeydown={onKeyDown}>
           <CarouselTrack>
             {products.products.map((product) => (
               <CarouselItem

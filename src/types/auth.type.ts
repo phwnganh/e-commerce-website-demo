@@ -1,6 +1,3 @@
-import type { Category } from "./category.type";
-import type { Product } from "./product.type";
-
 export type LoginResponse = {
   id: string;
   username: string;
@@ -15,8 +12,8 @@ export type LoginResponse = {
 
 export type LoginPayload = {
   username: string;
-  password: string
-}
+  password: string;
+};
 
 export type User = {
   id: string;
@@ -26,12 +23,4 @@ export type User = {
   lastName: string;
   gender: string;
   image: string;
-};
-
-export type GlobalContext = {
-  products: Product[];
-  categories: Category[];
-  categoriesNavigation: string[];
-  user: User | null;
-  setUser: () => void;
 };
