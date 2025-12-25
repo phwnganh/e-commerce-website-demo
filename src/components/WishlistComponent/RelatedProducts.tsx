@@ -1,5 +1,5 @@
 import type {ProductsResponse } from "../../types/product.type";
-import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
+import SecondaryCustomButton from "../ui/SecondaryButton";
 import React from "react";
 import WishlistRelatedProductItem from "../../components/ProductItem/WishlistRelatedProductItem";
 import { useNavigate } from "react-router-dom";

@@ -4,7 +4,7 @@ import { accessTookenAtom, userAtom } from "../../atom/store";
 import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import PreLoginComponent from "../../components/PreLoginComponent";
-import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import PrimaryCustomButton from "../../components/ui/PrimaryButton";
 import { login } from "../../services/auth.service";
 
 const LoginPage = () => {

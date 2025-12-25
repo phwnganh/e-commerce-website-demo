@@ -1,4 +1,3 @@
-
 const MoneyBagIcon = () => {
   return (
     <svg

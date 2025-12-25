@@ -1,41 +1,21 @@
 import { useAtomValue } from "jotai";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { productsAtom, wishlistAtom } from "../../atom/store";
 import { HOMEPAGE, PRODUCTPAGE } from "../../constants/route.constants";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
 import BreadCumb from "../../components/ui/BreadCumb";
 import LoadingSpin from "../../components/ui/LoadingSpin";
+import { useInfiniteLoading } from "../../hooks/useInfiniteLoading";
 
 const HomeProductListPage = () => {
   const products = useAtomValue(productsAtom);
-  const [visibleCount, setVisibleCount] = useState(8);
-  const [isLoading, setIsLoading] = useState(false);
-  const loadMoreRef = useRef(null);
   const wishlists = useAtomValue(wishlistAtom);
 
-  useEffect(() => {
-    if (visibleCount >= products.products.length || isLoading) {
-      return;
-    }
-    const observer = new IntersectionObserver(
-      async (entries) => {
-        if (entries[0].isIntersecting && !isLoading) {
-          setIsLoading(true);
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-          setVisibleCount((prev) => prev + 8);
-          setIsLoading(false);
-        }
-      },
-      {
-        threshold: 1,
-      }
-    );
-
-    if (loadMoreRef.current) {
-      observer.observe(loadMoreRef.current);
-    }
-    return () => observer.disconnect();
-  }, [visibleCount, products.products.length, isLoading]);
+  const { visibleCount, isLoading, loadMoreRef } = useInfiniteLoading({
+    totalCount: products.products.length,
+    delay: 1000,
+    step: 8,
+  });
   return (
     <main className="max-w-[1170px] mx-auto px-4 lg:px-0">
       <section className="mb-15 lg:mb-35">

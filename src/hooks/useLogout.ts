@@ -1,13 +1,13 @@
 import { useSetAtom } from "jotai";
-import { userAtom } from "../atom/store";
+import { accessTookenAtom } from "../atom/store";
 import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../constants/route.constants";
 
 export const useLogout = () => {
-  const setUser = useSetAtom(userAtom);
+  const setAccessToken = useSetAtom(accessTookenAtom);
   const navigate = useNavigate();
   const handleLogout = () => {
-    setUser(null);
+    setAccessToken("");
     navigate(LOGIN);
   };
   return handleLogout;

@@ -5,7 +5,7 @@ import EyeIcon from "../../assets/Eye-icon.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import { useAtomValue, useSetAtom } from "jotai";
-import { userAtom } from "../../atom/store";
+import { accessTookenAtom } from "../../atom/store";
 import { addToCartAtom } from "../../atom/cartAction.store";
 import { toggleWishlistAtom } from "../../atom/wishlistAction.store";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
@@ -17,13 +17,13 @@ const HomeProductItem = ({
   wishlists: Product[];
 }) => {
   const navigate = useNavigate();
-  const user = useAtomValue(userAtom);
+  const accessToken = useAtomValue(accessTookenAtom);
   const onAddToWishlist = useSetAtom(toggleWishlistAtom);
   const handleAddToCart = useSetAtom(addToCartAtom);
 
   const requireLogin = useLoginRequired();
 
-  const isInWishlist = user && wishlists.some((item) => item.id === product.id);
+  const isInWishlist = accessToken && wishlists.some((item) => item.id === product.id);
   return (
     <div className="flex flex-col gap-4 w-full">
       <div className="bg-secondary-2 rounded-sm w-full relative">

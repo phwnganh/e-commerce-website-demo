@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import type { ProductsResponse } from "../../types/product.type";
 
-import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import PrimaryCustomButton from "../ui/PrimaryButton";
 import { useAtomValue } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import ProductExplorationItem from "../../components/ProductItem/ProductExplorationItem";

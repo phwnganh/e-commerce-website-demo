@@ -3,8 +3,8 @@ import DropDownIcon from "../../assets/drop-down-icon.svg";
 import XIcon from "../../assets/x-icon.svg";
 import { useNavigate } from "react-router-dom";
 import { CHECKOUT, PRODUCTPAGE } from "../../constants/route.constants";
-import PrimaryCustomButton from "../ui/PrimaryCustomButton";
-import SecondaryCustomButton from "../ui/SecondaryCustomButton";
+import PrimaryCustomButton from "../ui/PrimaryButton";
+import SecondaryCustomButton from "../ui/SecondaryButton";
 import { useAtomValue, useSetAtom } from "jotai";
 import { cartAtom } from "../../atom/store";
 const CartSection = () => {

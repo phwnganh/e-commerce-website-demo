@@ -3,7 +3,7 @@ import EyeIcon from "../../assets/Eye-icon.svg";
 import type { Product } from "../../types/product.type";
 import { Link, useNavigate } from "react-router-dom";
 import { useAtomValue, useSetAtom } from "jotai";
-import { userAtom } from "../../atom/store";
+import { accessTookenAtom } from "../../atom/store";
 import { HOMEPAGE } from "../../constants/route.constants";
 import StarRating from "../ui/StarRating";
 import { addToCartAtom } from "../../atom/cartAction.store";
@@ -18,7 +18,7 @@ const ProductExplorationItem = ({
   wishlists: Product[];
 }) => {
   const navigate = useNavigate();
-  const user = useAtomValue(userAtom);
+  const accessToken = useAtomValue(accessTookenAtom);
   const onAddToWishlist = useSetAtom(toggleWishlistAtom)
   const handleAddToCart = useSetAtom(addToCartAtom)
   const requireLogin = useLoginRequired()
@@ -29,7 +29,7 @@ const ProductExplorationItem = ({
     return createdDate >= octoberFirstThisYear;
   })();
 
-  const isInWishlist = user && wishlists.some((item) => item.id === product.id);
+  const isInWishlist = accessToken && wishlists.some((item) => item.id === product.id);
   return (
     <div className="flex flex-col gap-4 w-full mt-15">
       <div className="bg-secondary-2 rounded-sm relative">

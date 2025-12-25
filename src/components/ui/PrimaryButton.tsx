@@ -1,6 +1,6 @@
 import React from "react";
 
-const PrimaryCustomButton = ({
+const PrimaryButton = ({
   onClick,
   children,
 }: {
@@ -18,4 +18,4 @@ const PrimaryCustomButton = ({
   );
 };
 
-export default PrimaryCustomButton;
+export default PrimaryButton;

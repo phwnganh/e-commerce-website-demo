@@ -6,7 +6,7 @@ import HeartIcon from "../../assets/wishlist-icon.svg";
 import DeliveryIcon from "../../assets/delivery-icon.svg";
 import ReturnDeliveryIcon from "../../assets/return-icon.svg";
 import { useAtomValue, useSetAtom } from "jotai";
-import {  tempCheckoutItemAtom, userAtom, wishlistAtom } from "../../atom/store";
+import {  accessTookenAtom, tempCheckoutItemAtom, wishlistAtom } from "../../atom/store";
 import { toggleWishlistAtom } from "../../atom/wishlistAction.store";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ import { CHECKOUT } from "../../constants/route.constants";
 
 const ProductDetailSection = ({ productData }: { productData: Product }) => {
   const wishlists = useAtomValue(wishlistAtom);
-  const user = useAtomValue(userAtom);
+  const accessToken = useAtomValue(accessTookenAtom);
   const handleAddToWishlist = useSetAtom(toggleWishlistAtom);
   const [quantity, setQuantity] = useState(1);
   const setTempCheckoutItem = useSetAtom(tempCheckoutItemAtom);
@@ -54,7 +54,7 @@ const ProductDetailSection = ({ productData }: { productData: Product }) => {
   const requireLogin = useLoginRequired();
 
   const isInWishlist =
-    user && wishlists.some((item) => item.id === productData.id);
+    accessToken && wishlists.some((item) => item.id === productData.id);
 
   return (
     <section className="px-4 lg:px-0">

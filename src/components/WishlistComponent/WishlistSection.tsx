@@ -1,4 +1,4 @@
-import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
+import SecondaryCustomButton from "../ui/SecondaryButton";
 import { useAtomValue, useSetAtom } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import React from "react";

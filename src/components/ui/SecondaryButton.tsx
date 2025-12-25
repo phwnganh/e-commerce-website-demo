@@ -1,6 +1,6 @@
 import React from "react";
 
-const SecondaryCustomButton = ({
+const SecondaryButton = ({
   children,
   onClick,
 }: {
@@ -17,4 +17,4 @@ const SecondaryCustomButton = ({
   );
 };
 
-export default SecondaryCustomButton;
+export default SecondaryButton;

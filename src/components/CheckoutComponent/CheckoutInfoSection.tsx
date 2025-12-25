@@ -4,7 +4,7 @@ import Bkash from "../../assets/bkash-icon.svg";
 import Visa from "../../assets/visa-icon.svg";
 import MasterCard from "../../assets/mastercard-icon.svg";
 import Nagad from "../../assets/nagad-icon.svg";
-import PrimaryCustomButton from "../ui/PrimaryCustomButton";
+import PrimaryCustomButton from "../ui/PrimaryButton";
 const CheckoutInfoSection = () => {
   const cart = useAtomValue(cartAtom);
   const tempCheckout = useAtomValue(tempCheckoutItemAtom);

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
-import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import PrimaryCustomButton from "../../components/ui/PrimaryButton";
 import BreadCumb from "../../components/ui/BreadCumb";
 
 const NotFound = () => {

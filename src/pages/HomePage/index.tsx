@@ -14,7 +14,7 @@ const HomePage = () => {
   const products = useAtomValue(productsAtom);
   const categories = useAtomValue(categoriesAtom);
   return (
-    <>
+    <main>
       <Banner />
       <Carousel orientation="horizontal">
         <TodaysProductsList products={products} />
@@ -29,7 +29,7 @@ const HomePage = () => {
       </Carousel>
       <NewProductsAdvertisement />
       <KeyFeatures />
-    </>
+    </main>
   );
 };
 

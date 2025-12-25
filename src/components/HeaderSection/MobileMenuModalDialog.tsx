@@ -13,13 +13,13 @@ import { mainNavLinks } from "../../constants/mainNavLinks.constants";
 const MobileMenuModalDialog = ({
   open,
   onClose,
-  user,
+  accessToken,
   wishlist,
   carts,
 }: {
   open: boolean;
   onClose: () => void;
-  user: any;
+  accessToken: any;
   wishlist: Product[];
   carts: Cart;
 }) => {
@@ -47,7 +47,7 @@ const MobileMenuModalDialog = ({
       >
         <div className="flex items-center justify-between px-4 py-3 border-b">
           <h3 className="text-base font-bold">Exclusive</h3>
-          {user && (
+          {accessToken && (
             <div className="flex items-center gap-4">
               {navIconNotifications.map((item, index) => (
                 <NavIconButton
@@ -78,7 +78,7 @@ const MobileMenuModalDialog = ({
           {/* mt-auto - đẩy content còn lại xuống đáy */}
           <div className="mt-auto">
             <hr className="border-t border-t-black-opacity-30" />
-            {!user ? (
+            {!accessToken ? (
               <div className="px-4 py-2 flex flex-col">
                 <ActiveNavLink to={LOGIN} onClick={onClose}>
                   Login

@@ -1,6 +1,6 @@
 import type { ProductsResponse } from "../../types/product.type";
 import HomeProductItem from "../../components/ProductItem/HomeProductItem";
-import PrimaryCustomButton from "../../components/ui/PrimaryCustomButton";
+import PrimaryCustomButton from "../ui/PrimaryButton";
 import { useAtomValue } from "jotai";
 import { wishlistAtom } from "../../atom/store";
 import { useNavigate } from "react-router-dom";

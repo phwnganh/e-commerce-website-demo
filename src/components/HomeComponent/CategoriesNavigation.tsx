@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { CATEGORYPAGE, PRODUCTPAGE } from "../../constants/route.constants";
-import SecondaryCustomButton from "../../components/ui/SecondaryCustomButton";
+import SecondaryCustomButton from "../ui/SecondaryButton";
 
 const CategoriesNavigation = ({ categories }: { categories: string[] }) => {
   const navigate = useNavigate();
