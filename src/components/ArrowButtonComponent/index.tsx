@@ -12,7 +12,7 @@ const ArrowButtonsComponent = ({
   canScrollPrev?: boolean;
 }) => {
   return (
-    <div className="flex flex-row gap-2">
+    <div className="hidden md:flex flex-row gap-2">
       <button
         onClick={handlePrev}
         disabled={!canScrollPrev}

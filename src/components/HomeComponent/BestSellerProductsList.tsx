@@ -19,14 +19,17 @@ const BestSellerProductsList = ({ products }: { products: ProductsResponse }) =>
             Best Selling Products
           </h3>
         </div>
-        <PrimaryCustomButton
-          onClick={() => navigate(PRODUCTPAGE)}
-        >
-          View All
-        </PrimaryCustomButton>
+          <div className="hidden md:flex">
+              <PrimaryCustomButton
+                  onClick={() => navigate(PRODUCTPAGE)}
+              >
+                  View All
+              </PrimaryCustomButton>
+          </div>
+
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-7 mt-15">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-7 mt-10 md:mt-15">
         {products.products.slice(0, 4).map((product) => (
           <React.Fragment key={product.id}>
             <HomeProductItem
@@ -36,6 +39,11 @@ const BestSellerProductsList = ({ products }: { products: ProductsResponse }) =>
           </React.Fragment>
         ))}
       </div>
+        <div className="mt-15 flex justify-center md:hidden">
+            <PrimaryCustomButton onClick={() => navigate(PRODUCTPAGE)}>
+                View All Products
+            </PrimaryCustomButton>
+        </div>
     </section>
   );
 };
