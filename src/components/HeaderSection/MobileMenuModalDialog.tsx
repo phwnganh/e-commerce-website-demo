@@ -1,6 +1,6 @@
 import ActiveNavLink from "../ui/ActiveNavLink";
-import { ACCOUNT, LOGIN } from "../../constants/route.constants";
-import { NavLink } from "react-router-dom";
+import {ACCOUNT, CATEGORYPAGE, LOGIN, PRODUCTPAGE} from "../../constants/route.constants";
+import {NavLink, useNavigate} from "react-router-dom";
 import type { Cart, Product } from "../../types/product.type";
 import UserAvatarButton from "../ui/UserAvatarButton";
 import { useLogout } from "../../hooks/useLogout";
@@ -9,6 +9,9 @@ import { navIcons } from "../../constants/navIcons.constants";
 import NavIconButton from "./NavIconButton";
 import ExitIcon from "../icons/ExitIcon";
 import { mainNavLinks } from "../../constants/mainNavLinks.constants";
+import {useAtomValue} from "jotai";
+import {categoriesNavigationAtom} from "../../atom/store.ts";
+import SecondaryCustomButton from "../ui/SecondaryButton.tsx";
 
 const MobileMenuModalDialog = ({
   open,
@@ -24,7 +27,10 @@ const MobileMenuModalDialog = ({
   carts: Cart;
 }) => {
   const isUserActive = location.pathname === ACCOUNT;
-  const {handleLogoutAndRedirect} = useLogout();
+  const categories = useAtomValue(categoriesNavigationAtom)
+    const displayedCategories = categories.slice(0, 10);
+    const navigate = useNavigate();
+    const {handleLogoutAndRedirect} = useLogout();
   const navIconNotifications = navIcons({
     wishlistCount: wishlist.length,
     cartCount: carts?.items.length,
@@ -67,6 +73,7 @@ const MobileMenuModalDialog = ({
             <ExitIcon />
           </button>
         </div>
+
         <div className="flex flex-col flex-1">
           <nav className="flex flex-col gap-4 px-4 py-6">
             {mainNavLinks.map((link, index) => (
@@ -75,6 +82,23 @@ const MobileMenuModalDialog = ({
               </ActiveNavLink>
             ))}
           </nav>
+
+            <div className="flex flex-col gap-4 px-4 py-6">
+                <h3 className="font-bold text-xl">Categories</h3>
+                {displayedCategories.map((category, index) => (
+                    <NavLink to={`${PRODUCTPAGE}/${category}`} key={index} onClick={onClose} className={({isActive}) => `border-b hover:border-b-black-opacity-80 ${isActive ? "border-b-black-opacity-80" : "border-b-transparent"}`}>
+                        {category}
+                    </NavLink>
+                ))}
+                <SecondaryCustomButton onClick={() => {
+                    navigate(CATEGORYPAGE)
+                    onClose()
+
+
+                }}>
+                    See More
+                </SecondaryCustomButton>
+            </div>
           {/* mt-auto - đẩy content còn lại xuống đáy */}
           <div className="mt-auto">
             <hr className="border-t border-t-black-opacity-30" />

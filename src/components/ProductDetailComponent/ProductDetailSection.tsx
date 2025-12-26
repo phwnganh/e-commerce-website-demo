@@ -51,8 +51,7 @@ const ProductDetailSection = ({ productData }: { productData: Product }) => {
     accessToken && wishlists.some((item) => item.id === productData.id);
 
   return (
-    <section className="px-4 lg:px-0">
-      <div className="mt-15 lg:mt-20">
+    <section className="mt-15 lg:mt-20">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-17.5">
           <div className="flex flex-col-reverse lg:flex-row gap-7.5">
             <div className="flex flex-row lg:flex-col gap-4">
@@ -151,7 +150,7 @@ const ProductDetailSection = ({ productData }: { productData: Product }) => {
                   <img
                     src={DeliveryIcon}
                     alt="delivery-icon"
-                    className="brightness-1"
+                    className="brightness-1 h-8 w-8 md:h-10 md:w-10"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -167,7 +166,7 @@ const ProductDetailSection = ({ productData }: { productData: Product }) => {
 
               <div className="flex-wrap flex flex-row gap-2 sm:gap-4 items-start sm:items-center lg:pt-4 pb-4 lg:pb-6 pl-2 lg:pl-4">
                 <div className="flex justify-center items-center">
-                  <img src={ReturnDeliveryIcon} alt="return-delivery-icon" />
+                  <img src={ReturnDeliveryIcon} alt="return-delivery-icon" className="h-8 w-8 md:h-10 md:w-10"/>
                 </div>
                 <div className="flex flex-col gap-2">
                   <p className="font-medium text-sm lg:text-base text-nowrap">
@@ -182,7 +181,6 @@ const ProductDetailSection = ({ productData }: { productData: Product }) => {
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };
