@@ -21,7 +21,7 @@ export const productsByCategoryAtom = atomFamily((slug: string) =>
 export const categoriesAtom = atom(fetchAllCategories);
 export const categoriesNavigationAtom = atom(fetchAllCategoriesNavigation);
 export const userAtom = atomWithStorage<User | null>("user", null);
-export const accessTookenAtom = atomWithStorage<string>("token", "");
+export const accessTokenAtom = atomWithStorage<string>("token", "");
 
 export const wishlistAtom = atomWithStorage<Product[]>("wishlist", []);
 export const cartAtom = atomWithStorage<Cart>("carts", {

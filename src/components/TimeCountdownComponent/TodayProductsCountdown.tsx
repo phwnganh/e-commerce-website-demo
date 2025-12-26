@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { getTimeLef } from "../../utils/getTimeLeft";
 import TimeCircle from "../ui/TimeCircle";
+import {TARGET_DATE} from "../../types/countdownDate.type.ts";
 
 const TodayProductsCountdown = () => {
-  const targetDate = new Date("2025-12-31T23:59:59");
 
-  const [timeLeft, setTimeLeft] = useState(() => getTimeLef(targetDate));
+  const [timeLeft, setTimeLeft] = useState(() => getTimeLef(TARGET_DATE));
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimeLeft(getTimeLef(targetDate));
+      setTimeLeft(getTimeLef(TARGET_DATE));
     }, 1000);
     return () => clearInterval(interval);
   }, []);

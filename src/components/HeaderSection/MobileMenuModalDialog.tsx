@@ -19,12 +19,12 @@ const MobileMenuModalDialog = ({
 }: {
   open: boolean;
   onClose: () => void;
-  accessToken: any;
+  accessToken: string;
   wishlist: Product[];
   carts: Cart;
 }) => {
   const isUserActive = location.pathname === ACCOUNT;
-  const handleLogout = useLogout();
+  const {handleLogoutAndRedirect} = useLogout();
   const navIconNotifications = navIcons({
     wishlistCount: wishlist.length,
     cartCount: carts?.items.length,
@@ -97,7 +97,7 @@ const MobileMenuModalDialog = ({
                 <button
                   aria-label="logout-btn"
                   onClick={() => {
-                    handleLogout();
+                    handleLogoutAndRedirect();
                     onClose();
                   }}
                   className="flex justify-start items-center ml-1 gap-5"

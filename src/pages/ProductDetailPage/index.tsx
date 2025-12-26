@@ -12,13 +12,13 @@ const ProductDetailPage = () => {
   const { productId } = useParams();
   const [productData, setProductData] = useState<Product | null>(null);
 
+  // tao function IIEE tranh moi lan render component -> tao function xu li promise rieng
   useEffect(() => {
-    const fetchProductDetail = async () => {
-      if (!productId) return;
-      const res = await getProductDetail(productId);
-      setProductData(res);
-    };
-    fetchProductDetail();
+      if(!productId) return;
+      (async () => {
+          const res = await getProductDetail(productId)
+          setProductData(res);
+      })()
   }, [productId]);
 
   if (!productData) {
@@ -43,7 +43,7 @@ const ProductDetailPage = () => {
           { label: productData.title, to: `${HOMEPAGE}/${productData.id}` },
         ]}
       />
-      <ProductDetailSection productData={productData} />
+      <ProductDetailSection productData={productData}/>
       <RelatedItemSection productData={productData} />
     </main>
   );

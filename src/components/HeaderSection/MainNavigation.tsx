@@ -7,7 +7,7 @@ import {
 
 import { useEffect, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
-import { accessTookenAtom, cartAtom, wishlistAtom } from "../../atom/store";
+import { accessTokenAtom, cartAtom, wishlistAtom } from "../../atom/store";
 import UserDropdown from "../UserDropdown";
 import ActiveNavLink from "../ui/ActiveNavLink";
 import SearchBar from "../ui/SearchBar";
@@ -19,7 +19,7 @@ import { navIcons } from "../../constants/navIcons.constants";
 import { mainNavLinks } from "../../constants/mainNavLinks.constants";
 const MainNavigation = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const accessToken = useAtomValue(accessTookenAtom);
+  const accessToken = useAtomValue(accessTokenAtom);
   const wishlists = useAtomValue(wishlistAtom);
   const carts = useAtomValue(cartAtom);
   const dropdownRef = useRef<HTMLDivElement | null>(null);

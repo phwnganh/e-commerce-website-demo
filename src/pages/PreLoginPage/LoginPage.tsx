@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { useSetAtom } from "jotai";
-import { accessTookenAtom, userAtom } from "../../atom/store";
+import { accessTokenAtom, userAtom } from "../../atom/store";
 import { useNavigate } from "react-router-dom";
 import { HOMEPAGE } from "../../constants/route.constants";
 import PreLoginComponent from "../../components/PreLoginComponent";
@@ -12,7 +12,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const setUser = useSetAtom(userAtom);
-  const setToken = useSetAtom(accessTookenAtom);
+  const setToken = useSetAtom(accessTokenAtom);
   const navigate = useNavigate();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,8 +21,10 @@ const LoginPage = () => {
       setUser(userData);
       setToken(userData.accessToken);
       navigate(HOMEPAGE);
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: unknown) {
+        if(error instanceof Error) {
+            setError(error.message);
+        }
     }
   };
   return (

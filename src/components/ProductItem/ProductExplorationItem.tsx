@@ -3,7 +3,7 @@ import EyeIcon from "../../assets/Eye-icon.svg";
 import type { Product } from "../../types/product.type";
 import { Link, useNavigate } from "react-router-dom";
 import { useAtomValue, useSetAtom } from "jotai";
-import { accessTookenAtom } from "../../atom/store";
+import { accessTokenAtom } from "../../atom/store";
 import { HOMEPAGE } from "../../constants/route.constants";
 import StarRating from "../ui/StarRating";
 import { addToCartAtom } from "../../atom/cartAction.store";
@@ -18,10 +18,10 @@ const ProductExplorationItem = ({
   wishlists: Product[];
 }) => {
   const navigate = useNavigate();
-  const accessToken = useAtomValue(accessTookenAtom);
+  const accessToken = useAtomValue(accessTokenAtom);
   const onAddToWishlist = useSetAtom(toggleWishlistAtom)
   const handleAddToCart = useSetAtom(addToCartAtom)
-  const requireLogin = useLoginRequired()
+  const {isLoggedIn, requiredLogin} = useLoginRequired()
   const isNew = (() => {
     const createdDate = new Date(product.meta.createdAt);
     const now = new Date();
@@ -46,8 +46,8 @@ const ProductExplorationItem = ({
           />
           <button
             onClick={() => {
-              if (!requireLogin()) {
-                return;
+              if (!isLoggedIn) {
+                requiredLogin()
               }
               handleAddToCart(product);
             }}
@@ -60,8 +60,8 @@ const ProductExplorationItem = ({
         <div className="flex flex-col gap-1 md:gap-2 absolute top-1 right-2 md:top-3 md:right-3">
           <button
             onClick={() => {
-              if (!requireLogin()) {
-                return;
+              if (!isLoggedIn) {
+                requiredLogin()
               }
               onAddToWishlist(product);
             }}

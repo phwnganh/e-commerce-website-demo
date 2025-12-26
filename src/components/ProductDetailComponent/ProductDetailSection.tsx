@@ -6,25 +6,22 @@ import HeartIcon from "../../assets/wishlist-icon.svg";
 import DeliveryIcon from "../../assets/delivery-icon.svg";
 import ReturnDeliveryIcon from "../../assets/return-icon.svg";
 import { useAtomValue, useSetAtom } from "jotai";
-import {  accessTookenAtom, tempCheckoutItemAtom, wishlistAtom } from "../../atom/store";
+import {  accessTokenAtom, tempCheckoutItemAtom, wishlistAtom } from "../../atom/store";
 import { toggleWishlistAtom } from "../../atom/wishlistAction.store";
 import { useLoginRequired } from "../../hooks/useLoginRequired";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CHECKOUT } from "../../constants/route.constants";
 
 const ProductDetailSection = ({ productData }: { productData: Product }) => {
   const wishlists = useAtomValue(wishlistAtom);
-  const accessToken = useAtomValue(accessTookenAtom);
+  const accessToken = useAtomValue(accessTokenAtom);
   const handleAddToWishlist = useSetAtom(toggleWishlistAtom);
   const [quantity, setQuantity] = useState(1);
   const setTempCheckoutItem = useSetAtom(tempCheckoutItemAtom);
   const [isImageSelected, setIsImageSelected] = useState(productData.images[0]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setIsImageSelected(productData.images[0]);
-  }, [productData.id])
   const handleIncreaseQuantity = () => {
     setQuantity((prev) => prev + 1);
   };
@@ -48,7 +45,7 @@ const ProductDetailSection = ({ productData }: { productData: Product }) => {
     navigate(CHECKOUT);
   };
 
-  const requireLogin = useLoginRequired();
+  const {isLoggedIn, requiredLogin} = useLoginRequired();
 
   const isInWishlist =
     accessToken && wishlists.some((item) => item.id === productData.id);
@@ -128,8 +125,8 @@ const ProductDetailSection = ({ productData }: { productData: Product }) => {
               </button>
               <button
                 onClick={() => {
-                  if (!requireLogin()) {
-                    return;
+                  if (!isLoggedIn) {
+                    requiredLogin()
                   }
                   handleAddToWishlist(productData);
                 }}

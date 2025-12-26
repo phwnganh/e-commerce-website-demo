@@ -22,7 +22,7 @@ export const useEmblaScrollCarousels = ({
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
 
-  const onSelect = useCallback(() => {
+  const updateScrollState = useCallback(() => {
     if (!emblaApi) return;
     setCanScrollPrev(emblaApi.canScrollPrev());
     setCanScrollNext(emblaApi.canScrollNext());
@@ -35,22 +35,21 @@ export const useEmblaScrollCarousels = ({
   const scrollNext = useCallback(() => {
     emblaApi?.scrollNext();
   }, [emblaApi]);
-
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
+    updateScrollState();
+    emblaApi.on("select", updateScrollState);
 
-    if (resetOnReInit) {
-      emblaApi.on("reInit", () => emblaApi.scrollTo(0));
-    }
+    emblaApi.on("reInit", () => {
+        updateScrollState()
+        if(resetOnReInit) emblaApi.scrollTo(0)
+    })
 
     return () => {
-      emblaApi.off("select", onSelect);
-      emblaApi.off("reInit", onSelect);
+      emblaApi.off("select", updateScrollState);
+      emblaApi.off("reInit", updateScrollState);
     };
-  }, [emblaApi, onSelect, resetOnReInit]);
+  }, [emblaApi, updateScrollState, resetOnReInit]);
 
   return {
     emblaRef,

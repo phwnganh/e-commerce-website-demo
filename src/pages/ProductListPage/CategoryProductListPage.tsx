@@ -6,13 +6,30 @@ import {
   HOMEPAGE,
   PRODUCTPAGE,
 } from "../../constants/route.constants";
-import { useAtomValue } from "jotai";
-import { productsByCategoryAtom } from "../../atom/store";
+import {useEffect, useState} from "react";
+import {fetchProductsByCategory} from "../../services/products.service.ts";
+import type {CategoryDetail} from "../../types/category.type.ts";
+import LoadingSpin from "../../components/ui/LoadingSpin.tsx";
 
-const CaategoryProductListPage = () => {
+const CategoryProductListPage = () => {
   const { slug } = useParams();
-  if (!slug) return null;
-  const categoryData = useAtomValue(productsByCategoryAtom(slug));
+  const [productCategoryData, setProductCategoryData] = useState<CategoryDetail | null>(null)
+
+    useEffect(() => {
+        if(!slug) return;
+        (async () => {
+            const res = await fetchProductsByCategory(slug)
+            setProductCategoryData(res)
+        })()
+    }, [slug]);
+
+  if(!productCategoryData || !slug){
+      return (
+          <div className="min-h-[60vh] flex items-center justify-center">
+              <LoadingSpin />
+          </div>
+      )
+  }
   return (
     <main className="max-w-[1170px] mx-auto px-4 lg:px-0">
       <BreadCumb
@@ -28,9 +45,9 @@ const CaategoryProductListPage = () => {
           },
         ]}
       />
-      <CategoryProductListSection categoryData={categoryData} />
+      <CategoryProductListSection categoryData={productCategoryData} />
     </main>
   );
 };
 
-export default CaategoryProductListPage;
+export default CategoryProductListPage;

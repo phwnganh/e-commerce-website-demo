@@ -29,7 +29,7 @@ const UserDropdown = () => {
     },
   ];
   const navigate = useNavigate();
-  const handleLogout = useLogout()
+  const {handleLogoutAndRedirect} = useLogout()
   return (
     <div className="absolute top-9 right-0 z-10">
       <div
@@ -43,7 +43,7 @@ const UserDropdown = () => {
             label={item.label}
             onClick={() => {
               if (item.action === "logout") {
-                handleLogout();
+                handleLogoutAndRedirect();
               } else if (item.to) {
                 navigate(item.to);
               }
